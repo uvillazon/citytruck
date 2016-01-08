@@ -50,6 +50,7 @@ using System.Xml.Serialization;
 [assembly: EdmRelationshipAttribute("Model", "SG_TRANSFERENCIAS_R01", "SG_CAJAS", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(CityTruck.Model.SG_CAJAS), "SG_TRANSFERENCIAS", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(CityTruck.Model.SG_TRANSFERENCIAS), true)]
 [assembly: EdmRelationshipAttribute("Model", "SG_TRANSFERENCIAS_R02", "SG_CAJAS", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(CityTruck.Model.SG_CAJAS), "SG_TRANSFERENCIAS", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(CityTruck.Model.SG_TRANSFERENCIAS), true)]
 [assembly: EdmRelationshipAttribute("Model", "SG_FACTURAS_MN_R01", "SG_COMBUSTIBLES", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(CityTruck.Model.SG_COMBUSTIBLES), "SG_FACTURAS_MN", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(CityTruck.Model.SG_FACTURAS_MN), true)]
+[assembly: EdmRelationshipAttribute("Model", "SG_AJUSTES_TANQUE_MN_R01", "SG_TANQUES", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(CityTruck.Model.SG_TANQUES), "SG_AJUSTES_TANQUE_MN", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(CityTruck.Model.SG_AJUSTES_TANQUE_MN), true)]
 
 #endregion
 
@@ -612,6 +613,22 @@ namespace CityTruck.Model
             }
         }
         private ObjectSet<SG_FACTURAS_MN> _SG_FACTURAS_MN;
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        public ObjectSet<SG_AJUSTES_TANQUE_MN> SG_AJUSTES_TANQUE_MN
+        {
+            get
+            {
+                if ((_SG_AJUSTES_TANQUE_MN == null))
+                {
+                    _SG_AJUSTES_TANQUE_MN = base.CreateObjectSet<SG_AJUSTES_TANQUE_MN>("SG_AJUSTES_TANQUE_MN");
+                }
+                return _SG_AJUSTES_TANQUE_MN;
+            }
+        }
+        private ObjectSet<SG_AJUSTES_TANQUE_MN> _SG_AJUSTES_TANQUE_MN;
 
         #endregion
 
@@ -871,6 +888,14 @@ namespace CityTruck.Model
         public void AddToSG_FACTURAS_MN(SG_FACTURAS_MN sG_FACTURAS_MN)
         {
             base.AddObject("SG_FACTURAS_MN", sG_FACTURAS_MN);
+        }
+    
+        /// <summary>
+        /// Método desusado para agregar un nuevo objeto al EntitySet SG_AJUSTES_TANQUE_MN. Considere la posibilidad de usar el método .Add de la propiedad ObjectSet&lt;T&gt; asociada.
+        /// </summary>
+        public void AddToSG_AJUSTES_TANQUE_MN(SG_AJUSTES_TANQUE_MN sG_AJUSTES_TANQUE_MN)
+        {
+            base.AddObject("SG_AJUSTES_TANQUE_MN", sG_AJUSTES_TANQUE_MN);
         }
 
         #endregion
@@ -3473,6 +3498,81 @@ namespace CityTruck.Model
     
             return base.ExecuteFunction("P_SG_GUARDAR_FACTURA_MN", p_ID_FACTURAParameter, p_ID_COMBUSTIBLEParameter, p_FECHAParameter, p_IMPORTEParameter, p_PRECIOParameter, p_LITROSParameter, p_ID_USRParameter, p_RES);
         }
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        /// <param name="p_ID_AJUSTE">No hay documentación de metadatos disponible.</param>
+        /// <param name="p_ID_COMBUSTIBLE">No hay documentación de metadatos disponible.</param>
+        /// <param name="p_FECHA">No hay documentación de metadatos disponible.</param>
+        /// <param name="p_OBSERVACION">No hay documentación de metadatos disponible.</param>
+        /// <param name="p_CANTIDAD">No hay documentación de metadatos disponible.</param>
+        /// <param name="p_ID_USR">No hay documentación de metadatos disponible.</param>
+        /// <param name="p_RES">No hay documentación de metadatos disponible.</param>
+        public int P_SG_GUARDAR_AJUSTE_TANQUE_MN(Nullable<global::System.Decimal> p_ID_AJUSTE, Nullable<global::System.Decimal> p_ID_COMBUSTIBLE, Nullable<global::System.DateTime> p_FECHA, global::System.String p_OBSERVACION, Nullable<global::System.Decimal> p_CANTIDAD, Nullable<global::System.Decimal> p_ID_USR, ObjectParameter p_RES)
+        {
+            ObjectParameter p_ID_AJUSTEParameter;
+            if (p_ID_AJUSTE.HasValue)
+            {
+                p_ID_AJUSTEParameter = new ObjectParameter("P_ID_AJUSTE", p_ID_AJUSTE);
+            }
+            else
+            {
+                p_ID_AJUSTEParameter = new ObjectParameter("P_ID_AJUSTE", typeof(global::System.Decimal));
+            }
+    
+            ObjectParameter p_ID_COMBUSTIBLEParameter;
+            if (p_ID_COMBUSTIBLE.HasValue)
+            {
+                p_ID_COMBUSTIBLEParameter = new ObjectParameter("P_ID_COMBUSTIBLE", p_ID_COMBUSTIBLE);
+            }
+            else
+            {
+                p_ID_COMBUSTIBLEParameter = new ObjectParameter("P_ID_COMBUSTIBLE", typeof(global::System.Decimal));
+            }
+    
+            ObjectParameter p_FECHAParameter;
+            if (p_FECHA.HasValue)
+            {
+                p_FECHAParameter = new ObjectParameter("P_FECHA", p_FECHA);
+            }
+            else
+            {
+                p_FECHAParameter = new ObjectParameter("P_FECHA", typeof(global::System.DateTime));
+            }
+    
+            ObjectParameter p_OBSERVACIONParameter;
+            if (p_OBSERVACION != null)
+            {
+                p_OBSERVACIONParameter = new ObjectParameter("P_OBSERVACION", p_OBSERVACION);
+            }
+            else
+            {
+                p_OBSERVACIONParameter = new ObjectParameter("P_OBSERVACION", typeof(global::System.String));
+            }
+    
+            ObjectParameter p_CANTIDADParameter;
+            if (p_CANTIDAD.HasValue)
+            {
+                p_CANTIDADParameter = new ObjectParameter("P_CANTIDAD", p_CANTIDAD);
+            }
+            else
+            {
+                p_CANTIDADParameter = new ObjectParameter("P_CANTIDAD", typeof(global::System.Decimal));
+            }
+    
+            ObjectParameter p_ID_USRParameter;
+            if (p_ID_USR.HasValue)
+            {
+                p_ID_USRParameter = new ObjectParameter("P_ID_USR", p_ID_USR);
+            }
+            else
+            {
+                p_ID_USRParameter = new ObjectParameter("P_ID_USR", typeof(global::System.Decimal));
+            }
+    
+            return base.ExecuteFunction("P_SG_GUARDAR_AJUSTE_TANQUE_MN", p_ID_AJUSTEParameter, p_ID_COMBUSTIBLEParameter, p_FECHAParameter, p_OBSERVACIONParameter, p_CANTIDADParameter, p_ID_USRParameter, p_RES);
+        }
 
         #endregion
 
@@ -4281,6 +4381,285 @@ namespace CityTruck.Model
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<SG_TANQUES>("Model.SG_AJUSTES_TANQUE_R01", "SG_TANQUES", value);
+                }
+            }
+        }
+
+        #endregion
+
+    }
+    
+    /// <summary>
+    /// No hay documentación de metadatos disponible.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="Model", Name="SG_AJUSTES_TANQUE_MN")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class SG_AJUSTES_TANQUE_MN : EntityObject
+    {
+        #region Método de generador
+    
+        /// <summary>
+        /// Crear un nuevo objeto SG_AJUSTES_TANQUE_MN.
+        /// </summary>
+        /// <param name="iD_AJUSTE">Valor inicial de la propiedad ID_AJUSTE.</param>
+        /// <param name="iD_TANQUE">Valor inicial de la propiedad ID_TANQUE.</param>
+        /// <param name="nRO_COMP">Valor inicial de la propiedad NRO_COMP.</param>
+        /// <param name="fECHA">Valor inicial de la propiedad FECHA.</param>
+        /// <param name="cANTIDAD">Valor inicial de la propiedad CANTIDAD.</param>
+        /// <param name="oBSERVACION">Valor inicial de la propiedad OBSERVACION.</param>
+        /// <param name="iD_USUARIO">Valor inicial de la propiedad ID_USUARIO.</param>
+        public static SG_AJUSTES_TANQUE_MN CreateSG_AJUSTES_TANQUE_MN(global::System.Int32 iD_AJUSTE, global::System.Int16 iD_TANQUE, global::System.Int32 nRO_COMP, global::System.DateTime fECHA, global::System.Decimal cANTIDAD, global::System.String oBSERVACION, global::System.Int16 iD_USUARIO)
+        {
+            SG_AJUSTES_TANQUE_MN sG_AJUSTES_TANQUE_MN = new SG_AJUSTES_TANQUE_MN();
+            sG_AJUSTES_TANQUE_MN.ID_AJUSTE = iD_AJUSTE;
+            sG_AJUSTES_TANQUE_MN.ID_TANQUE = iD_TANQUE;
+            sG_AJUSTES_TANQUE_MN.NRO_COMP = nRO_COMP;
+            sG_AJUSTES_TANQUE_MN.FECHA = fECHA;
+            sG_AJUSTES_TANQUE_MN.CANTIDAD = cANTIDAD;
+            sG_AJUSTES_TANQUE_MN.OBSERVACION = oBSERVACION;
+            sG_AJUSTES_TANQUE_MN.ID_USUARIO = iD_USUARIO;
+            return sG_AJUSTES_TANQUE_MN;
+        }
+
+        #endregion
+
+        #region Propiedades primitivas
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 ID_AJUSTE
+        {
+            get
+            {
+                return _ID_AJUSTE;
+            }
+            set
+            {
+                if (_ID_AJUSTE != value)
+                {
+                    OnID_AJUSTEChanging(value);
+                    ReportPropertyChanging("ID_AJUSTE");
+                    _ID_AJUSTE = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("ID_AJUSTE");
+                    OnID_AJUSTEChanged();
+                }
+            }
+        }
+        private global::System.Int32 _ID_AJUSTE;
+        partial void OnID_AJUSTEChanging(global::System.Int32 value);
+        partial void OnID_AJUSTEChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int16 ID_TANQUE
+        {
+            get
+            {
+                return _ID_TANQUE;
+            }
+            set
+            {
+                OnID_TANQUEChanging(value);
+                ReportPropertyChanging("ID_TANQUE");
+                _ID_TANQUE = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("ID_TANQUE");
+                OnID_TANQUEChanged();
+            }
+        }
+        private global::System.Int16 _ID_TANQUE;
+        partial void OnID_TANQUEChanging(global::System.Int16 value);
+        partial void OnID_TANQUEChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 NRO_COMP
+        {
+            get
+            {
+                return _NRO_COMP;
+            }
+            set
+            {
+                OnNRO_COMPChanging(value);
+                ReportPropertyChanging("NRO_COMP");
+                _NRO_COMP = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("NRO_COMP");
+                OnNRO_COMPChanged();
+            }
+        }
+        private global::System.Int32 _NRO_COMP;
+        partial void OnNRO_COMPChanging(global::System.Int32 value);
+        partial void OnNRO_COMPChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.DateTime FECHA
+        {
+            get
+            {
+                return _FECHA;
+            }
+            set
+            {
+                OnFECHAChanging(value);
+                ReportPropertyChanging("FECHA");
+                _FECHA = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("FECHA");
+                OnFECHAChanged();
+            }
+        }
+        private global::System.DateTime _FECHA;
+        partial void OnFECHAChanging(global::System.DateTime value);
+        partial void OnFECHAChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Decimal CANTIDAD
+        {
+            get
+            {
+                return _CANTIDAD;
+            }
+            set
+            {
+                OnCANTIDADChanging(value);
+                ReportPropertyChanging("CANTIDAD");
+                _CANTIDAD = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("CANTIDAD");
+                OnCANTIDADChanged();
+            }
+        }
+        private global::System.Decimal _CANTIDAD;
+        partial void OnCANTIDADChanging(global::System.Decimal value);
+        partial void OnCANTIDADChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String OBSERVACION
+        {
+            get
+            {
+                return _OBSERVACION;
+            }
+            set
+            {
+                OnOBSERVACIONChanging(value);
+                ReportPropertyChanging("OBSERVACION");
+                _OBSERVACION = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("OBSERVACION");
+                OnOBSERVACIONChanged();
+            }
+        }
+        private global::System.String _OBSERVACION;
+        partial void OnOBSERVACIONChanging(global::System.String value);
+        partial void OnOBSERVACIONChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int16 ID_USUARIO
+        {
+            get
+            {
+                return _ID_USUARIO;
+            }
+            set
+            {
+                OnID_USUARIOChanging(value);
+                ReportPropertyChanging("ID_USUARIO");
+                _ID_USUARIO = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("ID_USUARIO");
+                OnID_USUARIOChanged();
+            }
+        }
+        private global::System.Int16 _ID_USUARIO;
+        partial void OnID_USUARIOChanging(global::System.Int16 value);
+        partial void OnID_USUARIOChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.DateTime> FECHA_REG
+        {
+            get
+            {
+                return _FECHA_REG;
+            }
+            set
+            {
+                OnFECHA_REGChanging(value);
+                ReportPropertyChanging("FECHA_REG");
+                _FECHA_REG = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("FECHA_REG");
+                OnFECHA_REGChanged();
+            }
+        }
+        private Nullable<global::System.DateTime> _FECHA_REG;
+        partial void OnFECHA_REGChanging(Nullable<global::System.DateTime> value);
+        partial void OnFECHA_REGChanged();
+
+        #endregion
+
+    
+        #region Propiedades de navegación
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("Model", "SG_AJUSTES_TANQUE_MN_R01", "SG_TANQUES")]
+        public SG_TANQUES SG_TANQUES
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<SG_TANQUES>("Model.SG_AJUSTES_TANQUE_MN_R01", "SG_TANQUES").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<SG_TANQUES>("Model.SG_AJUSTES_TANQUE_MN_R01", "SG_TANQUES").Value = value;
+            }
+        }
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<SG_TANQUES> SG_TANQUESReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<SG_TANQUES>("Model.SG_AJUSTES_TANQUE_MN_R01", "SG_TANQUES");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<SG_TANQUES>("Model.SG_AJUSTES_TANQUE_MN_R01", "SG_TANQUES", value);
                 }
             }
         }
@@ -12424,6 +12803,28 @@ namespace CityTruck.Model
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<SG_AJUSTES_TANQUE>("Model.SG_AJUSTES_TANQUE_R01", "SG_AJUSTES_TANQUE", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("Model", "SG_AJUSTES_TANQUE_MN_R01", "SG_AJUSTES_TANQUE_MN")]
+        public EntityCollection<SG_AJUSTES_TANQUE_MN> SG_AJUSTES_TANQUE_MN
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<SG_AJUSTES_TANQUE_MN>("Model.SG_AJUSTES_TANQUE_MN_R01", "SG_AJUSTES_TANQUE_MN");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<SG_AJUSTES_TANQUE_MN>("Model.SG_AJUSTES_TANQUE_MN_R01", "SG_AJUSTES_TANQUE_MN", value);
                 }
             }
         }

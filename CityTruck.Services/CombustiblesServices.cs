@@ -91,5 +91,15 @@ namespace CityTruck.Services
             });
             return result;
         }
+        public SG_AJUSTES_TANQUE_MN ObtenerAjusteTanqueMN(System.Linq.Expressions.Expression<Func<SG_AJUSTES_TANQUE_MN, bool>> criterio = null)
+        {
+            SG_AJUSTES_TANQUE_MN result = null;
+            ExecuteManager(uow =>
+            {
+                var manager = new SG_AJUSTES_TANQUE_MNManager(uow);
+                result = manager.BuscarTodos(criterio).FirstOrDefault();
+            });
+            return result;
+        }
     }
 }

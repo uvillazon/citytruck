@@ -9,6 +9,7 @@
           <EntitySet Name="SG_AJUSTE_POS" EntityType="Model.Store.SG_AJUSTE_POS" store:Type="Tables" Schema="CITYTRUCK" />
           <EntitySet Name="SG_AJUSTE_PRECIO" EntityType="Model.Store.SG_AJUSTE_PRECIO" store:Type="Tables" Schema="CITYTRUCK" />
           <EntitySet Name="SG_AJUSTES_TANQUE" EntityType="Model.Store.SG_AJUSTES_TANQUE" store:Type="Tables" Schema="CITYTRUCK" />
+          <EntitySet Name="SG_AJUSTES_TANQUE_MN" EntityType="Model.Store.SG_AJUSTES_TANQUE_MN" store:Type="Tables" Schema="CITYTRUCK" />
           <EntitySet Name="SG_AMORTIZACIONES" EntityType="Model.Store.SG_AMORTIZACIONES" store:Type="Tables" Schema="CITYTRUCK" />
           <EntitySet Name="SG_CAJAS" EntityType="Model.Store.SG_CAJAS" store:Type="Tables" Schema="CITYTRUCK" />
           <EntitySet Name="SG_CLIENTE_CONSUMO_COMBUSTIBLE" EntityType="Model.Store.SG_CLIENTE_CONSUMO_COMBUSTIBLE" store:Type="Tables" Schema="CITYTRUCK" />
@@ -45,6 +46,10 @@
           <AssociationSet Name="SG_AJUSTE_PRECIO_R01" Association="Model.Store.SG_AJUSTE_PRECIO_R01">
             <End Role="SG_COMBUSTIBLES" EntitySet="SG_COMBUSTIBLES" />
             <End Role="SG_AJUSTE_PRECIO" EntitySet="SG_AJUSTE_PRECIO" />
+          </AssociationSet>
+          <AssociationSet Name="SG_AJUSTES_TANQUE_MN_R01" Association="Model.Store.SG_AJUSTES_TANQUE_MN_R01">
+            <End Role="SG_TANQUES" EntitySet="SG_TANQUES" />
+            <End Role="SG_AJUSTES_TANQUE_MN" EntitySet="SG_AJUSTES_TANQUE_MN" />
           </AssociationSet>
           <AssociationSet Name="SG_AJUSTES_TANQUE_R01" Association="Model.Store.SG_AJUSTES_TANQUE_R01">
             <End Role="SG_TANQUES" EntitySet="SG_TANQUES" />
@@ -189,6 +194,19 @@
           <Property Name="FECHA_REG" Type="date" />
         </EntityType>
         <EntityType Name="SG_AJUSTES_TANQUE">
+          <Key>
+            <PropertyRef Name="ID_AJUSTE" />
+          </Key>
+          <Property Name="ID_AJUSTE" Type="number" Nullable="false" Precision="7" />
+          <Property Name="ID_TANQUE" Type="number" Nullable="false" Precision="5" />
+          <Property Name="NRO_COMP" Type="number" Nullable="false" Precision="7" />
+          <Property Name="FECHA" Type="date" Nullable="false" />
+          <Property Name="CANTIDAD" Type="number" Nullable="false" Precision="15" Scale="5" />
+          <Property Name="OBSERVACION" Type="varchar2" Nullable="false" MaxLength="140" />
+          <Property Name="ID_USUARIO" Type="number" Nullable="false" Precision="5" />
+          <Property Name="FECHA_REG" Type="date" />
+        </EntityType>
+        <EntityType Name="SG_AJUSTES_TANQUE_MN">
           <Key>
             <PropertyRef Name="ID_AJUSTE" />
           </Key>
@@ -628,6 +646,18 @@
             </Principal>
             <Dependent Role="SG_AJUSTE_PRECIO">
               <PropertyRef Name="ID_COMBUSTIBLE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="SG_AJUSTES_TANQUE_MN_R01">
+          <End Role="SG_TANQUES" Type="Model.Store.SG_TANQUES" Multiplicity="1" />
+          <End Role="SG_AJUSTES_TANQUE_MN" Type="Model.Store.SG_AJUSTES_TANQUE_MN" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SG_TANQUES">
+              <PropertyRef Name="ID_TANQUE" />
+            </Principal>
+            <Dependent Role="SG_AJUSTES_TANQUE_MN">
+              <PropertyRef Name="ID_TANQUE" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1100,6 +1130,15 @@
           <Parameter Name="P_RES" Type="varchar2" Mode="Out" />
         </Function>
         <Function Name="P_SG_GUARDAR_AJUSTE_TANQUE" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="CITYTRUCK">
+          <Parameter Name="P_ID_AJUSTE" Type="number" Mode="In" />
+          <Parameter Name="P_ID_COMBUSTIBLE" Type="number" Mode="In" />
+          <Parameter Name="P_FECHA" Type="date" Mode="In" />
+          <Parameter Name="P_OBSERVACION" Type="varchar2" Mode="In" />
+          <Parameter Name="P_CANTIDAD" Type="number" Mode="In" />
+          <Parameter Name="P_ID_USR" Type="number" Mode="In" />
+          <Parameter Name="P_RES" Type="varchar2" Mode="Out" />
+        </Function>
+        <Function Name="P_SG_GUARDAR_AJUSTE_TANQUE_MN" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="CITYTRUCK">
           <Parameter Name="P_ID_AJUSTE" Type="number" Mode="In" />
           <Parameter Name="P_ID_COMBUSTIBLE" Type="number" Mode="In" />
           <Parameter Name="P_FECHA" Type="date" Mode="In" />
@@ -1805,6 +1844,20 @@
             <Parameter Name="P_ID_USR" Mode="In" Type="Decimal" />
             <Parameter Name="P_RES" Mode="Out" Type="String" />
           </FunctionImport>
+          <EntitySet Name="SG_AJUSTES_TANQUE_MN" EntityType="Model.SG_AJUSTES_TANQUE_MN" />
+          <AssociationSet Name="SG_AJUSTES_TANQUE_MN_R01" Association="Model.SG_AJUSTES_TANQUE_MN_R01">
+            <End Role="SG_TANQUES" EntitySet="SG_TANQUES" />
+            <End Role="SG_AJUSTES_TANQUE_MN" EntitySet="SG_AJUSTES_TANQUE_MN" />
+          </AssociationSet>
+          <FunctionImport Name="P_SG_GUARDAR_AJUSTE_TANQUE_MN">
+            <Parameter Name="P_ID_AJUSTE" Mode="In" Type="Decimal" />
+            <Parameter Name="P_ID_COMBUSTIBLE" Mode="In" Type="Decimal" />
+            <Parameter Name="P_FECHA" Mode="In" Type="DateTime" />
+            <Parameter Name="P_OBSERVACION" Mode="In" Type="String" />
+            <Parameter Name="P_CANTIDAD" Mode="In" Type="Decimal" />
+            <Parameter Name="P_ID_USR" Mode="In" Type="Decimal" />
+            <Parameter Name="P_RES" Mode="Out" Type="String" />
+          </FunctionImport>
           </EntityContainer>
         <EntityType Name="SG_LISTAS">
           <Key>
@@ -2345,6 +2398,7 @@
           <NavigationProperty Name="SG_COMBUSTIBLES" Relationship="Model.SG_TANQUES_R01" FromRole="SG_TANQUES" ToRole="SG_COMBUSTIBLES" />
           <NavigationProperty Name="SG_AJUSTES_TANQUE" Relationship="Model.SG_AJUSTES_TANQUE_R01" FromRole="SG_TANQUES" ToRole="SG_AJUSTES_TANQUE" />
           <Property Type="Decimal" Name="SALDO_INICIAL_MN" Precision="15" Scale="5" />
+          <NavigationProperty Name="SG_AJUSTES_TANQUE_MN" Relationship="Model.SG_AJUSTES_TANQUE_MN_R01" FromRole="SG_TANQUES" ToRole="SG_AJUSTES_TANQUE_MN" />
         </EntityType>
         <Association Name="SG_TANQUES_R01">
           <End Type="Model.SG_COMBUSTIBLES" Role="SG_COMBUSTIBLES" Multiplicity="1" />
@@ -2681,6 +2735,32 @@
             </Principal>
             <Dependent Role="SG_FACTURAS_MN">
               <PropertyRef Name="ID_COMBUSTIBLE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="SG_AJUSTES_TANQUE_MN">
+          <Key>
+            <PropertyRef Name="ID_AJUSTE" />
+          </Key>
+          <Property Type="Int32" Name="ID_AJUSTE" Nullable="false" />
+          <Property Type="Int16" Name="ID_TANQUE" Nullable="false" />
+          <Property Type="Int32" Name="NRO_COMP" Nullable="false" />
+          <Property Type="DateTime" Name="FECHA" Nullable="false" />
+          <Property Type="Decimal" Name="CANTIDAD" Nullable="false" Precision="15" Scale="5" />
+          <Property Type="String" Name="OBSERVACION" Nullable="false" MaxLength="140" FixedLength="false" Unicode="false" />
+          <Property Type="Int16" Name="ID_USUARIO" Nullable="false" />
+          <Property Type="DateTime" Name="FECHA_REG" />
+          <NavigationProperty Name="SG_TANQUES" Relationship="Model.SG_AJUSTES_TANQUE_MN_R01" FromRole="SG_AJUSTES_TANQUE_MN" ToRole="SG_TANQUES" />
+        </EntityType>
+        <Association Name="SG_AJUSTES_TANQUE_MN_R01">
+          <End Type="Model.SG_TANQUES" Role="SG_TANQUES" Multiplicity="1" />
+          <End Type="Model.SG_AJUSTES_TANQUE_MN" Role="SG_AJUSTES_TANQUE_MN" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SG_TANQUES">
+              <PropertyRef Name="ID_TANQUE" />
+            </Principal>
+            <Dependent Role="SG_AJUSTES_TANQUE_MN">
+              <PropertyRef Name="ID_TANQUE" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -3186,6 +3266,21 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <FunctionImportMapping FunctionImportName="P_SG_GUARDAR_FACTURA_MN" FunctionName="Model.Store.P_SG_GUARDAR_FACTURA_MN" />
+          <EntitySetMapping Name="SG_AJUSTES_TANQUE_MN">
+            <EntityTypeMapping TypeName="Model.SG_AJUSTES_TANQUE_MN">
+              <MappingFragment StoreEntitySet="SG_AJUSTES_TANQUE_MN">
+                <ScalarProperty Name="FECHA_REG" ColumnName="FECHA_REG" />
+                <ScalarProperty Name="ID_USUARIO" ColumnName="ID_USUARIO" />
+                <ScalarProperty Name="OBSERVACION" ColumnName="OBSERVACION" />
+                <ScalarProperty Name="CANTIDAD" ColumnName="CANTIDAD" />
+                <ScalarProperty Name="FECHA" ColumnName="FECHA" />
+                <ScalarProperty Name="NRO_COMP" ColumnName="NRO_COMP" />
+                <ScalarProperty Name="ID_TANQUE" ColumnName="ID_TANQUE" />
+                <ScalarProperty Name="ID_AJUSTE" ColumnName="ID_AJUSTE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="P_SG_GUARDAR_AJUSTE_TANQUE_MN" FunctionName="Model.Store.P_SG_GUARDAR_AJUSTE_TANQUE_MN" />
           </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
@@ -3247,19 +3342,21 @@
         <EntityTypeShape EntityType="Model.SG_CAJAS" Width="1.5" PointX="7.875" PointY="7.75" Height="2.9417936197916656" />
         <EntityTypeShape EntityType="Model.SG_COMPRAS" Width="1.5" PointX="12.875" PointY="5.25" Height="4.0956022135416656" />
         <AssociationConnector Association="Model.SG_COMPRAS_R02" >
-          <ConnectorPoint PointX="9.375" PointY="7.9062499999999991" />
-          <ConnectorPoint PointX="9.7408841666666657" PointY="7.9062499999999982" />
-          <ConnectorPoint PointX="10.044273333333335" PointY="7.9062499999999991" />
-          <ConnectorPoint PointX="12.875" PointY="7.9062499999999991" />
+          <ConnectorPoint PointX="9.375" PointY="7.9903246867800251" />
+          <ConnectorPoint PointX="10.135416666666666" PointY="7.9903246867800242" />
+          <ConnectorPoint PointX="10.302083333333334" PointY="7.9903246867800251" />
+          <ConnectorPoint PointX="10.510416666666666" PointY="7.9903246867800242" />
+          <ConnectorPoint PointX="10.677083333333334" PointY="7.9903246867800251" />
+          <ConnectorPoint PointX="12.875" PointY="7.9903246867800251" />
         </AssociationConnector>
         <EntityTypeShape EntityType="Model.SG_CLIENTES" Width="1.5" PointX="3.375" PointY="11.75" Height="3.5186979166666674" />
         <EntityTypeShape EntityType="Model.SG_EGRESOS" Width="1.5" PointX="10.125" PointY="12" Height="2.9417936197916674" />
         <AssociationConnector Association="Model.SG_EGRESOS_R01" >
-          <ConnectorPoint PointX="9.375" PointY="11.456195416666661" />
-          <ConnectorPoint PointX="9.7408841666666657" PointY="11.45619541666666" />
-          <ConnectorPoint PointX="10.044273333333335" PointY="11.456195416666661" />
-          <ConnectorPoint PointX="10.53125" PointY="11.456195416666661" />
-          <ConnectorPoint PointX="10.53125" PointY="12" />
+          <ConnectorPoint PointX="9.375" PointY="11.415345052083323" />
+          <ConnectorPoint PointX="10.135416666666666" PointY="11.415345052083323" />
+          <ConnectorPoint PointX="10.302083333333334" PointY="11.415345052083323" />
+          <ConnectorPoint PointX="10.4375" PointY="11.415345052083323" />
+          <ConnectorPoint PointX="10.4375" PointY="12" />
         </AssociationConnector>
         <EntityTypeShape EntityType="Model.SG_VENTAS_DIARIAS" Width="1.5" PointX="7.125" PointY="0.5" Height="1.9802864583333388" />
         <EntityTypeShape EntityType="Model.SG_AMORTIZACIONES" Width="1.5" PointX="13.125" PointY="10.25" Height="3.1340950520833388" />
@@ -3268,12 +3365,12 @@
         <AssociationConnector Association="Model.SG_AMORTIZACIONES_R01" >
           <ConnectorPoint PointX="4.125" PointY="11.75" />
           <ConnectorPoint PointX="4.125" PointY="11.5" />
-          <ConnectorPoint PointX="4.990011427526" PointY="11.499999999999998" />
-          <ConnectorPoint PointX="5.5688326757889124" PointY="11.5" />
+          <ConnectorPoint PointX="4.9866805274032808" PointY="11.499999999999998" />
+          <ConnectorPoint PointX="5.6000851757889114" PointY="11.5" />
           <ConnectorPoint PointX="7.625" PointY="11.5" />
           <ConnectorPoint PointX="7.625" PointY="12.095602213541667" />
-          <ConnectorPoint PointX="9.6039753589743562" PointY="12.095602213541666" />
-          <ConnectorPoint PointX="9.9300114583333361" PointY="12.095602213541667" />
+          <ConnectorPoint PointX="9.6039753589743562" PointY="12.095602213541667" />
+          <ConnectorPoint PointX="9.770642025641024" PointY="12.095602213541667" />
           <ConnectorPoint PointX="10" PointY="12.095602213541667" />
           <ConnectorPoint PointX="10" PointY="11.75" />
           <ConnectorPoint PointX="10.354166666666666" PointY="11.75" />
@@ -3283,32 +3380,35 @@
           <ConnectorPoint PointX="13.125" PointY="12.678549740885419" />
         </AssociationConnector>
         <AssociationConnector Association="Model.SG_AMORTIZACIONES_R02" >
-          <ConnectorPoint PointX="9.375" PointY="11.780703997395836" />
-          <ConnectorPoint PointX="9.7408841666666657" PointY="11.780703997395834" />
-          <ConnectorPoint PointX="10.044273333333335" PointY="11.780703997395836" />
-          <ConnectorPoint PointX="10.447916666666666" PointY="11.780703997395836" />
-          <ConnectorPoint PointX="10.614583333333334" PointY="11.780703997395836" />
-          <ConnectorPoint PointX="13.125" PointY="11.780703997395836" />
+          <ConnectorPoint PointX="8.625" PointY="11.845602213541666" />
+          <ConnectorPoint PointX="8.625" PointY="12.158102213541667" />
+          <ConnectorPoint PointX="9.75" PointY="12.158102213541667" />
+          <ConnectorPoint PointX="9.75" PointY="11.734375" />
+          <ConnectorPoint PointX="10.354166666666666" PointY="11.734375" />
+          <ConnectorPoint PointX="10.520833333333334" PointY="11.734375" />
+          <ConnectorPoint PointX="12.625" PointY="11.734375" />
+          <ConnectorPoint PointX="12.625" PointY="10.879548026041661" />
+          <ConnectorPoint PointX="12.791666666666666" PointY="10.879548026041659" />
+          <ConnectorPoint PointX="13.083333333333334" PointY="10.879548026041661" />
+          <ConnectorPoint PointX="13.125" PointY="10.879548026041661" />
         </AssociationConnector>
         <AssociationConnector Association="Model.SG_KARDEX_CLIENTE_R01" >
           <ConnectorPoint PointX="4.875" PointY="13.788198242187502" />
-          <ConnectorPoint PointX="4.990011427526" PointY="13.7881982421875" />
-          <ConnectorPoint PointX="5.5688326757889124" PointY="13.788198242187502" />
+          <ConnectorPoint PointX="4.9866805274032808" PointY="13.7881982421875" />
+          <ConnectorPoint PointX="5.6000851757889114" PointY="13.788198242187502" />
           <ConnectorPoint PointX="5.625" PointY="13.788198242187502" />
         </AssociationConnector>
         <AssociationConnector Association="Model.SG_VENTAS_CREDITO_R02" >
           <ConnectorPoint PointX="4.875" PointY="15.679749348958335" />
-          <ConnectorPoint PointX="4.990011427526" PointY="15.679749348958334" />
-          <ConnectorPoint PointX="5.5688326757889124" PointY="15.679749348958335" />
+          <ConnectorPoint PointX="4.9866805274032808" PointY="15.679749348958334" />
+          <ConnectorPoint PointX="5.6000851757889114" PointY="15.679749348958335" />
           <ConnectorPoint PointX="7.875" PointY="15.679749348958335" />
         </AssociationConnector>
         <EntityTypeShape EntityType="Model.SG_KARDEX_EFECTIVO" Width="1.5" PointX="10.125" PointY="16" Height="3.326396484374996" />
         <AssociationConnector Association="Model.SG_KARDEX_EFECTIVO_R01" >
-          <ConnectorPoint PointX="9.375" PointY="11.793678136618592" />
-          <ConnectorPoint PointX="9.859375" PointY="12.278053136618592" />
-          <ConnectorPoint PointX="9.859375" PointY="17.663198242187498" />
-          <ConnectorPoint PointX="9.8776066666666669" PointY="17.663198242187498" />
-          <ConnectorPoint PointX="10.044273333333335" PointY="17.663198242187498" />
+          <ConnectorPoint PointX="9.375" PointY="11.783293521233977" />
+          <ConnectorPoint PointX="9.8125" PointY="12.220793521233977" />
+          <ConnectorPoint PointX="9.8125" PointY="17.663198242187498" />
           <ConnectorPoint PointX="10.125" PointY="17.663198242187498" />
         </AssociationConnector>
         <EntityTypeShape EntityType="Model.SG_AJUSTE_PRECIO" Width="1.5" PointX="9.75" PointY="0.5" Height="2.9417936197916665" />
@@ -3325,10 +3425,10 @@
           <ConnectorPoint PointX="13.78125" PointY="5.25" />
         </AssociationConnector>
         <AssociationConnector Association="Model.SG_VENTAS_CREDITO_R01" >
-          <ConnectorPoint PointX="5.2091945217186657" PointY="7.0475065104166656" />
-          <ConnectorPoint PointX="5.2091945217186657" PointY="16.101626848958333" />
-          <ConnectorPoint PointX="5.2483873487537895" PointY="16.101626848958333" />
-          <ConnectorPoint PointX="5.5688326757889133" PointY="16.101626848958333" />
+          <ConnectorPoint PointX="5.2025327214732275" PointY="7.0475065104166656" />
+          <ConnectorPoint PointX="5.2025327214732275" PointY="16.101626848958333" />
+          <ConnectorPoint PointX="5.26068269863107" PointY="16.101626848958333" />
+          <ConnectorPoint PointX="5.6000851757889123" PointY="16.101626848958333" />
           <ConnectorPoint PointX="7.875" PointY="16.101626848958333" />
         </AssociationConnector>
         <EntityTypeShape EntityType="Model.SG_CLIENTES_CONSUMO" Width="1.5" PointX="11.625" PointY="0.5" Height="2.7494921874999996" />
@@ -3340,15 +3440,15 @@
         </AssociationConnector>
         <EntityTypeShape EntityType="Model.SG_TANQUES" Width="1.5" PointX="7.25" PointY="18" Height="2.5571907552083246" />
         <AssociationConnector Association="Model.SG_TANQUES_R01" >
-          <ConnectorPoint PointX="5.4542468424555794" PointY="7.0475065104166656" />
-          <ConnectorPoint PointX="5.4542468424555794" PointY="19.470896809895834" />
-          <ConnectorPoint PointX="7.25" PointY="19.470896809895834" />
+          <ConnectorPoint PointX="5.4854993424555794" PointY="7.0475065104166656" />
+          <ConnectorPoint PointX="5.4854993424555794" PointY="19.567047526041669" />
+          <ConnectorPoint PointX="7.25" PointY="19.567047526041669" />
         </AssociationConnector>
         <EntityTypeShape EntityType="Model.SG_AJUSTES_TANQUE" Width="1.5" PointX="12.125" PointY="17.125" Height="2.749492187499996" />
         <AssociationConnector Association="Model.SG_AJUSTES_TANQUE_R01" >
           <ConnectorPoint PointX="8.75" PointY="19.631694335937496" />
-          <ConnectorPoint PointX="9.7408841666666657" PointY="19.631694335937496" />
-          <ConnectorPoint PointX="10.044273333333335" PointY="19.631694335937496" />
+          <ConnectorPoint PointX="11.729166666666666" PointY="19.631694335937496" />
+          <ConnectorPoint PointX="11.958333333333334" PointY="19.631694335937496" />
           <ConnectorPoint PointX="12.125" PointY="19.631694335937496" />
         </AssociationConnector>
         <EntityTypeShape EntityType="Model.SG_POS" Width="1.5" PointX="9.75" PointY="3.75" Height="3.1340950520833388" />
@@ -3368,8 +3468,14 @@
         </AssociationConnector>
         <EntityTypeShape EntityType="Model.SG_POS_DIA_MN" Width="1.5" PointX="12" PointY="20.875" Height="3.1340950520833246" />
         <AssociationConnector Association="Model.SG_POS_DIA_MN_R01" >
-          <ConnectorPoint PointX="9.96094" PointY="7.4609993489583326" />
-          <ConnectorPoint PointX="9.96094" PointY="22.442047526041662" />
+          <ConnectorPoint PointX="10.21875" PointY="7.4609993489583326" />
+          <ConnectorPoint PointX="10.21875" PointY="11.71875" />
+          <ConnectorPoint PointX="10.354166666666666" PointY="11.71875" />
+          <ConnectorPoint PointX="10.520833333333334" PointY="11.71875" />
+          <ConnectorPoint PointX="11.875" PointY="11.71875" />
+          <ConnectorPoint PointX="11.875" PointY="20.625" />
+          <ConnectorPoint PointX="11.75" PointY="20.625" />
+          <ConnectorPoint PointX="11.75" PointY="22.442047526041662" />
           <ConnectorPoint PointX="12" PointY="22.442047526041662" />
         </AssociationConnector>
         <EntityTypeShape EntityType="Model.SG_KARDEX_COMBUSTIBLE" Width="1.5" PointX="7.25" PointY="22.125" Height="2.749492187499996" />
@@ -3382,8 +3488,12 @@
         </AssociationConnector>
         <EntityTypeShape EntityType="Model.SG_AJUSTE_POS" Width="1.5" PointX="12" PointY="25.375" Height="2.3648893229166674" />
         <AssociationConnector Association="Model.SG_AJUSTE_POS_R01" >
-          <ConnectorPoint PointX="9.8242175" PointY="7.4609993489583326" />
-          <ConnectorPoint PointX="9.8242175" PointY="26.557444661458334" />
+          <ConnectorPoint PointX="10.59375" PointY="7.4609993489583326" />
+          <ConnectorPoint PointX="10.59375" PointY="11.703125" />
+          <ConnectorPoint PointX="11.8125" PointY="11.703125" />
+          <ConnectorPoint PointX="11.8125" PointY="20.375" />
+          <ConnectorPoint PointX="11.6875" PointY="20.375" />
+          <ConnectorPoint PointX="11.6875" PointY="26.557444661458334" />
           <ConnectorPoint PointX="12" PointY="26.557444661458334" />
         </AssociationConnector>
         <EntityTypeShape EntityType="Model.SG_CONSUMOS" Width="1.5" PointX="14.75" PointY="0.5" Height="4.2879036458333246" />
@@ -3408,45 +3518,56 @@
         </AssociationConnector>
         <EntityTypeShape EntityType="Model.SG_INGRESOS" Width="1.5" PointX="11" PointY="8.125" Height="3.1340950520833211" />
         <AssociationConnector Association="Model.SG_INGRESOS_R01" >
-          <ConnectorPoint PointX="9.375" PointY="9.69204752604166" />
-          <ConnectorPoint PointX="9.7408841666666657" PointY="9.6920475260416588" />
-          <ConnectorPoint PointX="10.044273333333335" PointY="9.69204752604166" />
-          <ConnectorPoint PointX="10.666666666666666" PointY="9.69204752604166" />
-          <ConnectorPoint PointX="10.833333333333334" PointY="9.69204752604166" />
-          <ConnectorPoint PointX="11" PointY="9.69204752604166" />
+          <ConnectorPoint PointX="9.375" PointY="9.686635117187496" />
+          <ConnectorPoint PointX="10.135416666666666" PointY="9.686635117187496" />
+          <ConnectorPoint PointX="10.302083333333334" PointY="9.686635117187496" />
+          <ConnectorPoint PointX="10.510416666666666" PointY="9.6866351171874943" />
+          <ConnectorPoint PointX="10.833333333333334" PointY="9.686635117187496" />
+          <ConnectorPoint PointX="11" PointY="9.686635117187496" />
         </AssociationConnector>
         <EntityTypeShape EntityType="Model.SG_TRANSFERENCIAS" Width="1.5" PointX="15.625" PointY="10.625" Height="3.3263964843750102" />
         <AssociationConnector Association="Model.SG_TRANSFERENCIAS_R01" >
-          <ConnectorPoint PointX="9.375" PointY="8.79914876302083" />
-          <ConnectorPoint PointX="9.7408841666666657" PointY="8.7991487630208276" />
-          <ConnectorPoint PointX="10.044273333333335" PointY="8.79914876302083" />
-          <ConnectorPoint PointX="10.75" PointY="8.79914876302083" />
-          <ConnectorPoint PointX="10.75" PointY="11.634095052083323" />
-          <ConnectorPoint PointX="12.875" PointY="11.634095052083323" />
+          <ConnectorPoint PointX="9.375" PointY="8.83847990198376" />
+          <ConnectorPoint PointX="10.135416666666666" PointY="8.83847990198376" />
+          <ConnectorPoint PointX="10.302083333333334" PointY="8.83847990198376" />
+          <ConnectorPoint PointX="10.510416666666666" PointY="8.83847990198376" />
+          <ConnectorPoint PointX="10.677083333333334" PointY="8.83847990198376" />
+          <ConnectorPoint PointX="10.75" PointY="8.83847990198376" />
+          <ConnectorPoint PointX="10.75" PointY="11.384095052083323" />
+          <ConnectorPoint PointX="10.791666666666666" PointY="11.384095052083323" />
+          <ConnectorPoint PointX="10.958333333333334" PointY="11.384095052083323" />
+          <ConnectorPoint PointX="12.541666666666666" PointY="11.384095052083323" />
+          <ConnectorPoint PointX="12.708333333333334" PointY="11.384095052083323" />
+          <ConnectorPoint PointX="12.875" PointY="11.384095052083323" />
           <ConnectorPoint PointX="12.875" PointY="10" />
-          <ConnectorPoint PointX="16.451548528519471" PointY="10" />
-          <ConnectorPoint PointX="16.451548528519471" PointY="10.625" />
+          <ConnectorPoint PointX="16.466787525454471" PointY="10" />
+          <ConnectorPoint PointX="16.466787525454471" PointY="10.625" />
         </AssociationConnector>
         <AssociationConnector Association="Model.SG_TRANSFERENCIAS_R02" >
-          <ConnectorPoint PointX="9.375" PointY="10.574121471354161" />
-          <ConnectorPoint PointX="9.7408841666666657" PointY="10.574121471354159" />
-          <ConnectorPoint PointX="10.044273333333335" PointY="10.574121471354161" />
-          <ConnectorPoint PointX="10.666666666666666" PointY="10.574121471354161" />
-          <ConnectorPoint PointX="10.833333333333334" PointY="10.574121471354161" />
-          <ConnectorPoint PointX="10.875" PointY="10.574121471354161" />
+          <ConnectorPoint PointX="9.375" PointY="10.566617584635409" />
+          <ConnectorPoint PointX="10.135416666666666" PointY="10.566617584635409" />
+          <ConnectorPoint PointX="10.302083333333334" PointY="10.566617584635409" />
+          <ConnectorPoint PointX="10.510416666666666" PointY="10.566617584635408" />
+          <ConnectorPoint PointX="10.833333333333334" PointY="10.566617584635409" />
+          <ConnectorPoint PointX="10.875" PointY="10.566617584635409" />
           <ConnectorPoint PointX="10.875" PointY="11.509095052083323" />
-          <ConnectorPoint PointX="12.791666666666666" PointY="11.509095052083323" />
-          <ConnectorPoint PointX="12.958333333333334" PointY="11.509095052083323" />
+          <ConnectorPoint PointX="12.541666666666666" PointY="11.509095052083323" />
+          <ConnectorPoint PointX="12.708333333333334" PointY="11.509095052083323" />
           <ConnectorPoint PointX="13" PointY="11.509095052083323" />
           <ConnectorPoint PointX="13" PointY="10.125" />
-          <ConnectorPoint PointX="15.746071050908945" PointY="10.125" />
-          <ConnectorPoint PointX="15.746071050908945" PointY="10.625" />
+          <ConnectorPoint PointX="16.014641762727233" PointY="10.125" />
+          <ConnectorPoint PointX="16.014641762727233" PointY="10.625" />
         </AssociationConnector>
         <EntityTypeShape EntityType="Model.SG_FACTURAS_MN" Width="1.5" PointX="7.25" PointY="26.375" Height="2.749492187499996" />
         <AssociationConnector Association="Model.SG_FACTURAS_MN_R01" >
           <ConnectorPoint PointX="5.4854993424555794" PointY="7.0475065104166656" />
           <ConnectorPoint PointX="5.4854993424555794" PointY="27.749746093749998" />
           <ConnectorPoint PointX="7.25" PointY="27.749746093749998" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="Model.SG_AJUSTES_TANQUE_MN" Width="1.5" PointX="9.5" PointY="20.25" Height="2.749492187499996" />
+        <AssociationConnector Association="Model.SG_AJUSTES_TANQUE_MN_R01" >
+          <ConnectorPoint PointX="8.75" PointY="20.692047526041669" />
+          <ConnectorPoint PointX="9.5" PointY="20.692047526041669" />
         </AssociationConnector>
         </Diagram>
     </Diagrams>

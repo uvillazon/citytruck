@@ -108,6 +108,7 @@
                 { header: "S-INICIAL", width: 100, sortable: false, dataIndex: "SALDO_INICIAL_DIE", align: "right" },
                 { header: "COMPRAS", width: 100, sortable: false, dataIndex: "COMPRAS_DIE", align: "right" },
                 { header: "VENTAS", width: 100, sortable: false, dataIndex: "VENTAS_DIE", align: "right" },
+                { header: "MERMA DEMACIA", width: 100, sortable: false, dataIndex: "AJUSTES_DIE", align: "right", renderer: Ext.util.Format.numberRenderer('0,000.00') },
                 //                { header: "AJUSTES", width: 100, sortable: false, dataIndex: "AJUSTES_DIE" },
                 {header: "ACUM.", width: 100, sortable: false, dataIndex: "ACUMULADO_DIE", align: "right", tdCls: 'DisabledClase'}]
             }, 
@@ -119,6 +120,7 @@
                 { header: "COMPRAS", width: 100, sortable: false, dataIndex: "COMPRAS_GAS", align: "right" },
                 { header: "VENTAS", width: 100, sortable: false, dataIndex: "VENTAS_GAS", align: "right" },
                 //                { header: "AJUSTES", width: 100, sortable: false, dataIndex: "AJUSTES_GAS" },
+                {header: "MERMA DEMACIA", width: 100, sortable: false, dataIndex: "AJUSTES_GAS", align: "right", renderer: Ext.util.Format.numberRenderer('0,000.00') },
                 {header: "ACUM.", width: 100, sortable: false, dataIndex: "ACUMULADO_GAS", align: "right"}]
             }
         ];

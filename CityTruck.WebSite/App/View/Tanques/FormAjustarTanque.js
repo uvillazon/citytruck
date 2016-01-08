@@ -23,6 +23,16 @@
         me.date_fecha.setReadOnly(true);
         me.cbx_combustible.setReadOnly(true);
     },
+    CargarEditarAjusteMN: function(tanque , combustible){
+        var me = this;
+        me.tanque = tanque;
+//        me.loadRecord(venta);
+        me.loadFormulario('Combustibles','ObtenerAjusteMN',{FECHA : me.tanque.get('FECHA') , ID_COMBUSTIBLE : combustible});
+        me.date_fecha.setValue(me.tanque.get('FECHA'));
+        me.cbx_combustible.setValue(combustible);
+        me.date_fecha.setReadOnly(true);
+        me.cbx_combustible.setReadOnly(true);
+    },
     CargarFormEditarAjuste : function(){
         var me = this;
         me.txt_id = Ext.create("App.Config.Componente.TextFieldBase", {

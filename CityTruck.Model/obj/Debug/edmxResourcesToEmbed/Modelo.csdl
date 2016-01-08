@@ -494,6 +494,20 @@
       <Parameter Name="P_ID_USR" Mode="In" Type="Decimal" />
       <Parameter Name="P_RES" Mode="Out" Type="String" />
     </FunctionImport>
+    <EntitySet Name="SG_AJUSTES_TANQUE_MN" EntityType="Model.SG_AJUSTES_TANQUE_MN" />
+    <AssociationSet Name="SG_AJUSTES_TANQUE_MN_R01" Association="Model.SG_AJUSTES_TANQUE_MN_R01">
+      <End Role="SG_TANQUES" EntitySet="SG_TANQUES" />
+      <End Role="SG_AJUSTES_TANQUE_MN" EntitySet="SG_AJUSTES_TANQUE_MN" />
+    </AssociationSet>
+    <FunctionImport Name="P_SG_GUARDAR_AJUSTE_TANQUE_MN">
+      <Parameter Name="P_ID_AJUSTE" Mode="In" Type="Decimal" />
+      <Parameter Name="P_ID_COMBUSTIBLE" Mode="In" Type="Decimal" />
+      <Parameter Name="P_FECHA" Mode="In" Type="DateTime" />
+      <Parameter Name="P_OBSERVACION" Mode="In" Type="String" />
+      <Parameter Name="P_CANTIDAD" Mode="In" Type="Decimal" />
+      <Parameter Name="P_ID_USR" Mode="In" Type="Decimal" />
+      <Parameter Name="P_RES" Mode="Out" Type="String" />
+    </FunctionImport>
   </EntityContainer>
   <EntityType Name="SG_LISTAS">
     <Key>
@@ -1034,6 +1048,7 @@
     <NavigationProperty Name="SG_COMBUSTIBLES" Relationship="Model.SG_TANQUES_R01" FromRole="SG_TANQUES" ToRole="SG_COMBUSTIBLES" />
     <NavigationProperty Name="SG_AJUSTES_TANQUE" Relationship="Model.SG_AJUSTES_TANQUE_R01" FromRole="SG_TANQUES" ToRole="SG_AJUSTES_TANQUE" />
     <Property Type="Decimal" Name="SALDO_INICIAL_MN" Precision="15" Scale="5" />
+    <NavigationProperty Name="SG_AJUSTES_TANQUE_MN" Relationship="Model.SG_AJUSTES_TANQUE_MN_R01" FromRole="SG_TANQUES" ToRole="SG_AJUSTES_TANQUE_MN" />
   </EntityType>
   <Association Name="SG_TANQUES_R01">
     <End Type="Model.SG_COMBUSTIBLES" Role="SG_COMBUSTIBLES" Multiplicity="1" />
@@ -1370,6 +1385,32 @@
       </Principal>
       <Dependent Role="SG_FACTURAS_MN">
         <PropertyRef Name="ID_COMBUSTIBLE" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="SG_AJUSTES_TANQUE_MN">
+    <Key>
+      <PropertyRef Name="ID_AJUSTE" />
+    </Key>
+    <Property Type="Int32" Name="ID_AJUSTE" Nullable="false" />
+    <Property Type="Int16" Name="ID_TANQUE" Nullable="false" />
+    <Property Type="Int32" Name="NRO_COMP" Nullable="false" />
+    <Property Type="DateTime" Name="FECHA" Nullable="false" />
+    <Property Type="Decimal" Name="CANTIDAD" Nullable="false" Precision="15" Scale="5" />
+    <Property Type="String" Name="OBSERVACION" Nullable="false" MaxLength="140" FixedLength="false" Unicode="false" />
+    <Property Type="Int16" Name="ID_USUARIO" Nullable="false" />
+    <Property Type="DateTime" Name="FECHA_REG" />
+    <NavigationProperty Name="SG_TANQUES" Relationship="Model.SG_AJUSTES_TANQUE_MN_R01" FromRole="SG_AJUSTES_TANQUE_MN" ToRole="SG_TANQUES" />
+  </EntityType>
+  <Association Name="SG_AJUSTES_TANQUE_MN_R01">
+    <End Type="Model.SG_TANQUES" Role="SG_TANQUES" Multiplicity="1" />
+    <End Type="Model.SG_AJUSTES_TANQUE_MN" Role="SG_AJUSTES_TANQUE_MN" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SG_TANQUES">
+        <PropertyRef Name="ID_TANQUE" />
+      </Principal>
+      <Dependent Role="SG_AJUSTES_TANQUE_MN">
+        <PropertyRef Name="ID_TANQUE" />
       </Dependent>
     </ReferentialConstraint>
   </Association>

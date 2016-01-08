@@ -18,6 +18,7 @@
         Funciones.CrearMenu('btn_reporte', 'Imprimir', 'printer', me.EventosPrincipal, me.toolbar, this);
         Funciones.CrearMenu('btn_reporteANHDie', 'Reporte ANH Diesel', 'printer', me.EventosPrincipal, me.toolbar, this);
         Funciones.CrearMenu('btn_reporteANHGas', 'Reporte ANH Gasolina', 'printer', me.EventosPrincipal, me.toolbar, this);
+        Funciones.CrearMenu('btn_AjustarTanque', 'Merma Demacia', Constantes.ICONO_CREAR, me.EventosPrincipal, me.toolbar, this, null, true);
 
         me.grid = Ext.create('App.View.VentasMN.GridVentas', {
             region: 'center',
@@ -42,6 +43,8 @@
         if (!disabled) {
             var campo = selModel.nextSelection.columnHeader.dataIndex;
             //            alert(campo);
+            me.ajuste = campo;
+            //            alert(campo);
             //            if (campo == "VENTAS_GAS" && selections[0].get('VENTAS_GAS') != 0) { me.combustible = 1; }
             //            else if (campo == "VENTAS_DIE" && selections[0].get('VENTAS_DIE') != 0) { me.combustible = 2; }
             if (campo == "VENTAS_GAS") { me.combustible = 1; }
@@ -50,8 +53,10 @@
         }
         else {
             me.combustible = 0;
+            me.ajuste == "";
         }
         Funciones.DisabledButton('btn_EditarRegistro', me.toolbar, disabled);
+        Funciones.DisabledButton('btn_AjustarTanque', me.toolbar, disabled);
         //        Funciones.DisabledButton('btn_CrearRegistro', me.toolbar, disabled);
     },
     EventosPrincipal: function (btn) {
@@ -113,9 +118,44 @@
         else if (btn.getItemId() == "btn_reporteANHGas") {
             window.open(Constantes.HOST + 'Reportes/ReporteAutoridad?ANIO=' + me.grid.cbx_anio.getValue() + '&MES=' + me.grid.cbx_mes.getValue() + '&ID_COMBUSTIBLE=1');
         }
+        if (btn.getItemId() == "btn_AjustarTanque") {
+            if (me.ajuste == "AJUSTES_DIE") {
+                //                alert("Diesel");
+                me.VentanaAjustePos(2);
+            }
+            else if (me.ajuste == "AJUSTES_GAS") {
+                me.VentanaAjustePos(1);
+            }
+            else {
+                Ext.Msg.alert("Aviso", "Seleccione en la posicion de MERMA DEMACIA y el COMBUSTIBLE");
+            }
+        }
         else {
             Ext.Msg.alert("Aviso", "No Existe el botton");
         }
-    }
+    },
+    VentanaAjustePos: function (combustible) {
+        var me = this;
+//        me.btn4 = Funciones.CrearMenu('btn_ImprimirReporte', 'Imprimir Reporte', 'printer', null, null, this);
+        var win = Ext.create("App.Config.Abstract.Window", { botones: true, textGuardar: 'Guardar Ajuste'/*, btn4: me.btn4 */});
+        var form = Ext.create("App.View.Tanques.FormAjustarTanque", {
+            columns: 1,
+            title: 'Formulario de Merma Demacia',
+            botones: false,
+            opcion: 'FormEditarAjuste'
+        });
+//        me.btn4.on('click', me.VerReporteAjuste, me);
+//        me.btn4.on('click', form.VerReporteAjuste,form);
+        form.CargarEditarAjusteMN(me.record, combustible);
+        //        form.gridAjuste.getStore().setExtraParams({ FECHA: me.record.get('FECHA') });
+        //        form.gridAjuste.getStore().setExtraParams({ Contiene: me.ajuste });
+        //        form.gridAjuste.getStore().load();
+        //        form.date_fecha.setValue(me.record.get('FECHA'));
+        win.add(form);
+        win.show();
+        win.btn_guardar.on('click', function () {
+            Funciones.AjaxRequestWin('Combustibles', 'GuardarAjusteTanqueMN', win, form, me.grid, 'Esta Seguro de Guardar Ajuste?', null, win);
+        });
+    },
 
 });

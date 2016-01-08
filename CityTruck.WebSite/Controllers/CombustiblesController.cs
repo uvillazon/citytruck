@@ -212,10 +212,58 @@ namespace CityTruck.WebSite.Controllers
                 throw;
             }
         }
+        public JsonResult GuardarAjusteTanqueMN(SG_AJUSTES_TANQUE_MN ajus, int ID_COMBUSTIBLE)
+        {
+            try
+            {
+                int id_usr = Convert.ToInt32(User.Identity.Name.Split('-')[3]);
+                RespuestaSP respuestaRSP = new RespuestaSP();
+                respuestaRSP = _serTan.SP_GuardarAjusteMN(ajus, ID_COMBUSTIBLE, id_usr);
+                return Json(respuestaRSP);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
         [HttpPost]
         public JsonResult ObtenerAjuste(SG_AJUSTES_TANQUE tanque, int ID_COMBUSTIBLE)
         {
             var datos = _serCom.ObtenerAjusteTanque(x => x.FECHA == tanque.FECHA && x.SG_TANQUES.ID_COMBUSTIBLE == ID_COMBUSTIBLE);
+            if (datos != null)
+            {
+                var format = new
+                {
+                    ID_COMBUSTIBLE = datos.SG_TANQUES.ID_COMBUSTIBLE,
+                    ID_AJUSTE = datos.ID_AJUSTE,
+                    CANTIDAD = datos.CANTIDAD,
+                    OBSERVACION = datos.OBSERVACION,
+                    NRO_COMP = datos.NRO_COMP
+                    //PRECIO = datos.PRECIO
+                };
+                return Json(new { success = true, data = format });
+            }
+            else
+            {
+                var combustible = _serCom.ObtenerCombustible(x => x.ID_COMBUSTIBLE == ID_COMBUSTIBLE);
+                var format = new
+                {
+                    ID_COMBUSTIBLE = combustible.ID_COMBUSTIBLE,
+                    ID_AJUSTE = 0,
+                    CANTIDAD = 0,
+                    NRO_COMP = 0,
+                    OBSERVACION = "Sin Observacion",
+                    //PRECIO = combustible.PRECIO_VENTA
+                };
+                return Json(new { success = true, data = format });
+
+            }
+        }
+        [HttpPost]
+        public JsonResult ObtenerAjusteMN(SG_AJUSTES_TANQUE_MN tanque, int ID_COMBUSTIBLE)
+        {
+            var datos = _serCom.ObtenerAjusteTanqueMN(x => x.FECHA == tanque.FECHA && x.SG_TANQUES.ID_COMBUSTIBLE == ID_COMBUSTIBLE);
             if (datos != null)
             {
                 var format = new

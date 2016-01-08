@@ -22,6 +22,7 @@ namespace CityTruck.Services.Interfaces
 
 
         SG_AJUSTES_TANQUE ObtenerAjusteTanque(Expression<Func<SG_AJUSTES_TANQUE, bool>> criterio = null);
+        SG_AJUSTES_TANQUE_MN ObtenerAjusteTanqueMN(Expression<Func<SG_AJUSTES_TANQUE_MN, bool>> criterio = null);
         //RespuestaSP SP_GrabarIngreso(SG_CAJAS caja);
 
     }

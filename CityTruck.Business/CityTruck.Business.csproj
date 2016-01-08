@@ -43,6 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="SG_AJUSTES_TANQUE_MNManager.cs" />
     <Compile Include="SG_FACTURAS_MNManager.cs" />
     <Compile Include="SG_TRANSFERENCIASManager.cs" />
     <Compile Include="SG_PERFILESManager.cs" />

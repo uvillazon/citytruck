@@ -4,6 +4,7 @@
     <EntitySet Name="SG_AJUSTE_POS" EntityType="Model.Store.SG_AJUSTE_POS" store:Type="Tables" Schema="CITYTRUCK" />
     <EntitySet Name="SG_AJUSTE_PRECIO" EntityType="Model.Store.SG_AJUSTE_PRECIO" store:Type="Tables" Schema="CITYTRUCK" />
     <EntitySet Name="SG_AJUSTES_TANQUE" EntityType="Model.Store.SG_AJUSTES_TANQUE" store:Type="Tables" Schema="CITYTRUCK" />
+    <EntitySet Name="SG_AJUSTES_TANQUE_MN" EntityType="Model.Store.SG_AJUSTES_TANQUE_MN" store:Type="Tables" Schema="CITYTRUCK" />
     <EntitySet Name="SG_AMORTIZACIONES" EntityType="Model.Store.SG_AMORTIZACIONES" store:Type="Tables" Schema="CITYTRUCK" />
     <EntitySet Name="SG_CAJAS" EntityType="Model.Store.SG_CAJAS" store:Type="Tables" Schema="CITYTRUCK" />
     <EntitySet Name="SG_CLIENTE_CONSUMO_COMBUSTIBLE" EntityType="Model.Store.SG_CLIENTE_CONSUMO_COMBUSTIBLE" store:Type="Tables" Schema="CITYTRUCK" />
@@ -40,6 +41,10 @@
     <AssociationSet Name="SG_AJUSTE_PRECIO_R01" Association="Model.Store.SG_AJUSTE_PRECIO_R01">
       <End Role="SG_COMBUSTIBLES" EntitySet="SG_COMBUSTIBLES" />
       <End Role="SG_AJUSTE_PRECIO" EntitySet="SG_AJUSTE_PRECIO" />
+    </AssociationSet>
+    <AssociationSet Name="SG_AJUSTES_TANQUE_MN_R01" Association="Model.Store.SG_AJUSTES_TANQUE_MN_R01">
+      <End Role="SG_TANQUES" EntitySet="SG_TANQUES" />
+      <End Role="SG_AJUSTES_TANQUE_MN" EntitySet="SG_AJUSTES_TANQUE_MN" />
     </AssociationSet>
     <AssociationSet Name="SG_AJUSTES_TANQUE_R01" Association="Model.Store.SG_AJUSTES_TANQUE_R01">
       <End Role="SG_TANQUES" EntitySet="SG_TANQUES" />
@@ -184,6 +189,19 @@
     <Property Name="FECHA_REG" Type="date" />
   </EntityType>
   <EntityType Name="SG_AJUSTES_TANQUE">
+    <Key>
+      <PropertyRef Name="ID_AJUSTE" />
+    </Key>
+    <Property Name="ID_AJUSTE" Type="number" Nullable="false" Precision="7" />
+    <Property Name="ID_TANQUE" Type="number" Nullable="false" Precision="5" />
+    <Property Name="NRO_COMP" Type="number" Nullable="false" Precision="7" />
+    <Property Name="FECHA" Type="date" Nullable="false" />
+    <Property Name="CANTIDAD" Type="number" Nullable="false" Precision="15" Scale="5" />
+    <Property Name="OBSERVACION" Type="varchar2" Nullable="false" MaxLength="140" />
+    <Property Name="ID_USUARIO" Type="number" Nullable="false" Precision="5" />
+    <Property Name="FECHA_REG" Type="date" />
+  </EntityType>
+  <EntityType Name="SG_AJUSTES_TANQUE_MN">
     <Key>
       <PropertyRef Name="ID_AJUSTE" />
     </Key>
@@ -623,6 +641,18 @@
       </Principal>
       <Dependent Role="SG_AJUSTE_PRECIO">
         <PropertyRef Name="ID_COMBUSTIBLE" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="SG_AJUSTES_TANQUE_MN_R01">
+    <End Role="SG_TANQUES" Type="Model.Store.SG_TANQUES" Multiplicity="1" />
+    <End Role="SG_AJUSTES_TANQUE_MN" Type="Model.Store.SG_AJUSTES_TANQUE_MN" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SG_TANQUES">
+        <PropertyRef Name="ID_TANQUE" />
+      </Principal>
+      <Dependent Role="SG_AJUSTES_TANQUE_MN">
+        <PropertyRef Name="ID_TANQUE" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -1095,6 +1125,15 @@
     <Parameter Name="P_RES" Type="varchar2" Mode="Out" />
   </Function>
   <Function Name="P_SG_GUARDAR_AJUSTE_TANQUE" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="CITYTRUCK">
+    <Parameter Name="P_ID_AJUSTE" Type="number" Mode="In" />
+    <Parameter Name="P_ID_COMBUSTIBLE" Type="number" Mode="In" />
+    <Parameter Name="P_FECHA" Type="date" Mode="In" />
+    <Parameter Name="P_OBSERVACION" Type="varchar2" Mode="In" />
+    <Parameter Name="P_CANTIDAD" Type="number" Mode="In" />
+    <Parameter Name="P_ID_USR" Type="number" Mode="In" />
+    <Parameter Name="P_RES" Type="varchar2" Mode="Out" />
+  </Function>
+  <Function Name="P_SG_GUARDAR_AJUSTE_TANQUE_MN" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="CITYTRUCK">
     <Parameter Name="P_ID_AJUSTE" Type="number" Mode="In" />
     <Parameter Name="P_ID_COMBUSTIBLE" Type="number" Mode="In" />
     <Parameter Name="P_FECHA" Type="date" Mode="In" />

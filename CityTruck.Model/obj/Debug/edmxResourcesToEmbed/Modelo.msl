@@ -521,5 +521,20 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <FunctionImportMapping FunctionImportName="P_SG_GUARDAR_FACTURA_MN" FunctionName="Model.Store.P_SG_GUARDAR_FACTURA_MN" />
+    <EntitySetMapping Name="SG_AJUSTES_TANQUE_MN">
+      <EntityTypeMapping TypeName="Model.SG_AJUSTES_TANQUE_MN">
+        <MappingFragment StoreEntitySet="SG_AJUSTES_TANQUE_MN">
+          <ScalarProperty Name="FECHA_REG" ColumnName="FECHA_REG" />
+          <ScalarProperty Name="ID_USUARIO" ColumnName="ID_USUARIO" />
+          <ScalarProperty Name="OBSERVACION" ColumnName="OBSERVACION" />
+          <ScalarProperty Name="CANTIDAD" ColumnName="CANTIDAD" />
+          <ScalarProperty Name="FECHA" ColumnName="FECHA" />
+          <ScalarProperty Name="NRO_COMP" ColumnName="NRO_COMP" />
+          <ScalarProperty Name="ID_TANQUE" ColumnName="ID_TANQUE" />
+          <ScalarProperty Name="ID_AJUSTE" ColumnName="ID_AJUSTE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="P_SG_GUARDAR_AJUSTE_TANQUE_MN" FunctionName="Model.Store.P_SG_GUARDAR_AJUSTE_TANQUE_MN" />
   </EntityContainerMapping>
 </Mapping>
