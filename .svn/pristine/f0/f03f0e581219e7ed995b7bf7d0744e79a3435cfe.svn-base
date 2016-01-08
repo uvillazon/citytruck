@@ -1,0 +1,11 @@
+﻿Ext.define('App.Model.Combustibles.Combustibles', {
+    extend: 'Ext.data.Model',
+    fields: [
+            { type: "float", name: "CANT_DISPONIBLE" },
+            { type: "int", name: "ID_COMBUSTIBLE" },
+            { type: "string", name: "NOMBRE" },
+            { type: "string", name: "DESCRIPCION" },
+            { type: "string", name: "UNIDAD" },
+            { type: "string", name: "ESTADO" }
+        ]
+});

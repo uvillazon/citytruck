@@ -1,0 +1,48 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using CityTruck.Services.Interfaces;
+using CityTruck.Common;
+using CityTruck.Model;
+using CityTruck.Services.Model;
+using CityTruck.Business.Interfaces;
+using System.Linq.Dynamic;
+using LinqKit;
+using CityTruck.Business;
+using System.Data.Objects;
+
+namespace CityTruck.Services
+{
+    public class KardexEfectivoServices : BaseService, IKardexEfectivoServices
+    {
+        //private ISG_LISTASManager _manListas;
+
+        public KardexEfectivoServices(/*ISG_LISTASManager manListas*/)
+        {
+            //_manListas = manListas;
+        }
+        
+        public IEnumerable<SG_KARDEX_EFECTIVO> ObtenerKardexEfectivo(PagingInfo paginacion, FiltrosModel<KardexEfectivoModel> filtros)
+        {
+            IQueryable<SG_KARDEX_EFECTIVO> result = null;
+            ExecuteManager(uow =>
+            {
+                var manager = new SG_KARDEX_EFECTIVOManager(uow);
+                //obtener todos los registros
+                result = manager.BuscarTodos();
+                //if (ID_CAJA != null) {
+                //    result = result.Where(x => x.ID_CAJA == ID_CAJA);
+                //}
+                //formar un query una condicion ID_CAJA = 2 //ID_CAJA == 2
+                filtros.FiltrarDatos();
+                //
+                result = filtros.Diccionario.Count() > 0 ? result.Where(filtros.Predicado, filtros.Diccionario.Values.ToArray()) : result;
+                paginacion.total = result.Count();
+                result = manager.QueryPaged(result, paginacion.limit, paginacion.start, paginacion.sort, paginacion.dir);
+
+            });
+            return result;
+        }
+    }
+}

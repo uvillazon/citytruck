@@ -1,0 +1,25 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using CityTruck.Model;
+
+namespace CityTruck.WebSite.Models
+{
+    public class KardexCombustibleModel
+    {
+        public decimal SALDO_INICIAL_GAS { get; set; }
+        public decimal VENTAS_GAS { get; set; }
+        public decimal COMPRAS_GAS { get; set; }
+        public decimal AJUSTES_GAS { get; set; }
+        public decimal ACUMULADO_GAS { get; set; }
+        public DateTime FECHA { get; set; }
+        public decimal SALDO_INICIAL_DIE { get; set; }
+        public decimal VENTAS_DIE { get; set; }
+        public decimal COMPRAS_DIE { get; set; }
+        public decimal AJUSTES_DIE { get; set; }
+        public decimal ACUMULADO_DIE { get; set; }
+      
+       
+    }
+}

@@ -1,0 +1,157 @@
+﻿Ext.define("App.View.Compras.FormCompra", {
+    extend: "App.Config.Abstract.Form",
+    columns: 1,
+    initComponent: function () {
+        var me = this;
+        me.CargarComponentes();
+        me.cargarEventos();
+        this.callParent(arguments);
+    },
+    
+    CargarComponentes: function () {
+        var me = this;
+        me.txt_nro_cmp = Ext.create("App.Config.Componente.TextFieldBase", {
+            fieldLabel: "Nro Comprobante",
+            readOnly : true,
+            name: "NRO_COMP",
+
+        });
+         me.date_fecha = Ext.create("App.Config.Componente.DateFieldBase", {
+            fieldLabel: "Fecha",
+            name: "FECHA",
+            afterLabelTextTpl: Constantes.REQUERIDO,
+            allowBlank: false,
+        });
+        me.store_combustible = Ext.create('App.Store.Combustibles.Combustibles').load();
+        me.cbx_combustible = Ext.create("App.Config.Componente.ComboBase", {
+            fieldLabel: "Combustible",
+            name: "ID_COMBUSTIBLE",
+            displayField: 'NOMBRE',
+            valueField : 'ID_COMBUSTIBLE',
+            store: me.store_combustible,
+            colspan : 2,
+            afterLabelTextTpl: Constantes.REQUERIDO,
+            allowBlank: false,
+            textoTpl : function () { return "{NOMBRE} - {DESCRIPCION}" }
+        });
+        me.store_cuenta = Ext.create('App.Store.Cajas.Cajas').load();
+        me.cbx_cuenta = Ext.create("App.Config.Componente.ComboBase", {
+            fieldLabel: "Origen Cuenta",
+            name: "ID_CUENTA",
+            displayField: 'NOMBRE',
+            valueField : 'ID_CUENTA',
+            store: me.store_cuenta,
+            afterLabelTextTpl: Constantes.REQUERIDO,
+            allowBlank: false,
+            textoTpl : function () { return "{NOMBRE} - {DESCRIPCION}" }
+        });
+       
+        me.num_cantidad = Ext.create("App.Config.Componente.NumberFieldBase", {
+            fieldLabel: "Cantidad",
+            name: "CANTIDAD",
+            allowDecimals: true,
+            maxValue: 999999999,
+            afterLabelTextTpl: Constantes.REQUERIDO,
+            allowBlank: false,
+        });
+        me.num_nro_factura = Ext.create("App.Config.Componente.NumberFieldBase", {
+            fieldLabel: "Nro Factura",
+            name: "NRO_FACTURA",
+            allowDecimals: true,
+            maxValue: 99999999999,
+            afterLabelTextTpl: Constantes.REQUERIDO,
+            allowBlank: false,
+        });
+
+        
+        me.store_tipo = Ext.create('App.Store.Listas.StoreLista');
+        me.store_tipo.setExtraParam('ID_LISTA', Lista.Buscar('TIPO_COMPRA'));
+        me.cbx_tipo = Ext.create("App.Config.Componente.ComboBase", {
+            fieldLabel: "Tipo",
+            name: "TIPO",
+            displayField: 'VALOR',
+            valueField: 'CODIGO',
+            store: me.store_tipo,
+            afterLabelTextTpl: Constantes.REQUERIDO,
+            allowBlank: false
+        });
+        me.num_precio = Ext.create("App.Config.Componente.NumberFieldBase", {
+            fieldLabel: "Precio",
+            name: "PRECIO",
+            allowDecimals: true,
+            maxValue: 999999999,
+        });
+        me.num_importe = Ext.create("App.Config.Componente.NumberFieldBase", {
+            fieldLabel: "Importe",
+            name: "IMPORTE",
+            allowDecimals: true,
+            maxValue: 999999999,
+            readOnly : true
+//            afterLabelTextTpl: Constantes.REQUERIDO,
+//            allowBlank: false
+        });
+        me.num_formulario = Ext.create("App.Config.Componente.NumberFieldBase", {
+            fieldLabel: "Formulario",
+            name: "FORMULARIO",
+            allowDecimals: true,
+            maxValue: 999999999,
+            afterLabelTextTpl: Constantes.REQUERIDO,
+            allowBlank: false
+        });
+          me.num_total = Ext.create("App.Config.Componente.NumberFieldBase", {
+            fieldLabel: "Total",
+            name: "TOTAL",
+            allowDecimals: true,
+            maxValue: 999999999,
+            readOnly : true
+        });
+        me.items = [
+            me.txt_nro_cmp,
+            me.cbx_tipo,
+            me.date_fecha,
+            me.num_precio,
+            me.cbx_combustible,
+            me.cbx_cuenta,
+            me.num_importe,
+            me.num_cantidad,
+            me.num_formulario,
+            me.num_nro_factura,
+            me.num_total
+        ];
+       
+      
+
+    },
+    cargarEventos : function(){
+        var me = this;
+      
+        me.num_precio.on('change',function(num,newvalue,oldvalue){
+//            var sum = me.num_saldo.getValue() + newvalue;
+            var cant = me.num_cantidad.getValue() == null? 0 : me.num_cantidad.getValue() ;
+            me.num_importe.setValue(cant + newvalue);
+        });
+        me.num_cantidad.on('change',function(num,newvalue,oldvalue){
+//            var sum = me.num_saldo.getValue() + newvalue;
+            var prec = me.num_precio.getValue() == null? 0 : me.num_precio.getValue() ;
+            me.num_importe.setValue(prec + newvalue);
+        });
+        me.num_formulario.on('change',function(num,newvalue,oldvalue){
+//            var sum = me.num_saldo.getValue() + newvalue;
+            var prec = me.num_importe.getValue() == null? 0 : me.num_importe.getValue() ;
+            me.num_total.setValue(prec + newvalue);
+        });
+//        me.cbx_turno.on('select',function(cmb,record){
+//            if(me.date_fecha.getValue() != null){
+//                me.gridVenta.getStore().setExtraParamDate('FECHA',me.date_fecha.getValue());
+//                 me.gridVenta.getStore().setExtraParam('TURNO',cmb.getValue());
+//                 me.gridVenta.getStore().load();
+////                me.gridVenta().getStore().setExtraParams({
+////                    FECHA :  me.date_fecha.getValue()
+////                });
+//            }
+//            else{
+//                Ext.Msg.alert("Seleccione Fecha primero");
+//            }
+//        });
+    }
+});

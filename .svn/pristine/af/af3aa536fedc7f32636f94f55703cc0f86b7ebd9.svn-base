@@ -1,0 +1,134 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using CityTruck.Services.Interfaces;
+using CityTruck.Common;
+using CityTruck.Model;
+using CityTruck.Services.Model;
+using CityTruck.Business.Interfaces;
+using System.Linq.Dynamic;
+using LinqKit;
+using CityTruck.Business;
+using System.Data.Objects;
+using System.Linq.Expressions;
+
+namespace CityTruck.Services
+{
+    public class VentasDiariasServices : BaseService, IVentasDiariasServices
+    {
+        //private ISG_LISTASManager _manListas;
+
+        public VentasDiariasServices(/*ISG_LISTASManager manListas*/)
+        {
+            //_manListas = manListas;
+        }
+        public IEnumerable<SG_VENTAS_DIARIAS> ObtenerVentasDiariasPaginado(PagingInfo paginacion, string ANIO, string MES, string ANIO_MES = null)
+        {
+            IQueryable<SG_VENTAS_DIARIAS> result = null;
+            ExecuteManager(uow =>
+            {
+                var managerVentas = new SG_VENTAS_DIARIASManager(uow);
+                result = managerVentas.BuscarTodos();
+                //result = result.Where(x => x.FECHA.ToString("MM-yyyy") == ANIO_MES);
+
+                result = managerVentas.ObtenerVentasPorMesyAnio(ANIO,MES);
+
+                paginacion.total = result.Count();
+                result = managerVentas.QueryPaged(result,paginacion.limit,paginacion.start,paginacion.sort,paginacion.dir);
+                
+                //var manager = new SG_LISTASManager(uow);
+                //result = manager.QueryPaged(manager.Query(), paginacion.limit, paginacion.start, paginacion.sort, paginacion.dir);
+                //resultado.Rows = result.ToList();
+                //resultado.Total = manager.Query().Count();
+                //resultado.success = true;
+
+            });
+            return result;
+        }
+
+
+        public IEnumerable<SG_VENTAS_DIARIAS> ObtenerVentasDiariasPorCriterio(System.Linq.Expressions.Expression<Func<SG_VENTAS_DIARIAS, bool>> criterio)
+        {
+            IQueryable<SG_VENTAS_DIARIAS> result = null;
+            ExecuteManager(uow =>
+            {
+                var managerVentas = new SG_VENTAS_DIARIASManager(uow);
+                result = managerVentas.BuscarTodos(criterio);
+
+            });
+            return result;
+        }
+
+
+
+
+        public RespuestaSP SP_GrabarVentasDiarias(SG_POS_TURNOS p, int ID_USR)
+        {
+            RespuestaSP result = new RespuestaSP();
+            ExecuteManager(uow =>
+            {
+                //var manager = new SG_INGRESOSManager(uow);
+                var context = (CityTruckContext)uow.Context;
+                ObjectParameter p_res = new ObjectParameter("p_res", typeof(String));
+                context.P_SG_GUARDAR_POS_TURNO(p.ID_POS_TURNO, p.ID_POS, p.TURNO, p.FECHA, p.ENT_LITTER, p.SAL_LITTER, p.TOTAL, ID_USR, p_res);
+                //context.P_SG_GUARDAR_INGRESOS(ing.ID_INGRESO, ing.FECHA, ing.CONCEPTO, ing.ID_CAJA, ing.IMPORTE, ID_USR, p_res);
+                if (p_res.Value.ToString() == "1")
+                {
+                    result.success = true;
+                    result.msg = "Proceso Ejecutado Correctamente";
+                }
+                else
+                {
+                    result.success = false;
+                    result.msg = p_res.Value.ToString();
+                }
+
+            });
+            return result;
+        }
+
+
+        public RespuestaSP SP_GrabarVentasDiarias(string Ventas, int ID_USR)
+        {
+            throw new NotImplementedException();
+        }
+
+
+        public RespuestaSP SP_GenerarVentasDiarias(SG_VENTAS_DIARIAS ventas, int ID_USR)
+        {
+            RespuestaSP result = new RespuestaSP();
+            ExecuteManager(uow =>
+            {
+                var context = (CityTruckContext)uow.Context;
+                ObjectParameter p_res = new ObjectParameter("p_res", typeof(String));
+                context.P_SG_GENERAR_VENTAS_DIARIAS(ventas.FECHA, ventas.TURNO, ventas.RESPONSABLE, ID_USR, p_res);
+                if (p_res.Value.ToString() == "1")
+                {
+                    result.success = true;
+                    result.msg = "Proceso Ejecutado Correctamente";
+                }
+                else
+                {
+                    result.success = false;
+                    result.msg = p_res.Value.ToString();
+                }
+
+            });
+            return result;
+        }
+
+
+        public IEnumerable<SG_AJUSTE_PRECIO> ObtenerAjustesPrecios(Expression<Func<SG_AJUSTE_PRECIO, bool>> criterio)
+        {
+            IQueryable<SG_AJUSTE_PRECIO> result = null;
+            ExecuteManager(uow =>
+            {
+                var managerVentas = new SG_AJUSTE_PRECIOManager(uow);
+                result = managerVentas.BuscarTodos(criterio);
+
+            });
+            return result;
+        }
+    }
+}

@@ -1,0 +1,17 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using CityTruck.Common;
+using CityTruck.Model;
+using CityTruck.Services.Model;
+
+namespace CityTruck.Services.Interfaces
+{
+    public interface ICajasServices
+    {
+        IEnumerable<SG_CAJAS> ObtenerCajasPaginado(PagingInfo paginacion);
+        RespuestaSP SP_GrabarCaja(SG_CAJAS caja);
+
+    }
+}

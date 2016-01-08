@@ -1,0 +1,1305 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Model.Store" Alias="Self" Provider="Oracle.DataAccess.Client" ProviderManifestToken="11.2" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+  <EntityContainer Name="ModelStoreContainer">
+    <EntitySet Name="SG_AJUSTE_POS" EntityType="Model.Store.SG_AJUSTE_POS" store:Type="Tables" Schema="CITYTRUCK" />
+    <EntitySet Name="SG_AJUSTE_PRECIO" EntityType="Model.Store.SG_AJUSTE_PRECIO" store:Type="Tables" Schema="CITYTRUCK" />
+    <EntitySet Name="SG_AJUSTES_TANQUE" EntityType="Model.Store.SG_AJUSTES_TANQUE" store:Type="Tables" Schema="CITYTRUCK" />
+    <EntitySet Name="SG_AMORTIZACIONES" EntityType="Model.Store.SG_AMORTIZACIONES" store:Type="Tables" Schema="CITYTRUCK" />
+    <EntitySet Name="SG_CAJAS" EntityType="Model.Store.SG_CAJAS" store:Type="Tables" Schema="CITYTRUCK" />
+    <EntitySet Name="SG_CLIENTE_CONSUMO_COMBUSTIBLE" EntityType="Model.Store.SG_CLIENTE_CONSUMO_COMBUSTIBLE" store:Type="Tables" Schema="CITYTRUCK" />
+    <EntitySet Name="SG_CLIENTES" EntityType="Model.Store.SG_CLIENTES" store:Type="Tables" Schema="CITYTRUCK" />
+    <EntitySet Name="SG_CLIENTES_CONSUMO" EntityType="Model.Store.SG_CLIENTES_CONSUMO" store:Type="Tables" Schema="CITYTRUCK" />
+    <EntitySet Name="SG_COMBUSTIBLES" EntityType="Model.Store.SG_COMBUSTIBLES" store:Type="Tables" Schema="CITYTRUCK" />
+    <EntitySet Name="SG_COMPRAS" EntityType="Model.Store.SG_COMPRAS" store:Type="Tables" Schema="CITYTRUCK" />
+    <EntitySet Name="SG_CONSUMOS" EntityType="Model.Store.SG_CONSUMOS" store:Type="Tables" Schema="CITYTRUCK" />
+    <EntitySet Name="SG_DETALLES_COMPRAS" EntityType="Model.Store.SG_DETALLES_COMPRAS" store:Type="Tables" Schema="CITYTRUCK" />
+    <EntitySet Name="SG_EGRESOS" EntityType="Model.Store.SG_EGRESOS" store:Type="Tables" Schema="CITYTRUCK" />
+    <EntitySet Name="SG_FACTURAS_MN" EntityType="Model.Store.SG_FACTURAS_MN" store:Type="Tables" Schema="CITYTRUCK" />
+    <EntitySet Name="SG_INGRESOS" EntityType="Model.Store.SG_INGRESOS" store:Type="Tables" Schema="CITYTRUCK" />
+    <EntitySet Name="SG_KARDEX_CLIENTE" EntityType="Model.Store.SG_KARDEX_CLIENTE" store:Type="Tables" Schema="CITYTRUCK" />
+    <EntitySet Name="SG_KARDEX_COMBUSTIBLE" EntityType="Model.Store.SG_KARDEX_COMBUSTIBLE" store:Type="Tables" Schema="CITYTRUCK" />
+    <EntitySet Name="SG_KARDEX_COMBUSTIBLE_MN" EntityType="Model.Store.SG_KARDEX_COMBUSTIBLE_MN" store:Type="Tables" Schema="CITYTRUCK" />
+    <EntitySet Name="SG_KARDEX_EFECTIVO" EntityType="Model.Store.SG_KARDEX_EFECTIVO" store:Type="Tables" Schema="CITYTRUCK" />
+    <EntitySet Name="SG_LISTAS" EntityType="Model.Store.SG_LISTAS" store:Type="Tables" Schema="CITYTRUCK" />
+    <EntitySet Name="SG_LISTAS_ITEMS" EntityType="Model.Store.SG_LISTAS_ITEMS" store:Type="Tables" Schema="CITYTRUCK" />
+    <EntitySet Name="SG_MENU_OPCIONES" EntityType="Model.Store.SG_MENU_OPCIONES" store:Type="Tables" Schema="CITYTRUCK" />
+    <EntitySet Name="SG_PERFILES" EntityType="Model.Store.SG_PERFILES" store:Type="Tables" Schema="CITYTRUCK" />
+    <EntitySet Name="SG_PERFILES_OPCIONES" EntityType="Model.Store.SG_PERFILES_OPCIONES" store:Type="Tables" Schema="CITYTRUCK" />
+    <EntitySet Name="SG_POS" EntityType="Model.Store.SG_POS" store:Type="Tables" Schema="CITYTRUCK" />
+    <EntitySet Name="SG_POS_DIA_MN" EntityType="Model.Store.SG_POS_DIA_MN" store:Type="Tables" Schema="CITYTRUCK" />
+    <EntitySet Name="SG_POS_TURNOS" EntityType="Model.Store.SG_POS_TURNOS" store:Type="Tables" Schema="CITYTRUCK" />
+    <EntitySet Name="SG_TANQUES" EntityType="Model.Store.SG_TANQUES" store:Type="Tables" Schema="CITYTRUCK" />
+    <EntitySet Name="SG_TRANSFERENCIAS" EntityType="Model.Store.SG_TRANSFERENCIAS" store:Type="Tables" Schema="CITYTRUCK" />
+    <EntitySet Name="SG_USUARIOS" EntityType="Model.Store.SG_USUARIOS" store:Type="Tables" Schema="CITYTRUCK" />
+    <EntitySet Name="SG_VENTAS_CREDITO" EntityType="Model.Store.SG_VENTAS_CREDITO" store:Type="Tables" Schema="CITYTRUCK" />
+    <EntitySet Name="SG_VENTAS_DIARIAS" EntityType="Model.Store.SG_VENTAS_DIARIAS" store:Type="Tables" Schema="CITYTRUCK" />
+    <AssociationSet Name="SG_AJUSTE_POS_R01" Association="Model.Store.SG_AJUSTE_POS_R01">
+      <End Role="SG_POS" EntitySet="SG_POS" />
+      <End Role="SG_AJUSTE_POS" EntitySet="SG_AJUSTE_POS" />
+    </AssociationSet>
+    <AssociationSet Name="SG_AJUSTE_PRECIO_R01" Association="Model.Store.SG_AJUSTE_PRECIO_R01">
+      <End Role="SG_COMBUSTIBLES" EntitySet="SG_COMBUSTIBLES" />
+      <End Role="SG_AJUSTE_PRECIO" EntitySet="SG_AJUSTE_PRECIO" />
+    </AssociationSet>
+    <AssociationSet Name="SG_AJUSTES_TANQUE_R01" Association="Model.Store.SG_AJUSTES_TANQUE_R01">
+      <End Role="SG_TANQUES" EntitySet="SG_TANQUES" />
+      <End Role="SG_AJUSTES_TANQUE" EntitySet="SG_AJUSTES_TANQUE" />
+    </AssociationSet>
+    <AssociationSet Name="SG_AMORTIZACIONES_R01" Association="Model.Store.SG_AMORTIZACIONES_R01">
+      <End Role="SG_CLIENTES" EntitySet="SG_CLIENTES" />
+      <End Role="SG_AMORTIZACIONES" EntitySet="SG_AMORTIZACIONES" />
+    </AssociationSet>
+    <AssociationSet Name="SG_AMORTIZACIONES_R02" Association="Model.Store.SG_AMORTIZACIONES_R02">
+      <End Role="SG_CAJAS" EntitySet="SG_CAJAS" />
+      <End Role="SG_AMORTIZACIONES" EntitySet="SG_AMORTIZACIONES" />
+    </AssociationSet>
+    <AssociationSet Name="SG_COMPRAS_R01" Association="Model.Store.SG_COMPRAS_R01">
+      <End Role="SG_COMBUSTIBLES" EntitySet="SG_COMBUSTIBLES" />
+      <End Role="SG_COMPRAS" EntitySet="SG_COMPRAS" />
+    </AssociationSet>
+    <AssociationSet Name="SG_COMPRAS_R02" Association="Model.Store.SG_COMPRAS_R02">
+      <End Role="SG_CAJAS" EntitySet="SG_CAJAS" />
+      <End Role="SG_COMPRAS" EntitySet="SG_COMPRAS" />
+    </AssociationSet>
+    <AssociationSet Name="SG_CONSUMOS_R01" Association="Model.Store.SG_CONSUMOS_R01">
+      <End Role="SG_COMBUSTIBLES" EntitySet="SG_COMBUSTIBLES" />
+      <End Role="SG_CONSUMOS" EntitySet="SG_CONSUMOS" />
+    </AssociationSet>
+    <AssociationSet Name="SG_CONSUMOS_R02" Association="Model.Store.SG_CONSUMOS_R02">
+      <End Role="SG_CLIENTES_CONSUMO" EntitySet="SG_CLIENTES_CONSUMO" />
+      <End Role="SG_CONSUMOS" EntitySet="SG_CONSUMOS" />
+    </AssociationSet>
+    <AssociationSet Name="SG_CONSUMOS_R03" Association="Model.Store.SG_CONSUMOS_R03">
+      <End Role="SG_POS" EntitySet="SG_POS" />
+      <End Role="SG_CONSUMOS" EntitySet="SG_CONSUMOS" />
+    </AssociationSet>
+    <AssociationSet Name="SG_DETALLES_COMPRAS_R01" Association="Model.Store.SG_DETALLES_COMPRAS_R01">
+      <End Role="SG_COMPRAS" EntitySet="SG_COMPRAS" />
+      <End Role="SG_DETALLES_COMPRAS" EntitySet="SG_DETALLES_COMPRAS" />
+    </AssociationSet>
+    <AssociationSet Name="SG_EGRESOS_R01" Association="Model.Store.SG_EGRESOS_R01">
+      <End Role="SG_CAJAS" EntitySet="SG_CAJAS" />
+      <End Role="SG_EGRESOS" EntitySet="SG_EGRESOS" />
+    </AssociationSet>
+    <AssociationSet Name="SG_FACTURAS_MN_R01" Association="Model.Store.SG_FACTURAS_MN_R01">
+      <End Role="SG_COMBUSTIBLES" EntitySet="SG_COMBUSTIBLES" />
+      <End Role="SG_FACTURAS_MN" EntitySet="SG_FACTURAS_MN" />
+    </AssociationSet>
+    <AssociationSet Name="SG_INGRESOS_R01" Association="Model.Store.SG_INGRESOS_R01">
+      <End Role="SG_CAJAS" EntitySet="SG_CAJAS" />
+      <End Role="SG_INGRESOS" EntitySet="SG_INGRESOS" />
+    </AssociationSet>
+    <AssociationSet Name="SG_KARDEX_CLIENTE_R01" Association="Model.Store.SG_KARDEX_CLIENTE_R01">
+      <End Role="SG_CLIENTES" EntitySet="SG_CLIENTES" />
+      <End Role="SG_KARDEX_CLIENTE" EntitySet="SG_KARDEX_CLIENTE" />
+    </AssociationSet>
+    <AssociationSet Name="SG_KARDEX_COMBUSTIBLE_MN_R01" Association="Model.Store.SG_KARDEX_COMBUSTIBLE_MN_R01">
+      <End Role="SG_COMBUSTIBLES" EntitySet="SG_COMBUSTIBLES" />
+      <End Role="SG_KARDEX_COMBUSTIBLE_MN" EntitySet="SG_KARDEX_COMBUSTIBLE_MN" />
+    </AssociationSet>
+    <AssociationSet Name="SG_KARDEX_COMBUSTIBLE_R01" Association="Model.Store.SG_KARDEX_COMBUSTIBLE_R01">
+      <End Role="SG_COMBUSTIBLES" EntitySet="SG_COMBUSTIBLES" />
+      <End Role="SG_KARDEX_COMBUSTIBLE" EntitySet="SG_KARDEX_COMBUSTIBLE" />
+    </AssociationSet>
+    <AssociationSet Name="SG_KARDEX_EFECTIVO_R01" Association="Model.Store.SG_KARDEX_EFECTIVO_R01">
+      <End Role="SG_CAJAS" EntitySet="SG_CAJAS" />
+      <End Role="SG_KARDEX_EFECTIVO" EntitySet="SG_KARDEX_EFECTIVO" />
+    </AssociationSet>
+    <AssociationSet Name="SG_LISTAS_ITEMS_R01" Association="Model.Store.SG_LISTAS_ITEMS_R01">
+      <End Role="SG_LISTAS" EntitySet="SG_LISTAS" />
+      <End Role="SG_LISTAS_ITEMS" EntitySet="SG_LISTAS_ITEMS" />
+    </AssociationSet>
+    <AssociationSet Name="SG_LISTAS_ITEMS_R02" Association="Model.Store.SG_LISTAS_ITEMS_R02">
+      <End Role="SG_LISTAS_ITEMS" EntitySet="SG_LISTAS_ITEMS" />
+      <End Role="SG_LISTAS_ITEMS1" EntitySet="SG_LISTAS_ITEMS" />
+    </AssociationSet>
+    <AssociationSet Name="SG_PERFILES_OPCIONES_R01" Association="Model.Store.SG_PERFILES_OPCIONES_R01">
+      <End Role="SG_PERFILES" EntitySet="SG_PERFILES" />
+      <End Role="SG_PERFILES_OPCIONES" EntitySet="SG_PERFILES_OPCIONES" />
+    </AssociationSet>
+    <AssociationSet Name="SG_PERFILES_OPCIONES_R02" Association="Model.Store.SG_PERFILES_OPCIONES_R02">
+      <End Role="SG_MENU_OPCIONES" EntitySet="SG_MENU_OPCIONES" />
+      <End Role="SG_PERFILES_OPCIONES" EntitySet="SG_PERFILES_OPCIONES" />
+    </AssociationSet>
+    <AssociationSet Name="SG_POS_DIA_MN_R01" Association="Model.Store.SG_POS_DIA_MN_R01">
+      <End Role="SG_POS" EntitySet="SG_POS" />
+      <End Role="SG_POS_DIA_MN" EntitySet="SG_POS_DIA_MN" />
+    </AssociationSet>
+    <AssociationSet Name="SG_POS_R01" Association="Model.Store.SG_POS_R01">
+      <End Role="SG_COMBUSTIBLES" EntitySet="SG_COMBUSTIBLES" />
+      <End Role="SG_POS" EntitySet="SG_POS" />
+    </AssociationSet>
+    <AssociationSet Name="SG_POS_TURNOS_R01" Association="Model.Store.SG_POS_TURNOS_R01">
+      <End Role="SG_POS" EntitySet="SG_POS" />
+      <End Role="SG_POS_TURNOS" EntitySet="SG_POS_TURNOS" />
+    </AssociationSet>
+    <AssociationSet Name="SG_TANQUES_R01" Association="Model.Store.SG_TANQUES_R01">
+      <End Role="SG_COMBUSTIBLES" EntitySet="SG_COMBUSTIBLES" />
+      <End Role="SG_TANQUES" EntitySet="SG_TANQUES" />
+    </AssociationSet>
+    <AssociationSet Name="SG_TRANSFERENCIAS_R01" Association="Model.Store.SG_TRANSFERENCIAS_R01">
+      <End Role="SG_CAJAS" EntitySet="SG_CAJAS" />
+      <End Role="SG_TRANSFERENCIAS" EntitySet="SG_TRANSFERENCIAS" />
+    </AssociationSet>
+    <AssociationSet Name="SG_TRANSFERENCIAS_R02" Association="Model.Store.SG_TRANSFERENCIAS_R02">
+      <End Role="SG_CAJAS" EntitySet="SG_CAJAS" />
+      <End Role="SG_TRANSFERENCIAS" EntitySet="SG_TRANSFERENCIAS" />
+    </AssociationSet>
+    <AssociationSet Name="SG_USUARIOS_R01" Association="Model.Store.SG_USUARIOS_R01">
+      <End Role="SG_PERFILES" EntitySet="SG_PERFILES" />
+      <End Role="SG_USUARIOS" EntitySet="SG_USUARIOS" />
+    </AssociationSet>
+    <AssociationSet Name="SG_VENTAS_CREDITO_R01" Association="Model.Store.SG_VENTAS_CREDITO_R01">
+      <End Role="SG_COMBUSTIBLES" EntitySet="SG_COMBUSTIBLES" />
+      <End Role="SG_VENTAS_CREDITO" EntitySet="SG_VENTAS_CREDITO" />
+    </AssociationSet>
+    <AssociationSet Name="SG_VENTAS_CREDITO_R02" Association="Model.Store.SG_VENTAS_CREDITO_R02">
+      <End Role="SG_CLIENTES" EntitySet="SG_CLIENTES" />
+      <End Role="SG_VENTAS_CREDITO" EntitySet="SG_VENTAS_CREDITO" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="SG_AJUSTE_POS">
+    <Key>
+      <PropertyRef Name="ID_AJUSTE" />
+    </Key>
+    <Property Name="ID_AJUSTE" Type="number" Nullable="false" Precision="7" />
+    <Property Name="ID_POS" Type="number" Nullable="false" Precision="7" />
+    <Property Name="FECHA" Type="date" Nullable="false" />
+    <Property Name="AJUSTE" Type="number" Precision="15" Scale="5" />
+    <Property Name="ID_USUARIO" Type="number" Nullable="false" Precision="5" />
+    <Property Name="FECHA_REG" Type="date" />
+  </EntityType>
+  <EntityType Name="SG_AJUSTE_PRECIO">
+    <Key>
+      <PropertyRef Name="ID_AJUSTE" />
+    </Key>
+    <Property Name="ID_AJUSTE" Type="number" Nullable="false" Precision="7" />
+    <Property Name="ID_COMBUSTIBLE" Type="number" Nullable="false" Precision="5" />
+    <Property Name="FECHA_ALTA" Type="date" Nullable="false" />
+    <Property Name="FECHA_BAJA" Type="date" />
+    <Property Name="TIPO" Type="varchar2" Nullable="false" MaxLength="250" />
+    <Property Name="PRECIO" Type="number" Nullable="false" Precision="15" Scale="5" />
+    <Property Name="ID_USUARIO" Type="number" Nullable="false" Precision="5" />
+    <Property Name="ESTADO" Type="varchar2" Nullable="false" MaxLength="1" />
+    <Property Name="FECHA_REG" Type="date" />
+  </EntityType>
+  <EntityType Name="SG_AJUSTES_TANQUE">
+    <Key>
+      <PropertyRef Name="ID_AJUSTE" />
+    </Key>
+    <Property Name="ID_AJUSTE" Type="number" Nullable="false" Precision="7" />
+    <Property Name="ID_TANQUE" Type="number" Nullable="false" Precision="5" />
+    <Property Name="NRO_COMP" Type="number" Nullable="false" Precision="7" />
+    <Property Name="FECHA" Type="date" Nullable="false" />
+    <Property Name="CANTIDAD" Type="number" Nullable="false" Precision="15" Scale="5" />
+    <Property Name="OBSERVACION" Type="varchar2" Nullable="false" MaxLength="140" />
+    <Property Name="ID_USUARIO" Type="number" Nullable="false" Precision="5" />
+    <Property Name="FECHA_REG" Type="date" />
+  </EntityType>
+  <EntityType Name="SG_AMORTIZACIONES">
+    <Key>
+      <PropertyRef Name="ID_AMORTIZACION" />
+    </Key>
+    <Property Name="ID_AMORTIZACION" Type="number" Nullable="false" Precision="7" />
+    <Property Name="ID_CLIENTE" Type="number" Nullable="false" Precision="7" />
+    <Property Name="ID_CAJA" Type="number" Nullable="false" Precision="7" />
+    <Property Name="NRO_COMP" Type="number" Nullable="false" Precision="7" />
+    <Property Name="FECHA" Type="date" Nullable="false" />
+    <Property Name="CONCEPTO" Type="varchar2" Nullable="false" MaxLength="250" />
+    <Property Name="IMPORTE_BS" Type="number" Nullable="false" Precision="15" Scale="5" />
+    <Property Name="ID_USUARIO" Type="number" Nullable="false" Precision="5" />
+    <Property Name="FECHA_REG" Type="date" />
+    <Property Name="OBSERVACION" Type="varchar2" MaxLength="300" />
+  </EntityType>
+  <EntityType Name="SG_CAJAS">
+    <Key>
+      <PropertyRef Name="ID_CAJA" />
+    </Key>
+    <Property Name="ID_CAJA" Type="number" Nullable="false" Precision="7" />
+    <Property Name="CODIGO" Type="varchar2" Nullable="false" MaxLength="40" />
+    <Property Name="NOMBRE" Type="varchar2" Nullable="false" MaxLength="40" />
+    <Property Name="NRO_CUENTA" Type="varchar2" MaxLength="40" />
+    <Property Name="MONEDA" Type="varchar2" Nullable="false" MaxLength="40" />
+    <Property Name="DESCRIPCION" Type="varchar2" Nullable="false" MaxLength="150" />
+    <Property Name="SALDO" Type="number" Nullable="false" Precision="15" Scale="5" />
+    <Property Name="ID_USUARIO" Type="number" Nullable="false" Precision="5" />
+    <Property Name="FECHA_REG" Type="date" />
+  </EntityType>
+  <EntityType Name="SG_CLIENTE_CONSUMO_COMBUSTIBLE">
+    <Key>
+      <PropertyRef Name="ID_TABLA" />
+    </Key>
+    <Property Name="ID_TABLA" Type="number" Nullable="false" Precision="7" />
+    <Property Name="ID_CLIENTE" Type="number" Precision="7" />
+    <Property Name="ID_COMBUSTIBLE" Type="number" Precision="5" />
+    <Property Name="CLIENTE" Type="varchar2" MaxLength="250" />
+    <Property Name="COMBUSTIBLE" Type="varchar2" MaxLength="250" />
+    <Property Name="CONSUMO" Type="number" Precision="15" Scale="5" />
+    <Property Name="CONSUMO_BS" Type="number" Precision="15" Scale="5" />
+  </EntityType>
+  <EntityType Name="SG_CLIENTES">
+    <Key>
+      <PropertyRef Name="ID_CLIENTE" />
+    </Key>
+    <Property Name="ID_CLIENTE" Type="number" Nullable="false" Precision="7" />
+    <Property Name="CODIGO" Type="number" Nullable="false" Precision="7" />
+    <Property Name="FECHA" Type="date" Nullable="false" />
+    <Property Name="EMPRESA" Type="varchar2" Nullable="false" MaxLength="40" />
+    <Property Name="NIT" Type="varchar2" Nullable="false" MaxLength="40" />
+    <Property Name="CONTACTO" Type="varchar2" MaxLength="150" />
+    <Property Name="TELEFONO" Type="varchar2" MaxLength="150" />
+    <Property Name="DIRECCION" Type="varchar2" MaxLength="150" />
+    <Property Name="LIMITE" Type="number" Nullable="false" Precision="15" Scale="5" />
+    <Property Name="CONSUMO" Type="number" Precision="15" Scale="5" />
+    <Property Name="SALDO" Type="number" Precision="15" Scale="5" />
+    <Property Name="ID_USUARIO" Type="number" Nullable="false" Precision="5" />
+    <Property Name="FECHA_REG" Type="date" />
+  </EntityType>
+  <EntityType Name="SG_CLIENTES_CONSUMO">
+    <Key>
+      <PropertyRef Name="ID_CLIENTE" />
+    </Key>
+    <Property Name="ID_CLIENTE" Type="number" Nullable="false" Precision="7" />
+    <Property Name="CODIGO" Type="number" Nullable="false" Precision="7" />
+    <Property Name="NOMBRE" Type="varchar2" Nullable="false" MaxLength="40" />
+    <Property Name="RESPONSABLE" Type="varchar2" MaxLength="150" />
+    <Property Name="CONSUMO" Type="number" Precision="15" Scale="5" />
+    <Property Name="ID_USUARIO" Type="number" Nullable="false" Precision="5" />
+    <Property Name="FECHA_REG" Type="date" />
+    <Property Name="CONSUMO_BS" Type="number" Precision="15" Scale="5" />
+  </EntityType>
+  <EntityType Name="SG_COMBUSTIBLES">
+    <Key>
+      <PropertyRef Name="ID_COMBUSTIBLE" />
+    </Key>
+    <Property Name="ID_COMBUSTIBLE" Type="number" Nullable="false" Precision="5" />
+    <Property Name="NOMBRE" Type="varchar2" Nullable="false" MaxLength="40" />
+    <Property Name="DESCRIPCION" Type="varchar2" Nullable="false" MaxLength="150" />
+    <Property Name="CANT_DISPONIBLE" Type="number" Nullable="false" Precision="15" Scale="5" />
+    <Property Name="PRECIO_VENTA" Type="number" Precision="15" Scale="5" />
+    <Property Name="PRECIO_COMPRA" Type="number" Precision="15" Scale="5" />
+    <Property Name="UNIDAD" Type="varchar2" Nullable="false" MaxLength="40" />
+    <Property Name="ESTADO" Type="char" Nullable="false" MaxLength="1" />
+    <Property Name="SALDO_INICIAL" Type="number" Precision="15" Scale="5" />
+    <Property Name="SALDO_INICIAL_MN" Type="number" Precision="15" Scale="5" />
+  </EntityType>
+  <EntityType Name="SG_COMPRAS">
+    <Key>
+      <PropertyRef Name="ID_COMPRA" />
+    </Key>
+    <Property Name="ID_COMPRA" Type="number" Nullable="false" Precision="7" />
+    <Property Name="NRO_COMP" Type="number" Nullable="false" Precision="7" />
+    <Property Name="FECHA" Type="date" Nullable="false" />
+    <Property Name="ID_COMBUSTIBLE" Type="number" Nullable="false" Precision="5" />
+    <Property Name="ID_CAJA" Type="number" Nullable="false" Precision="7" />
+    <Property Name="CANTIDAD" Type="number" Nullable="false" Precision="15" Scale="5" />
+    <Property Name="NRO_FACTURA" Type="number" Nullable="false" Precision="15" />
+    <Property Name="TIPO" Type="varchar2" Nullable="false" MaxLength="40" />
+    <Property Name="PRECIO" Type="number" Nullable="false" Precision="15" Scale="5" />
+    <Property Name="IMPORTE" Type="number" Nullable="false" Precision="15" Scale="5" />
+    <Property Name="FORMULARIO" Type="number" Nullable="false" Precision="15" Scale="5" />
+    <Property Name="TOTAL" Type="number" Nullable="false" Precision="15" Scale="5" />
+    <Property Name="ID_USUARIO" Type="number" Nullable="false" Precision="5" />
+    <Property Name="FECHA_REG" Type="date" />
+  </EntityType>
+  <EntityType Name="SG_CONSUMOS">
+    <Key>
+      <PropertyRef Name="ID_CONSUMO" />
+    </Key>
+    <Property Name="ID_CONSUMO" Type="number" Nullable="false" Precision="7" />
+    <Property Name="ID_COMBUSTIBLE" Type="number" Nullable="false" Precision="5" />
+    <Property Name="ID_CLIENTE" Type="number" Nullable="false" Precision="7" />
+    <Property Name="NRO_COMP" Type="number" Nullable="false" Precision="7" />
+    <Property Name="FECHA" Type="date" Nullable="false" />
+    <Property Name="TURNO" Type="varchar2" Nullable="false" MaxLength="40" />
+    <Property Name="PRECIO" Type="number" Nullable="false" Precision="15" Scale="5" />
+    <Property Name="IMPORTE_BS" Type="number" Nullable="false" Precision="15" Scale="5" />
+    <Property Name="IMPORTE_LTS" Type="number" Nullable="false" Precision="15" Scale="5" />
+    <Property Name="RESPONSABLE" Type="varchar2" MaxLength="250" />
+    <Property Name="ID_USUARIO" Type="number" Nullable="false" Precision="5" />
+    <Property Name="FECHA_REG" Type="date" />
+    <Property Name="ID_POS" Type="number" Precision="7" />
+    <Property Name="TIPO" Type="varchar2" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="SG_DETALLES_COMPRAS">
+    <Key>
+      <PropertyRef Name="ID_DETALLE" />
+    </Key>
+    <Property Name="ID_DETALLE" Type="number" Nullable="false" Precision="7" />
+    <Property Name="ID_COMPRA" Type="number" Nullable="false" Precision="7" />
+    <Property Name="DETALLE" Type="varchar2" Nullable="false" MaxLength="250" />
+    <Property Name="PRECIO" Type="number" Nullable="false" Precision="15" Scale="5" />
+    <Property Name="IMPORTE" Type="number" Nullable="false" Precision="15" Scale="5" />
+    <Property Name="ID_USUARIO" Type="number" Nullable="false" Precision="5" />
+    <Property Name="FECHA_REG" Type="date" />
+  </EntityType>
+  <EntityType Name="SG_EGRESOS">
+    <Key>
+      <PropertyRef Name="ID_EGRESO" />
+    </Key>
+    <Property Name="ID_EGRESO" Type="number" Nullable="false" Precision="7" />
+    <Property Name="NRO_COMP" Type="number" Nullable="false" Precision="7" />
+    <Property Name="FECHA" Type="date" Nullable="false" />
+    <Property Name="REGISTRAR" Type="varchar2" Nullable="false" MaxLength="40" />
+    <Property Name="CONCEPTO" Type="varchar2" Nullable="false" MaxLength="140" />
+    <Property Name="ID_CAJA" Type="number" Nullable="false" Precision="7" />
+    <Property Name="IMPORTE" Type="number" Nullable="false" Precision="15" Scale="5" />
+    <Property Name="ID_USUARIO" Type="number" Nullable="false" Precision="5" />
+    <Property Name="FECHA_REG" Type="date" />
+  </EntityType>
+  <EntityType Name="SG_FACTURAS_MN">
+    <Key>
+      <PropertyRef Name="ID_FACTURA" />
+    </Key>
+    <Property Name="ID_FACTURA" Type="number" Nullable="false" Precision="7" />
+    <Property Name="ID_COMBUSTIBLE" Type="number" Nullable="false" Precision="5" />
+    <Property Name="FECHA" Type="date" Nullable="false" />
+    <Property Name="IMPORTE" Type="number" Nullable="false" Precision="15" Scale="5" />
+    <Property Name="PRECIO" Type="number" Precision="15" Scale="5" />
+    <Property Name="LITROS" Type="number" Precision="15" Scale="5" />
+    <Property Name="ID_USUARIO" Type="number" Nullable="false" Precision="5" />
+    <Property Name="FECHA_REG" Type="date" />
+  </EntityType>
+  <EntityType Name="SG_INGRESOS">
+    <Key>
+      <PropertyRef Name="ID_INGRESO" />
+    </Key>
+    <Property Name="ID_INGRESO" Type="number" Nullable="false" Precision="7" />
+    <Property Name="NRO_COMP" Type="number" Nullable="false" Precision="7" />
+    <Property Name="FECHA" Type="date" Nullable="false" />
+    <Property Name="REGISTRAR" Type="varchar2" Nullable="false" MaxLength="40" />
+    <Property Name="CONCEPTO" Type="varchar2" Nullable="false" MaxLength="140" />
+    <Property Name="ID_CAJA" Type="number" Nullable="false" Precision="7" />
+    <Property Name="IMPORTE" Type="number" Nullable="false" Precision="15" Scale="5" />
+    <Property Name="ID_USUARIO" Type="number" Nullable="false" Precision="5" />
+    <Property Name="FECHA_REG" Type="date" />
+    <Property Name="ID_AMORTIZACION" Type="number" Precision="7" />
+  </EntityType>
+  <EntityType Name="SG_KARDEX_CLIENTE">
+    <Key>
+      <PropertyRef Name="ID_KARDEX" />
+    </Key>
+    <Property Name="ID_KARDEX" Type="number" Nullable="false" Precision="7" />
+    <Property Name="ID_CLIENTE" Type="number" Nullable="false" Precision="7" />
+    <Property Name="ID_OPERACION" Type="number" Nullable="false" Precision="7" />
+    <Property Name="OPERACION" Type="varchar2" Nullable="false" MaxLength="250" />
+    <Property Name="FECHA" Type="date" Nullable="false" />
+    <Property Name="DETALLE" Type="varchar2" Nullable="false" MaxLength="250" />
+    <Property Name="CONSUMO" Type="number" Nullable="false" Precision="15" Scale="5" />
+    <Property Name="AMORTIZACION" Type="number" Nullable="false" Precision="15" Scale="5" />
+    <Property Name="SALDO" Type="number" Nullable="false" Precision="15" Scale="5" />
+    <Property Name="ID_USUARIO" Type="number" Nullable="false" Precision="5" />
+    <Property Name="FECHA_REG" Type="date" />
+  </EntityType>
+  <EntityType Name="SG_KARDEX_COMBUSTIBLE">
+    <Key>
+      <PropertyRef Name="ID_KARDEX" />
+    </Key>
+    <Property Name="ID_KARDEX" Type="number" Nullable="false" Precision="7" />
+    <Property Name="ID_COMBUSTIBLE" Type="number" Nullable="false" Precision="5" />
+    <Property Name="FECHA" Type="date" Nullable="false" />
+    <Property Name="SALDO_INICIAL" Type="number" Nullable="false" Precision="15" Scale="5" />
+    <Property Name="COMPRAS" Type="number" Precision="15" Scale="5" />
+    <Property Name="VENTAS" Type="number" Precision="15" Scale="5" />
+    <Property Name="AJUSTES" Type="number" Precision="15" Scale="5" />
+    <Property Name="ACUMULADOS" Type="number" Precision="15" Scale="5" />
+  </EntityType>
+  <EntityType Name="SG_KARDEX_COMBUSTIBLE_MN">
+    <Key>
+      <PropertyRef Name="ID_KARDEX" />
+    </Key>
+    <Property Name="ID_KARDEX" Type="number" Nullable="false" Precision="7" />
+    <Property Name="ID_COMBUSTIBLE" Type="number" Nullable="false" Precision="5" />
+    <Property Name="FECHA" Type="date" Nullable="false" />
+    <Property Name="SALDO_INICIAL" Type="number" Nullable="false" Precision="15" Scale="5" />
+    <Property Name="COMPRAS" Type="number" Precision="15" Scale="5" />
+    <Property Name="VENTAS" Type="number" Precision="15" Scale="5" />
+    <Property Name="AJUSTES" Type="number" Precision="15" Scale="5" />
+    <Property Name="ACUMULADOS" Type="number" Precision="15" Scale="5" />
+  </EntityType>
+  <EntityType Name="SG_KARDEX_EFECTIVO">
+    <Key>
+      <PropertyRef Name="ID_KARDEX" />
+    </Key>
+    <Property Name="ID_KARDEX" Type="number" Nullable="false" Precision="7" />
+    <Property Name="ID_CAJA" Type="number" Nullable="false" Precision="7" />
+    <Property Name="ID_OPERACION" Type="number" Nullable="false" Precision="7" />
+    <Property Name="OPERACION" Type="varchar2" Nullable="false" MaxLength="250" />
+    <Property Name="FECHA" Type="date" Nullable="false" />
+    <Property Name="DETALLE" Type="varchar2" Nullable="false" MaxLength="250" />
+    <Property Name="INGRESO" Type="number" Nullable="false" Precision="15" Scale="5" />
+    <Property Name="EGRESO" Type="number" Nullable="false" Precision="15" Scale="5" />
+    <Property Name="SALDO" Type="number" Nullable="false" Precision="15" Scale="5" />
+    <Property Name="ID_USUARIO" Type="number" Nullable="false" Precision="5" />
+    <Property Name="FECHA_REG" Type="date" />
+  </EntityType>
+  <EntityType Name="SG_LISTAS">
+    <Key>
+      <PropertyRef Name="ID_LISTA" />
+    </Key>
+    <Property Name="ID_LISTA" Type="number" Nullable="false" Precision="7" />
+    <Property Name="LISTA" Type="varchar2" Nullable="false" MaxLength="20" />
+    <Property Name="DESCRIPCION" Type="varchar2" MaxLength="50" />
+    <Property Name="TAM_LIMITE" Type="number" Nullable="false" Precision="5" />
+    <Property Name="TIPO_VALOR" Type="varchar2" Nullable="false" MaxLength="10" />
+    <Property Name="MAYUS_MINUS" Type="varchar2" Nullable="false" MaxLength="5" />
+    <Property Name="ESTADO" Type="varchar2" Nullable="false" MaxLength="15" />
+  </EntityType>
+  <EntityType Name="SG_LISTAS_ITEMS">
+    <Key>
+      <PropertyRef Name="ID_TABLA" />
+    </Key>
+    <Property Name="ID_TABLA" Type="number" Nullable="false" Precision="7" />
+    <Property Name="ID_PADRE" Type="number" Precision="7" />
+    <Property Name="ID_LISTA" Type="number" Nullable="false" Precision="7" />
+    <Property Name="CODIGO" Type="varchar2" MaxLength="5" />
+    <Property Name="VALOR" Type="varchar2" Nullable="false" MaxLength="30" />
+    <Property Name="ESTADO" Type="char" Nullable="false" MaxLength="1" />
+  </EntityType>
+  <EntityType Name="SG_MENU_OPCIONES">
+    <Key>
+      <PropertyRef Name="ID_OPC" />
+    </Key>
+    <Property Name="ID_OPC" Type="number" Nullable="false" Precision="5" />
+    <Property Name="OPCION" Type="varchar2" Nullable="false" MaxLength="40" />
+    <Property Name="LINK" Type="varchar2" MaxLength="50" />
+    <Property Name="TOOLTIP" Type="varchar2" MaxLength="50" />
+    <Property Name="ICONO" Type="varchar2" MaxLength="50" />
+    <Property Name="ESTILO" Type="varchar2" MaxLength="50" />
+    <Property Name="ID_PADRE" Type="number" Precision="5" />
+    <Property Name="ESTADO" Type="char" Nullable="false" MaxLength="1" />
+    <Property Name="ORDEN" Type="number" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SG_PERFILES">
+    <Key>
+      <PropertyRef Name="ID_PERFIL" />
+    </Key>
+    <Property Name="ID_PERFIL" Type="number" Nullable="false" Precision="5" />
+    <Property Name="NOMBRE" Type="varchar2" Nullable="false" MaxLength="40" />
+    <Property Name="DESCRIPCION" Type="varchar2" Nullable="false" MaxLength="50" />
+    <Property Name="ESTADO" Type="char" Nullable="false" MaxLength="1" />
+  </EntityType>
+  <EntityType Name="SG_PERFILES_OPCIONES">
+    <Key>
+      <PropertyRef Name="ID_PRF_OPC" />
+    </Key>
+    <Property Name="ID_PRF_OPC" Type="number" Nullable="false" Precision="5" />
+    <Property Name="ID_PERFIL" Type="number" Nullable="false" Precision="5" />
+    <Property Name="ID_OPC" Type="number" Nullable="false" Precision="5" />
+    <Property Name="ESTADO" Type="char" Nullable="false" MaxLength="1" />
+  </EntityType>
+  <EntityType Name="SG_POS">
+    <Key>
+      <PropertyRef Name="ID_POS" />
+    </Key>
+    <Property Name="ID_POS" Type="number" Nullable="false" Precision="7" />
+    <Property Name="CODIGO" Type="varchar2" Nullable="false" MaxLength="40" />
+    <Property Name="ID_COMBUSTIBLE" Type="number" Nullable="false" Precision="5" />
+    <Property Name="ENT_LITTER_INI" Type="number" Nullable="false" Precision="15" Scale="5" />
+    <Property Name="LITTER_ACT" Type="number" Nullable="false" Precision="15" Scale="5" />
+    <Property Name="ESTADO" Type="char" Nullable="false" MaxLength="1" />
+    <Property Name="DESCRIPCION" Type="varchar2" MaxLength="300" />
+    <Property Name="ENT_LITTER_INI_MN" Type="number" Precision="15" Scale="5" />
+    <Property Name="LITTER_ACT_MN" Type="number" Precision="15" Scale="5" />
+  </EntityType>
+  <EntityType Name="SG_POS_DIA_MN">
+    <Key>
+      <PropertyRef Name="ID_POS_DIA_MN" />
+    </Key>
+    <Property Name="ID_POS_DIA_MN" Type="number" Nullable="false" Precision="7" />
+    <Property Name="ID_POS" Type="number" Nullable="false" Precision="7" />
+    <Property Name="FECHA" Type="date" Nullable="false" />
+    <Property Name="ENT_LITTER" Type="number" Nullable="false" Precision="15" Scale="5" />
+    <Property Name="SAL_LITTER" Type="number" Nullable="false" Precision="15" Scale="5" />
+    <Property Name="TOTAL" Type="number" Nullable="false" Precision="15" Scale="5" />
+    <Property Name="TOTAL_VENTA" Type="number" Precision="15" Scale="5" />
+    <Property Name="TOTAL_COSTO" Type="number" Precision="15" Scale="5" />
+    <Property Name="ID_USUARIO" Type="number" Nullable="false" Precision="5" />
+    <Property Name="FECHA_REG" Type="date" />
+  </EntityType>
+  <EntityType Name="SG_POS_TURNOS">
+    <Key>
+      <PropertyRef Name="ID_POS_TURNO" />
+    </Key>
+    <Property Name="ID_POS_TURNO" Type="number" Nullable="false" Precision="7" />
+    <Property Name="ID_POS" Type="number" Nullable="false" Precision="7" />
+    <Property Name="TURNO" Type="varchar2" Nullable="false" MaxLength="50" />
+    <Property Name="FECHA" Type="date" Nullable="false" />
+    <Property Name="ENT_LITTER" Type="number" Nullable="false" Precision="15" Scale="5" />
+    <Property Name="SAL_LITTER" Type="number" Nullable="false" Precision="15" Scale="5" />
+    <Property Name="TOTAL" Type="number" Nullable="false" Precision="15" Scale="5" />
+    <Property Name="TOTAL_VENTA" Type="number" Precision="15" Scale="5" />
+    <Property Name="TOTAL_COSTO" Type="number" Precision="15" Scale="5" />
+    <Property Name="ID_USUARIO" Type="number" Nullable="false" Precision="5" />
+    <Property Name="FECHA_REG" Type="date" />
+  </EntityType>
+  <EntityType Name="SG_TANQUES">
+    <Key>
+      <PropertyRef Name="ID_TANQUE" />
+    </Key>
+    <Property Name="ID_TANQUE" Type="number" Nullable="false" Precision="5" />
+    <Property Name="ID_COMBUSTIBLE" Type="number" Nullable="false" Precision="5" />
+    <Property Name="NOMBRE" Type="varchar2" Nullable="false" MaxLength="40" />
+    <Property Name="CANT_DISPONIBLE" Type="number" Nullable="false" Precision="15" Scale="5" />
+    <Property Name="SALDO_INICIAL" Type="number" Precision="15" Scale="5" />
+    <Property Name="LIMITE" Type="number" Precision="15" Scale="5" />
+    <Property Name="ULT_AJUSTE" Type="number" Precision="15" Scale="5" />
+    <Property Name="SALDO_INICIAL_MN" Type="number" Precision="15" Scale="5" />
+  </EntityType>
+  <EntityType Name="SG_TRANSFERENCIAS">
+    <Key>
+      <PropertyRef Name="ID_TRANSFERENCIA" />
+    </Key>
+    <Property Name="ID_TRANSFERENCIA" Type="number" Nullable="false" Precision="7" />
+    <Property Name="ID_CAJA_ORIGEN" Type="number" Nullable="false" Precision="7" />
+    <Property Name="ID_CAJA_DESTINO" Type="number" Nullable="false" Precision="7" />
+    <Property Name="NRO_COMP" Type="number" Nullable="false" Precision="7" />
+    <Property Name="FECHA" Type="date" Nullable="false" />
+    <Property Name="CONCEPTO" Type="varchar2" MaxLength="250" />
+    <Property Name="IMPORTE_BS" Type="number" Nullable="false" Precision="15" Scale="5" />
+    <Property Name="ID_USUARIO" Type="number" Nullable="false" Precision="5" />
+    <Property Name="FECHA_REG" Type="date" />
+    <Property Name="OBSERVACION" Type="varchar2" MaxLength="300" />
+  </EntityType>
+  <EntityType Name="SG_USUARIOS">
+    <Key>
+      <PropertyRef Name="ID_USUARIO" />
+    </Key>
+    <Property Name="ID_USUARIO" Type="number" Nullable="false" Precision="5" />
+    <Property Name="LOGIN" Type="varchar2" Nullable="false" MaxLength="15" />
+    <Property Name="NOMBRE" Type="varchar2" Nullable="false" MaxLength="60" />
+    <Property Name="EMAIL" Type="varchar2" MaxLength="30" />
+    <Property Name="FCH_ALTA" Type="date" Nullable="false" />
+    <Property Name="FCH_BAJA" Type="date" />
+    <Property Name="ID_PERFIL" Type="number" Nullable="false" Precision="5" />
+    <Property Name="ESTADO" Type="char" Nullable="false" MaxLength="1" />
+    <Property Name="CONTRASENA" Type="varchar2" MaxLength="300" />
+  </EntityType>
+  <EntityType Name="SG_VENTAS_CREDITO">
+    <Key>
+      <PropertyRef Name="ID_VENTA" />
+    </Key>
+    <Property Name="ID_VENTA" Type="number" Nullable="false" Precision="7" />
+    <Property Name="ID_COMBUSTIBLE" Type="number" Nullable="false" Precision="5" />
+    <Property Name="ID_CLIENTE" Type="number" Nullable="false" Precision="7" />
+    <Property Name="NRO_COMP" Type="number" Nullable="false" Precision="7" />
+    <Property Name="FECHA" Type="date" Nullable="false" />
+    <Property Name="TURNO" Type="varchar2" Nullable="false" MaxLength="40" />
+    <Property Name="PRECIO" Type="number" Nullable="false" Precision="15" Scale="5" />
+    <Property Name="IMPORTE_BS" Type="number" Nullable="false" Precision="15" Scale="5" />
+    <Property Name="IMPORTE_LTS" Type="number" Nullable="false" Precision="15" Scale="5" />
+    <Property Name="RESPONSABLE" Type="varchar2" MaxLength="250" />
+    <Property Name="ID_USUARIO" Type="number" Nullable="false" Precision="5" />
+    <Property Name="FECHA_REG" Type="date" />
+  </EntityType>
+  <EntityType Name="SG_VENTAS_DIARIAS">
+    <Key>
+      <PropertyRef Name="ID_VENTA" />
+    </Key>
+    <Property Name="ID_VENTA" Type="number" Nullable="false" Precision="5" />
+    <Property Name="TURNO" Type="varchar2" Nullable="false" MaxLength="50" />
+    <Property Name="RESPONSABLE" Type="varchar2" MaxLength="250" />
+    <Property Name="FECHA" Type="date" Nullable="false" />
+    <Property Name="TOTAL" Type="number" Nullable="false" Precision="15" Scale="5" />
+  </EntityType>
+  <Association Name="SG_AJUSTE_POS_R01">
+    <End Role="SG_POS" Type="Model.Store.SG_POS" Multiplicity="1" />
+    <End Role="SG_AJUSTE_POS" Type="Model.Store.SG_AJUSTE_POS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SG_POS">
+        <PropertyRef Name="ID_POS" />
+      </Principal>
+      <Dependent Role="SG_AJUSTE_POS">
+        <PropertyRef Name="ID_POS" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="SG_AJUSTE_PRECIO_R01">
+    <End Role="SG_COMBUSTIBLES" Type="Model.Store.SG_COMBUSTIBLES" Multiplicity="1" />
+    <End Role="SG_AJUSTE_PRECIO" Type="Model.Store.SG_AJUSTE_PRECIO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SG_COMBUSTIBLES">
+        <PropertyRef Name="ID_COMBUSTIBLE" />
+      </Principal>
+      <Dependent Role="SG_AJUSTE_PRECIO">
+        <PropertyRef Name="ID_COMBUSTIBLE" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="SG_AJUSTES_TANQUE_R01">
+    <End Role="SG_TANQUES" Type="Model.Store.SG_TANQUES" Multiplicity="1" />
+    <End Role="SG_AJUSTES_TANQUE" Type="Model.Store.SG_AJUSTES_TANQUE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SG_TANQUES">
+        <PropertyRef Name="ID_TANQUE" />
+      </Principal>
+      <Dependent Role="SG_AJUSTES_TANQUE">
+        <PropertyRef Name="ID_TANQUE" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="SG_AMORTIZACIONES_R01">
+    <End Role="SG_CLIENTES" Type="Model.Store.SG_CLIENTES" Multiplicity="1" />
+    <End Role="SG_AMORTIZACIONES" Type="Model.Store.SG_AMORTIZACIONES" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SG_CLIENTES">
+        <PropertyRef Name="ID_CLIENTE" />
+      </Principal>
+      <Dependent Role="SG_AMORTIZACIONES">
+        <PropertyRef Name="ID_CLIENTE" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="SG_AMORTIZACIONES_R02">
+    <End Role="SG_CAJAS" Type="Model.Store.SG_CAJAS" Multiplicity="1" />
+    <End Role="SG_AMORTIZACIONES" Type="Model.Store.SG_AMORTIZACIONES" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SG_CAJAS">
+        <PropertyRef Name="ID_CAJA" />
+      </Principal>
+      <Dependent Role="SG_AMORTIZACIONES">
+        <PropertyRef Name="ID_CAJA" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="SG_COMPRAS_R01">
+    <End Role="SG_COMBUSTIBLES" Type="Model.Store.SG_COMBUSTIBLES" Multiplicity="1" />
+    <End Role="SG_COMPRAS" Type="Model.Store.SG_COMPRAS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SG_COMBUSTIBLES">
+        <PropertyRef Name="ID_COMBUSTIBLE" />
+      </Principal>
+      <Dependent Role="SG_COMPRAS">
+        <PropertyRef Name="ID_COMBUSTIBLE" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="SG_COMPRAS_R02">
+    <End Role="SG_CAJAS" Type="Model.Store.SG_CAJAS" Multiplicity="1" />
+    <End Role="SG_COMPRAS" Type="Model.Store.SG_COMPRAS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SG_CAJAS">
+        <PropertyRef Name="ID_CAJA" />
+      </Principal>
+      <Dependent Role="SG_COMPRAS">
+        <PropertyRef Name="ID_CAJA" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="SG_CONSUMOS_R01">
+    <End Role="SG_COMBUSTIBLES" Type="Model.Store.SG_COMBUSTIBLES" Multiplicity="1" />
+    <End Role="SG_CONSUMOS" Type="Model.Store.SG_CONSUMOS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SG_COMBUSTIBLES">
+        <PropertyRef Name="ID_COMBUSTIBLE" />
+      </Principal>
+      <Dependent Role="SG_CONSUMOS">
+        <PropertyRef Name="ID_COMBUSTIBLE" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="SG_CONSUMOS_R02">
+    <End Role="SG_CLIENTES_CONSUMO" Type="Model.Store.SG_CLIENTES_CONSUMO" Multiplicity="1" />
+    <End Role="SG_CONSUMOS" Type="Model.Store.SG_CONSUMOS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SG_CLIENTES_CONSUMO">
+        <PropertyRef Name="ID_CLIENTE" />
+      </Principal>
+      <Dependent Role="SG_CONSUMOS">
+        <PropertyRef Name="ID_CLIENTE" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="SG_CONSUMOS_R03">
+    <End Role="SG_POS" Type="Model.Store.SG_POS" Multiplicity="0..1" />
+    <End Role="SG_CONSUMOS" Type="Model.Store.SG_CONSUMOS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SG_POS">
+        <PropertyRef Name="ID_POS" />
+      </Principal>
+      <Dependent Role="SG_CONSUMOS">
+        <PropertyRef Name="ID_POS" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="SG_DETALLES_COMPRAS_R01">
+    <End Role="SG_COMPRAS" Type="Model.Store.SG_COMPRAS" Multiplicity="1" />
+    <End Role="SG_DETALLES_COMPRAS" Type="Model.Store.SG_DETALLES_COMPRAS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SG_COMPRAS">
+        <PropertyRef Name="ID_COMPRA" />
+      </Principal>
+      <Dependent Role="SG_DETALLES_COMPRAS">
+        <PropertyRef Name="ID_COMPRA" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="SG_EGRESOS_R01">
+    <End Role="SG_CAJAS" Type="Model.Store.SG_CAJAS" Multiplicity="1" />
+    <End Role="SG_EGRESOS" Type="Model.Store.SG_EGRESOS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SG_CAJAS">
+        <PropertyRef Name="ID_CAJA" />
+      </Principal>
+      <Dependent Role="SG_EGRESOS">
+        <PropertyRef Name="ID_CAJA" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="SG_FACTURAS_MN_R01">
+    <End Role="SG_COMBUSTIBLES" Type="Model.Store.SG_COMBUSTIBLES" Multiplicity="1" />
+    <End Role="SG_FACTURAS_MN" Type="Model.Store.SG_FACTURAS_MN" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SG_COMBUSTIBLES">
+        <PropertyRef Name="ID_COMBUSTIBLE" />
+      </Principal>
+      <Dependent Role="SG_FACTURAS_MN">
+        <PropertyRef Name="ID_COMBUSTIBLE" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="SG_INGRESOS_R01">
+    <End Role="SG_CAJAS" Type="Model.Store.SG_CAJAS" Multiplicity="1" />
+    <End Role="SG_INGRESOS" Type="Model.Store.SG_INGRESOS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SG_CAJAS">
+        <PropertyRef Name="ID_CAJA" />
+      </Principal>
+      <Dependent Role="SG_INGRESOS">
+        <PropertyRef Name="ID_CAJA" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="SG_KARDEX_CLIENTE_R01">
+    <End Role="SG_CLIENTES" Type="Model.Store.SG_CLIENTES" Multiplicity="1" />
+    <End Role="SG_KARDEX_CLIENTE" Type="Model.Store.SG_KARDEX_CLIENTE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SG_CLIENTES">
+        <PropertyRef Name="ID_CLIENTE" />
+      </Principal>
+      <Dependent Role="SG_KARDEX_CLIENTE">
+        <PropertyRef Name="ID_CLIENTE" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="SG_KARDEX_COMBUSTIBLE_MN_R01">
+    <End Role="SG_COMBUSTIBLES" Type="Model.Store.SG_COMBUSTIBLES" Multiplicity="1" />
+    <End Role="SG_KARDEX_COMBUSTIBLE_MN" Type="Model.Store.SG_KARDEX_COMBUSTIBLE_MN" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SG_COMBUSTIBLES">
+        <PropertyRef Name="ID_COMBUSTIBLE" />
+      </Principal>
+      <Dependent Role="SG_KARDEX_COMBUSTIBLE_MN">
+        <PropertyRef Name="ID_COMBUSTIBLE" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="SG_KARDEX_COMBUSTIBLE_R01">
+    <End Role="SG_COMBUSTIBLES" Type="Model.Store.SG_COMBUSTIBLES" Multiplicity="1" />
+    <End Role="SG_KARDEX_COMBUSTIBLE" Type="Model.Store.SG_KARDEX_COMBUSTIBLE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SG_COMBUSTIBLES">
+        <PropertyRef Name="ID_COMBUSTIBLE" />
+      </Principal>
+      <Dependent Role="SG_KARDEX_COMBUSTIBLE">
+        <PropertyRef Name="ID_COMBUSTIBLE" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="SG_KARDEX_EFECTIVO_R01">
+    <End Role="SG_CAJAS" Type="Model.Store.SG_CAJAS" Multiplicity="1" />
+    <End Role="SG_KARDEX_EFECTIVO" Type="Model.Store.SG_KARDEX_EFECTIVO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SG_CAJAS">
+        <PropertyRef Name="ID_CAJA" />
+      </Principal>
+      <Dependent Role="SG_KARDEX_EFECTIVO">
+        <PropertyRef Name="ID_CAJA" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="SG_LISTAS_ITEMS_R01">
+    <End Role="SG_LISTAS" Type="Model.Store.SG_LISTAS" Multiplicity="1" />
+    <End Role="SG_LISTAS_ITEMS" Type="Model.Store.SG_LISTAS_ITEMS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SG_LISTAS">
+        <PropertyRef Name="ID_LISTA" />
+      </Principal>
+      <Dependent Role="SG_LISTAS_ITEMS">
+        <PropertyRef Name="ID_LISTA" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="SG_LISTAS_ITEMS_R02">
+    <End Role="SG_LISTAS_ITEMS" Type="Model.Store.SG_LISTAS_ITEMS" Multiplicity="0..1" />
+    <End Role="SG_LISTAS_ITEMS1" Type="Model.Store.SG_LISTAS_ITEMS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SG_LISTAS_ITEMS">
+        <PropertyRef Name="ID_TABLA" />
+      </Principal>
+      <Dependent Role="SG_LISTAS_ITEMS1">
+        <PropertyRef Name="ID_PADRE" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="SG_PERFILES_OPCIONES_R01">
+    <End Role="SG_PERFILES" Type="Model.Store.SG_PERFILES" Multiplicity="1" />
+    <End Role="SG_PERFILES_OPCIONES" Type="Model.Store.SG_PERFILES_OPCIONES" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SG_PERFILES">
+        <PropertyRef Name="ID_PERFIL" />
+      </Principal>
+      <Dependent Role="SG_PERFILES_OPCIONES">
+        <PropertyRef Name="ID_PERFIL" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="SG_PERFILES_OPCIONES_R02">
+    <End Role="SG_MENU_OPCIONES" Type="Model.Store.SG_MENU_OPCIONES" Multiplicity="1" />
+    <End Role="SG_PERFILES_OPCIONES" Type="Model.Store.SG_PERFILES_OPCIONES" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SG_MENU_OPCIONES">
+        <PropertyRef Name="ID_OPC" />
+      </Principal>
+      <Dependent Role="SG_PERFILES_OPCIONES">
+        <PropertyRef Name="ID_OPC" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="SG_POS_DIA_MN_R01">
+    <End Role="SG_POS" Type="Model.Store.SG_POS" Multiplicity="1" />
+    <End Role="SG_POS_DIA_MN" Type="Model.Store.SG_POS_DIA_MN" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SG_POS">
+        <PropertyRef Name="ID_POS" />
+      </Principal>
+      <Dependent Role="SG_POS_DIA_MN">
+        <PropertyRef Name="ID_POS" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="SG_POS_R01">
+    <End Role="SG_COMBUSTIBLES" Type="Model.Store.SG_COMBUSTIBLES" Multiplicity="1" />
+    <End Role="SG_POS" Type="Model.Store.SG_POS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SG_COMBUSTIBLES">
+        <PropertyRef Name="ID_COMBUSTIBLE" />
+      </Principal>
+      <Dependent Role="SG_POS">
+        <PropertyRef Name="ID_COMBUSTIBLE" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="SG_POS_TURNOS_R01">
+    <End Role="SG_POS" Type="Model.Store.SG_POS" Multiplicity="1" />
+    <End Role="SG_POS_TURNOS" Type="Model.Store.SG_POS_TURNOS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SG_POS">
+        <PropertyRef Name="ID_POS" />
+      </Principal>
+      <Dependent Role="SG_POS_TURNOS">
+        <PropertyRef Name="ID_POS" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="SG_TANQUES_R01">
+    <End Role="SG_COMBUSTIBLES" Type="Model.Store.SG_COMBUSTIBLES" Multiplicity="1" />
+    <End Role="SG_TANQUES" Type="Model.Store.SG_TANQUES" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SG_COMBUSTIBLES">
+        <PropertyRef Name="ID_COMBUSTIBLE" />
+      </Principal>
+      <Dependent Role="SG_TANQUES">
+        <PropertyRef Name="ID_COMBUSTIBLE" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="SG_TRANSFERENCIAS_R01">
+    <End Role="SG_CAJAS" Type="Model.Store.SG_CAJAS" Multiplicity="1" />
+    <End Role="SG_TRANSFERENCIAS" Type="Model.Store.SG_TRANSFERENCIAS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SG_CAJAS">
+        <PropertyRef Name="ID_CAJA" />
+      </Principal>
+      <Dependent Role="SG_TRANSFERENCIAS">
+        <PropertyRef Name="ID_CAJA_ORIGEN" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="SG_TRANSFERENCIAS_R02">
+    <End Role="SG_CAJAS" Type="Model.Store.SG_CAJAS" Multiplicity="1" />
+    <End Role="SG_TRANSFERENCIAS" Type="Model.Store.SG_TRANSFERENCIAS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SG_CAJAS">
+        <PropertyRef Name="ID_CAJA" />
+      </Principal>
+      <Dependent Role="SG_TRANSFERENCIAS">
+        <PropertyRef Name="ID_CAJA_DESTINO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="SG_USUARIOS_R01">
+    <End Role="SG_PERFILES" Type="Model.Store.SG_PERFILES" Multiplicity="1" />
+    <End Role="SG_USUARIOS" Type="Model.Store.SG_USUARIOS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SG_PERFILES">
+        <PropertyRef Name="ID_PERFIL" />
+      </Principal>
+      <Dependent Role="SG_USUARIOS">
+        <PropertyRef Name="ID_PERFIL" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="SG_VENTAS_CREDITO_R01">
+    <End Role="SG_COMBUSTIBLES" Type="Model.Store.SG_COMBUSTIBLES" Multiplicity="1" />
+    <End Role="SG_VENTAS_CREDITO" Type="Model.Store.SG_VENTAS_CREDITO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SG_COMBUSTIBLES">
+        <PropertyRef Name="ID_COMBUSTIBLE" />
+      </Principal>
+      <Dependent Role="SG_VENTAS_CREDITO">
+        <PropertyRef Name="ID_COMBUSTIBLE" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="SG_VENTAS_CREDITO_R02">
+    <End Role="SG_CLIENTES" Type="Model.Store.SG_CLIENTES" Multiplicity="1" />
+    <End Role="SG_VENTAS_CREDITO" Type="Model.Store.SG_VENTAS_CREDITO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SG_CLIENTES">
+        <PropertyRef Name="ID_CLIENTE" />
+      </Principal>
+      <Dependent Role="SG_VENTAS_CREDITO">
+        <PropertyRef Name="ID_CLIENTE" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="P_SG_ACT_CONSUMO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="CITYTRUCK">
+    <Parameter Name="P_RES" Type="varchar2" Mode="Out" />
+  </Function>
+  <Function Name="P_SG_ACT_KARDEX_COMBUSTIBLE" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="CITYTRUCK">
+    <Parameter Name="P_FECHA" Type="date" Mode="In" />
+    <Parameter Name="P_ID_USR" Type="number" Mode="In" />
+    <Parameter Name="P_RES" Type="varchar2" Mode="Out" />
+  </Function>
+  <Function Name="P_SG_ACT_KARDEX_COMBUSTIBLE_MN" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="CITYTRUCK">
+    <Parameter Name="P_FECHA" Type="date" Mode="In" />
+    <Parameter Name="P_ID_USR" Type="number" Mode="In" />
+    <Parameter Name="P_RES" Type="varchar2" Mode="Out" />
+  </Function>
+  <Function Name="P_SG_ALTA_LISTA" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="CITYTRUCK">
+    <Parameter Name="P_LISTA" Type="varchar2" Mode="In" />
+    <Parameter Name="P_DESCRIPCION" Type="varchar2" Mode="In" />
+    <Parameter Name="P_TAM_LIMITE" Type="number" Mode="In" />
+    <Parameter Name="P_TIPO_VALOR" Type="varchar2" Mode="In" />
+    <Parameter Name="P_MAYUS_MINUS" Type="varchar2" Mode="In" />
+    <Parameter Name="P_ID_USR" Type="number" Mode="In" />
+    <Parameter Name="P_RES" Type="varchar2" Mode="Out" />
+  </Function>
+  <Function Name="P_SG_ELIMINAR_CAJA" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="CITYTRUCK">
+    <Parameter Name="P_ID" Type="number" Mode="In" />
+    <Parameter Name="P_ID_USR" Type="number" Mode="In" />
+    <Parameter Name="P_RES" Type="varchar2" Mode="Out" />
+  </Function>
+  <Function Name="P_SG_ELIMINAR_CLIENTE" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="CITYTRUCK">
+    <Parameter Name="P_ID" Type="number" Mode="In" />
+    <Parameter Name="P_ID_USR" Type="number" Mode="In" />
+    <Parameter Name="P_RES" Type="varchar2" Mode="Out" />
+  </Function>
+  <Function Name="P_SG_ELIMINAR_CLIENTE_CONSUMO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="CITYTRUCK">
+    <Parameter Name="P_ID_CLIENTE" Type="number" Mode="In" />
+    <Parameter Name="P_ID_USR" Type="number" Mode="In" />
+    <Parameter Name="P_RES" Type="varchar2" Mode="Out" />
+  </Function>
+  <Function Name="P_SG_ELIMINAR_COMPRA" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="CITYTRUCK">
+    <Parameter Name="P_ID" Type="number" Mode="In" />
+    <Parameter Name="P_ID_USR" Type="number" Mode="In" />
+    <Parameter Name="P_RES" Type="varchar2" Mode="Out" />
+  </Function>
+  <Function Name="P_SG_ELIMINAR_CONSUMO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="CITYTRUCK">
+    <Parameter Name="P_ID_CONSUMO" Type="number" Mode="In" />
+    <Parameter Name="P_ID_USR" Type="number" Mode="In" />
+    <Parameter Name="P_RES" Type="varchar2" Mode="Out" />
+  </Function>
+  <Function Name="P_SG_ELIMINAR_DETALLE_COMPRA" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="CITYTRUCK">
+    <Parameter Name="P_ID" Type="number" Mode="In" />
+    <Parameter Name="P_ID_USR" Type="number" Mode="In" />
+    <Parameter Name="P_RES" Type="varchar2" Mode="Out" />
+  </Function>
+  <Function Name="P_SG_ELIMINAR_EGRESO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="CITYTRUCK">
+    <Parameter Name="P_ID" Type="number" Mode="In" />
+    <Parameter Name="P_ID_USR" Type="number" Mode="In" />
+    <Parameter Name="P_RES" Type="varchar2" Mode="Out" />
+  </Function>
+  <Function Name="P_SG_ELIMINAR_INGRESO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="CITYTRUCK">
+    <Parameter Name="P_ID" Type="number" Mode="In" />
+    <Parameter Name="P_ID_USR" Type="number" Mode="In" />
+    <Parameter Name="P_RES" Type="varchar2" Mode="Out" />
+  </Function>
+  <Function Name="P_SG_ELIMINAR_PERFIL_OPCION" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="CITYTRUCK">
+    <Parameter Name="P_ID_PERFIL" Type="number" Mode="In" />
+    <Parameter Name="P_ID_OPC" Type="number" Mode="In" />
+    <Parameter Name="P_ID_USR" Type="number" Mode="In" />
+    <Parameter Name="P_RES" Type="varchar2" Mode="Out" />
+  </Function>
+  <Function Name="P_SG_ELIMINAR_TRANSFERNCIA" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="CITYTRUCK">
+    <Parameter Name="P_ID" Type="number" Mode="In" />
+    <Parameter Name="P_ID_USR" Type="number" Mode="In" />
+    <Parameter Name="P_RES" Type="varchar2" Mode="Out" />
+  </Function>
+  <Function Name="P_SG_ELIMINAR_VENTA_CREDITO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="CITYTRUCK">
+    <Parameter Name="P_ID_VENTA" Type="number" Mode="In" />
+    <Parameter Name="P_ID_USR" Type="number" Mode="In" />
+    <Parameter Name="P_RES" Type="varchar2" Mode="Out" />
+  </Function>
+  <Function Name="P_SG_GENERAR_AJUSTE_POS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="CITYTRUCK">
+    <Parameter Name="P_FECHA" Type="date" Mode="In" />
+    <Parameter Name="P_ID_USR" Type="number" Mode="In" />
+    <Parameter Name="P_RES" Type="varchar2" Mode="Out" />
+  </Function>
+  <Function Name="P_SG_GENERAR_POS_DIA_MN" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="CITYTRUCK">
+    <Parameter Name="P_FECHA" Type="date" Mode="In" />
+    <Parameter Name="P_ID_USR" Type="number" Mode="In" />
+    <Parameter Name="P_RES" Type="varchar2" Mode="Out" />
+  </Function>
+  <Function Name="P_SG_GENERAR_POS_TURNOS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="CITYTRUCK">
+    <Parameter Name="P_FECHA" Type="date" Mode="In" />
+    <Parameter Name="P_TURNO" Type="varchar2" Mode="In" />
+    <Parameter Name="P_ELIMINAR" Type="number" Mode="In" />
+    <Parameter Name="P_ID_USR" Type="number" Mode="In" />
+    <Parameter Name="P_RES" Type="varchar2" Mode="Out" />
+  </Function>
+  <Function Name="P_SG_GENERAR_VENTAS_DIARIAS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="CITYTRUCK">
+    <Parameter Name="P_FECHA" Type="date" Mode="In" />
+    <Parameter Name="P_TURNO" Type="varchar2" Mode="In" />
+    <Parameter Name="P_RESPONSABLE" Type="varchar2" Mode="In" />
+    <Parameter Name="P_ID_USR" Type="number" Mode="In" />
+    <Parameter Name="P_RES" Type="varchar2" Mode="Out" />
+  </Function>
+  <Function Name="P_SG_GRABAR_LISTAS_ITEMS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="CITYTRUCK">
+    <Parameter Name="P_ID_TABLA" Type="number" Mode="In" />
+    <Parameter Name="P_ID_PADRE" Type="number" Mode="In" />
+    <Parameter Name="P_ID_LISTA" Type="number" Mode="In" />
+    <Parameter Name="P_CODIGO" Type="varchar2" Mode="In" />
+    <Parameter Name="P_VALOR" Type="varchar2" Mode="In" />
+    <Parameter Name="P_ESTADO" Type="char" Mode="In" />
+    <Parameter Name="P_LOGIN_USR" Type="varchar2" Mode="In" />
+    <Parameter Name="P_RES" Type="varchar2" Mode="Out" />
+  </Function>
+  <Function Name="P_SG_GUARDAR_AJUSTE_POS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="CITYTRUCK">
+    <Parameter Name="P_ID_AJUSTE" Type="number" Mode="In" />
+    <Parameter Name="P_ID_POS" Type="number" Mode="In" />
+    <Parameter Name="P_FECHA" Type="date" Mode="In" />
+    <Parameter Name="P_AJUSTE" Type="number" Mode="In" />
+    <Parameter Name="P_ID_USR" Type="number" Mode="In" />
+    <Parameter Name="P_RES" Type="varchar2" Mode="Out" />
+  </Function>
+  <Function Name="P_SG_GUARDAR_AJUSTE_TANQUE" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="CITYTRUCK">
+    <Parameter Name="P_ID_AJUSTE" Type="number" Mode="In" />
+    <Parameter Name="P_ID_COMBUSTIBLE" Type="number" Mode="In" />
+    <Parameter Name="P_FECHA" Type="date" Mode="In" />
+    <Parameter Name="P_OBSERVACION" Type="varchar2" Mode="In" />
+    <Parameter Name="P_CANTIDAD" Type="number" Mode="In" />
+    <Parameter Name="P_ID_USR" Type="number" Mode="In" />
+    <Parameter Name="P_RES" Type="varchar2" Mode="Out" />
+  </Function>
+  <Function Name="P_SG_GUARDAR_AMORTIZACION" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="CITYTRUCK">
+    <Parameter Name="P_ID_A" Type="number" Mode="In" />
+    <Parameter Name="P_ID_CLIENTE" Type="number" Mode="In" />
+    <Parameter Name="P_ID_CAJA" Type="number" Mode="In" />
+    <Parameter Name="P_FECHA" Type="date" Mode="In" />
+    <Parameter Name="P_CONCEPTO" Type="varchar2" Mode="In" />
+    <Parameter Name="P_IMPORTE" Type="number" Mode="In" />
+    <Parameter Name="P_OBSERVACION" Type="varchar2" Mode="In" />
+    <Parameter Name="P_ID_USR" Type="number" Mode="In" />
+    <Parameter Name="P_RES" Type="varchar2" Mode="Out" />
+  </Function>
+  <Function Name="P_SG_GUARDAR_CAJAS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="CITYTRUCK">
+    <Parameter Name="P_ID_CAJA" Type="number" Mode="In" />
+    <Parameter Name="P_CODIGO" Type="varchar2" Mode="In" />
+    <Parameter Name="P_NOMBRE" Type="varchar2" Mode="In" />
+    <Parameter Name="P_NRO_CUENTA" Type="varchar2" Mode="In" />
+    <Parameter Name="P_MONEDA" Type="varchar2" Mode="In" />
+    <Parameter Name="P_DESCRIPCION" Type="varchar2" Mode="In" />
+    <Parameter Name="P_SALDO" Type="number" Mode="In" />
+    <Parameter Name="P_ID_USR" Type="number" Mode="In" />
+    <Parameter Name="P_RES" Type="varchar2" Mode="Out" />
+  </Function>
+  <Function Name="P_SG_GUARDAR_CLIENTES" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="CITYTRUCK">
+    <Parameter Name="P_ID_CLIENTE" Type="number" Mode="In" />
+    <Parameter Name="P_CODIGO" Type="number" Mode="In" />
+    <Parameter Name="P_EMPRESA" Type="varchar2" Mode="In" />
+    <Parameter Name="P_NIT" Type="varchar2" Mode="In" />
+    <Parameter Name="P_CONTACTO" Type="varchar2" Mode="In" />
+    <Parameter Name="P_TELEFONO" Type="varchar2" Mode="In" />
+    <Parameter Name="P_DIR" Type="varchar2" Mode="In" />
+    <Parameter Name="P_LIMITE" Type="number" Mode="In" />
+    <Parameter Name="P_ID_USR" Type="number" Mode="In" />
+    <Parameter Name="P_RES" Type="varchar2" Mode="Out" />
+  </Function>
+  <Function Name="P_SG_GUARDAR_CLIENTE_CONSUMO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="CITYTRUCK">
+    <Parameter Name="P_ID_CLIENTE" Type="number" Mode="In" />
+    <Parameter Name="P_CODIGO" Type="number" Mode="In" />
+    <Parameter Name="P_NOMBRE" Type="varchar2" Mode="In" />
+    <Parameter Name="P_RESPONSABLE" Type="varchar2" Mode="In" />
+    <Parameter Name="P_ID_USR" Type="number" Mode="In" />
+    <Parameter Name="P_RES" Type="varchar2" Mode="Out" />
+  </Function>
+  <Function Name="P_SG_GUARDAR_COMPRAS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="CITYTRUCK">
+    <Parameter Name="P_ID_COMPRA" Type="number" Mode="In" />
+    <Parameter Name="P_FECHA" Type="date" Mode="In" />
+    <Parameter Name="P_ID_COMBUSTIBLE" Type="number" Mode="In" />
+    <Parameter Name="P_ID_CAJA" Type="number" Mode="In" />
+    <Parameter Name="P_CANTIDAD" Type="number" Mode="In" />
+    <Parameter Name="P_NRO_FACTURA" Type="number" Mode="In" />
+    <Parameter Name="P_TIPO" Type="varchar2" Mode="In" />
+    <Parameter Name="P_PRECIO" Type="number" Mode="In" />
+    <Parameter Name="P_IMPORTE" Type="number" Mode="In" />
+    <Parameter Name="P_TOTAL" Type="number" Mode="In" />
+    <Parameter Name="P_ID_USR" Type="number" Mode="In" />
+    <Parameter Name="P_RES" Type="varchar2" Mode="Out" />
+  </Function>
+  <Function Name="P_SG_GUARDAR_CONSUMO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="CITYTRUCK">
+    <Parameter Name="P_ID_CONSUMO" Type="number" Mode="In" />
+    <Parameter Name="P_ID_CLIENTE" Type="number" Mode="In" />
+    <Parameter Name="P_ID_COMBUSTIBLE" Type="number" Mode="In" />
+    <Parameter Name="P_ID_POS" Type="number" Mode="In" />
+    <Parameter Name="P_TIPO" Type="varchar2" Mode="In" />
+    <Parameter Name="P_FECHA" Type="date" Mode="In" />
+    <Parameter Name="P_TURNO" Type="varchar2" Mode="In" />
+    <Parameter Name="P_RESPONSABLE" Type="varchar2" Mode="In" />
+    <Parameter Name="P_PRECIO" Type="number" Mode="In" />
+    <Parameter Name="P_IMPORTE_BS" Type="number" Mode="In" />
+    <Parameter Name="P_IMPORTE_LTS" Type="number" Mode="In" />
+    <Parameter Name="P_ID_USR" Type="number" Mode="In" />
+    <Parameter Name="P_RES" Type="varchar2" Mode="Out" />
+  </Function>
+  <Function Name="P_SG_GUARDAR_DETALLE_COMPRA" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="CITYTRUCK">
+    <Parameter Name="P_ID_DETALLE" Type="number" Mode="In" />
+    <Parameter Name="P_ID_COMPRA" Type="number" Mode="In" />
+    <Parameter Name="P_DETALLE" Type="varchar2" Mode="In" />
+    <Parameter Name="P_IMPORTE" Type="number" Mode="In" />
+    <Parameter Name="P_ID_USR" Type="number" Mode="In" />
+    <Parameter Name="P_RES" Type="varchar2" Mode="Out" />
+  </Function>
+  <Function Name="P_SG_GUARDAR_EGRESOS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="CITYTRUCK">
+    <Parameter Name="P_ID_EGRESO" Type="number" Mode="In" />
+    <Parameter Name="P_FECHA" Type="date" Mode="In" />
+    <Parameter Name="P_CONCEPTO" Type="varchar2" Mode="In" />
+    <Parameter Name="P_ID_CAJA" Type="number" Mode="In" />
+    <Parameter Name="P_IMPORTE" Type="number" Mode="In" />
+    <Parameter Name="P_ID_USR" Type="number" Mode="In" />
+    <Parameter Name="P_RES" Type="varchar2" Mode="Out" />
+  </Function>
+  <Function Name="P_SG_GUARDAR_FACTURA_MN" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="CITYTRUCK">
+    <Parameter Name="P_ID_FACTURA" Type="number" Mode="In" />
+    <Parameter Name="P_ID_COMBUSTIBLE" Type="number" Mode="In" />
+    <Parameter Name="P_FECHA" Type="date" Mode="In" />
+    <Parameter Name="P_IMPORTE" Type="number" Mode="In" />
+    <Parameter Name="P_PRECIO" Type="number" Mode="In" />
+    <Parameter Name="P_LITROS" Type="number" Mode="In" />
+    <Parameter Name="P_ID_USR" Type="number" Mode="In" />
+    <Parameter Name="P_RES" Type="varchar2" Mode="Out" />
+  </Function>
+  <Function Name="P_SG_GUARDAR_INGRESOS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="CITYTRUCK">
+    <Parameter Name="P_ID_INGRESO" Type="number" Mode="In" />
+    <Parameter Name="P_FECHA" Type="date" Mode="In" />
+    <Parameter Name="P_CONCEPTO" Type="varchar2" Mode="In" />
+    <Parameter Name="P_ID_CAJA" Type="number" Mode="In" />
+    <Parameter Name="P_IMPORTE" Type="number" Mode="In" />
+    <Parameter Name="P_ID_USR" Type="number" Mode="In" />
+    <Parameter Name="P_ID_AMORTIZACION" Type="number" Mode="In" />
+    <Parameter Name="P_RES" Type="varchar2" Mode="Out" />
+  </Function>
+  <Function Name="P_SG_GUARDAR_PERFIL" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="CITYTRUCK">
+    <Parameter Name="P_ID_PERFIL" Type="number" Mode="In" />
+    <Parameter Name="P_NOMBRE" Type="varchar2" Mode="In" />
+    <Parameter Name="P_DESCRIPCION" Type="varchar2" Mode="In" />
+    <Parameter Name="P_ID_USR" Type="number" Mode="In" />
+    <Parameter Name="P_RES" Type="varchar2" Mode="Out" />
+  </Function>
+  <Function Name="P_SG_GUARDAR_PERFIL_OPCION" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="CITYTRUCK">
+    <Parameter Name="P_ID_PERFIL" Type="number" Mode="In" />
+    <Parameter Name="P_ID_OPC" Type="number" Mode="In" />
+    <Parameter Name="P_ID_USR" Type="number" Mode="In" />
+    <Parameter Name="P_RES" Type="varchar2" Mode="Out" />
+  </Function>
+  <Function Name="P_SG_GUARDAR_POS_DIA_MN" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="CITYTRUCK">
+    <Parameter Name="P_ID_POS_TURNO" Type="number" Mode="In" />
+    <Parameter Name="P_ID_POS" Type="number" Mode="In" />
+    <Parameter Name="P_FECHA" Type="date" Mode="In" />
+    <Parameter Name="P_ENT_LITTER" Type="number" Mode="In" />
+    <Parameter Name="P_SAL_LITTER" Type="number" Mode="In" />
+    <Parameter Name="P_TOTAL" Type="number" Mode="In" />
+    <Parameter Name="P_ID_USR" Type="number" Mode="In" />
+    <Parameter Name="P_RES" Type="varchar2" Mode="Out" />
+  </Function>
+  <Function Name="P_SG_GUARDAR_POS_TURNO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="CITYTRUCK">
+    <Parameter Name="P_ID_POS_TURNO" Type="number" Mode="In" />
+    <Parameter Name="P_ID_POS" Type="number" Mode="In" />
+    <Parameter Name="P_TURNO" Type="varchar2" Mode="In" />
+    <Parameter Name="P_FECHA" Type="date" Mode="In" />
+    <Parameter Name="P_ENT_LITTER" Type="number" Mode="In" />
+    <Parameter Name="P_SAL_LITTER" Type="number" Mode="In" />
+    <Parameter Name="P_TOTAL" Type="number" Mode="In" />
+    <Parameter Name="P_ID_USR" Type="number" Mode="In" />
+    <Parameter Name="P_RES" Type="varchar2" Mode="Out" />
+  </Function>
+  <Function Name="P_SG_GUARDAR_TRANFERENCIA" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="CITYTRUCK">
+    <Parameter Name="P_ID_TRANSFERENCIA" Type="number" Mode="In" />
+    <Parameter Name="P_ID_CAJA_ORIGEN" Type="number" Mode="In" />
+    <Parameter Name="P_ID_CAJA_DESTINO" Type="number" Mode="In" />
+    <Parameter Name="P_FECHA" Type="date" Mode="In" />
+    <Parameter Name="P_CONCEPTO" Type="varchar2" Mode="In" />
+    <Parameter Name="P_IMPORTE_BS" Type="number" Mode="In" />
+    <Parameter Name="P_OBSERVACION" Type="varchar2" Mode="In" />
+    <Parameter Name="P_ID_USR" Type="number" Mode="In" />
+    <Parameter Name="P_RES" Type="varchar2" Mode="Out" />
+  </Function>
+  <Function Name="P_SG_GUARDAR_USUARIO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="CITYTRUCK">
+    <Parameter Name="P_ID_USUARIO" Type="number" Mode="In" />
+    <Parameter Name="P_LOGIN" Type="varchar2" Mode="In" />
+    <Parameter Name="P_NOMBRE" Type="varchar2" Mode="In" />
+    <Parameter Name="P_EMAIL" Type="varchar2" Mode="In" />
+    <Parameter Name="P_ID_PERFIL" Type="number" Mode="In" />
+    <Parameter Name="P_ESTADO" Type="char" Mode="In" />
+    <Parameter Name="P_CONTRASENA" Type="varchar2" Mode="In" />
+    <Parameter Name="P_ID_USR" Type="number" Mode="In" />
+    <Parameter Name="P_RES" Type="varchar2" Mode="Out" />
+  </Function>
+  <Function Name="P_SG_GUARDAR_VENTA_CREDITO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="CITYTRUCK">
+    <Parameter Name="P_ID_VENTA" Type="number" Mode="In" />
+    <Parameter Name="P_ID_CLIENTE" Type="number" Mode="In" />
+    <Parameter Name="P_ID_COMBUSTIBLE" Type="number" Mode="In" />
+    <Parameter Name="P_FECHA" Type="date" Mode="In" />
+    <Parameter Name="P_TURNO" Type="varchar2" Mode="In" />
+    <Parameter Name="P_RESPONSABLE" Type="varchar2" Mode="In" />
+    <Parameter Name="P_PRECIO" Type="number" Mode="In" />
+    <Parameter Name="P_IMPORTE_BS" Type="number" Mode="In" />
+    <Parameter Name="P_IMPORTE_LTS" Type="number" Mode="In" />
+    <Parameter Name="P_ID_USR" Type="number" Mode="In" />
+    <Parameter Name="P_RES" Type="varchar2" Mode="Out" />
+  </Function>
+  <Function Name="P_SG_GUARDAR_VENTA_MN_VACIO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="CITYTRUCK">
+    <Parameter Name="P_FECHA" Type="date" Mode="In" />
+    <Parameter Name="P_ID_USR" Type="number" Mode="In" />
+    <Parameter Name="P_RES" Type="varchar2" Mode="Out" />
+  </Function>
+  <Function Name="P_SG_OBTENER_ULTIMO_REG" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="CITYTRUCK">
+    <Parameter Name="P_TURNO" Type="varchar2" Mode="Out" />
+    <Parameter Name="P_FECHA" Type="varchar2" Mode="Out" />
+    <Parameter Name="P_RES" Type="varchar2" Mode="Out" />
+  </Function>
+  <Function Name="P_SG_OBTENER_ULTIMO_REG_MN" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="CITYTRUCK">
+    <Parameter Name="P_FECHA" Type="varchar2" Mode="Out" />
+    <Parameter Name="P_RES" Type="varchar2" Mode="Out" />
+  </Function>
+  <Function Name="P_SG_SALDOS_MITTERS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="CITYTRUCK">
+    <Parameter Name="P_RES" Type="varchar2" Mode="Out" />
+  </Function>
+  <Function Name="P_SG_VERIFICAR_EDICION" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="CITYTRUCK">
+    <Parameter Name="P_FECHA" Type="date" Mode="In" />
+    <Parameter Name="P_TURNO" Type="varchar2" Mode="In" />
+    <Parameter Name="P_RES" Type="varchar2" Mode="Out" />
+  </Function>
+</Schema>

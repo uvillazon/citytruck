@@ -1,0 +1,94 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using CityTruck.Model;
+
+namespace CityTruck.WebSite.Models
+{
+    public class MovimientoProductoModel
+    {
+        public string PRODUCTO { get; set; }
+        public string ANIO { get; set; }
+        public string MES { get; set; }
+        public string PROVEEDOR { get; set; }
+        public string TELEFONO { get; set; }
+        public string DIA { get; set; }
+        public decimal SALDO_ANTERIOR { get; set; }
+        public decimal NRO_FACTURA { get; set; }
+        public decimal COMPRA { get; set; }
+        public decimal VENTA { get; set; }
+        public decimal SALDO_ACTUAL { get; set; }
+        public decimal MANGUERA1 { get; set; }
+        public decimal MANGUERA2 { get; set; }
+        public decimal MANGUERA3 { get; set; }
+        public decimal MANGUERA4 { get; set; }
+        public decimal MANGUERA5 { get; set; }
+        public decimal MANGUERA6 { get; set; }
+        public DateTime FECHA { get; set; }
+      
+       
+    }
+    public class EstadoResultadoModel {
+        public string MES { get; set; }
+        public decimal UTILIDA_BRUTA_NETA { get; set; }
+        public DateTime FECHA { get; set; }
+        public string DETALLE { get; set; }
+        public decimal TOTAL { get; set; }
+
+    }
+    public class UtilidadVentaBruta {
+        public decimal ING_DIESEL_VALORADO { get; set; }
+        public decimal ING_GASOLINA_VALORADO { get; set; }
+        public decimal EGR_DIESEL_VALORADO { get; set; }
+        public decimal EGR_GASOLINA_VALORADO { get; set; }
+        public decimal EXC_DIESEL_VALORADO { get; set; }
+        public decimal EXC_GASOLINA_VALORADO { get; set; }
+        public decimal PER_DIESEL_VALORADO { get; set; }
+        public decimal PER_GASOLINA_VALORADO { get; set; }
+
+        public decimal ING_DIESEL_FISICO { get; set; }
+        public decimal ING_GASOLINA_FISICO { get; set; }
+        public decimal EGR_DIESEL_FISICO { get; set; }
+        public decimal EGR_GASOLINA_FISICO { get; set; }
+        public decimal EXC_DIESEL_FISICO { get; set; }
+        public decimal EXC_GASOLINA_FISICO { get; set; }
+        public decimal PER_DIESEL_FISICO { get; set; }
+        public decimal PER_GASOLINA_FISICO { get; set; }
+
+    }
+    public class UtilidadVentaEstimada {
+        public decimal ING_DIESEL_VALORADO { get; set; }
+        public decimal ING_GASOLINA_VALORADO { get; set; }
+        public decimal EGR_DIESEL_VALORADO { get; set; }
+        public decimal EGR_GASOLINA_VALORADO { get; set; }
+        public decimal EXC_DIESEL_VALORADO { get; set; }
+        public decimal EXC_GASOLINA_VALORADO { get; set; }
+        public decimal PER_DIESEL_VALORADO { get; set; }
+        public decimal PER_GASOLINA_VALORADO { get; set; }
+        public decimal TOTAL_INGRESO { get; set; }
+        public decimal TOTAL_EGRESO { get; set; }
+    }
+    public class UtilidadBrutaReal
+    {
+        public decimal ING_DIESEL_VALORADO { get; set; }
+        //public decimal ING_INV_DIESEL_INICIAL { get; set; }
+        public decimal ING_GASOLINA_VALORADO { get; set; }
+        public decimal EGR_DIESEL_VALORADO { get; set; }
+        public decimal EGR_GASOLINA_VALORADO { get; set; }
+        public decimal EXC_DIESEL_VALORADO { get; set; }
+        public decimal EXC_GASOLINA_VALORADO { get; set; }
+        public decimal PER_DIESEL_VALORADO { get; set; }
+        public decimal PER_GASOLINA_VALORADO { get; set; }
+
+        public decimal ING_DIESEL_FISICO { get; set; }
+        public decimal ING_GASOLINA_FISICO { get; set; }
+        public decimal EGR_DIESEL_FISICO { get; set; }
+        public decimal EGR_GASOLINA_FISICO { get; set; }
+        public decimal EXC_DIESEL_FISICO { get; set; }
+        public decimal EXC_GASOLINA_FISICO { get; set; }
+        public decimal PER_DIESEL_FISICO { get; set; }
+        public decimal PER_GASOLINA_FISICO { get; set; }
+
+    }
+}

@@ -1,0 +1,5 @@
+E:\Proyecto\CityTruck\CityTruck.Model\bin\Debug\CityTruck.Model.dll.config
+E:\Proyecto\CityTruck\CityTruck.Model\bin\Debug\CityTruck.Model.dll
+E:\Proyecto\CityTruck\CityTruck.Model\bin\Debug\CityTruck.Model.pdb
+E:\Proyecto\CityTruck\CityTruck.Model\obj\Debug\CityTruck.Model.dll
+E:\Proyecto\CityTruck\CityTruck.Model\obj\Debug\CityTruck.Model.pdb

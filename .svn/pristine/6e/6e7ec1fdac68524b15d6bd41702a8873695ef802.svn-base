@@ -1,0 +1,6 @@
+﻿Ext.define('App.Store.CuentasPC.CuentasPC', {
+    extend: 'App.Config.Abstract.Store',
+    model: 'App.Model.CuentasPC.CuentasPC',
+    url: 'Ingresos/ObtenerIngresosPaginado',
+    sortProperty: 'FECHA'
+});

@@ -1,0 +1,56 @@
+﻿Ext.define("App.View.Cajas.GridKardexCaja", {
+    extend: "Ext.grid.Panel",
+    title: 'Kardex Caja',
+    criterios: true,
+    textBusqueda: 'Buscar Caja',
+    imprimir: false,
+    width: 550,
+    height: 350,
+    equipo: 'Kardex',
+    win: null,
+    formulario: null,
+    id_caja: '',
+    imagenes: true,
+    initComponent: function () {
+        var me = this;
+        if (me.opcion == "GridKardexCaja") {
+            me.CargarGridKardexCaja(me.id_caja);
+        }
+        else {
+            alert("No selecciono ninguna opcion");
+        }
+        this.callParent(arguments);
+    },
+    CargarGridKardexCaja: function (id_caja) {
+        var me = this;
+        var fecha_actual = new Date();
+        me.store = Ext.create("App.Store.Cajas.Kardex");
+        me.store.setExtraParams({ID_CAJA : id_caja});
+        me.store.load();
+        //me.CargarComponentes();
+
+
+        this.bbar = Ext.create('Ext.PagingToolbar', {
+            store: me.store,
+            displayInfo: true,
+            displayMsg: 'Desplegando {0} - {1} of {2}',
+            emptyMsg: "No existen " + me.equipo + "."
+
+        });
+
+        me.columns = [
+            { xtype: "rownumberer", width: 30, sortable: false },
+            { header: "Nro <br>Comprobante", width: 80, sortable: false, dataIndex: "NRO_COMP" },
+            { header: "Fecha", width: 100, sortable: true, dataIndex: "FECHA", renderer: Ext.util.Format.dateRenderer('d/m/Y') },
+            { header: "Detalle", width: 245, sortable: false, dataIndex: "DETALLE" },
+            { header: "Ingreso", width: 80, sortable: false, dataIndex: "INGRESO", align: "right" },
+            { header: "Egreso", width: 80, sortable: false, dataIndex: "EGRESO", align: "right" },
+            { header: "Saldo", width: 80, sortable: false, dataIndex: "SALDO", align: "right" }
+
+        ];
+
+        this.dockedItems = me.toolBar;
+        me.dock = this.dockedItems;
+
+    }
+});

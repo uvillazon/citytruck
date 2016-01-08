@@ -1,0 +1,75 @@
+﻿Ext.define("App.View.CuentasPC.FormCuentaPC", {
+    extend: "App.Config.Abstract.Form",
+    columns: 1,
+    initComponent: function () {
+        var me = this;
+        me.CargarComponentes();
+        me.cargarEventos();
+        this.callParent(arguments);
+    },
+    
+    CargarComponentes: function () {
+        var me = this;
+        me.txt_codigo = Ext.create("App.Config.Componente.TextFieldBase", {
+            fieldLabel: "C\u00F3digo",
+            readOnly : true,
+            name: "CODIGO"
+
+        });
+
+        me.txt_empresa = Ext.create("App.Config.Componente.TextFieldBase", {
+            fieldLabel: "Empresa",
+            name: "EMPRESA",
+            allowBlank: false
+        });
+
+        me.num_nit = Ext.create("App.Config.Componente.NumberFieldBase", {
+            fieldLabel: "NIT",
+            name: "NIT",
+            maxValue: 999999999,
+            allowBlank: false
+        });
+
+        me.txt_contacto = Ext.create("App.Config.Componente.TextFieldBase", {
+            fieldLabel: "Contacto",
+            name: "CONTACTO",
+            allowBlank: false
+        });
+
+        me.txt_telf = Ext.create("App.Config.Componente.TextFieldBase", {
+            fieldLabel: "Tel\u00E9fono",
+            name: "TELEFONO",
+            allowBlank: false
+        });
+
+        me.txt_dir = Ext.create("App.Config.Componente.TextFieldBase", {
+            fieldLabel: "Direcci\u00F3n",
+            name: "DIRECCION",
+            allowBlank: false
+        });
+
+        me.num_lim_credito = Ext.create("App.Config.Componente.NumberFieldBase", {
+            fieldLabel: "L\u00CDmite de Cr\u00E9dito (BOB)",
+            name: "LIMITE",
+            allowDecimals: true,
+            maxValue: 999999999
+        });
+
+        me.items = [
+            me.txt_codigo,
+            me.txt_empresa,
+            me.num_nit,
+            me.txt_contacto,
+            me.txt_telf,
+            me.txt_dir,
+            me.num_lim_credito
+        ];
+       
+      
+
+    },
+    cargarEventos : function(){
+        var me = this;
+
+    }
+});

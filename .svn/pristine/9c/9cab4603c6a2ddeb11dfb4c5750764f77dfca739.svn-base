@@ -1,0 +1,33 @@
+﻿Ext.define("App.View.Clientes.GridClientes", {
+    extend: "App.Config.Abstract.Grid",
+    title: 'Clientes Registrados',
+    criterios: true,
+    textBusqueda: 'cliente',
+    imprimir: true,
+    width: 550,
+    height: 350,
+    equipo: 'Clientes',
+    initComponent: function () {
+        var me = this;
+        if (me.opcion == "GridClientes") {
+            me.CargaGridCajas();
+        }
+        else {
+            alert("No selecciono ninguna opcion");
+        }
+        this.callParent(arguments);
+    },
+    CargaGridCajas: function () {
+        var me = this;
+        me.store = Ext.create("App.Store.Clientes.Clientes");
+        me.CargarComponentes();
+        me.columns = [
+            { xtype: "rownumberer", width: 30, sortable: false },
+            { header: "Codigo<br>Cliente", width: 70, sortable: true, dataIndex: "CODIGO" },
+            { header: "Nombre", width: 200, sortable: true, dataIndex: "EMPRESA" },
+            { header: "Saldo", width: 100, sortable: true, dataIndex: "SALDO" },
+            { header: "Consumo", width: 150, sortable: true, dataIndex: "CONSUMO" },
+        ];
+
+    }
+});

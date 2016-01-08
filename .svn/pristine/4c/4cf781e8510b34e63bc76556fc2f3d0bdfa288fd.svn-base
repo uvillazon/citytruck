@@ -1,0 +1,82 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{F0C1CAE8-3BCD-4556-8101-486DB23D5CED}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>CityTruck.Business</RootNamespace>
+    <AssemblyName>CityTruck.Business</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="SG_CLIENTESManager.cs" />
+    <Compile Include="SG_COMBUSTIBLESManager.cs" />
+    <Compile Include="SG_COMPRASManager.cs" />
+    <Compile Include="SG_INGRESOSManager.cs" />
+    <Compile Include="SG_CAJASManager.cs" />
+    <Compile Include="SG_POS_TURNOSManager.cs" />
+    <Compile Include="SG_LISTAS_ITEMSManager.cs" />
+    <Compile Include="SG_VENTAS_DIARIASManager.cs" />
+    <Compile Include="SG_USUARIOSManager.cs" />
+    <Compile Include="SG_MENU_OPCIONESManager.cs" />
+    <Compile Include="Interfaces\ISG_LISTASManager.cs" />
+    <Compile Include="SG_LISTASManager.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CityTruck.Common.Data\CityTruck.Common.Data.csproj">
+      <Project>{0BA5A0EB-0CBD-44BB-B909-C06CA300156A}</Project>
+      <Name>CityTruck.Common.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CityTruck.Common\CityTruck.Common.csproj">
+      <Project>{6B126C71-AF1D-445A-A6B5-4659D8F99BB2}</Project>
+      <Name>CityTruck.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CityTruck.Model\CityTruck.Model.csproj">
+      <Project>{9E4C03D3-70F7-42AE-86C6-D0B0F83AFF7B}</Project>
+      <Name>CityTruck.Model</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

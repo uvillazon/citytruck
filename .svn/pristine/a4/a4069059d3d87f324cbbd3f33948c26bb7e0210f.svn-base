@@ -1,0 +1,55 @@
+﻿Ext.define("App.View.Tanques.Principal", {
+    extend: "App.Config.Abstract.PanelPrincipal",
+    controlador: 'Tanques',
+    accionGrabar: 'GrabarTanques',
+    view: '',
+    initComponent: function () {
+        var me = this;
+        me.CargarComponentes();
+        this.callParent(arguments);
+    },
+    CargarComponentes: function () {
+        var me = this;
+        me.grid = Ext.create('App.View.Tanques.GridTanques', {
+            region: 'center',
+            height: 350,
+            imagenes: false,
+            opcion: 'GridTanques'
+        });
+        me.items = [me.grid
+        ];
+        me.toolbar = Funciones.CrearMenuBar();
+
+        Funciones.CrearMenu('btn_Imprimir', 'Imprimir', 'printer', me.EventosTanques, me.toolbar, this);
+        Funciones.CrearMenu('btn_Imprimirsa', 'Imprimir S/A', 'printer', me.EventosTanques, me.toolbar, this);
+        Funciones.CrearMenu('btn_Detalle', 'Detalle', 'report', me.EventosTanques, me.toolbar, this);
+        Funciones.CrearMenu('btn_AjustarTanque', 'Ajustar', Constantes.ICONO_CREAR, me.EventosTanques, me.toolbar, this);
+        Funciones.CrearMenu('btn_RepAjustes', 'Rep. Ajustes', 'report', me.EventosTanques, me.toolbar, this);
+        //        Funciones.CrearMenu('btn_PlanillaRelevamiento', 'Planilla para Relevamiento', Constantes.ICONO_VER, me.EventosPlanilla, me.toolbar, this);
+        me.grid.addDocked(me.toolbar, 1);
+        //        me.grid.on('cellclick', me.CargarDatos, this);
+
+    },
+    EventosTanques: function (btn) {
+        var me = this;
+        if (btn.getItemId() == "btn_AjustarTanque") {
+            if (me.winAjustarTanque == null) {
+                me.winAjustarTanque = Ext.create("App.Config.Abstract.Window", { botones: true, textGuardar: 'Guardar' });
+                me.formAjustarTanque = Ext.create("App.View.Tanques.FormAjustarTanque", {
+                    columns: 1,
+                    title: 'Formulario de Ajuste de Tanques ',
+                    botones: false
+                })
+
+                me.winAjustarTanque.add(me.formAjustarTanque);
+                me.winAjustarTanque.show();
+            } else {
+                me.formAjustarTanque.getForm().reset();
+                me.winAjustarTanque.show();
+            }
+        } else {
+            Ext.Msg.alert("Aviso", "No Existe el botton");
+        }
+    }
+
+});

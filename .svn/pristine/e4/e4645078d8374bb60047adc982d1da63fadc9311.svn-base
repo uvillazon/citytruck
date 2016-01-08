@@ -1,0 +1,17 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using CityTruck.Common;
+using CityTruck.Model;
+using CityTruck.Services.Model;
+using System.Linq.Expressions;
+
+namespace CityTruck.Services.Interfaces
+{
+    public interface IUsuariosServices
+    {
+        IEnumerable<SG_USUARIOS> ObtenerUsuariosPorCriterio(Expression<Func<SG_USUARIOS, bool>> criterio);
+        //SG_USUARIOS
+    }
+}

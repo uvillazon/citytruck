@@ -1,0 +1,400 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using CityTruck.Model;
+using CityTruck.Services;
+using CityTruck.Services.Interfaces;
+using CityTruck.WebSite.Models;
+
+namespace CityTruck.WebSite.Reportes
+{
+    public class SourceReport
+    {
+        public IEnumerable<SG_KARDEX_EFECTIVO> ReporteKardexEfectivo()
+        {
+
+            IEnumerable<SG_KARDEX_EFECTIVO> result = null;
+            var servicio = new KardexEfectivoServices();
+            result = servicio.ObtenerKardexEfectivo(x => x.ID_CAJA == 1);
+            return result;
+        }
+        public IEnumerable<MovimientoProductoModel> ReporteSustanciasControladas(string ANIO = null, string MES = null, int ID_COMBUSTIBLE = 0)
+        {
+            List<MovimientoProductoModel> result = new List<MovimientoProductoModel>();
+            string date = string.Format("01/{0}/{1}", MES, ANIO);
+            DateTime dt = Convert.ToDateTime(date);
+            var _serKcm = new KardexCombustibleServices();
+            var _serPos = new PosTurnosServices();
+            var _serAju = new AjustePosServices();
+            _serKcm.SP_ActualizarKardexMN(dt, 0);
+            var kardex = _serKcm.ObtenerKardexMNCombustible(MES, ANIO);
+            var posMes = _serPos.ObtenerPosDiaPorFecha(ANIO, MES);
+            var ajusteposMes = _serAju.ObtenerAjustePosPorFecha(ANIO, MES);
+            var grupo = kardex.GroupBy(x => x.FECHA);
+            var combustible = kardex.Where(x => x.SG_COMBUSTIBLES.ID_COMBUSTIBLE == ID_COMBUSTIBLE);
+            foreach (var item in grupo)
+            {
+                MovimientoProductoModel venDia = new MovimientoProductoModel
+                {
+                    FECHA = item.Key,
+                    //SALDO_INICIAL_DIE = diesel.where(y=>y.FECHA == item.Key).fi
+                };
+                var com = combustible.Where(x => x.FECHA == item.Key).FirstOrDefault();
+                var pos = posMes.Where(x => x.FECHA == item.Key && x.SG_POS.ID_COMBUSTIBLE == ID_COMBUSTIBLE).OrderBy(y=>y.ID_POS);
+                var posajuste = ajusteposMes.Where(x => x.FECHA == item.Key && x.SG_POS.ID_COMBUSTIBLE == ID_COMBUSTIBLE).OrderBy(y => y.ID_POS);
+                venDia.PRODUCTO = com.SG_COMBUSTIBLES.DESCRIPCION;
+                venDia.MES = com.FECHA.ToString("MMMM").ToUpper();
+                venDia.SALDO_ANTERIOR = com.SALDO_INICIAL;
+                venDia.COMPRA = (decimal)com.COMPRAS;
+                venDia.VENTA = (decimal)com.VENTAS;
+                venDia.SALDO_ACTUAL = (decimal)com.ACUMULADOS;
+                venDia.PROVEEDOR = "YPFB";
+                venDia.TELEFONO = "4703510";
+                int cont = 0;
+                foreach (var puntos in pos)
+                {
+                    if (cont == 0)
+                    {
+                        venDia.MANGUERA1 = puntos.TOTAL;
+                    }
+                    else if (cont == 1)
+                    {
+                        venDia.MANGUERA2 = puntos.TOTAL;
+                    }
+                    else if (cont == 2)
+                    {
+                        venDia.MANGUERA3 = puntos.TOTAL;
+                    }
+                    else if (cont == 3)
+                    {
+                        venDia.MANGUERA4 = puntos.TOTAL;
+                    }
+                    else
+                    {
+                        cont++;
+                    }
+                    cont++;
+                }
+                cont = 0;
+                foreach (var puntos in posajuste)
+                {
+                    if (cont == 0)
+                    {
+                        venDia.MANGUERA1 =(decimal)(venDia.MANGUERA1 + puntos.AJUSTE);
+                    }
+                    else if (cont == 1)
+                    {
+                        venDia.MANGUERA2 = (decimal)(venDia.MANGUERA2 + puntos.AJUSTE);
+                    }
+                    else if (cont == 2)
+                    {
+                        venDia.MANGUERA3 = (decimal)(venDia.MANGUERA3 + puntos.AJUSTE);
+                    }
+                    else if (cont == 3)
+                    {
+                        venDia.MANGUERA4 = (decimal)(venDia.MANGUERA4 + puntos.AJUSTE);
+                    }
+                    else
+                    {
+                        cont++;
+                    }
+                    cont++;
+                }
+                result.Add(venDia);
+            }
+            result = result.OrderBy(x => x.FECHA).ToList();
+            return result;
+        }
+        public IEnumerable<EstadoResultadoModel> ReporteEstadoResultado(string ANIO = null, string MES = null)
+        {
+            List<EstadoResultadoModel> result = new List<EstadoResultadoModel>();
+            var servicio = new IngresosServices();
+            var puntosVentaService = new PosTurnosServices();
+            var egresos = servicio.ObtenerEgresosPaginado(null, ANIO, MES);
+            var ventas = puntosVentaService.ObtenerPosTurnosPorFecha(ANIO, MES);
+            var totales = ventas.GroupBy(x => x.FECHA).Select(y => new { FECHA = y.Key, TOTALVENTA = y.Sum(x => x.TOTAL_VENTA), TOTALCOSTO = y.Sum(x => x.TOTAL_COSTO) });
+            decimal? totalventa = 0;
+            decimal? totalcosto = 0;
+            foreach (var item in totales)
+            {
+                totalventa = totalventa + item.TOTALVENTA;
+                totalcosto = totalcosto + item.TOTALCOSTO;
+            }
+            foreach (var item in egresos.OrderBy(x => x.FECHA))
+            {
+                EstadoResultadoModel egre = new EstadoResultadoModel()
+                {
+                    FECHA = item.FECHA,
+                    DETALLE = item.CONCEPTO,
+                    //MES =  item.FECHA.ToString("MMMM").ToUpper();
+                    TOTAL = item.IMPORTE,
+                    UTILIDA_BRUTA_NETA = (decimal)(totalventa - totalcosto)
+                };
+                egre.MES = item.FECHA.ToString("MMMM").ToUpper();
+                result.Add(egre);
+            }
+            return result;
+        }
+        public IEnumerable<UtilidadVentaBruta> ReporteUtilidadVentaBruta(string ANIO = null, string MES = null)
+        {
+            List<UtilidadVentaBruta> result = new List<UtilidadVentaBruta>();
+            UtilidadVentaBruta result1 = new UtilidadVentaBruta()
+            {
+                ING_DIESEL_VALORADO = 1284385.28m,
+                ING_GASOLINA_VALORADO = 605709.08m,
+                EGR_DIESEL_VALORADO = 1222237.60m,
+                EGR_GASOLINA_VALORADO = 570079.14m,
+                EXC_DIESEL_VALORADO = 0,
+                EXC_GASOLINA_VALORADO = 0,
+                PER_DIESEL_VALORADO = 0,
+                PER_GASOLINA_VALORADO = 0,
+                ING_DIESEL_FISICO = 345264.86m,
+                ING_GASOLINA_FISICO = 161954.30m,
+                EGR_DIESEL_FISICO = 345264.86m,
+                EGR_GASOLINA_FISICO = 161954.30m,
+                EXC_DIESEL_FISICO = 0,
+                EXC_GASOLINA_FISICO = 0,
+                PER_DIESEL_FISICO = 0,
+                PER_GASOLINA_FISICO = 0
+
+            };
+            var puntosVentaService = new PosTurnosServices();
+            var ventas = puntosVentaService.ObtenerPosTurnosPorFecha(ANIO, MES);
+            var totales = ventas.GroupBy(x => new { x.FECHA, x.SG_POS.ID_COMBUSTIBLE }).Select(y => new { FECHA = y.Key.FECHA, ID_COMBUSTIBLE = y.Key.ID_COMBUSTIBLE, TOTALVENTA = y.Sum(x => x.TOTAL_VENTA), TOTALCOSTO = y.Sum(x => x.TOTAL_COSTO), TOTAL_CANTIDAD = y.Sum(x => x.TOTAL) });
+            decimal? totalventaGas = 0;
+            decimal? totalcostoGas = 0;
+            decimal? totalCantidadGas = 0;
+            decimal? totalventaDie = 0;
+            decimal? totalCantidadDie = 0;
+            decimal? totalcostoDie = 0;
+            foreach (var item in totales)
+            {
+                if (item.ID_COMBUSTIBLE == 1)
+                {
+                    totalventaGas = totalventaGas + item.TOTALVENTA;
+                    totalCantidadGas = totalCantidadGas + item.TOTAL_CANTIDAD;
+                    totalcostoGas = totalcostoGas + item.TOTALCOSTO;
+
+                }
+                else {
+                    totalventaDie = totalventaDie + item.TOTALVENTA;
+                    totalCantidadDie = totalCantidadDie + item.TOTAL_CANTIDAD;
+                    totalcostoDie = totalcostoDie + item.TOTALCOSTO;
+                }
+                
+            }
+            result1.ING_DIESEL_FISICO = (decimal)totalCantidadDie;
+            result1.ING_GASOLINA_FISICO = (decimal)totalCantidadGas;
+            result1.ING_DIESEL_VALORADO = (decimal)totalventaDie;
+            result1.ING_GASOLINA_VALORADO = (decimal)totalventaGas;
+            result1.EGR_GASOLINA_FISICO = (decimal)totalCantidadGas;
+            result1.EGR_DIESEL_FISICO = (decimal)totalCantidadDie;
+            result1.EGR_DIESEL_VALORADO = (decimal)totalcostoDie;
+            result1.EGR_GASOLINA_VALORADO = (decimal)totalcostoGas;
+            //result1.ING_DIESEL_FISICO
+            result.Add(result1);
+            return result;
+        }
+        public IEnumerable<UtilidadVentaBruta> ReporteUtilidadVentaEstimada(string ANIO = null, string MES = null)
+        {
+            List<UtilidadVentaBruta> result = new List<UtilidadVentaBruta>();
+            UtilidadVentaBruta result1 = new UtilidadVentaBruta()
+            {
+                EXC_DIESEL_VALORADO = 0,
+                EXC_GASOLINA_VALORADO = 0,
+                PER_DIESEL_VALORADO = 0,
+                PER_GASOLINA_VALORADO = 0,
+                EXC_DIESEL_FISICO = 0,
+                EXC_GASOLINA_FISICO = 0,
+                PER_DIESEL_FISICO = 0,
+                PER_GASOLINA_FISICO = 0
+
+            };
+            var puntosVentaService = new PosTurnosServices();
+            var comprasService = new ComprasServices();
+            var ventas = puntosVentaService.ObtenerPosTurnosPorFecha(ANIO, MES);
+            var compras = comprasService.ObtenerComprasPaginado(null, ANIO, MES);
+            decimal? totalegresoGas = 0;
+            decimal? totalcostoegresoGas = 0;
+            decimal? totalegresoDie = 0;
+            decimal? totalcostoegresoDie = 0;
+            foreach (var item in compras)
+            {
+                if (item.ID_COMBUSTIBLE == 1)
+                {
+                    totalegresoGas = totalegresoGas + item.CANTIDAD;
+                    totalcostoegresoGas = totalcostoegresoGas + (item.CANTIDAD * item.PRECIO);
+
+                }
+                else
+                {
+                    totalegresoDie = totalegresoDie + item.CANTIDAD;
+                    totalcostoegresoDie = totalcostoegresoDie + (item.CANTIDAD * item.PRECIO);
+                }
+            }
+            result1.EGR_GASOLINA_FISICO = (decimal)totalegresoGas;
+            result1.EGR_DIESEL_FISICO = (decimal)totalegresoDie;
+            result1.EGR_DIESEL_VALORADO = (decimal)totalcostoegresoDie;
+            result1.EGR_GASOLINA_VALORADO = (decimal)totalcostoegresoGas;
+
+            var totales = ventas.GroupBy(x => new { x.FECHA, x.SG_POS.ID_COMBUSTIBLE }).Select(y => new { FECHA = y.Key.FECHA, ID_COMBUSTIBLE = y.Key.ID_COMBUSTIBLE, TOTALVENTA = y.Sum(x => x.TOTAL_VENTA), TOTALCOSTO = y.Sum(x => x.TOTAL_COSTO), TOTAL_CANTIDAD = y.Sum(x => x.TOTAL) });
+            decimal? totalventaGas = 0;
+            decimal? totalCantidadGas = 0;
+            decimal? totalventaDie = 0;
+            decimal? totalCantidadDie = 0;
+            foreach (var item in totales)
+            {
+                if (item.ID_COMBUSTIBLE == 1)
+                {
+                    totalventaGas = totalventaGas + item.TOTALVENTA;
+                    totalCantidadGas = totalCantidadGas + item.TOTAL_CANTIDAD;
+
+                }
+                else
+                {
+                    totalventaDie = totalventaDie + item.TOTALVENTA;
+                    totalCantidadDie = totalCantidadDie + item.TOTAL_CANTIDAD;
+                }
+
+            }
+            result1.ING_DIESEL_FISICO = (decimal)totalCantidadDie;
+            result1.ING_GASOLINA_FISICO = (decimal)totalCantidadGas;
+            result1.ING_DIESEL_VALORADO = (decimal)totalventaDie;
+            result1.ING_GASOLINA_VALORADO = (decimal)totalventaGas;
+            result.Add(result1);
+            return result;
+        }
+        public IEnumerable<UtilidadBrutaReal> ReporteUtilidadBrutaReal(string ANIO = null, string MES = null)
+        {
+            //obtener precvios
+            var _serCom = new CombustiblesServices();
+            var Gas = _serCom.ObtenerCombustible(x => x.ID_COMBUSTIBLE == 1);
+
+            var Die = _serCom.ObtenerCombustible(x => x.ID_COMBUSTIBLE == 2);
+            ////
+            var _serKcm = new KardexCombustibleServices();
+            List<UtilidadBrutaReal> result = new List<UtilidadBrutaReal>();
+            string date = string.Format("01/{0}/{1}", MES, ANIO);
+            DateTime dt = Convert.ToDateTime(date);
+            _serKcm.SP_ActualizarKardexMN(dt, 0);
+            var kardex = _serKcm.ObtenerKardexCombustible(MES, ANIO);
+            var grupo = kardex.GroupBy(x => x.FECHA);
+            var diesel = kardex.Where(x => x.SG_COMBUSTIBLES.NOMBRE == "DIESEL").OrderBy(x => x.FECHA);
+            var gasolina = kardex.Where(x => x.SG_COMBUSTIBLES.NOMBRE == "GASOLINA").OrderBy(x => x.FECHA);
+            UtilidadBrutaReal result1 = new UtilidadBrutaReal();
+            result1.ING_INV_INI_FIS_DIE = diesel.FirstOrDefault().SALDO_INICIAL;
+            result1.ING_VEN_TOT_FIS_DIE = diesel.GroupBy(x => x.SG_COMBUSTIBLES.ID_COMBUSTIBLE).Select(x => x.Sum(y => y.VENTAS)).FirstOrDefault().Value;
+
+            result1.ING_VEN_TOT_VAL_DIE = (decimal)(result1.ING_VEN_TOT_FIS_DIE * Die.PRECIO_VENTA);
+            result1.ING_INV_INI_VAL_DIE = (decimal)(result1.ING_INV_INI_FIS_DIE * Die.PRECIO_VENTA);
+
+            result1.ING_INV_INI_FIS_GAS = gasolina.FirstOrDefault().SALDO_INICIAL;
+            result1.ING_VEN_TOT_FIS_GAS = gasolina.GroupBy(x => x.SG_COMBUSTIBLES.ID_COMBUSTIBLE).Select(x => x.Sum(y => y.VENTAS)).FirstOrDefault().Value;
+
+            result1.ING_VEN_TOT_VAL_GAS = (decimal)(result1.ING_VEN_TOT_FIS_GAS * Gas.PRECIO_VENTA);
+            result1.ING_INV_INI_VAL_GAS = (decimal)(result1.ING_INV_INI_FIS_GAS * Gas.PRECIO_VENTA);
+
+            result1.EGR_INV_INI_FIS_DIE = (decimal)diesel.LastOrDefault().ACUMULADOS;
+            result1.EGR_VEN_TOT_FIS_DIE = diesel.GroupBy(x => x.SG_COMBUSTIBLES.ID_COMBUSTIBLE).Select(x => x.Sum(y => y.COMPRAS)).FirstOrDefault().Value;
+
+            result1.EGR_INV_INI_FIS_GAS = (decimal)gasolina.LastOrDefault().ACUMULADOS;
+            result1.EGR_VEN_TOT_FIS_GAS = gasolina.GroupBy(x => x.SG_COMBUSTIBLES.ID_COMBUSTIBLE).Select(x => x.Sum(y => y.COMPRAS)).FirstOrDefault().Value;
+
+            result1.EGR_VEN_TOT_VAL_DIE = (decimal)(result1.EGR_VEN_TOT_FIS_DIE * Die.PRECIO_COMPRA);
+            result1.EGR_INV_INI_VAL_DIE = (decimal)(result1.EGR_INV_INI_FIS_DIE * Die.PRECIO_COMPRA);
+
+            result1.EGR_VEN_TOT_VAL_GAS = (decimal)(result1.EGR_VEN_TOT_FIS_GAS * Gas.PRECIO_COMPRA);
+            result1.EGR_INV_INI_VAL_GAS = (decimal)(result1.EGR_INV_INI_FIS_GAS * Gas.PRECIO_COMPRA);
+
+
+            result.Add(result1);
+            return result;
+        }
+        public IEnumerable<KardexCombustibleModel> ReporteANH(string ANIO = null, string MES = null)
+        {
+            List<KardexCombustibleModel> result = new List<KardexCombustibleModel>();
+            if (ANIO == null && MES == null)
+            {
+                //DateTime fecha = DateTime.Now;
+                MES = DateTime.Now.ToString("MM");
+                ANIO = DateTime.Now.ToString("yyyy");
+            }
+            string date = string.Format("01/{0}/{1}", MES, ANIO);
+            //"01/08/2008";
+            DateTime dt = Convert.ToDateTime(date);
+            var _serKcm = new KardexCombustibleServices();
+            var kardex = _serKcm.ObtenerKardexMNCombustible(MES, ANIO);
+            var grupo = kardex.GroupBy(x => x.FECHA);
+            var diesel = kardex.Where(x => x.SG_COMBUSTIBLES.NOMBRE == "DIESEL").OrderBy(x => x.FECHA);
+            //diesel.Where(x=>x.)
+            var gasolina = kardex.Where(x => x.SG_COMBUSTIBLES.NOMBRE == "GASOLINA").OrderBy(x => x.FECHA);
+            foreach (var item in grupo)
+            {
+                KardexCombustibleModel venDia = new KardexCombustibleModel
+                {
+                    FECHA = item.Key,
+                    //SALDO_INICIAL_DIE = diesel.where(y=>y.FECHA == item.Key).fi
+                };
+                var die = diesel.Where(x => x.FECHA == item.Key).FirstOrDefault();
+                var gas = gasolina.Where(x => x.FECHA == item.Key).FirstOrDefault();
+                venDia.SALDO_INICIAL_DIE = die.SALDO_INICIAL;
+                venDia.COMPRAS_DIE = (decimal)die.COMPRAS;
+                venDia.VENTAS_DIE = (decimal)die.VENTAS;
+                venDia.ACUMULADO_DIE = (decimal)die.ACUMULADOS;
+
+                venDia.VENTAS_GAS = (decimal)gas.VENTAS;
+                venDia.COMPRAS_GAS = (decimal)gas.COMPRAS;
+                venDia.SALDO_INICIAL_GAS = gas.SALDO_INICIAL;
+                venDia.ACUMULADO_GAS = (decimal)gas.ACUMULADOS;
+                result.Add(venDia);
+            }
+            //listas = listas.OrderBy(x => x.FECHA).ToList();
+            //JavaScriptSerializer javaScriptSerializer = new JavaScriptSerializer();
+            //string callback1 = paginacion.callback + "(" + javaScriptSerializer.Serialize(new { Rows = listas, Total = paginacion.total }) + ");";
+            //return JavaScript(callback1);
+            result = result.OrderBy(x => x.FECHA).ToList();
+            return result;
+        }
+        public IEnumerable<KardexCombustibleModel> ReporteTanques(string ANIO = null, string MES = null)
+        {
+            List<KardexCombustibleModel> result = new List<KardexCombustibleModel>();
+            if (ANIO == null && MES == null)
+            {
+                //DateTime fecha = DateTime.Now;
+                MES = DateTime.Now.ToString("MM");
+                ANIO = DateTime.Now.ToString("yyyy");
+            }
+            string date = string.Format("01/{0}/{1}", MES, ANIO);
+            //"01/08/2008";
+            DateTime dt = Convert.ToDateTime(date);
+            var _serKcm = new KardexCombustibleServices();
+            var kardex = _serKcm.ObtenerKardexCombustible(MES, ANIO);
+            var grupo = kardex.GroupBy(x => x.FECHA);
+            var diesel = kardex.Where(x => x.SG_COMBUSTIBLES.NOMBRE == "DIESEL").OrderBy(x => x.FECHA);
+            //diesel.Where(x=>x.)
+            var gasolina = kardex.Where(x => x.SG_COMBUSTIBLES.NOMBRE == "GASOLINA").OrderBy(x => x.FECHA);
+            foreach (var item in grupo)
+            {
+                KardexCombustibleModel venDia = new KardexCombustibleModel
+                {
+                    FECHA = item.Key,
+                    //SALDO_INICIAL_DIE = diesel.where(y=>y.FECHA == item.Key).fi
+                };
+                var die = diesel.Where(x => x.FECHA == item.Key).FirstOrDefault();
+                var gas = gasolina.Where(x => x.FECHA == item.Key).FirstOrDefault();
+                venDia.SALDO_INICIAL_DIE = die.SALDO_INICIAL;
+                venDia.COMPRAS_DIE = (decimal)die.COMPRAS;
+                venDia.VENTAS_DIE = (decimal)die.VENTAS;
+                venDia.ACUMULADO_DIE = (decimal)die.ACUMULADOS;
+
+                venDia.VENTAS_GAS = (decimal)gas.VENTAS;
+                venDia.COMPRAS_GAS = (decimal)gas.COMPRAS;
+                venDia.SALDO_INICIAL_GAS = gas.SALDO_INICIAL;
+                venDia.ACUMULADO_GAS = (decimal)gas.ACUMULADOS;
+                result.Add(venDia);
+            }
+            return result;
+        }
+    }
+}

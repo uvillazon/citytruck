@@ -1,0 +1,52 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using CityTruck.Services.Interfaces;
+using CityTruck.Common;
+using CityTruck.Model;
+using CityTruck.Services.Model;
+using CityTruck.Business.Interfaces;
+using System.Linq.Dynamic;
+using LinqKit;
+using CityTruck.Business;
+using System.Data.Objects;
+
+namespace CityTruck.Services
+{
+    public class TanquesServices : BaseService, ITanquesServices
+    {
+        //private ISG_LISTASManager _manListas;
+
+        public TanquesServices(/*ISG_LISTASManager manListas*/)
+        {
+            //_manListas = manListas;
+        }
+        public IEnumerable<SG_TANQUES> ObtenerTanquesPaginado(PagingInfo paginacion)
+        {
+            IQueryable<SG_TANQUES> result = null;
+            ExecuteManager(uow =>
+            {
+                var manager = new SG_TANQUESManager(uow);
+                result = manager.BuscarTodos();
+
+                paginacion.total = result.Count();
+                result = manager.QueryPaged(result, paginacion.limit, paginacion.start, paginacion.sort, paginacion.dir);
+
+            });
+            return result;
+        }
+        public decimal? SaldoTanque(int ID_COMBUSTIBLE, DateTime FECHA, int ID_USR)
+        {
+            decimal? result = 0;
+            ExecuteManager(uow =>
+            {
+                var manager = new SG_TANQUESManager(uow);
+                var query = manager.BuscarTodos(x => x.ID_COMBUSTIBLE == ID_COMBUSTIBLE).FirstOrDefault();
+                result = query.SALDO_INICIAL;
+
+            });
+            return result;
+        }
+    }
+}

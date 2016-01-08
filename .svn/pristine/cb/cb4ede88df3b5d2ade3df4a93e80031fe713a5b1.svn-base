@@ -1,0 +1,19 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using CityTruck.Common;
+using CityTruck.Model;
+using CityTruck.Services.Model;
+
+namespace CityTruck.Services.Interfaces
+{
+    public interface IClientesServices
+    {
+        IEnumerable<SG_CLIENTES> ObtenerClientesPaginado(PagingInfo paginacion, string ANIO, string MES);
+        RespuestaSP SP_GrabarCliente(SG_CLIENTES cliente, int ID_USR);
+        RespuestaSP SP_GrabarAmortizacion(SG_AMORTIZACIONES amortizacion, int ID_USR);
+        RespuestaSP SP_EliminarCliente(int ID_CLIENTE, int ID_USR);
+
+    }
+}

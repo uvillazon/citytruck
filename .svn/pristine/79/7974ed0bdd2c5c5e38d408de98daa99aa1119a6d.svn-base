@@ -1,0 +1,9 @@
+﻿Ext.define('App.Model.CuentasPC.CuentasPC', {
+    extend: 'Ext.data.Model',
+    fields: [
+            { type: "int", name: "CODIGO" },
+            { type: "string", name: "NOMBRE" },
+            { type: "float", name: "SALDO" },
+            { type: "float", name: "CONSUMO" }
+        ]
+});

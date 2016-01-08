@@ -1,0 +1,12 @@
+E:\Proyecto\CityTruck\CityTruck.Business\bin\Debug\CityTruck.Business.dll
+E:\Proyecto\CityTruck\CityTruck.Business\bin\Debug\CityTruck.Business.pdb
+E:\Proyecto\CityTruck\CityTruck.Business\bin\Debug\CityTruck.Common.Data.dll
+E:\Proyecto\CityTruck\CityTruck.Business\bin\Debug\CityTruck.Common.dll
+E:\Proyecto\CityTruck\CityTruck.Business\bin\Debug\CityTruck.Model.dll
+E:\Proyecto\CityTruck\CityTruck.Business\bin\Debug\System.Data.Entity.dll
+E:\Proyecto\CityTruck\CityTruck.Business\bin\Debug\CityTruck.Common.Data.pdb
+E:\Proyecto\CityTruck\CityTruck.Business\bin\Debug\CityTruck.Common.pdb
+E:\Proyecto\CityTruck\CityTruck.Business\bin\Debug\CityTruck.Model.pdb
+E:\Proyecto\CityTruck\CityTruck.Business\obj\Debug\CityTruck.Business.csprojResolveAssemblyReference.cache
+E:\Proyecto\CityTruck\CityTruck.Business\obj\Debug\CityTruck.Business.dll
+E:\Proyecto\CityTruck\CityTruck.Business\obj\Debug\CityTruck.Business.pdb

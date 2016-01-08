@@ -1,0 +1,105 @@
+﻿Ext.define("App.View.Ingresos.FormIngreso", {
+    extend: "App.Config.Abstract.Form",
+    columns: 1,
+    initComponent: function () {
+        var me = this;
+        me.CargarComponentes();
+        me.cargarEventos();
+        this.callParent(arguments);
+    },
+    
+    CargarComponentes: function () {
+        var me = this;
+        me.txt_nro_cmp = Ext.create("App.Config.Componente.TextFieldBase", {
+            fieldLabel: "Nro Comprobante",
+            readOnly : true,
+            name: "NRO_COMP",
+
+        });
+         me.date_fecha = Ext.create("App.Config.Componente.DateFieldBase", {
+            fieldLabel: "Fecha",
+            name: "FECHA",
+            afterLabelTextTpl: Constantes.REQUERIDO,
+            allowBlank: false,
+        });
+        me.txt_registrar = Ext.create("App.Config.Componente.TextFieldBase", {
+            fieldLabel: "Registrar",
+            name: "REGISTRAR",
+            value : 'OTROS INGRESOS',
+            readOnly : true
+
+        });
+        me.store_cuenta = Ext.create('App.Store.Cajas.Cajas').load();
+        me.cbx_cuenta = Ext.create("App.Config.Componente.ComboBase", {
+            fieldLabel: "Cuenta",
+            name: "ID_CUENTA",
+            displayField: 'NOMBRE',
+            valueField : 'ID_CUENTA',
+            store: me.store_cuenta,
+            afterLabelTextTpl: Constantes.REQUERIDO,
+            allowBlank: false,
+            textoTpl : function () { return "{NOMBRE} - {DESCRIPCION}" }
+        });
+        me.num_saldo = Ext.create("App.Config.Componente.NumberFieldBase", {
+            fieldLabel: "Saldo",
+            name: "SALDO",
+            readOnly : true,
+            allowDecimals: true,
+            maxValue: 999999999,
+        });
+
+        me.num_importe = Ext.create("App.Config.Componente.NumberFieldBase", {
+            fieldLabel: "Importe",
+            name: "IMPORTE",
+            allowDecimals: true,
+            maxValue: 999999999,
+        });
+        me.txt_nuevo_saldo = Ext.create("App.Config.Componente.TextFieldBase", {
+            fieldLabel: "Nuevo Saldo",
+            name: "NUEVO_SALDO",
+            readOnly : true
+        });
+         me.txt_concepto = Ext.create("App.Config.Componente.TextFieldBase", {
+            fieldLabel: "Concepto",
+            name: "CONCEPTO",
+            afterLabelTextTpl: Constantes.REQUERIDO,
+            allowBlank: false,
+        });
+        me.items = [
+            me.txt_nro_cmp,
+            me.date_fecha,
+            me.txt_registrar,
+            me.cbx_cuenta,
+            me.num_saldo,
+            me.num_importe,
+            me.txt_nuevo_saldo,
+            me.txt_concepto
+        ];
+       
+      
+
+    },
+    cargarEventos : function(){
+        var me = this;
+        me.cbx_cuenta.on('select',function(cmb,record){
+            me.num_saldo.setValue(record[0].get('SALDO'));
+        });
+        me.num_importe.on('change',function(num,newvalue,oldvalue){
+            var sum = me.num_saldo.getValue() + newvalue;
+            me.txt_nuevo_saldo.setValue(sum);
+        });
+//        me.cbx_turno.on('select',function(cmb,record){
+//            if(me.date_fecha.getValue() != null){
+//                me.gridVenta.getStore().setExtraParamDate('FECHA',me.date_fecha.getValue());
+//                 me.gridVenta.getStore().setExtraParam('TURNO',cmb.getValue());
+//                 me.gridVenta.getStore().load();
+////                me.gridVenta().getStore().setExtraParams({
+////                    FECHA :  me.date_fecha.getValue()
+////                });
+//            }
+//            else{
+//                Ext.Msg.alert("Seleccione Fecha primero");
+//            }
+//        });
+    }
+});

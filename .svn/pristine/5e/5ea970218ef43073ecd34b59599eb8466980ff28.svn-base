@@ -1,0 +1,1088 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Model.Store" Alias="Self" Provider="Oracle.DataAccess.Client" ProviderManifestToken="11.2" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="ModelStoreContainer">
+          <EntitySet Name="SG_CAJAS" EntityType="Model.Store.SG_CAJAS" store:Type="Tables" Schema="CITYTRUCK" />
+          <EntitySet Name="SG_CLIENTES" EntityType="Model.Store.SG_CLIENTES" store:Type="Tables" Schema="CITYTRUCK" />
+          <EntitySet Name="SG_COMBUSTIBLES" EntityType="Model.Store.SG_COMBUSTIBLES" store:Type="Tables" Schema="CITYTRUCK" />
+          <EntitySet Name="SG_COMPRAS" EntityType="Model.Store.SG_COMPRAS" store:Type="Tables" Schema="CITYTRUCK" />
+          <EntitySet Name="SG_INGRESOS" EntityType="Model.Store.SG_INGRESOS" store:Type="Tables" Schema="CITYTRUCK" />
+          <EntitySet Name="SG_LISTAS" EntityType="Model.Store.SG_LISTAS" store:Type="Tables" Schema="CITYTRUCK" />
+          <EntitySet Name="SG_LISTAS_ITEMS" EntityType="Model.Store.SG_LISTAS_ITEMS" store:Type="Tables" Schema="CITYTRUCK" />
+          <EntitySet Name="SG_MENU_OPCIONES" EntityType="Model.Store.SG_MENU_OPCIONES" store:Type="Tables" Schema="CITYTRUCK" />
+          <EntitySet Name="SG_PERFILES" EntityType="Model.Store.SG_PERFILES" store:Type="Tables" Schema="CITYTRUCK" />
+          <EntitySet Name="SG_PERFILES_OPCIONES" EntityType="Model.Store.SG_PERFILES_OPCIONES" store:Type="Tables" Schema="CITYTRUCK" />
+          <EntitySet Name="SG_POS" EntityType="Model.Store.SG_POS" store:Type="Tables" Schema="CITYTRUCK" />
+          <EntitySet Name="SG_POS_TURNOS" EntityType="Model.Store.SG_POS_TURNOS" store:Type="Tables" Schema="CITYTRUCK" />
+          <EntitySet Name="SG_USUARIOS" EntityType="Model.Store.SG_USUARIOS" store:Type="Tables" Schema="CITYTRUCK" />
+          <EntitySet Name="SG_VENTAS_DIARIAS" EntityType="Model.Store.SG_VENTAS_DIARIAS" store:Type="Tables" Schema="CITYTRUCK" />
+          <AssociationSet Name="SG_COMPRAS_R01" Association="Model.Store.SG_COMPRAS_R01">
+            <End Role="SG_COMBUSTIBLES" EntitySet="SG_COMBUSTIBLES" />
+            <End Role="SG_COMPRAS" EntitySet="SG_COMPRAS" />
+          </AssociationSet>
+          <AssociationSet Name="SG_COMPRAS_R02" Association="Model.Store.SG_COMPRAS_R02">
+            <End Role="SG_CAJAS" EntitySet="SG_CAJAS" />
+            <End Role="SG_COMPRAS" EntitySet="SG_COMPRAS" />
+          </AssociationSet>
+          <AssociationSet Name="SG_INGRESOS_R01" Association="Model.Store.SG_INGRESOS_R01">
+            <End Role="SG_CAJAS" EntitySet="SG_CAJAS" />
+            <End Role="SG_INGRESOS" EntitySet="SG_INGRESOS" />
+          </AssociationSet>
+          <AssociationSet Name="SG_LISTAS_ITEMS_R01" Association="Model.Store.SG_LISTAS_ITEMS_R01">
+            <End Role="SG_LISTAS" EntitySet="SG_LISTAS" />
+            <End Role="SG_LISTAS_ITEMS" EntitySet="SG_LISTAS_ITEMS" />
+          </AssociationSet>
+          <AssociationSet Name="SG_LISTAS_ITEMS_R02" Association="Model.Store.SG_LISTAS_ITEMS_R02">
+            <End Role="SG_LISTAS_ITEMS" EntitySet="SG_LISTAS_ITEMS" />
+            <End Role="SG_LISTAS_ITEMS1" EntitySet="SG_LISTAS_ITEMS" />
+          </AssociationSet>
+          <AssociationSet Name="SG_PERFILES_OPCIONES_R01" Association="Model.Store.SG_PERFILES_OPCIONES_R01">
+            <End Role="SG_PERFILES" EntitySet="SG_PERFILES" />
+            <End Role="SG_PERFILES_OPCIONES" EntitySet="SG_PERFILES_OPCIONES" />
+          </AssociationSet>
+          <AssociationSet Name="SG_PERFILES_OPCIONES_R02" Association="Model.Store.SG_PERFILES_OPCIONES_R02">
+            <End Role="SG_MENU_OPCIONES" EntitySet="SG_MENU_OPCIONES" />
+            <End Role="SG_PERFILES_OPCIONES" EntitySet="SG_PERFILES_OPCIONES" />
+          </AssociationSet>
+          <AssociationSet Name="SG_POS_R01" Association="Model.Store.SG_POS_R01">
+            <End Role="SG_COMBUSTIBLES" EntitySet="SG_COMBUSTIBLES" />
+            <End Role="SG_POS" EntitySet="SG_POS" />
+          </AssociationSet>
+          <AssociationSet Name="SG_POS_TURNOS_R01" Association="Model.Store.SG_POS_TURNOS_R01">
+            <End Role="SG_POS" EntitySet="SG_POS" />
+            <End Role="SG_POS_TURNOS" EntitySet="SG_POS_TURNOS" />
+          </AssociationSet>
+          <AssociationSet Name="SG_USUARIOS_R01" Association="Model.Store.SG_USUARIOS_R01">
+            <End Role="SG_PERFILES" EntitySet="SG_PERFILES" />
+            <End Role="SG_USUARIOS" EntitySet="SG_USUARIOS" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="SG_CAJAS">
+          <Key>
+            <PropertyRef Name="ID_CAJA" />
+          </Key>
+          <Property Name="ID_CAJA" Type="number" Nullable="false" Precision="7" />
+          <Property Name="CODIGO" Type="varchar2" Nullable="false" MaxLength="40" />
+          <Property Name="NOMBRE" Type="varchar2" Nullable="false" MaxLength="40" />
+          <Property Name="NRO_CUENTA" Type="varchar2" MaxLength="40" />
+          <Property Name="MONEDA" Type="varchar2" Nullable="false" MaxLength="40" />
+          <Property Name="DESCRIPCION" Type="varchar2" Nullable="false" MaxLength="150" />
+          <Property Name="SALDO" Type="number" Nullable="false" Precision="15" Scale="5" />
+          <Property Name="ID_USUARIO" Type="number" Nullable="false" Precision="5" />
+          <Property Name="FECHA_REG" Type="date" />
+        </EntityType>
+        <EntityType Name="SG_CLIENTES">
+          <Key>
+            <PropertyRef Name="ID_CLIENTE" />
+          </Key>
+          <Property Name="ID_CLIENTE" Type="number" Nullable="false" Precision="7" />
+          <Property Name="CODIGO" Type="number" Nullable="false" Precision="7" />
+          <Property Name="FECHA" Type="date" Nullable="false" />
+          <Property Name="EMPRESA" Type="varchar2" Nullable="false" MaxLength="40" />
+          <Property Name="NIT" Type="varchar2" Nullable="false" MaxLength="40" />
+          <Property Name="CONTACTO" Type="varchar2" MaxLength="150" />
+          <Property Name="TELEFONO" Type="varchar2" MaxLength="150" />
+          <Property Name="DIRECCION" Type="varchar2" MaxLength="150" />
+          <Property Name="LIMITE" Type="number" Nullable="false" Precision="15" Scale="5" />
+          <Property Name="CONSUMO" Type="number" Precision="15" Scale="5" />
+          <Property Name="SALDO" Type="number" Precision="15" Scale="5" />
+          <Property Name="ID_USUARIO" Type="number" Nullable="false" Precision="5" />
+          <Property Name="FECHA_REG" Type="date" />
+        </EntityType>
+        <EntityType Name="SG_COMBUSTIBLES">
+          <Key>
+            <PropertyRef Name="ID_COMBUSTIBLE" />
+          </Key>
+          <Property Name="ID_COMBUSTIBLE" Type="number" Nullable="false" Precision="5" />
+          <Property Name="NOMBRE" Type="varchar2" Nullable="false" MaxLength="40" />
+          <Property Name="DESCRIPCION" Type="varchar2" Nullable="false" MaxLength="150" />
+          <Property Name="CANT_DISPONIBLE" Type="number" Nullable="false" Precision="15" Scale="5" />
+          <Property Name="UNIDAD" Type="varchar2" Nullable="false" MaxLength="40" />
+          <Property Name="ESTADO" Type="char" Nullable="false" MaxLength="1" />
+        </EntityType>
+        <EntityType Name="SG_COMPRAS">
+          <Key>
+            <PropertyRef Name="ID_COMPRA" />
+          </Key>
+          <Property Name="ID_COMPRA" Type="number" Nullable="false" Precision="7" />
+          <Property Name="NRO_COMP" Type="number" Nullable="false" Precision="7" />
+          <Property Name="FECHA" Type="date" Nullable="false" />
+          <Property Name="ID_COMBUSTIBLE" Type="number" Nullable="false" Precision="5" />
+          <Property Name="ID_CAJA" Type="number" Nullable="false" Precision="7" />
+          <Property Name="CANTIDAD" Type="number" Nullable="false" Precision="15" Scale="5" />
+          <Property Name="NRO_FACTURA" Type="number" Nullable="false" Precision="15" />
+          <Property Name="TIPO" Type="varchar2" Nullable="false" MaxLength="40" />
+          <Property Name="PRECIO" Type="number" Nullable="false" Precision="15" Scale="5" />
+          <Property Name="IMPORTE" Type="number" Nullable="false" Precision="15" Scale="5" />
+          <Property Name="FORMULARIO" Type="number" Nullable="false" Precision="15" Scale="5" />
+          <Property Name="TOTAL" Type="number" Nullable="false" Precision="15" Scale="5" />
+          <Property Name="ID_USUARIO" Type="number" Nullable="false" Precision="5" />
+          <Property Name="FECHA_REG" Type="date" />
+        </EntityType>
+        <EntityType Name="SG_INGRESOS">
+          <Key>
+            <PropertyRef Name="ID_INGRESO" />
+          </Key>
+          <Property Name="ID_INGRESO" Type="number" Nullable="false" Precision="7" />
+          <Property Name="NRO_COMP" Type="number" Nullable="false" Precision="7" />
+          <Property Name="FECHA" Type="date" Nullable="false" />
+          <Property Name="REGISTRAR" Type="varchar2" Nullable="false" MaxLength="40" />
+          <Property Name="CONCEPTO" Type="varchar2" Nullable="false" MaxLength="140" />
+          <Property Name="ID_CAJA" Type="number" Nullable="false" Precision="7" />
+          <Property Name="IMPORTE" Type="number" Nullable="false" Precision="15" Scale="5" />
+          <Property Name="ID_USUARIO" Type="number" Nullable="false" Precision="5" />
+          <Property Name="FECHA_REG" Type="date" />
+        </EntityType>
+        <EntityType Name="SG_LISTAS">
+          <Key>
+            <PropertyRef Name="ID_LISTA" />
+          </Key>
+          <Property Name="ID_LISTA" Type="number" Nullable="false" Precision="7" />
+          <Property Name="LISTA" Type="varchar2" Nullable="false" MaxLength="20" />
+          <Property Name="DESCRIPCION" Type="varchar2" MaxLength="50" />
+          <Property Name="TAM_LIMITE" Type="number" Nullable="false" Precision="5" />
+          <Property Name="TIPO_VALOR" Type="varchar2" Nullable="false" MaxLength="10" />
+          <Property Name="MAYUS_MINUS" Type="varchar2" Nullable="false" MaxLength="5" />
+          <Property Name="ESTADO" Type="varchar2" Nullable="false" MaxLength="15" />
+        </EntityType>
+        <EntityType Name="SG_LISTAS_ITEMS">
+          <Key>
+            <PropertyRef Name="ID_TABLA" />
+          </Key>
+          <Property Name="ID_TABLA" Type="number" Nullable="false" Precision="7" />
+          <Property Name="ID_PADRE" Type="number" Precision="7" />
+          <Property Name="ID_LISTA" Type="number" Nullable="false" Precision="7" />
+          <Property Name="CODIGO" Type="varchar2" MaxLength="5" />
+          <Property Name="VALOR" Type="varchar2" Nullable="false" MaxLength="30" />
+          <Property Name="ESTADO" Type="char" Nullable="false" MaxLength="1" />
+        </EntityType>
+        <EntityType Name="SG_MENU_OPCIONES">
+          <Key>
+            <PropertyRef Name="ID_OPC" />
+          </Key>
+          <Property Name="ID_OPC" Type="number" Nullable="false" Precision="5" />
+          <Property Name="OPCION" Type="varchar2" Nullable="false" MaxLength="40" />
+          <Property Name="LINK" Type="varchar2" MaxLength="50" />
+          <Property Name="TOOLTIP" Type="varchar2" MaxLength="50" />
+          <Property Name="ICONO" Type="varchar2" MaxLength="50" />
+          <Property Name="ESTILO" Type="varchar2" MaxLength="50" />
+          <Property Name="ID_PADRE" Type="number" Precision="5" />
+          <Property Name="ESTADO" Type="char" Nullable="false" MaxLength="1" />
+          <Property Name="ORDEN" Type="number" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SG_PERFILES">
+          <Key>
+            <PropertyRef Name="ID_PERFIL" />
+          </Key>
+          <Property Name="ID_PERFIL" Type="number" Nullable="false" Precision="5" />
+          <Property Name="NOMBRE" Type="varchar2" Nullable="false" MaxLength="40" />
+          <Property Name="DESCRIPCION" Type="varchar2" Nullable="false" MaxLength="50" />
+          <Property Name="ESTADO" Type="char" Nullable="false" MaxLength="1" />
+        </EntityType>
+        <EntityType Name="SG_PERFILES_OPCIONES">
+          <Key>
+            <PropertyRef Name="ID_PRF_OPC" />
+          </Key>
+          <Property Name="ID_PRF_OPC" Type="number" Nullable="false" Precision="5" />
+          <Property Name="ID_PERFIL" Type="number" Nullable="false" Precision="5" />
+          <Property Name="ID_OPC" Type="number" Nullable="false" Precision="5" />
+          <Property Name="ESTADO" Type="char" Nullable="false" MaxLength="1" />
+        </EntityType>
+        <EntityType Name="SG_POS">
+          <Key>
+            <PropertyRef Name="ID_POS" />
+          </Key>
+          <Property Name="ID_POS" Type="number" Nullable="false" Precision="7" />
+          <Property Name="CODIGO" Type="varchar2" Nullable="false" MaxLength="40" />
+          <Property Name="ID_COMBUSTIBLE" Type="number" Nullable="false" Precision="5" />
+          <Property Name="ENT_LITTER_INI" Type="number" Nullable="false" Precision="15" Scale="5" />
+          <Property Name="LITTER_ACT" Type="number" Nullable="false" Precision="15" Scale="5" />
+          <Property Name="ESTADO" Type="char" Nullable="false" MaxLength="1" />
+          <Property Name="DESCRIPCION" Type="varchar2" MaxLength="300" />
+        </EntityType>
+        <EntityType Name="SG_POS_TURNOS">
+          <Key>
+            <PropertyRef Name="ID_POS_TURNO" />
+          </Key>
+          <Property Name="ID_POS_TURNO" Type="number" Nullable="false" Precision="7" />
+          <Property Name="ID_POS" Type="number" Nullable="false" Precision="7" />
+          <Property Name="TURNO" Type="varchar2" Nullable="false" MaxLength="50" />
+          <Property Name="FECHA" Type="date" Nullable="false" />
+          <Property Name="ENT_LITTER" Type="number" Nullable="false" Precision="15" Scale="5" />
+          <Property Name="SAL_LITTER" Type="number" Nullable="false" Precision="15" Scale="5" />
+          <Property Name="TOTAL" Type="number" Nullable="false" Precision="15" Scale="5" />
+          <Property Name="ID_USUARIO" Type="number" Nullable="false" Precision="5" />
+          <Property Name="FECHA_REG" Type="date" />
+        </EntityType>
+        <EntityType Name="SG_USUARIOS">
+          <Key>
+            <PropertyRef Name="ID_USUARIO" />
+          </Key>
+          <Property Name="ID_USUARIO" Type="number" Nullable="false" Precision="5" />
+          <Property Name="LOGIN" Type="varchar2" Nullable="false" MaxLength="15" />
+          <Property Name="NOMBRE" Type="varchar2" Nullable="false" MaxLength="60" />
+          <Property Name="EMAIL" Type="varchar2" MaxLength="30" />
+          <Property Name="FCH_ALTA" Type="date" Nullable="false" />
+          <Property Name="FCH_BAJA" Type="date" />
+          <Property Name="ID_PERFIL" Type="number" Nullable="false" Precision="5" />
+          <Property Name="ESTADO" Type="char" Nullable="false" MaxLength="1" />
+        </EntityType>
+        <EntityType Name="SG_VENTAS_DIARIAS">
+          <Key>
+            <PropertyRef Name="ID_VENTA" />
+          </Key>
+          <Property Name="ID_VENTA" Type="number" Nullable="false" Precision="5" />
+          <Property Name="TURNO" Type="varchar2" Nullable="false" MaxLength="50" />
+          <Property Name="FECHA" Type="date" Nullable="false" />
+          <Property Name="TOTAL" Type="number" Nullable="false" Precision="15" Scale="5" />
+        </EntityType>
+        <Association Name="SG_COMPRAS_R01">
+          <End Role="SG_COMBUSTIBLES" Type="Model.Store.SG_COMBUSTIBLES" Multiplicity="1" />
+          <End Role="SG_COMPRAS" Type="Model.Store.SG_COMPRAS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SG_COMBUSTIBLES">
+              <PropertyRef Name="ID_COMBUSTIBLE" />
+            </Principal>
+            <Dependent Role="SG_COMPRAS">
+              <PropertyRef Name="ID_COMBUSTIBLE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="SG_COMPRAS_R02">
+          <End Role="SG_CAJAS" Type="Model.Store.SG_CAJAS" Multiplicity="1" />
+          <End Role="SG_COMPRAS" Type="Model.Store.SG_COMPRAS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SG_CAJAS">
+              <PropertyRef Name="ID_CAJA" />
+            </Principal>
+            <Dependent Role="SG_COMPRAS">
+              <PropertyRef Name="ID_CAJA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="SG_INGRESOS_R01">
+          <End Role="SG_CAJAS" Type="Model.Store.SG_CAJAS" Multiplicity="1" />
+          <End Role="SG_INGRESOS" Type="Model.Store.SG_INGRESOS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SG_CAJAS">
+              <PropertyRef Name="ID_CAJA" />
+            </Principal>
+            <Dependent Role="SG_INGRESOS">
+              <PropertyRef Name="ID_CAJA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="SG_LISTAS_ITEMS_R01">
+          <End Role="SG_LISTAS" Type="Model.Store.SG_LISTAS" Multiplicity="1" />
+          <End Role="SG_LISTAS_ITEMS" Type="Model.Store.SG_LISTAS_ITEMS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SG_LISTAS">
+              <PropertyRef Name="ID_LISTA" />
+            </Principal>
+            <Dependent Role="SG_LISTAS_ITEMS">
+              <PropertyRef Name="ID_LISTA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="SG_LISTAS_ITEMS_R02">
+          <End Role="SG_LISTAS_ITEMS" Type="Model.Store.SG_LISTAS_ITEMS" Multiplicity="0..1" />
+          <End Role="SG_LISTAS_ITEMS1" Type="Model.Store.SG_LISTAS_ITEMS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SG_LISTAS_ITEMS">
+              <PropertyRef Name="ID_TABLA" />
+            </Principal>
+            <Dependent Role="SG_LISTAS_ITEMS1">
+              <PropertyRef Name="ID_PADRE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="SG_PERFILES_OPCIONES_R01">
+          <End Role="SG_PERFILES" Type="Model.Store.SG_PERFILES" Multiplicity="1" />
+          <End Role="SG_PERFILES_OPCIONES" Type="Model.Store.SG_PERFILES_OPCIONES" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SG_PERFILES">
+              <PropertyRef Name="ID_PERFIL" />
+            </Principal>
+            <Dependent Role="SG_PERFILES_OPCIONES">
+              <PropertyRef Name="ID_PERFIL" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="SG_PERFILES_OPCIONES_R02">
+          <End Role="SG_MENU_OPCIONES" Type="Model.Store.SG_MENU_OPCIONES" Multiplicity="1" />
+          <End Role="SG_PERFILES_OPCIONES" Type="Model.Store.SG_PERFILES_OPCIONES" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SG_MENU_OPCIONES">
+              <PropertyRef Name="ID_OPC" />
+            </Principal>
+            <Dependent Role="SG_PERFILES_OPCIONES">
+              <PropertyRef Name="ID_OPC" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="SG_POS_R01">
+          <End Role="SG_COMBUSTIBLES" Type="Model.Store.SG_COMBUSTIBLES" Multiplicity="1" />
+          <End Role="SG_POS" Type="Model.Store.SG_POS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SG_COMBUSTIBLES">
+              <PropertyRef Name="ID_COMBUSTIBLE" />
+            </Principal>
+            <Dependent Role="SG_POS">
+              <PropertyRef Name="ID_COMBUSTIBLE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="SG_POS_TURNOS_R01">
+          <End Role="SG_POS" Type="Model.Store.SG_POS" Multiplicity="1" />
+          <End Role="SG_POS_TURNOS" Type="Model.Store.SG_POS_TURNOS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SG_POS">
+              <PropertyRef Name="ID_POS" />
+            </Principal>
+            <Dependent Role="SG_POS_TURNOS">
+              <PropertyRef Name="ID_POS" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="SG_USUARIOS_R01">
+          <End Role="SG_PERFILES" Type="Model.Store.SG_PERFILES" Multiplicity="1" />
+          <End Role="SG_USUARIOS" Type="Model.Store.SG_USUARIOS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SG_PERFILES">
+              <PropertyRef Name="ID_PERFIL" />
+            </Principal>
+            <Dependent Role="SG_USUARIOS">
+              <PropertyRef Name="ID_PERFIL" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="P_SG_ALTA_LISTA" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="CITYTRUCK">
+          <Parameter Name="P_LISTA" Type="varchar2" Mode="In" />
+          <Parameter Name="P_DESCRIPCION" Type="varchar2" Mode="In" />
+          <Parameter Name="P_TAM_LIMITE" Type="number" Mode="In" />
+          <Parameter Name="P_TIPO_VALOR" Type="varchar2" Mode="In" />
+          <Parameter Name="P_MAYUS_MINUS" Type="varchar2" Mode="In" />
+          <Parameter Name="P_ID_USR" Type="number" Mode="In" />
+          <Parameter Name="P_RES" Type="varchar2" Mode="Out" />
+        </Function>
+        <Function Name="P_SG_GENERAR_POS_TURNOS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="CITYTRUCK">
+          <Parameter Name="P_FECHA" Type="date" Mode="In" />
+          <Parameter Name="P_TURNO" Type="varchar2" Mode="In" />
+          <Parameter Name="P_ID_USR" Type="number" Mode="In" />
+          <Parameter Name="P_RES" Type="varchar2" Mode="Out" />
+        </Function>
+        <Function Name="P_SG_GRABAR_LISTAS_ITEMS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="CITYTRUCK">
+          <Parameter Name="P_ID_TABLA" Type="number" Mode="In" />
+          <Parameter Name="P_ID_PADRE" Type="number" Mode="In" />
+          <Parameter Name="P_ID_LISTA" Type="number" Mode="In" />
+          <Parameter Name="P_CODIGO" Type="varchar2" Mode="In" />
+          <Parameter Name="P_VALOR" Type="varchar2" Mode="In" />
+          <Parameter Name="P_ESTADO" Type="char" Mode="In" />
+          <Parameter Name="P_LOGIN_USR" Type="varchar2" Mode="In" />
+          <Parameter Name="P_RES" Type="varchar2" Mode="Out" />
+        </Function>
+        <Function Name="P_SG_GUARDAR_POS_TURNO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="CITYTRUCK">
+          <Parameter Name="P_ID_POS_TURNO" Type="number" Mode="In" />
+          <Parameter Name="P_ID_POS" Type="number" Mode="In" />
+          <Parameter Name="P_TURNO" Type="varchar2" Mode="In" />
+          <Parameter Name="P_FECHA" Type="date" Mode="In" />
+          <Parameter Name="P_ENT_LITTER" Type="number" Mode="In" />
+          <Parameter Name="P_SAL_LITTER" Type="number" Mode="In" />
+          <Parameter Name="P_TOTAL" Type="number" Mode="In" />
+          <Parameter Name="P_ID_USR" Type="number" Mode="In" />
+          <Parameter Name="P_RES" Type="varchar2" Mode="Out" />
+        </Function>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Model" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="CityTruckContext" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="SG_LISTAS" EntityType="Model.SG_LISTAS" />
+          <EntitySet Name="SG_LISTAS_ITEMS" EntityType="Model.SG_LISTAS_ITEMS" />
+          <EntitySet Name="SG_MENU_OPCIONES" EntityType="Model.SG_MENU_OPCIONES" />
+          <EntitySet Name="SG_PERFILES" EntityType="Model.SG_PERFILES" />
+          <EntitySet Name="SG_PERFILES_OPCIONES" EntityType="Model.SG_PERFILES_OPCIONES" />
+          <EntitySet Name="SG_USUARIOS" EntityType="Model.SG_USUARIOS" />
+          <AssociationSet Name="SG_LISTAS_ITEMS_R01" Association="Model.SG_LISTAS_ITEMS_R01">
+            <End Role="SG_LISTAS" EntitySet="SG_LISTAS" />
+            <End Role="SG_LISTAS_ITEMS" EntitySet="SG_LISTAS_ITEMS" />
+          </AssociationSet>
+          <AssociationSet Name="SG_LISTAS_ITEMS_R02" Association="Model.SG_LISTAS_ITEMS_R02">
+            <End Role="SG_LISTAS_ITEMS" EntitySet="SG_LISTAS_ITEMS" />
+            <End Role="SG_LISTAS_ITEMS1" EntitySet="SG_LISTAS_ITEMS" />
+          </AssociationSet>
+          <AssociationSet Name="SG_PERFILES_OPCIONES_R02" Association="Model.SG_PERFILES_OPCIONES_R02">
+            <End Role="SG_MENU_OPCIONES" EntitySet="SG_MENU_OPCIONES" />
+            <End Role="SG_PERFILES_OPCIONES" EntitySet="SG_PERFILES_OPCIONES" />
+          </AssociationSet>
+          <AssociationSet Name="SG_PERFILES_OPCIONES_R01" Association="Model.SG_PERFILES_OPCIONES_R01">
+            <End Role="SG_PERFILES" EntitySet="SG_PERFILES" />
+            <End Role="SG_PERFILES_OPCIONES" EntitySet="SG_PERFILES_OPCIONES" />
+          </AssociationSet>
+          <AssociationSet Name="SG_USUARIOS_R01" Association="Model.SG_USUARIOS_R01">
+            <End Role="SG_PERFILES" EntitySet="SG_PERFILES" />
+            <End Role="SG_USUARIOS" EntitySet="SG_USUARIOS" />
+          </AssociationSet>
+          <EntitySet Name="SG_VENTAS_DIARIAS" EntityType="Model.SG_VENTAS_DIARIAS" />
+          <FunctionImport Name="P_SG_ALTA_LISTA">
+            <Parameter Name="P_LISTA" Mode="In" Type="String" />
+            <Parameter Name="P_DESCRIPCION" Mode="In" Type="String" />
+            <Parameter Name="P_TAM_LIMITE" Mode="In" Type="Decimal" />
+            <Parameter Name="P_TIPO_VALOR" Mode="In" Type="String" />
+            <Parameter Name="P_MAYUS_MINUS" Mode="In" Type="String" />
+            <Parameter Name="P_ID_USR" Mode="In" Type="Decimal" />
+            <Parameter Name="P_RES" Mode="Out" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="P_SG_GRABAR_LISTAS_ITEMS">
+            <Parameter Name="P_ID_TABLA" Mode="In" Type="Decimal" />
+            <Parameter Name="P_ID_PADRE" Mode="In" Type="Decimal" />
+            <Parameter Name="P_ID_LISTA" Mode="In" Type="Decimal" />
+            <Parameter Name="P_CODIGO" Mode="In" Type="String" />
+            <Parameter Name="P_VALOR" Mode="In" Type="String" />
+            <Parameter Name="P_ESTADO" Mode="In" Type="String" />
+            <Parameter Name="P_LOGIN_USR" Mode="In" Type="String" />
+            <Parameter Name="P_RES" Mode="Out" Type="String" />
+          </FunctionImport>
+          <EntitySet Name="SG_COMBUSTIBLES" EntityType="Model.SG_COMBUSTIBLES" />
+          <EntitySet Name="SG_POS" EntityType="Model.SG_POS" />
+          <AssociationSet Name="SG_POS_R01" Association="Model.SG_POS_R01">
+            <End Role="SG_COMBUSTIBLES" EntitySet="SG_COMBUSTIBLES" />
+            <End Role="SG_POS" EntitySet="SG_POS" />
+          </AssociationSet>
+          <EntitySet Name="SG_POS_TURNOS" EntityType="Model.SG_POS_TURNOS" />
+          <AssociationSet Name="SG_POS_TURNOS_R01" Association="Model.SG_POS_TURNOS_R01">
+            <End Role="SG_POS" EntitySet="SG_POS" />
+            <End Role="SG_POS_TURNOS" EntitySet="SG_POS_TURNOS" />
+          </AssociationSet>
+          <FunctionImport Name="P_SG_GENERAR_POS_TURNOS">
+            <Parameter Name="P_FECHA" Mode="In" Type="DateTime" />
+            <Parameter Name="P_TURNO" Mode="In" Type="String" />
+            <Parameter Name="P_ID_USR" Mode="In" Type="Decimal" />
+            <Parameter Name="P_RES" Mode="Out" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="P_SG_GUARDAR_POS_TURNO">
+            <Parameter Name="P_ID_POS_TURNO" Mode="In" Type="Decimal" />
+            <Parameter Name="P_ID_POS" Mode="In" Type="Decimal" />
+            <Parameter Name="P_TURNO" Mode="In" Type="String" />
+            <Parameter Name="P_FECHA" Mode="In" Type="DateTime" />
+            <Parameter Name="P_ENT_LITTER" Mode="In" Type="Decimal" />
+            <Parameter Name="P_SAL_LITTER" Mode="In" Type="Decimal" />
+            <Parameter Name="P_TOTAL" Mode="In" Type="Decimal" />
+            <Parameter Name="P_ID_USR" Mode="In" Type="Decimal" />
+            <Parameter Name="P_RES" Mode="Out" Type="String" />
+          </FunctionImport>
+          <EntitySet Name="SG_CAJAS" EntityType="Model.SG_CAJAS" />
+          <EntitySet Name="SG_INGRESOS" EntityType="Model.SG_INGRESOS" />
+          <AssociationSet Name="SG_INGRESOS_R01" Association="Model.SG_INGRESOS_R01">
+            <End Role="SG_CAJAS" EntitySet="SG_CAJAS" />
+            <End Role="SG_INGRESOS" EntitySet="SG_INGRESOS" />
+          </AssociationSet>
+          <EntitySet Name="SG_COMPRAS" EntityType="Model.SG_COMPRAS" />
+          <AssociationSet Name="SG_COMPRAS_R02" Association="Model.SG_COMPRAS_R02">
+            <End Role="SG_CAJAS" EntitySet="SG_CAJAS" />
+            <End Role="SG_COMPRAS" EntitySet="SG_COMPRAS" />
+          </AssociationSet>
+          <AssociationSet Name="SG_COMPRAS_R01" Association="Model.SG_COMPRAS_R01">
+            <End Role="SG_COMBUSTIBLES" EntitySet="SG_COMBUSTIBLES" />
+            <End Role="SG_COMPRAS" EntitySet="SG_COMPRAS" />
+          </AssociationSet>
+          <EntitySet Name="SG_CLIENTES" EntityType="Model.SG_CLIENTES" />
+        </EntityContainer>
+        <EntityType Name="SG_LISTAS">
+          <Key>
+            <PropertyRef Name="ID_LISTA" />
+          </Key>
+          <Property Name="ID_LISTA" Type="Int32" Nullable="false" />
+          <Property Name="LISTA" Type="String" Nullable="false" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="DESCRIPCION" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="TAM_LIMITE" Type="Int16" Nullable="false" />
+          <Property Name="TIPO_VALOR" Type="String" Nullable="false" MaxLength="10" Unicode="false" FixedLength="false" />
+          <Property Name="MAYUS_MINUS" Type="String" Nullable="false" MaxLength="5" Unicode="false" FixedLength="false" />
+          <Property Name="ESTADO" Type="String" Nullable="false" MaxLength="15" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="SG_LISTAS_ITEMS" Relationship="Model.SG_LISTAS_ITEMS_R01" FromRole="SG_LISTAS" ToRole="SG_LISTAS_ITEMS" />
+        </EntityType>
+        <EntityType Name="SG_LISTAS_ITEMS">
+          <Key>
+            <PropertyRef Name="ID_TABLA" />
+          </Key>
+          <Property Name="ID_TABLA" Type="Int32" Nullable="false" />
+          <Property Name="ID_PADRE" Type="Int32" />
+          <Property Name="ID_LISTA" Type="Int32" Nullable="false" />
+          <Property Name="CODIGO" Type="String" MaxLength="5" Unicode="false" FixedLength="false" />
+          <Property Name="VALOR" Type="String" Nullable="false" MaxLength="30" Unicode="false" FixedLength="false" />
+          <Property Name="ESTADO" Type="String" Nullable="false" MaxLength="1" Unicode="false" FixedLength="true" />
+          <NavigationProperty Name="SG_LISTAS" Relationship="Model.SG_LISTAS_ITEMS_R01" FromRole="SG_LISTAS_ITEMS" ToRole="SG_LISTAS" />
+          <NavigationProperty Name="SG_LISTAS_ITEMS1" Relationship="Model.SG_LISTAS_ITEMS_R02" FromRole="SG_LISTAS_ITEMS" ToRole="SG_LISTAS_ITEMS1" />
+          <NavigationProperty Name="SG_LISTAS_ITEMS2" Relationship="Model.SG_LISTAS_ITEMS_R02" FromRole="SG_LISTAS_ITEMS1" ToRole="SG_LISTAS_ITEMS" />
+        </EntityType>
+        <EntityType Name="SG_MENU_OPCIONES">
+          <Key>
+            <PropertyRef Name="ID_OPC" />
+          </Key>
+          <Property Name="ID_OPC" Type="Int16" Nullable="false" />
+          <Property Name="OPCION" Type="String" Nullable="false" MaxLength="40" Unicode="false" FixedLength="false" />
+          <Property Name="LINK" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="TOOLTIP" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="ICONO" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="ESTILO" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="ID_PADRE" Type="Int16" />
+          <Property Name="ESTADO" Type="String" Nullable="false" MaxLength="1" Unicode="false" FixedLength="true" />
+          <Property Name="ORDEN" Type="Decimal" Nullable="false" Precision="38" Scale="0" />
+          <NavigationProperty Name="SG_PERFILES_OPCIONES" Relationship="Model.SG_PERFILES_OPCIONES_R02" FromRole="SG_MENU_OPCIONES" ToRole="SG_PERFILES_OPCIONES" />
+        </EntityType>
+        <EntityType Name="SG_PERFILES">
+          <Key>
+            <PropertyRef Name="ID_PERFIL" />
+          </Key>
+          <Property Name="ID_PERFIL" Type="Int16" Nullable="false" />
+          <Property Name="NOMBRE" Type="String" Nullable="false" MaxLength="40" Unicode="false" FixedLength="false" />
+          <Property Name="DESCRIPCION" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="ESTADO" Type="String" Nullable="false" MaxLength="1" Unicode="false" FixedLength="true" />
+          <NavigationProperty Name="SG_PERFILES_OPCIONES" Relationship="Model.SG_PERFILES_OPCIONES_R01" FromRole="SG_PERFILES" ToRole="SG_PERFILES_OPCIONES" />
+          <NavigationProperty Name="SG_USUARIOS" Relationship="Model.SG_USUARIOS_R01" FromRole="SG_PERFILES" ToRole="SG_USUARIOS" />
+        </EntityType>
+        <EntityType Name="SG_PERFILES_OPCIONES">
+          <Key>
+            <PropertyRef Name="ID_PRF_OPC" />
+          </Key>
+          <Property Name="ID_PRF_OPC" Type="Int16" Nullable="false" />
+          <Property Name="ID_PERFIL" Type="Int16" Nullable="false" />
+          <Property Name="ID_OPC" Type="Int16" Nullable="false" />
+          <Property Name="ESTADO" Type="String" Nullable="false" MaxLength="1" Unicode="false" FixedLength="true" />
+          <NavigationProperty Name="SG_MENU_OPCIONES" Relationship="Model.SG_PERFILES_OPCIONES_R02" FromRole="SG_PERFILES_OPCIONES" ToRole="SG_MENU_OPCIONES" />
+          <NavigationProperty Name="SG_PERFILES" Relationship="Model.SG_PERFILES_OPCIONES_R01" FromRole="SG_PERFILES_OPCIONES" ToRole="SG_PERFILES" />
+        </EntityType>
+        <EntityType Name="SG_USUARIOS">
+          <Key>
+            <PropertyRef Name="ID_USUARIO" />
+          </Key>
+          <Property Name="ID_USUARIO" Type="Int16" Nullable="false" />
+          <Property Name="LOGIN" Type="String" Nullable="false" MaxLength="15" Unicode="false" FixedLength="false" />
+          <Property Name="NOMBRE" Type="String" Nullable="false" MaxLength="60" Unicode="false" FixedLength="false" />
+          <Property Name="EMAIL" Type="String" MaxLength="30" Unicode="false" FixedLength="false" />
+          <Property Name="FCH_ALTA" Type="DateTime" Nullable="false" />
+          <Property Name="FCH_BAJA" Type="DateTime" />
+          <Property Name="ID_PERFIL" Type="Int16" Nullable="false" />
+          <Property Name="ESTADO" Type="String" Nullable="false" MaxLength="1" Unicode="false" FixedLength="true" />
+          <NavigationProperty Name="SG_PERFILES" Relationship="Model.SG_USUARIOS_R01" FromRole="SG_USUARIOS" ToRole="SG_PERFILES" />
+        </EntityType>
+        <Association Name="SG_LISTAS_ITEMS_R01">
+          <End Role="SG_LISTAS" Type="Model.SG_LISTAS" Multiplicity="1" />
+          <End Role="SG_LISTAS_ITEMS" Type="Model.SG_LISTAS_ITEMS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SG_LISTAS">
+              <PropertyRef Name="ID_LISTA" />
+            </Principal>
+            <Dependent Role="SG_LISTAS_ITEMS">
+              <PropertyRef Name="ID_LISTA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="SG_LISTAS_ITEMS_R02">
+          <End Role="SG_LISTAS_ITEMS" Type="Model.SG_LISTAS_ITEMS" Multiplicity="0..1" />
+          <End Role="SG_LISTAS_ITEMS1" Type="Model.SG_LISTAS_ITEMS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SG_LISTAS_ITEMS">
+              <PropertyRef Name="ID_TABLA" />
+            </Principal>
+            <Dependent Role="SG_LISTAS_ITEMS1">
+              <PropertyRef Name="ID_PADRE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="SG_PERFILES_OPCIONES_R02">
+          <End Role="SG_MENU_OPCIONES" Type="Model.SG_MENU_OPCIONES" Multiplicity="1" />
+          <End Role="SG_PERFILES_OPCIONES" Type="Model.SG_PERFILES_OPCIONES" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SG_MENU_OPCIONES">
+              <PropertyRef Name="ID_OPC" />
+            </Principal>
+            <Dependent Role="SG_PERFILES_OPCIONES">
+              <PropertyRef Name="ID_OPC" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="SG_PERFILES_OPCIONES_R01">
+          <End Role="SG_PERFILES" Type="Model.SG_PERFILES" Multiplicity="1" />
+          <End Role="SG_PERFILES_OPCIONES" Type="Model.SG_PERFILES_OPCIONES" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SG_PERFILES">
+              <PropertyRef Name="ID_PERFIL" />
+            </Principal>
+            <Dependent Role="SG_PERFILES_OPCIONES">
+              <PropertyRef Name="ID_PERFIL" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="SG_USUARIOS_R01">
+          <End Role="SG_PERFILES" Type="Model.SG_PERFILES" Multiplicity="1" />
+          <End Role="SG_USUARIOS" Type="Model.SG_USUARIOS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SG_PERFILES">
+              <PropertyRef Name="ID_PERFIL" />
+            </Principal>
+            <Dependent Role="SG_USUARIOS">
+              <PropertyRef Name="ID_PERFIL" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="SG_VENTAS_DIARIAS">
+          <Key>
+            <PropertyRef Name="ID_VENTA" />
+          </Key>
+          <Property Type="Int16" Name="ID_VENTA" Nullable="false" />
+          <Property Type="String" Name="TURNO" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="DateTime" Name="FECHA" Nullable="false" />
+          <Property Type="Decimal" Name="TOTAL" Nullable="false" Precision="15" Scale="5" />
+        </EntityType>
+        <EntityType Name="SG_COMBUSTIBLES">
+          <Key>
+            <PropertyRef Name="ID_COMBUSTIBLE" />
+          </Key>
+          <Property Type="Int16" Name="ID_COMBUSTIBLE" Nullable="false" />
+          <Property Type="String" Name="NOMBRE" Nullable="false" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="DESCRIPCION" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Type="Decimal" Name="CANT_DISPONIBLE" Nullable="false" Precision="15" Scale="5" />
+          <Property Type="String" Name="UNIDAD" Nullable="false" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="ESTADO" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
+          <NavigationProperty Name="SG_POS" Relationship="Model.SG_POS_R01" FromRole="SG_COMBUSTIBLES" ToRole="SG_POS" />
+          <NavigationProperty Name="SG_COMPRAS" Relationship="Model.SG_COMPRAS_R01" FromRole="SG_COMBUSTIBLES" ToRole="SG_COMPRAS" />
+        </EntityType>
+        <EntityType Name="SG_POS">
+          <Key>
+            <PropertyRef Name="ID_POS" />
+          </Key>
+          <Property Type="Int32" Name="ID_POS" Nullable="false" />
+          <Property Type="String" Name="CODIGO" Nullable="false" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Type="Int16" Name="ID_COMBUSTIBLE" Nullable="false" />
+          <Property Type="Decimal" Name="ENT_LITTER_INI" Nullable="false" Precision="15" Scale="5" />
+          <Property Type="Decimal" Name="LITTER_ACT" Nullable="false" Precision="15" Scale="5" />
+          <Property Type="String" Name="ESTADO" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Type="String" Name="DESCRIPCION" MaxLength="300" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="SG_COMBUSTIBLES" Relationship="Model.SG_POS_R01" FromRole="SG_POS" ToRole="SG_COMBUSTIBLES" />
+          <NavigationProperty Name="SG_POS_TURNOS" Relationship="Model.SG_POS_TURNOS_R01" FromRole="SG_POS" ToRole="SG_POS_TURNOS" />
+        </EntityType>
+        <Association Name="SG_POS_R01">
+          <End Type="Model.SG_COMBUSTIBLES" Role="SG_COMBUSTIBLES" Multiplicity="1" />
+          <End Type="Model.SG_POS" Role="SG_POS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SG_COMBUSTIBLES">
+              <PropertyRef Name="ID_COMBUSTIBLE" />
+            </Principal>
+            <Dependent Role="SG_POS">
+              <PropertyRef Name="ID_COMBUSTIBLE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="SG_POS_TURNOS">
+          <Key>
+            <PropertyRef Name="ID_POS_TURNO" />
+          </Key>
+          <Property Type="Int32" Name="ID_POS_TURNO" Nullable="false" />
+          <Property Type="Int32" Name="ID_POS" Nullable="false" />
+          <Property Type="String" Name="TURNO" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="DateTime" Name="FECHA" Nullable="false" />
+          <Property Type="Decimal" Name="ENT_LITTER" Nullable="false" Precision="15" Scale="5" />
+          <Property Type="Decimal" Name="SAL_LITTER" Nullable="false" Precision="15" Scale="5" />
+          <Property Type="Decimal" Name="TOTAL" Nullable="false" Precision="15" Scale="5" />
+          <Property Type="Int16" Name="ID_USUARIO" Nullable="false" />
+          <NavigationProperty Name="SG_POS" Relationship="Model.SG_POS_TURNOS_R01" FromRole="SG_POS_TURNOS" ToRole="SG_POS" />
+          <Property Type="DateTime" Name="FECHA_REG" />
+        </EntityType>
+        <Association Name="SG_POS_TURNOS_R01">
+          <End Type="Model.SG_POS" Role="SG_POS" Multiplicity="1" />
+          <End Type="Model.SG_POS_TURNOS" Role="SG_POS_TURNOS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SG_POS">
+              <PropertyRef Name="ID_POS" />
+            </Principal>
+            <Dependent Role="SG_POS_TURNOS">
+              <PropertyRef Name="ID_POS" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="SG_CAJAS">
+          <Key>
+            <PropertyRef Name="ID_CAJA" />
+          </Key>
+          <Property Type="Int32" Name="ID_CAJA" Nullable="false" />
+          <Property Type="String" Name="CODIGO" Nullable="false" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="NOMBRE" Nullable="false" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="NRO_CUENTA" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="MONEDA" Nullable="false" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="DESCRIPCION" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Type="Decimal" Name="SALDO" Nullable="false" Precision="15" Scale="5" />
+          <Property Type="Int16" Name="ID_USUARIO" Nullable="false" />
+          <Property Type="DateTime" Name="FECHA_REG" />
+          <NavigationProperty Name="SG_INGRESOS" Relationship="Model.SG_INGRESOS_R01" FromRole="SG_CAJAS" ToRole="SG_INGRESOS" />
+          <NavigationProperty Name="SG_COMPRAS" Relationship="Model.SG_COMPRAS_R02" FromRole="SG_CAJAS" ToRole="SG_COMPRAS" />
+        </EntityType>
+        <EntityType Name="SG_INGRESOS">
+          <Key>
+            <PropertyRef Name="ID_INGRESO" />
+          </Key>
+          <Property Type="Int32" Name="ID_INGRESO" Nullable="false" />
+          <Property Type="Int32" Name="NRO_COMP" Nullable="false" />
+          <Property Type="DateTime" Name="FECHA" Nullable="false" />
+          <Property Type="String" Name="REGISTRAR" Nullable="false" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="CONCEPTO" Nullable="false" MaxLength="140" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="ID_CAJA" Nullable="false" />
+          <Property Type="Decimal" Name="IMPORTE" Nullable="false" Precision="15" Scale="5" />
+          <Property Type="Int16" Name="ID_USUARIO" Nullable="false" />
+          <Property Type="DateTime" Name="FECHA_REG" />
+          <NavigationProperty Name="SG_CAJAS" Relationship="Model.SG_INGRESOS_R01" FromRole="SG_INGRESOS" ToRole="SG_CAJAS" />
+        </EntityType>
+        <Association Name="SG_INGRESOS_R01">
+          <End Type="Model.SG_CAJAS" Role="SG_CAJAS" Multiplicity="1" />
+          <End Type="Model.SG_INGRESOS" Role="SG_INGRESOS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SG_CAJAS">
+              <PropertyRef Name="ID_CAJA" />
+            </Principal>
+            <Dependent Role="SG_INGRESOS">
+              <PropertyRef Name="ID_CAJA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="SG_COMPRAS">
+          <Key>
+            <PropertyRef Name="ID_COMPRA" />
+          </Key>
+          <Property Type="Int32" Name="ID_COMPRA" Nullable="false" />
+          <Property Type="Int32" Name="NRO_COMP" Nullable="false" />
+          <Property Type="DateTime" Name="FECHA" Nullable="false" />
+          <Property Type="Int16" Name="ID_COMBUSTIBLE" Nullable="false" />
+          <Property Type="Int32" Name="ID_CAJA" Nullable="false" />
+          <Property Type="Decimal" Name="CANTIDAD" Nullable="false" Precision="15" Scale="5" />
+          <Property Type="Int64" Name="NRO_FACTURA" Nullable="false" />
+          <Property Type="String" Name="TIPO" Nullable="false" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Type="Decimal" Name="PRECIO" Nullable="false" Precision="15" Scale="5" />
+          <Property Type="Decimal" Name="IMPORTE" Nullable="false" Precision="15" Scale="5" />
+          <Property Type="Decimal" Name="FORMULARIO" Nullable="false" Precision="15" Scale="5" />
+          <Property Type="Decimal" Name="TOTAL" Nullable="false" Precision="15" Scale="5" />
+          <Property Type="Int16" Name="ID_USUARIO" Nullable="false" />
+          <Property Type="DateTime" Name="FECHA_REG" />
+          <NavigationProperty Name="SG_CAJAS" Relationship="Model.SG_COMPRAS_R02" FromRole="SG_COMPRAS" ToRole="SG_CAJAS" />
+          <NavigationProperty Name="SG_COMBUSTIBLES" Relationship="Model.SG_COMPRAS_R01" FromRole="SG_COMPRAS" ToRole="SG_COMBUSTIBLES" />
+        </EntityType>
+        <Association Name="SG_COMPRAS_R02">
+          <End Type="Model.SG_CAJAS" Role="SG_CAJAS" Multiplicity="1" />
+          <End Type="Model.SG_COMPRAS" Role="SG_COMPRAS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SG_CAJAS">
+              <PropertyRef Name="ID_CAJA" />
+            </Principal>
+            <Dependent Role="SG_COMPRAS">
+              <PropertyRef Name="ID_CAJA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="SG_COMPRAS_R01">
+          <End Type="Model.SG_COMBUSTIBLES" Role="SG_COMBUSTIBLES" Multiplicity="1" />
+          <End Type="Model.SG_COMPRAS" Role="SG_COMPRAS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SG_COMBUSTIBLES">
+              <PropertyRef Name="ID_COMBUSTIBLE" />
+            </Principal>
+            <Dependent Role="SG_COMPRAS">
+              <PropertyRef Name="ID_COMBUSTIBLE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="SG_CLIENTES">
+          <Key>
+            <PropertyRef Name="ID_CLIENTE" />
+          </Key>
+          <Property Type="Int32" Name="ID_CLIENTE" Nullable="false" />
+          <Property Type="Int32" Name="CODIGO" Nullable="false" />
+          <Property Type="DateTime" Name="FECHA" Nullable="false" />
+          <Property Type="String" Name="EMPRESA" Nullable="false" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="NIT" Nullable="false" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="CONTACTO" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="TELEFONO" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="DIRECCION" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Type="Decimal" Name="LIMITE" Nullable="false" Precision="15" Scale="5" />
+          <Property Type="Decimal" Name="CONSUMO" Precision="15" Scale="5" />
+          <Property Type="Decimal" Name="SALDO" Precision="15" Scale="5" />
+          <Property Type="Int16" Name="ID_USUARIO" Nullable="false" />
+          <Property Type="DateTime" Name="FECHA_REG" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ModelStoreContainer" CdmEntityContainer="CityTruckContext">
+          <EntitySetMapping Name="SG_LISTAS"><EntityTypeMapping TypeName="Model.SG_LISTAS"><MappingFragment StoreEntitySet="SG_LISTAS">
+            <ScalarProperty Name="ID_LISTA" ColumnName="ID_LISTA" />
+            <ScalarProperty Name="LISTA" ColumnName="LISTA" />
+            <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
+            <ScalarProperty Name="TAM_LIMITE" ColumnName="TAM_LIMITE" />
+            <ScalarProperty Name="TIPO_VALOR" ColumnName="TIPO_VALOR" />
+            <ScalarProperty Name="MAYUS_MINUS" ColumnName="MAYUS_MINUS" />
+            <ScalarProperty Name="ESTADO" ColumnName="ESTADO" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="SG_LISTAS_ITEMS"><EntityTypeMapping TypeName="Model.SG_LISTAS_ITEMS"><MappingFragment StoreEntitySet="SG_LISTAS_ITEMS">
+            <ScalarProperty Name="ID_TABLA" ColumnName="ID_TABLA" />
+            <ScalarProperty Name="ID_PADRE" ColumnName="ID_PADRE" />
+            <ScalarProperty Name="ID_LISTA" ColumnName="ID_LISTA" />
+            <ScalarProperty Name="CODIGO" ColumnName="CODIGO" />
+            <ScalarProperty Name="VALOR" ColumnName="VALOR" />
+            <ScalarProperty Name="ESTADO" ColumnName="ESTADO" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="SG_MENU_OPCIONES"><EntityTypeMapping TypeName="Model.SG_MENU_OPCIONES"><MappingFragment StoreEntitySet="SG_MENU_OPCIONES">
+            <ScalarProperty Name="ID_OPC" ColumnName="ID_OPC" />
+            <ScalarProperty Name="OPCION" ColumnName="OPCION" />
+            <ScalarProperty Name="LINK" ColumnName="LINK" />
+            <ScalarProperty Name="TOOLTIP" ColumnName="TOOLTIP" />
+            <ScalarProperty Name="ICONO" ColumnName="ICONO" />
+            <ScalarProperty Name="ESTILO" ColumnName="ESTILO" />
+            <ScalarProperty Name="ID_PADRE" ColumnName="ID_PADRE" />
+            <ScalarProperty Name="ESTADO" ColumnName="ESTADO" />
+            <ScalarProperty Name="ORDEN" ColumnName="ORDEN" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="SG_PERFILES"><EntityTypeMapping TypeName="Model.SG_PERFILES"><MappingFragment StoreEntitySet="SG_PERFILES">
+            <ScalarProperty Name="ID_PERFIL" ColumnName="ID_PERFIL" />
+            <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+            <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
+            <ScalarProperty Name="ESTADO" ColumnName="ESTADO" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="SG_PERFILES_OPCIONES"><EntityTypeMapping TypeName="Model.SG_PERFILES_OPCIONES"><MappingFragment StoreEntitySet="SG_PERFILES_OPCIONES">
+            <ScalarProperty Name="ID_PRF_OPC" ColumnName="ID_PRF_OPC" />
+            <ScalarProperty Name="ID_PERFIL" ColumnName="ID_PERFIL" />
+            <ScalarProperty Name="ID_OPC" ColumnName="ID_OPC" />
+            <ScalarProperty Name="ESTADO" ColumnName="ESTADO" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="SG_USUARIOS"><EntityTypeMapping TypeName="Model.SG_USUARIOS"><MappingFragment StoreEntitySet="SG_USUARIOS">
+            <ScalarProperty Name="ID_USUARIO" ColumnName="ID_USUARIO" />
+            <ScalarProperty Name="LOGIN" ColumnName="LOGIN" />
+            <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+            <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+            <ScalarProperty Name="FCH_ALTA" ColumnName="FCH_ALTA" />
+            <ScalarProperty Name="FCH_BAJA" ColumnName="FCH_BAJA" />
+            <ScalarProperty Name="ID_PERFIL" ColumnName="ID_PERFIL" />
+            <ScalarProperty Name="ESTADO" ColumnName="ESTADO" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="SG_VENTAS_DIARIAS">
+            <EntityTypeMapping TypeName="Model.SG_VENTAS_DIARIAS">
+              <MappingFragment StoreEntitySet="SG_VENTAS_DIARIAS">
+                <ScalarProperty Name="TOTAL" ColumnName="TOTAL" />
+                <ScalarProperty Name="FECHA" ColumnName="FECHA" />
+                <ScalarProperty Name="TURNO" ColumnName="TURNO" />
+                <ScalarProperty Name="ID_VENTA" ColumnName="ID_VENTA" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="P_SG_ALTA_LISTA" FunctionName="Model.Store.P_SG_ALTA_LISTA" />
+          <FunctionImportMapping FunctionImportName="P_SG_GRABAR_LISTAS_ITEMS" FunctionName="Model.Store.P_SG_GRABAR_LISTAS_ITEMS" />
+          <EntitySetMapping Name="SG_COMBUSTIBLES">
+            <EntityTypeMapping TypeName="Model.SG_COMBUSTIBLES">
+              <MappingFragment StoreEntitySet="SG_COMBUSTIBLES">
+                <ScalarProperty Name="ESTADO" ColumnName="ESTADO" />
+                <ScalarProperty Name="UNIDAD" ColumnName="UNIDAD" />
+                <ScalarProperty Name="CANT_DISPONIBLE" ColumnName="CANT_DISPONIBLE" />
+                <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
+                <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+                <ScalarProperty Name="ID_COMBUSTIBLE" ColumnName="ID_COMBUSTIBLE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SG_POS">
+            <EntityTypeMapping TypeName="Model.SG_POS">
+              <MappingFragment StoreEntitySet="SG_POS">
+                <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
+                <ScalarProperty Name="ESTADO" ColumnName="ESTADO" />
+                <ScalarProperty Name="LITTER_ACT" ColumnName="LITTER_ACT" />
+                <ScalarProperty Name="ENT_LITTER_INI" ColumnName="ENT_LITTER_INI" />
+                <ScalarProperty Name="ID_COMBUSTIBLE" ColumnName="ID_COMBUSTIBLE" />
+                <ScalarProperty Name="CODIGO" ColumnName="CODIGO" />
+                <ScalarProperty Name="ID_POS" ColumnName="ID_POS" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SG_POS_TURNOS">
+            <EntityTypeMapping TypeName="Model.SG_POS_TURNOS">
+              <MappingFragment StoreEntitySet="SG_POS_TURNOS">
+                <ScalarProperty Name="FECHA_REG" ColumnName="FECHA_REG" />
+                <ScalarProperty Name="ID_USUARIO" ColumnName="ID_USUARIO" />
+                <ScalarProperty Name="TOTAL" ColumnName="TOTAL" />
+                <ScalarProperty Name="SAL_LITTER" ColumnName="SAL_LITTER" />
+                <ScalarProperty Name="ENT_LITTER" ColumnName="ENT_LITTER" />
+                <ScalarProperty Name="FECHA" ColumnName="FECHA" />
+                <ScalarProperty Name="TURNO" ColumnName="TURNO" />
+                <ScalarProperty Name="ID_POS" ColumnName="ID_POS" />
+                <ScalarProperty Name="ID_POS_TURNO" ColumnName="ID_POS_TURNO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="P_SG_GENERAR_POS_TURNOS" FunctionName="Model.Store.P_SG_GENERAR_POS_TURNOS" />
+          <FunctionImportMapping FunctionImportName="P_SG_GUARDAR_POS_TURNO" FunctionName="Model.Store.P_SG_GUARDAR_POS_TURNO" />
+          <EntitySetMapping Name="SG_CAJAS">
+            <EntityTypeMapping TypeName="Model.SG_CAJAS">
+              <MappingFragment StoreEntitySet="SG_CAJAS">
+                <ScalarProperty Name="FECHA_REG" ColumnName="FECHA_REG" />
+                <ScalarProperty Name="ID_USUARIO" ColumnName="ID_USUARIO" />
+                <ScalarProperty Name="SALDO" ColumnName="SALDO" />
+                <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
+                <ScalarProperty Name="MONEDA" ColumnName="MONEDA" />
+                <ScalarProperty Name="NRO_CUENTA" ColumnName="NRO_CUENTA" />
+                <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+                <ScalarProperty Name="CODIGO" ColumnName="CODIGO" />
+                <ScalarProperty Name="ID_CAJA" ColumnName="ID_CAJA" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SG_INGRESOS">
+            <EntityTypeMapping TypeName="Model.SG_INGRESOS">
+              <MappingFragment StoreEntitySet="SG_INGRESOS">
+                <ScalarProperty Name="FECHA_REG" ColumnName="FECHA_REG" />
+                <ScalarProperty Name="ID_USUARIO" ColumnName="ID_USUARIO" />
+                <ScalarProperty Name="IMPORTE" ColumnName="IMPORTE" />
+                <ScalarProperty Name="ID_CAJA" ColumnName="ID_CAJA" />
+                <ScalarProperty Name="CONCEPTO" ColumnName="CONCEPTO" />
+                <ScalarProperty Name="REGISTRAR" ColumnName="REGISTRAR" />
+                <ScalarProperty Name="FECHA" ColumnName="FECHA" />
+                <ScalarProperty Name="NRO_COMP" ColumnName="NRO_COMP" />
+                <ScalarProperty Name="ID_INGRESO" ColumnName="ID_INGRESO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SG_COMPRAS">
+            <EntityTypeMapping TypeName="Model.SG_COMPRAS">
+              <MappingFragment StoreEntitySet="SG_COMPRAS">
+                <ScalarProperty Name="FECHA_REG" ColumnName="FECHA_REG" />
+                <ScalarProperty Name="ID_USUARIO" ColumnName="ID_USUARIO" />
+                <ScalarProperty Name="TOTAL" ColumnName="TOTAL" />
+                <ScalarProperty Name="FORMULARIO" ColumnName="FORMULARIO" />
+                <ScalarProperty Name="IMPORTE" ColumnName="IMPORTE" />
+                <ScalarProperty Name="PRECIO" ColumnName="PRECIO" />
+                <ScalarProperty Name="TIPO" ColumnName="TIPO" />
+                <ScalarProperty Name="NRO_FACTURA" ColumnName="NRO_FACTURA" />
+                <ScalarProperty Name="CANTIDAD" ColumnName="CANTIDAD" />
+                <ScalarProperty Name="ID_CAJA" ColumnName="ID_CAJA" />
+                <ScalarProperty Name="ID_COMBUSTIBLE" ColumnName="ID_COMBUSTIBLE" />
+                <ScalarProperty Name="FECHA" ColumnName="FECHA" />
+                <ScalarProperty Name="NRO_COMP" ColumnName="NRO_COMP" />
+                <ScalarProperty Name="ID_COMPRA" ColumnName="ID_COMPRA" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SG_CLIENTES">
+            <EntityTypeMapping TypeName="Model.SG_CLIENTES">
+              <MappingFragment StoreEntitySet="SG_CLIENTES">
+                <ScalarProperty Name="FECHA_REG" ColumnName="FECHA_REG" />
+                <ScalarProperty Name="ID_USUARIO" ColumnName="ID_USUARIO" />
+                <ScalarProperty Name="SALDO" ColumnName="SALDO" />
+                <ScalarProperty Name="CONSUMO" ColumnName="CONSUMO" />
+                <ScalarProperty Name="LIMITE" ColumnName="LIMITE" />
+                <ScalarProperty Name="DIRECCION" ColumnName="DIRECCION" />
+                <ScalarProperty Name="TELEFONO" ColumnName="TELEFONO" />
+                <ScalarProperty Name="CONTACTO" ColumnName="CONTACTO" />
+                <ScalarProperty Name="NIT" ColumnName="NIT" />
+                <ScalarProperty Name="EMPRESA" ColumnName="EMPRESA" />
+                <ScalarProperty Name="FECHA" ColumnName="FECHA" />
+                <ScalarProperty Name="CODIGO" ColumnName="CODIGO" />
+                <ScalarProperty Name="ID_CLIENTE" ColumnName="ID_CLIENTE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams>
+      <Diagram Name="Modelo" ZoomLevel="86">
+        <EntityTypeShape EntityType="Model.SG_LISTAS" Width="1.5" PointX="0.75" PointY="1" Height="2.5571907552083326" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.SG_LISTAS_ITEMS" Width="1.5" PointX="3" PointY="1" Height="2.7494921874999996" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.SG_MENU_OPCIONES" Width="1.5" PointX="0.75" PointY="10.5" Height="2.9417936197916639" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.SG_PERFILES" Width="1.5" PointX="0.5" PointY="8.125" Height="2.1725878906249987" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.SG_PERFILES_OPCIONES" Width="1.5" PointX="3.125" PointY="4.75" Height="2.1725878906249996" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.SG_USUARIOS" Width="1.5" PointX="3.25" PointY="8.125" Height="2.7494921874999996" IsExpanded="true" />
+        <AssociationConnector Association="Model.SG_LISTAS_ITEMS_R01" ManuallyRouted="false">
+          <ConnectorPoint PointX="2.25" PointY="2.2785953776041663" />
+          <ConnectorPoint PointX="3" PointY="2.2785953776041663" />
+        </AssociationConnector>
+        <AssociationConnector Association="Model.SG_LISTAS_ITEMS_R02" ManuallyRouted="false">
+          <ConnectorPoint PointX="3.5319230769230767" PointY="3.7494921874999996" />
+          <ConnectorPoint PointX="3.5319230769230767" PointY="3.9994921874999996" />
+          <ConnectorPoint PointX="3.9784615384615383" PointY="3.9994921874999996" />
+          <ConnectorPoint PointX="3.9784615384615383" PointY="3.7494921874999996" />
+        </AssociationConnector>
+        <AssociationConnector Association="Model.SG_PERFILES_OPCIONES_R02" ManuallyRouted="false">
+          <ConnectorPoint PointX="2.15625" PointY="10.5" />
+          <ConnectorPoint PointX="2.15625" PointY="5.8362939453125" />
+          <ConnectorPoint PointX="3.125" PointY="5.8362939453125" />
+        </AssociationConnector>
+        <AssociationConnector Association="Model.SG_PERFILES_OPCIONES_R01" ManuallyRouted="false">
+          <ConnectorPoint PointX="1.25" PointY="8.125" />
+          <ConnectorPoint PointX="1.25" PointY="6.4106934179687505" />
+          <ConnectorPoint PointX="2.0729166666666665" PointY="6.41069341796875" />
+          <ConnectorPoint PointX="2.2395833333333335" PointY="6.4106934179687505" />
+          <ConnectorPoint PointX="3.125" PointY="6.4106934179687505" />
+        </AssociationConnector>
+        <AssociationConnector Association="Model.SG_USUARIOS_R01" ManuallyRouted="false">
+          <ConnectorPoint PointX="2" PointY="9.2112939453125" />
+          <ConnectorPoint PointX="2.0729166666666665" PointY="9.2112939453125" />
+          <ConnectorPoint PointX="2.2395833333333335" PointY="9.2112939453125" />
+          <ConnectorPoint PointX="3.25" PointY="9.2112939453125" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="Model.SG_VENTAS_DIARIAS" Width="1.5" PointX="5.25" PointY="1.5" Height="1.7879850260416674" />
+        <EntityTypeShape EntityType="Model.SG_COMBUSTIBLES" Width="1.5" PointX="5.75" PointY="3.5" Height="2.3648893229166674" />
+        <EntityTypeShape EntityType="Model.SG_POS" Width="1.5" PointX="9.125" PointY="3.5" Height="2.7494921874999996" />
+        <AssociationConnector Association="Model.SG_POS_R01" >
+          <ConnectorPoint PointX="7.25" PointY="4.7785953776041659" />
+          <ConnectorPoint PointX="9.125" PointY="4.7785953776041659" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="Model.SG_POS_TURNOS" Width="1.5" PointX="5.875" PointY="6.125" Height="2.7494921875000031" />
+        <AssociationConnector Association="Model.SG_POS_TURNOS_R01" >
+          <ConnectorPoint PointX="10" PointY="6.2494921875" />
+          <ConnectorPoint PointX="10" PointY="6.96849659375" />
+          <ConnectorPoint PointX="8.5520833333333339" PointY="6.9684965937499994" />
+          <ConnectorPoint PointX="8.3854166666666661" PointY="6.96849659375" />
+          <ConnectorPoint PointX="7.375" PointY="6.96849659375" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="Model.SG_CAJAS" Width="1.5" PointX="7.875" PointY="7.75" Height="2.9417936197916656" />
+        <EntityTypeShape EntityType="Model.SG_INGRESOS" Width="1.5" PointX="10.625" PointY="7.75" Height="2.9417936197916745" />
+        <AssociationConnector Association="Model.SG_INGRESOS_R01" >
+          <ConnectorPoint PointX="9.375" PointY="9.2208968098958373" />
+          <ConnectorPoint PointX="10.625" PointY="9.2208968098958373" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="Model.SG_COMPRAS" Width="1.5" PointX="11.5" PointY="2.875" Height="4.0956022135416674" />
+        <AssociationConnector Association="Model.SG_COMPRAS_R02" >
+          <ConnectorPoint PointX="8.46875" PointY="7.75" />
+          <ConnectorPoint PointX="8.46875" PointY="6.640244390625" />
+          <ConnectorPoint PointX="9.9166666666666661" PointY="6.640244390624999" />
+          <ConnectorPoint PointX="10.083333333333334" PointY="6.640244390625" />
+          <ConnectorPoint PointX="11.5" PointY="6.640244390625" />
+        </AssociationConnector>
+        <AssociationConnector Association="Model.SG_COMPRAS_R01" >
+          <ConnectorPoint PointX="7.25" PointY="3.5" />
+          <ConnectorPoint PointX="7.625" PointY="3.125" />
+          <ConnectorPoint PointX="7.625" PointY="2.5" />
+          <ConnectorPoint PointX="11.125" PointY="2.5" />
+          <ConnectorPoint PointX="11.5" PointY="2.875" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="Model.SG_CLIENTES" Width="1.5" PointX="3.375" PointY="11.75" Height="3.5186979166666674" />
+      </Diagram>
+    </Diagrams>
+  </Designer>
+</edmx:Edmx>

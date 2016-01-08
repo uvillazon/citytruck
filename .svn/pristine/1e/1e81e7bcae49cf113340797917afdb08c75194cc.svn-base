@@ -1,0 +1,35 @@
+﻿Ext.define("App.View.Cajas.GridCajas", {
+    extend: "App.Config.Abstract.Grid",
+    title: 'Cajas Registrados',
+    criterios: true,
+    textBusqueda: 'Cod Caja',
+    imprimir: true,
+    width: 550,
+    height: 350,
+    equipo: 'Cajas',
+    initComponent: function () {
+        var me = this;
+        if (me.opcion == "GridCajas") {
+            me.CargaGridCajas();
+        }
+        else {
+            alert("No selecciono ninguna opcion");
+        }
+        this.callParent(arguments);
+    },
+    CargaGridCajas: function () {
+        var me = this;
+        me.store = Ext.create("App.Store.Cajas.Cajas");
+        me.CargarComponentes();
+        me.columns = [
+            { xtype: "rownumberer", width: 30, sortable: false },
+            { header: "Codigo<br>Caja", width: 70, sortable: true, dataIndex: "CODIGO" },
+            { header: "Nombre", width: 150, sortable: true, dataIndex: "NOMBRE" },
+            { header: "Descripcion", width: 200, sortable: true, dataIndex: "DESCRIPCION" },
+            { header: "Nro<br>Cuenta", width: 100, sortable: true, dataIndex: "NRO_CUENTA" },
+            { header: "Moneda", width: 100, sortable: true, dataIndex: "MONEDA" },
+            { header: "Saldo", width: 150, sortable: true, dataIndex: "SALDO" },
+        ];
+
+    }
+});

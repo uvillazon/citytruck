@@ -1,0 +1,15 @@
+E:\Proyecto\CityTruck\CityTruck.Services\bin\Debug\CityTruck.Services.dll
+E:\Proyecto\CityTruck\CityTruck.Services\bin\Debug\CityTruck.Services.pdb
+E:\Proyecto\CityTruck\CityTruck.Services\bin\Debug\CityTruck.Business.dll
+E:\Proyecto\CityTruck\CityTruck.Services\bin\Debug\CityTruck.Common.Data.dll
+E:\Proyecto\CityTruck\CityTruck.Services\bin\Debug\CityTruck.Common.dll
+E:\Proyecto\CityTruck\CityTruck.Services\bin\Debug\CityTruck.Model.dll
+E:\Proyecto\CityTruck\CityTruck.Services\bin\Debug\LinqKit.dll
+E:\Proyecto\CityTruck\CityTruck.Services\bin\Debug\System.Linq.Dynamic.dll
+E:\Proyecto\CityTruck\CityTruck.Services\bin\Debug\CityTruck.Business.pdb
+E:\Proyecto\CityTruck\CityTruck.Services\bin\Debug\CityTruck.Common.Data.pdb
+E:\Proyecto\CityTruck\CityTruck.Services\bin\Debug\CityTruck.Common.pdb
+E:\Proyecto\CityTruck\CityTruck.Services\bin\Debug\CityTruck.Model.pdb
+E:\Proyecto\CityTruck\CityTruck.Services\obj\Debug\CityTruck.Services.csprojResolveAssemblyReference.cache
+E:\Proyecto\CityTruck\CityTruck.Services\obj\Debug\CityTruck.Services.dll
+E:\Proyecto\CityTruck\CityTruck.Services\obj\Debug\CityTruck.Services.pdb

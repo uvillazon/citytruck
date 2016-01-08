@@ -1,0 +1,4 @@
+E:\Proyecto\CityTruck\CityTruck.Common\bin\Debug\CityTruck.Common.dll
+E:\Proyecto\CityTruck\CityTruck.Common\bin\Debug\CityTruck.Common.pdb
+E:\Proyecto\CityTruck\CityTruck.Common\obj\Debug\CityTruck.Common.dll
+E:\Proyecto\CityTruck\CityTruck.Common\obj\Debug\CityTruck.Common.pdb

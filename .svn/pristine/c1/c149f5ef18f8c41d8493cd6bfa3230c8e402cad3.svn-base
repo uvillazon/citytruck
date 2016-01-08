@@ -1,0 +1,504 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.Mvc;
+using CityTruck.Services.Interfaces;
+using CityTruck.Common;
+using System.Web.Script.Serialization;
+using System.Collections;
+using CityTruck.WebSite.Models;
+using CityTruck.Services.Model;
+using Newtonsoft.Json;
+using CityTruck.Model;
+
+namespace CityTruck.WebSite.Controllers
+{
+    public class VentasController : Controller
+    {
+        private IVentasDiariasServices _serVen;
+        private IPosTurnosServices _serPos;
+        private ICombustiblesServices _serCom;
+        public VentasController(IVentasDiariasServices serVen, IPosTurnosServices serPos, ICombustiblesServices serCom)
+        {
+            _serVen = serVen;
+            _serPos = serPos;
+            _serCom = serCom;
+        }
+
+        [AcceptVerbs(HttpVerbs.Get)]
+        public ActionResult ObtenerVentasDiarias(PagingInfo paginacion, string ANIO = null, string MES = null)
+        {
+            //string mes, anio;
+            if (ANIO == null && MES == null)
+            {
+                //DateTime fecha = DateTime.Now;
+                MES = DateTime.Now.ToString("MM");
+                ANIO = DateTime.Now.ToString("yyyy");
+            }
+            var result = _serVen.ObtenerVentasDiariasPaginado(paginacion, ANIO, MES).GroupBy(y => new { y.FECHA }).Select(z => new
+            {
+                FECHA = z.Key.FECHA,
+                TOTAL = z.Sum(x => x.TOTAL)
+            });
+            List<VentasDiariasModel> listas = new List<VentasDiariasModel>();
+            foreach (var item in result)
+            {
+                VentasDiariasModel venDia = new VentasDiariasModel
+                {
+                    FECHA = item.FECHA,
+                    VENTA_TOTAL = item.TOTAL
+                };
+                var ventadiaria = _serVen.ObtenerVentasDiariasPorCriterio(x => x.FECHA == item.FECHA);
+                foreach (var diario in ventadiaria)
+                {
+                    if (diario.TURNO == "DIA")
+                    {
+                        venDia.VENTA_DIA = diario.TOTAL;
+
+                    }
+                    else if (diario.TURNO == "TARDE")
+                    {
+                        venDia.VENTA_TARDE = diario.TOTAL;
+
+                    }
+                    else
+                    {
+                        venDia.VENTA_NOCHE = diario.TOTAL;
+                    }
+                }
+                listas.Add(venDia);
+
+            }
+            listas = listas.OrderByDescending(x => x.FECHA).ToList();
+            JavaScriptSerializer javaScriptSerializer = new JavaScriptSerializer();
+            string callback1 = paginacion.callback + "(" + javaScriptSerializer.Serialize(new { Rows = listas, Total = paginacion.total }) + ");";
+            return JavaScript(callback1);
+
+        }
+        [HttpGet]
+        public ActionResult ObtenerPosTurnos(PagingInfo paginacion, FiltrosModel<PosTurnosModel> filtros, PosTurnosModel posTurnos, bool EDITAR = false)
+        {
+            filtros.Entidad = posTurnos;
+            var result = _serPos.ObtenerPosTurnos(paginacion, filtros);
+            bool nuevo = false;
+            if (!EDITAR)
+            {
+                if (paginacion.total == 0)
+                {
+                    try
+                    {
+                        var spPos = _serPos.SP_GenerarPosTurnos(posTurnos.FECHA, posTurnos.TURNO, Convert.ToInt32(User.Identity.Name.Split('-')[3]));
+                        if (!spPos.success)
+                        {
+                            JavaScriptSerializer javaScriptSerializer2 = new JavaScriptSerializer();
+                            string callback2 = paginacion.callback + "(" + javaScriptSerializer2.Serialize(new { success = false, msg = spPos.msg }) + ");";
+                            //string callback1 = info.callback + "(" + json + ");";
+
+
+                            return JavaScript(callback2);
+                        }
+                        else
+                        {
+                            result = _serPos.ObtenerPosTurnos(paginacion, filtros);
+                            nuevo = true;
+                        }
+                    }
+                    catch (Exception)
+                    {
+
+                        throw;
+                    }
+
+                }
+            }
+            var formattData = result.Select(x => new
+            {
+                PRODUCTO = x.SG_POS.CODIGO + " - " + x.SG_POS.SG_COMBUSTIBLES.NOMBRE,
+                CODIGO = x.SG_POS.SG_COMBUSTIBLES.NOMBRE,
+                ID_POS = x.ID_POS,
+                ID_POS_TURNO = x.ID_POS_TURNO,
+                ENT_LITTER = x.ENT_LITTER,
+                SAL_LITTER = nuevo == true ? x.ENT_LITTER : x.SAL_LITTER,
+                TOTAL = x.SAL_LITTER - x.ENT_LITTER
+
+            });
+            JavaScriptSerializer javaScriptSerializer = new JavaScriptSerializer();
+            string callback1 = paginacion.callback + "(" + javaScriptSerializer.Serialize(new { Total = paginacion.total, Rows = formattData }) + ");";
+            //string callback1 = info.callback + "(" + json + ");";
+
+
+            return JavaScript(callback1);
+
+        }
+        [HttpGet]
+        public ActionResult ObtenerPosDia(PagingInfo paginacion, FiltrosModel<PosTurnosModel> filtros, PosTurnosModel posTurnos, bool EDITAR = false)
+        {
+            filtros.Entidad = posTurnos;
+            var result = _serPos.ObtenerPosDias(paginacion, filtros);
+            bool nuevo = false;
+            if (!EDITAR)
+            {
+                if (paginacion.total == 0)
+                {
+                    try
+                    {
+                        var spPos = _serPos.SP_GenerarPosDias(posTurnos.FECHA,  Convert.ToInt32(User.Identity.Name.Split('-')[3]));
+                        if (!spPos.success)
+                        {
+                            JavaScriptSerializer javaScriptSerializer2 = new JavaScriptSerializer();
+                            string callback2 = paginacion.callback + "(" + javaScriptSerializer2.Serialize(new { success = false, msg = spPos.msg }) + ");";
+                            //string callback1 = info.callback + "(" + json + ");";
+
+
+                            return JavaScript(callback2);
+                        }
+                        else
+                        {
+                            result = _serPos.ObtenerPosDias(paginacion, filtros);
+                            nuevo = true;
+                        }
+                    }
+                    catch (Exception)
+                    {
+
+                        throw;
+                    }
+
+                }
+            }
+            var formattData = result.Select(x => new
+            {
+                PRODUCTO = x.SG_POS.CODIGO + " - " + x.SG_POS.SG_COMBUSTIBLES.NOMBRE,
+                CODIGO = x.SG_POS.SG_COMBUSTIBLES.NOMBRE,
+                ID_POS = x.ID_POS,
+                ID_POS_TURNO = x.ID_POS_DIA_MN,
+                ENT_LITTER = x.ENT_LITTER,
+                SAL_LITTER = nuevo == true ? x.ENT_LITTER : x.SAL_LITTER,
+                TOTAL = x.SAL_LITTER - x.ENT_LITTER
+
+            });
+            JavaScriptSerializer javaScriptSerializer = new JavaScriptSerializer();
+            string callback1 = paginacion.callback + "(" + javaScriptSerializer.Serialize(new { Total = paginacion.total, Rows = formattData }) + ");";
+            //string callback1 = info.callback + "(" + json + ");";
+
+
+            return JavaScript(callback1);
+
+        }
+
+        [HttpPost]
+        public JsonResult GuardarVentasDiarias(string ventas, string nombres, DateTime FECHA, string TURNO, bool EDITAR)
+        {
+            try
+            {
+                RespuestaSP respuestaRSP = new RespuestaSP();
+                int id_usr = Convert.ToInt32(User.Identity.Name.Split('-')[3]);
+                if (ventas == "false")
+                {
+                    SG_VENTAS_DIARIAS vent = new SG_VENTAS_DIARIAS
+                    {
+                        TURNO = TURNO,
+                        FECHA = FECHA,
+                        RESPONSABLE = nombres
+                    };
+                    respuestaRSP = _serVen.SP_GenerarVentasDiarias(vent, id_usr);
+                    return Json(respuestaRSP);
+                }
+                else
+                {
+                    dynamic pos_ventas = JsonConvert.DeserializeObject(ventas);
+                    //RespuestaSP respuestaRSP = new RespuestaSP();
+                    foreach (var o in pos_ventas)
+                    {
+                        //p_id_ot,p_id_poste,p_id_cod_man,p_instruc_sol,p_idcentro_costo,p_descripcion_cc,p_login_usr,p_res
+                        SG_POS_TURNOS pos = new SG_POS_TURNOS
+                        {
+                            ID_POS_TURNO = o.ID_POS_TURNO,
+                            ID_POS = o.ID_POS,
+                            FECHA = FECHA,
+                            ENT_LITTER = o.ENT_LITTER,
+                            SAL_LITTER = o.SAL_LITTER,
+                            TOTAL = o.TOTAL,
+                            TURNO = TURNO,
+                            ID_USUARIO = (short)id_usr
+                        };
+
+                        respuestaRSP = _serVen.SP_GrabarVentasDiarias(pos, id_usr);
+
+                        if (!respuestaRSP.success)
+                        {
+                            return Json(new { success = false, msg = string.Format("Se produjo un error al intentar grabar la OT: {0}") });
+                        }
+                    }
+                    SG_VENTAS_DIARIAS vent = new SG_VENTAS_DIARIAS
+                    {
+                        TURNO = TURNO,
+                        FECHA = FECHA,
+                        RESPONSABLE = nombres
+                    };
+                    respuestaRSP = _serVen.SP_GenerarVentasDiarias(vent, id_usr);
+                    return Json(respuestaRSP);
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+        [HttpPost]
+        public JsonResult GuardarVentasMN(string ventas,  DateTime FECHA,  bool EDITAR)
+        {
+            try
+            {
+                RespuestaSP respuestaRSP = new RespuestaSP();
+                int id_usr = Convert.ToInt32(User.Identity.Name.Split('-')[3]);
+                if (ventas == "false")
+                {
+                    return Json(new { success = true, msg = string.Format("Proceso Ejecutado Correctamente") });
+                }
+                else
+                {
+                    dynamic pos_ventas = JsonConvert.DeserializeObject(ventas);
+                    //RespuestaSP respuestaRSP = new RespuestaSP();
+                    foreach (var o in pos_ventas)
+                    {
+                        //p_id_ot,p_id_poste,p_id_cod_man,p_instruc_sol,p_idcentro_costo,p_descripcion_cc,p_login_usr,p_res
+                        SG_POS_DIA_MN pos = new SG_POS_DIA_MN
+                        {
+                            ID_POS_DIA_MN = o.ID_POS_TURNO,
+                            ID_POS = o.ID_POS,
+                            FECHA = FECHA,
+                            ENT_LITTER = o.ENT_LITTER,
+                            SAL_LITTER = o.SAL_LITTER,
+                            TOTAL = o.TOTAL,
+                            ID_USUARIO = (short)id_usr
+                        };
+
+                        respuestaRSP = _serVen.SP_GrabarVentasDiariasMN(pos, id_usr);
+
+                        if (!respuestaRSP.success)
+                        {
+                            return Json(new { success = false, msg = string.Format("Se produjo un error al intentar grabar la OT: {0}") });
+                        }
+                    }
+                    return Json(respuestaRSP);
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+        [AcceptVerbs(HttpVerbs.Get)]
+        public ActionResult ObtenerPreciosPorFecha(DateTime? FECHA, PagingInfo paginacion)
+        {
+            //var precios = 
+            var precios = _serVen.ObtenerAjustesPrecios(x => x.FECHA_ALTA <= FECHA);
+
+            var formatData = precios.Select(x => new
+            {
+                PRECIO = x.PRECIO,
+                CONBUSTIBLE = x.SG_COMBUSTIBLES.NOMBRE,
+                TIPO = x.TIPO
+            });
+            JavaScriptSerializer javaScriptSerializer = new JavaScriptSerializer();
+            string callback1 = paginacion.callback + "(" + javaScriptSerializer.Serialize(new { Rows = formatData, Total = paginacion.total }) + ");";
+            return JavaScript(callback1);
+        }
+        [HttpPost]
+        public JsonResult VerificarVentas(DateTime FECHA, string TURNO)
+        {
+            try
+            {
+                int id_usr = Convert.ToInt32(User.Identity.Name.Split('-')[3]);
+                RespuestaSP respuestaRSP = new RespuestaSP();
+                SG_POS_TURNOS pos = new SG_POS_TURNOS()
+                {
+                    TURNO = TURNO,
+                    FECHA = FECHA
+                };
+                string Responsable = _serVen.ObtenerVentaDiaria(x => x.FECHA == FECHA && x.TURNO == TURNO) == null ? "" : _serVen.ObtenerVentaDiaria(x => x.FECHA == FECHA && x.TURNO == TURNO).RESPONSABLE;
+                respuestaRSP = _serVen.SP_VerificarEdicion(pos, id_usr);
+                //retornamos el precio de venta de los combustibles
+                var Gas = _serCom.ObtenerCombustible(x => x.ID_COMBUSTIBLE == 1);
+
+                var Die = _serCom.ObtenerCombustible(x => x.ID_COMBUSTIBLE == 2);
+
+
+                return Json(new { success = respuestaRSP.success, msg = respuestaRSP.msg, DIESEL = Die, GASOLINA = Gas, Responsable = Responsable });
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+        [AcceptVerbs(HttpVerbs.Get)]
+        public ActionResult ObtenerVentasCreditoPaginado(PagingInfo paginacion, FiltrosModel<VentasCreditoModel> filtros, VentasCreditoModel Entidad)
+        {
+            filtros.Entidad = Entidad;
+            var cajas = _serVen.ObtenerVentasCreditoPaginado(paginacion, filtros);
+            var formatData = cajas.Select(x => new
+            {
+                ID_VENTA = x.ID_VENTA,
+                ID_CLIENTE = x.ID_CLIENTE,
+                CLIENTE = x.SG_CLIENTES.EMPRESA,
+                ID_COMBUSTIBLE = x.ID_COMBUSTIBLE,
+                COMBUSTIBLE = x.SG_COMBUSTIBLES.NOMBRE,
+                PRECIO = x.PRECIO,
+                IMPORTE_BS = x.IMPORTE_BS,
+                IMPORTE_LTS = x.IMPORTE_LTS,
+                DIESEL = x.SG_COMBUSTIBLES.NOMBRE == "DIESEL" ? x.IMPORTE_BS : 0,
+                GASOLINA = x.SG_COMBUSTIBLES.NOMBRE == "GASOLINA" ? x.IMPORTE_BS : 0,
+            });
+            JavaScriptSerializer javaScriptSerializer = new JavaScriptSerializer();
+            string callback1 = paginacion.callback + "(" + javaScriptSerializer.Serialize(new { Rows = formatData, Total = paginacion.total }) + ");";
+            return JavaScript(callback1);
+        }
+
+        [HttpPost]
+        public JsonResult GuardarVentaCredito(SG_VENTAS_CREDITO p)
+        {
+            try
+            {
+                int id_usr = Convert.ToInt32(User.Identity.Name.Split('-')[3]);
+                RespuestaSP respuestaRSP = new RespuestaSP();
+
+                respuestaRSP = _serVen.SP_GrabarVentasCredito(p, id_usr);
+
+
+                return Json(respuestaRSP);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+        [HttpPost]
+        public JsonResult EliminarVentaCredito(int ID_VENTA)
+        {
+            try
+            {
+                int id_usr = Convert.ToInt32(User.Identity.Name.Split('-')[3]);
+                RespuestaSP respuestaRSP = new RespuestaSP();
+                respuestaRSP = _serVen.SP_EliminarVentaCredito(ID_VENTA, id_usr);
+                return Json(respuestaRSP);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+        [HttpPost]
+        public JsonResult VerificarUltimoRegistro(bool MN = false)
+        {
+            try
+            {
+                if (!MN)
+                {
+                    var result = _serVen.SP_UltimoReg();
+                    //return result;
+                    return Json(new { success = result.resp, FECHA = result.FECHA, TURNO = result.TURNO });
+                }
+                else
+                {
+                    var result = _serVen.SP_UltimoRegMN();
+                    //return result;
+                    return Json(new { success = result.resp, FECHA = result.FECHA});
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+        #region consumos
+        [AcceptVerbs(HttpVerbs.Get)]
+        public ActionResult ObtenerConsumosPaginado(PagingInfo paginacion, FiltrosModel<ConsumosModel> filtros, ConsumosModel Entidad)
+        {
+            filtros.Entidad = Entidad;
+            var cajas = _serVen.ObtenerConsumosPaginado(paginacion, filtros);
+            var formatData = cajas.Select(x => new
+            {
+                ID_CONSUMO = x.ID_CONSUMO,
+                ID_CLIENTE = x.ID_CLIENTE,
+                CLIENTE = x.SG_CLIENTES_CONSUMO.NOMBRE,
+                ID_COMBUSTIBLE = x.ID_COMBUSTIBLE,
+                COMBUSTIBLE = x.SG_COMBUSTIBLES.NOMBRE,
+                PRECIO = x.PRECIO,
+                IMPORTE_BS = x.IMPORTE_BS,
+                IMPORTE_LTS = x.IMPORTE_LTS,
+                DIESEL = x.SG_COMBUSTIBLES.NOMBRE == "DIESEL" ? x.IMPORTE_BS : 0,
+                GASOLINA = x.SG_COMBUSTIBLES.NOMBRE == "GASOLINA" ? x.IMPORTE_BS : 0,
+            });
+            JavaScriptSerializer javaScriptSerializer = new JavaScriptSerializer();
+            string callback1 = paginacion.callback + "(" + javaScriptSerializer.Serialize(new { Rows = formatData, Total = paginacion.total }) + ");";
+            return JavaScript(callback1);
+        }
+
+        [HttpPost]
+        public JsonResult GuardarConsumo(SG_CONSUMOS p)
+        {
+            try
+            {
+                int id_usr = Convert.ToInt32(User.Identity.Name.Split('-')[3]);
+                RespuestaSP respuestaRSP = new RespuestaSP();
+
+                respuestaRSP = _serVen.SP_GrabarConsumo(p, id_usr);
+
+
+                return Json(respuestaRSP);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+        [HttpPost]
+        public JsonResult EliminarConsumo(int ID_CONSUMO)
+        {
+            try
+            {
+                int id_usr = Convert.ToInt32(User.Identity.Name.Split('-')[3]);
+                RespuestaSP respuestaRSP = new RespuestaSP();
+                respuestaRSP = _serVen.SP_EliminarConsumo(ID_CONSUMO, id_usr);
+                return Json(respuestaRSP);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+        #endregion
+
+        #region listas pos manguerasw
+        [AcceptVerbs(HttpVerbs.Get)]
+        public ActionResult ObtenerManguerasPaginado(PagingInfo paginacion)
+        {
+            _serPos.SP_ActualizarSaldos();
+            var cajas = _serPos.ObtnenerPuntosPaginados(paginacion);
+            var formatData = cajas.Select(x => new
+            {
+                ID_POS = x.ID_POS,
+                COMBUSTIBLE = x.SG_COMBUSTIBLES.NOMBRE,
+                CODIGO = x.CODIGO,
+                MITTER_INICIAL = x.ENT_LITTER_INI,
+                MITTER_INICIAL_MN = x.ENT_LITTER_INI_MN,
+                MITTER_ACTUAL_MN = x.LITTER_ACT_MN,
+                MITTER_ACTUAL = x.LITTER_ACT
+            });
+            JavaScriptSerializer javaScriptSerializer = new JavaScriptSerializer();
+            string callback1 = paginacion.callback + "(" + javaScriptSerializer.Serialize(new { Rows = formatData, Total = paginacion.total }) + ");";
+            return JavaScript(callback1);
+        }
+        #endregion
+    }
+}

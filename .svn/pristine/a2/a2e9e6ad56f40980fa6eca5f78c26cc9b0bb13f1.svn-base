@@ -1,0 +1,55 @@
+﻿Ext.define("App.View.Egresos.Principal", {
+    extend: "App.Config.Abstract.PanelPrincipal",
+    controlador: 'Egresos',
+    accionGrabar: 'GrabarEgresos',
+    view: '',
+    initComponent: function () {
+        var me = this;
+        //        alert(me.view);
+        me.CargarComponentes();
+        //me.CargarEventos();
+        this.callParent(arguments);
+    },
+    CargarComponentes: function () {
+        var me = this;
+        me.grid = Ext.create('App.View.Egresos.GridEgresos', {
+            region: 'center',
+            height: 350,
+            imagenes: false,
+            opcion: 'GridEgresos'
+        });
+        me.items = [me.grid
+        ];
+        me.toolbar = Funciones.CrearMenuBar();
+        Funciones.CrearMenu('btn_CrearEgreso', 'Crear Egreso', Constantes.ICONO_CREAR, me.EventosEgreso, me.toolbar, this);
+        Funciones.CrearMenu('btn_Imprimir', 'Imprimir', 'printer', me.EventosEgreso, me.toolbar, this);
+        Funciones.CrearMenu('btn_Detalle', 'Detalle', 'report', me.EventosEgreso, me.toolbar, this);
+        Funciones.CrearMenu('btn_Eliminar', 'Eliminar', Constantes.ICONO_BAJA, me.EventosEgreso, me.toolbar, this);
+        //        Funciones.CrearMenu('btn_PlanillaRelevamiento', 'Planilla para Relevamiento', Constantes.ICONO_VER, me.EventosPlanilla, me.toolbar, this);
+        me.grid.addDocked(me.toolbar, 1);
+        //        me.grid.on('cellclick', me.CargarDatos, this);
+
+    },
+    EventosEgreso: function (btn) {
+        var me = this;
+        if (btn.getItemId() == "btn_CrearEgreso") {
+            if (me.winCrearEgreso == null) {
+                me.winCrearEgreso = Ext.create("App.Config.Abstract.Window", { botones: true, textGuardar: 'Guardar Nuevo Egreso' });
+                me.formEgreso = Ext.create("App.View.Egresos.FormEgreso", {
+                    columns: 1,
+                    title: 'Formulario de Registro de Otros Egresos ',
+                    botones: false
+                })
+
+                me.winCrearEgreso.add(me.formEgreso);
+                me.winCrearEgreso.show();
+            } else {
+                me.formEgreso.getForm().reset();
+                me.winCrearEgreso.show();
+            }
+        } else {
+            Ext.Msg.alert("Aviso", "No Existe el botton");
+        }
+    }
+
+});

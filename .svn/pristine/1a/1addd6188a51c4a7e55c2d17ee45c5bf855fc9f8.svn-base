@@ -1,0 +1,164 @@
+﻿Ext.define("App.View.Ventas.FormCrearVenta", {
+    extend: "App.Config.Abstract.Form",
+//    title: "Datos de Orden de Trabajo",dsdsdsddsdsdsds
+    cargarStores: true,
+    columns: 2,
+    initComponent: function () {
+        var me = this;
+        me.CargarComponentes();
+        me.cargarEventos();
+        this.callParent(arguments);
+    },
+    
+    CargarComponentes: function () {
+        var me = this;
+        me.gridVenta = Ext.create("App.View.Ventas.Grids", {
+                    opcion: 'GridVentasEditar',
+                    colspan: 2,
+                    width: 400,
+                    height : 250,
+//                    rowspan : 2,
+                });
+        me.toolbarVenta = Funciones.CrearMenuBar();
+        Funciones.CrearMenu('btn_GuardarCambios', 'Guardar Cambios', 'disk', me.EventosVenta, me.toolbarVenta, this);
+        me.gridVenta.addDocked(me.toolbarVenta, 1);
+        me.formSubTotales = Ext.create("App.View.Ventas.Forms", {
+            opcion: 'formSubTotales',
+            botones: false,
+//            width: 350,
+            colspan: 2
+        });
+        Funciones.BloquearFormularioReadOnly(me.formSubTotales);
+        me.gridVentaCredito = Ext.create("App.View.Ventas.Grids", {
+            opcion: 'GridVentasCredito',
+            colspan: 2,
+            width: 400,
+            height : 250
+        });
+//        me.formResumen = Ext.create("App.View.Ventas.Forms", {
+//            opcion: 'formResumen',
+//            botones: false,
+//            columns: 3,
+//            width: 350,
+//            colspan: 2
+//        });
+//        Funciones.BloquearFormularioReadOnly(me.formResumen);
+        me.store_turno = Ext.create('App.Store.Listas.StoreLista');
+        me.store_turno.setExtraParam('ID_LISTA', Lista.Buscar('TURNO'));
+        me.cbx_turno = Ext.create("App.Config.Componente.ComboBase", {
+            fieldLabel: "Turno",
+            name: "TURNO",
+            displayField: 'VALOR',
+//            valueField: 'CODIGO',
+            store: me.store_turno,
+            afterLabelTextTpl: Constantes.REQUERIDO,
+            allowBlank: false
+        });
+        me.txt_nombres  = Ext.create("App.Config.Componente.TextFieldBase", {
+            fieldLabel: "Nombres",
+            name: "NOMBRES",
+            width: 350,
+            afterLabelTextTpl: Constantes.REQUERIDO,
+            allowBlank: false
+
+        });
+        me.date_fecha = Ext.create("App.Config.Componente.DateFieldBase", {
+            fieldLabel: "Fecha",
+            name: "FECHA",
+        });
+      
+            me.items=  [me.gridVenta, me.formSubTotales, /* me.formResumen,*/me.gridVentaCredito];
+            me.tbar= [me.date_fecha, me.cbx_turno, me.txt_nombres]
+
+
+    },
+    cargarEventos : function(){
+        var me = this;
+        me.cbx_turno.on('select',function(cmb,record){
+            if(me.date_fecha.getValue() != null){
+                me.gridVenta.getStore().setExtraParamDate('FECHA',me.date_fecha.getValue());
+                 me.gridVenta.getStore().setExtraParam('TURNO',cmb.getValue());
+                 me.gridVenta.getStore().load();
+//                me.gridVenta().getStore().setExtraParams({
+//                    FECHA :  me.date_fecha.getValue()
+//                });
+            }
+            else{
+                Ext.Msg.alert("Seleccione Fecha primero");
+            }
+        });
+        me.gridVenta.on('edit', function(editor, e){
+//            alert(e.field);
+            if (e.field == "SAL_LITTER"){
+//                alert(e.value);
+                if(e.value > e.record.get('ENT_LITTER')){
+                    Ext.Msg.alert("Error","El valor de salida no puede ser mayor al de la entrada");
+                    e.record.set('SAL_LITTER',0);
+                }
+                else{
+                    e.record.set('TOTAL',e.record.get('ENT_LITTER') - e.value);
+                    me.CargarTotales();
+                }
+            }
+        });
+        me.gridVenta.getStore().on('load',function(str,records,success){
+            if(!success){
+                str.removeAll();
+                Ext.Msg.alert("Error","No puede generar los pos ventas seguir el ciclo DIA TARDE y NOCHE por fecha");
+            }
+        });
+    },
+    CargarTotales : function(){
+        var me = this;
+        var totalGasolina = 0;
+        var totalDiesel = 0;
+        var totalGasolinaBs = 0;
+        var totalDieselBs = 0;
+        me.gridVenta.getStore().each(function(record){
+//            alert(record.get('TOTAL'));
+            if(record.get('CODIGO')== 'GASOLINA'){
+                totalGasolina= totalGasolina +  record.get('TOTAL');
+                
+            }
+            else if(record.get('CODIGO')== 'DIESEL'){
+                totalDiesel= totalDiesel +  record.get('TOTAL');
+            }
+            else{
+                alert('No existe Codigo falta Implementar');
+            }
+
+        });
+
+        me.formSubTotales.txt_diesel.setValue(totalDiesel);
+        me.formSubTotales.txt_gasolina.setValue(totalGasolina);
+
+        me.formSubTotales.txt_diesel_bs.setValue(totalDiesel * Constantes.CONFIG_PRECIO_VENTA);
+        me.formSubTotales.txt_gasolina_bs.setValue(totalGasolina* Constantes.CONFIG_PRECIO_VENTA);
+
+        me.formSubTotales.txt_diesel_bs_costo.setValue(totalDiesel * Constantes.CONFIG_PRECIO_COSTO);
+        me.formSubTotales.txt_gasolina_bs_costo.setValue(totalGasolina* Constantes.CONFIG_PRECIO_COSTO);
+
+        me.formSubTotales.txt_total.setValue(totalDiesel + totalGasolina);
+        me.formSubTotales.txt_total_Bs.setValue(totalDiesel * Constantes.CONFIG_PRECIO_VENTA + totalGasolina* Constantes.CONFIG_PRECIO_VENTA);
+        me.formSubTotales.txt_total_Bs_costo.setValue(totalDiesel * Constantes.CONFIG_PRECIO_COSTO + totalGasolina* Constantes.CONFIG_PRECIO_COSTO);
+        
+
+    },
+    EventosVenta : function(btn){
+    var me = this;
+        if(btn.getItemId() == "btn_GuardarCambios"){
+            if(me.isValid() == true){
+//                alert("sadsadadsadsadad");
+                 Funciones.AjaxRequestForm('Ventas', 'GuardarVentasDiarias', me, me, me.gridVenta, 'Esta Seguro de Guardar Las Ventas Diarias', {ventas : Funciones.convertirJson(me.gridVenta)}, null);
+            }
+            else{
+                
+                Ext.Msg.alert("Error","Falta Completar el formulario");
+            }
+        }
+        else{
+            Ext.Msg.alert("Error","No existe la opcion");
+        }
+
+    }
+});

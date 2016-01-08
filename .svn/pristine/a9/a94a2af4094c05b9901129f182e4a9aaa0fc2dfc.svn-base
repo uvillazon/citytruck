@@ -1,0 +1,53 @@
+﻿Ext.define("App.View.ConsumoPropio.Principal", {
+    extend: "App.Config.Abstract.PanelPrincipal",
+    controlador: 'CuentasPC',
+    accionGrabar: 'GrabarConsumoPropio',
+    view: '',
+    initComponent: function () {
+        var me = this;
+        me.CargarComponentes();
+        this.callParent(arguments);
+    },
+    CargarComponentes: function () {
+        var me = this;
+        me.grid = Ext.create('App.View.ConsumoPropio.GridConsumoPropio', {
+            region: 'center',
+            height: 350,
+            imagenes: false,
+            opcion: 'GridConsumoPropio'
+        });
+        me.items = [me.grid
+        ];
+        me.toolbar = Funciones.CrearMenuBar();
+        Funciones.CrearMenu('btn_CrearComsumoPropio', 'Nuevo', Constantes.ICONO_CREAR, me.EventosConsumoPropio, me.toolbar, this);
+        Funciones.CrearMenu('btn_Imprimir', 'Imprimir', 'printer', me.EventosConsumoPropio, me.toolbar, this);
+        Funciones.CrearMenu('btn_Detalle', 'Detalle', 'report', me.EventosConsumoPropio, me.toolbar, this);
+        Funciones.CrearMenu('btn_Eliminar', 'Eliminar', Constantes.ICONO_BAJA, me.EventosConsumoPropio, me.toolbar, this);
+        //        Funciones.CrearMenu('btn_PlanillaRelevamiento', 'Planilla para Relevamiento', Constantes.ICONO_VER, me.EventosPlanilla, me.toolbar, this);
+        me.grid.addDocked(me.toolbar, 1);
+        //        me.grid.on('cellclick', me.CargarDatos, this);
+
+    },
+    EventosConsumoPropio: function (btn) {
+        var me = this;
+        if (btn.getItemId() == "btn_CrearComsumoPropio") {
+            if (me.winCrearCuentaPC == null) {
+                me.winCrearCuentaPC = Ext.create("App.Config.Abstract.Window", { botones: true, textGuardar: 'Guardar' });
+                me.formCuentaPC = Ext.create("App.View.ConsumoPropio.FormConsumoPropio", {
+                    columns: 1,
+                    title: 'Formulario de Registro de Consumo Propio ',
+                    botones: false
+                })
+
+                me.winCrearCuentaPC.add(me.formCuentaPC);
+                me.winCrearCuentaPC.show();
+            } else {
+                me.formCuentaPC.getForm().reset();
+                me.winCrearCuentaPC.show();
+            }
+        } else {
+            Ext.Msg.alert("Aviso", "No Existe el botton");
+        }
+    }
+
+});

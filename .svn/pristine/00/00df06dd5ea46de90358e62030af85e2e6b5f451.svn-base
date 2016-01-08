@@ -1,0 +1,78 @@
+﻿Ext.define("App.View.VentasMN.Principal", {
+    extend: "App.Config.Abstract.PanelPrincipal",
+    controlador: 'Tanques',
+    accionGrabar: 'GrabarTanques',
+    view: '',
+    initComponent: function () {
+        var me = this;
+        me.CargarComponentes();
+        this.callParent(arguments);
+    },
+    CargarComponentes: function () {
+        var me = this;
+        me.toolbar = Funciones.CrearMenuBar();
+
+        Funciones.CrearMenu('btn_Imprimir', 'Imprimir', 'printer', me.ImprimirReporteGrid, me.toolbar, this);
+        Funciones.CrearMenu('btn_CrearRegistro', 'Crear Registro', Constantes.ICONO_CREAR, me.EventosPrincipal, me.toolbar, this);
+        Funciones.CrearMenu('btn_EditarRegistro', 'Editar Registro', Constantes.ICONO_EDITAR, me.EventosPrincipal, me.toolbar, this,null,true);
+
+
+        me.grid = Ext.create('App.View.VentasMN.GridVentas', {
+            region: 'center',
+            height: 350,
+            imagenes: false,
+            opcion: 'GridVentas',
+            toolbar: me.toolbar
+        });
+        me.items = [me.grid];
+        me.grid.on('itemclick', me.onItemClick, this);
+        me.grid.getSelectionModel().on('selectionchange', me.onSelectChange, this);
+
+    },
+    onItemClick: function (view, record, item, index, e) {
+        var me = this;
+        me.record = record;
+        me.id = record.get('ID_VENTA');
+    },
+    onSelectChange: function (selModel, selections) {
+        var me = this;
+        var disabled = selections.length === 0;
+        Funciones.DisabledButton('btn_EditarRegistro', me.toolbar, disabled);
+    },
+    EventosPrincipal: function (btn) {
+        var me = this;
+        if (btn.getItemId() == "btn_CrearRegistro") {
+            var win = Ext.create("App.Config.Abstract.Window", { botones: true, textGuardar: 'Guardar Venta MN' });
+            var form = Ext.create("App.View.VentasMN.FormRegistro", { botones: false, title: 'Registro de Metter a Media Noche' });
+            form.CargarFecha();
+            win.add(form);
+            win.show();
+            win.btn_guardar.on('click', function () {
+                //                alert("adasda");
+                //                Funciones.AjaxRequestForm('Ventas', 'GuardarVentasDiarias', win, from, form.gridVenta, 'Esta Seguro de Guardar Las Ventas Diarias', { ventas: Funciones.convertirJson(me.gridVenta), EDITAR: me.editar }, null);
+                Funciones.AjaxRequestWin('Ventas', 'GuardarVentasMN', win, form, me.grid, "Esta seguro de Guardar", { ventas: Funciones.convertirJson(form.gridVenta), EDITAR: true }, win);
+                //                Funciones.AjaxRequestWin: function (controlador, accion, mask, form, grid, msg, param, win)
+                //                win.hide();
+            });
+        }
+        else if (btn.getItemId() == "btn_EditarRegistro") {
+            var win = Ext.create("App.Config.Abstract.Window", { botones: true, textGuardar: 'Editar Venta MN' });
+            var form = Ext.create("App.View.VentasMN.FormRegistro", { botones: false, title: 'Registro de Metter a Media Noche' });
+            //            form.CargarFecha();
+            form.CargarEditarVenta(me.record);
+            win.add(form);
+            win.show();
+            win.btn_guardar.on('click', function () {
+                //                alert("adasda");
+                //                Funciones.AjaxRequestForm('Ventas', 'GuardarVentasDiarias', win, from, form.gridVenta, 'Esta Seguro de Guardar Las Ventas Diarias', { ventas: Funciones.convertirJson(me.gridVenta), EDITAR: me.editar }, null);
+                Funciones.AjaxRequestWin('Ventas', 'GuardarVentasMN', win, form, me.grid, "Esta seguro de Guardar", { ventas: Funciones.convertirJson(form.gridVenta), EDITAR: true }, win);
+                //                Funciones.AjaxRequestWin: function (controlador, accion, mask, form, grid, msg, param, win)
+                //                win.hide();
+            });
+        }
+        else {
+            Ext.Msg.alert("Aviso", "No Existe el botton");
+        }
+    }
+
+});

@@ -1,0 +1,17 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using CityTruck.Common;
+using CityTruck.Model;
+using CityTruck.Services.Model;
+
+namespace CityTruck.Services.Interfaces
+{
+    public interface IPosTurnosServices
+    {
+        IEnumerable<SG_POS_TURNOS> ObtenerPosTurnos(PagingInfo paginacion, FiltrosModel<PosTurnosModel> filtros);
+        RespuestaSP SP_GenerarPosTurnos(DateTime? FECHA,string TURNO,int ID_USR);
+        RespuestaSP SP_GrabarPosTurnos(SG_POS_TURNOS posTurnos,int ID_USR);
+    }
+}
