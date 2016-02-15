@@ -173,11 +173,13 @@ namespace CityTruck.WebSite.Controllers
                 venDia.SALDO_INICIAL_DIE = die.SALDO_INICIAL;
                 venDia.COMPRAS_DIE = (decimal)die.COMPRAS;
                 venDia.VENTAS_DIE = (decimal)die.VENTAS;
+                venDia.AJUSTES_DIE = (decimal)die.AJUSTES;
                 venDia.ACUMULADO_DIE = (decimal)die.ACUMULADOS;
 
                 venDia.VENTAS_GAS = (decimal)gas.VENTAS;
                 venDia.COMPRAS_GAS = (decimal)gas.COMPRAS;
                 venDia.SALDO_INICIAL_GAS = gas.SALDO_INICIAL;
+                venDia.AJUSTES_GAS = (decimal)gas.AJUSTES;
                 venDia.ACUMULADO_GAS = (decimal)gas.ACUMULADOS;
                 listas.Add(venDia);
             }
