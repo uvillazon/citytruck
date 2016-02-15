@@ -1,6 +1,3 @@
-E:\Proyecto\CityTruck\CityTruck.WebSite\obj\Debug\CityTruck.WebSite.csprojResolveAssemblyReference.cache
-E:\Proyecto\CityTruck\CityTruck.WebSite\obj\Debug\RdlCompile.cache
-E:\Proyecto\CityTruck\CityTruck.WebSite\obj\Debug\RdlCompile.compiled
 E:\Proyecto\CityTruck\CityTruck.WebSite\bin\CityTruck.WebSite.dll
 E:\Proyecto\CityTruck\CityTruck.WebSite\bin\CityTruck.WebSite.pdb
 E:\Proyecto\CityTruck\CityTruck.WebSite\bin\CityTruck.Business.dll
@@ -10,6 +7,7 @@ E:\Proyecto\CityTruck\CityTruck.WebSite\bin\CityTruck.Model.dll
 E:\Proyecto\CityTruck\CityTruck.WebSite\bin\CityTruck.Services.dll
 E:\Proyecto\CityTruck\CityTruck.WebSite\bin\Ninject.dll
 E:\Proyecto\CityTruck\CityTruck.WebSite\bin\Oracle.DataAccess.dll
+E:\Proyecto\CityTruck\CityTruck.WebSite\bin\System.Web.Mvc.dll
 E:\Proyecto\CityTruck\CityTruck.WebSite\bin\System.Linq.Dynamic.dll
 E:\Proyecto\CityTruck\CityTruck.WebSite\bin\CityTruck.Business.pdb
 E:\Proyecto\CityTruck\CityTruck.WebSite\bin\CityTruck.Common.Data.pdb
@@ -18,5 +16,9 @@ E:\Proyecto\CityTruck\CityTruck.WebSite\bin\CityTruck.Model.pdb
 E:\Proyecto\CityTruck\CityTruck.WebSite\bin\CityTruck.Services.pdb
 E:\Proyecto\CityTruck\CityTruck.WebSite\bin\Ninject.pdb
 E:\Proyecto\CityTruck\CityTruck.WebSite\bin\Ninject.xml
+E:\Proyecto\CityTruck\CityTruck.WebSite\bin\System.Web.Mvc.xml
+E:\Proyecto\CityTruck\CityTruck.WebSite\obj\Debug\CityTruck.WebSite.csprojResolveAssemblyReference.cache
+E:\Proyecto\CityTruck\CityTruck.WebSite\obj\Debug\RdlCompile.cache
+E:\Proyecto\CityTruck\CityTruck.WebSite\obj\Debug\RdlCompile.compiled
 E:\Proyecto\CityTruck\CityTruck.WebSite\obj\Debug\CityTruck.WebSite.dll
 E:\Proyecto\CityTruck\CityTruck.WebSite\obj\Debug\CityTruck.WebSite.pdb
