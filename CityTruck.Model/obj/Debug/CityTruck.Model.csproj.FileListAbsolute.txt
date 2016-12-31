@@ -3,3 +3,9 @@ E:\Proyecto\CityTruck\CityTruck.Model\bin\Debug\CityTruck.Model.dll
 E:\Proyecto\CityTruck\CityTruck.Model\bin\Debug\CityTruck.Model.pdb
 E:\Proyecto\CityTruck\CityTruck.Model\obj\Debug\CityTruck.Model.dll
 E:\Proyecto\CityTruck\CityTruck.Model\obj\Debug\CityTruck.Model.pdb
+D:\proyectos\CityTruck31122016\CityTruck\CityTruck.Model\bin\Debug\CityTruck.Model.dll.config
+D:\proyectos\CityTruck31122016\CityTruck\CityTruck.Model\bin\Debug\CityTruck.Model.dll
+D:\proyectos\CityTruck31122016\CityTruck\CityTruck.Model\bin\Debug\CityTruck.Model.pdb
+D:\proyectos\CityTruck31122016\CityTruck\CityTruck.Model\obj\Debug\CityTruck.Model.csprojResolveAssemblyReference.cache
+D:\proyectos\CityTruck31122016\CityTruck\CityTruck.Model\obj\Debug\CityTruck.Model.dll
+D:\proyectos\CityTruck31122016\CityTruck\CityTruck.Model\obj\Debug\CityTruck.Model.pdb

@@ -33,7 +33,7 @@ namespace CityTruck.WebSite.Controllers
         {
             TestOracleConexion testConexion = new TestOracleConexion();
             testConexion.CadenaConexion = ConfigurationManager.ConnectionStrings["CityTruckContext"].ConnectionString;
-            if (testConexion.TestConnection("CITYTRUCK", "CityTruck"))
+            if (testConexion.TestConnection("GNV", "GNV"))
             {
                 var managerUsuario = new UsuariosServices();
                 var usuarios = managerUsuario.ObtenerUsuariosPorCriterio(x => x.LOGIN.ToUpper() == loginUsername.ToUpper() &&x.CONTRASENA ==loginPassword && x.ESTADO == "A").FirstOrDefault();

@@ -2,15 +2,40 @@
 
 <html>
 <head>
-    <title>_LogOnLayout</title>
+    <title>Sistema Gestion GNV</title>
 
-    <link href="@Url.Content("~/Scripts/Extjs/resources/css/ext-all.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Scripts/Extjs/resources/ext-theme-gray/ext-theme-gray-all.css")" rel="stylesheet" type="text/css" />
     <script src="@Url.Content("~/Scripts/Extjs/ext-all.js")" type="text/javascript"></script>
     <script src="@Url.Content("~/App/View/LogOn/LogOn.js")" type="text/javascript"></script>
 	<script src="@Url.Content("~/App/Config/Constantes.js")" type="text/javascript"></script>
-
+    <link href="@Url.Content("~/Content/login.css")" rel="stylesheet" />
+    <link href="@Url.Content("~/Content/Icons.css")" rel="stylesheet" />
+   
 </head>
 <body>
+
+       <header role="banner" class="clearfix" id="header">
+
+        <!-- start: Branding -->
+        <div class="branding-elements clearfix" id="branding">
+
+            <div id="logo">
+            </div>
+
+        </div>
+        <!-- /end #branding -->
+
+
+    </header>
+
     @RenderBody()
+
+    <footer>
+        <div class="content-wrapper">
+            <div class="float-left">
+                <p>&copy; @DateTime.Now.Year - Sistema de Gestion de GNV</p>
+            </div>
+        </div>
+    </footer>
 </body>
 </html>

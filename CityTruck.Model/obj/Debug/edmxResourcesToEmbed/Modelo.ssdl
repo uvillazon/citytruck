@@ -1,39 +1,39 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="Model.Store" Alias="Self" Provider="Oracle.DataAccess.Client" ProviderManifestToken="11.2" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
   <EntityContainer Name="ModelStoreContainer">
-    <EntitySet Name="SG_AJUSTE_POS" EntityType="Model.Store.SG_AJUSTE_POS" store:Type="Tables" Schema="CITYTRUCK" />
-    <EntitySet Name="SG_AJUSTE_PRECIO" EntityType="Model.Store.SG_AJUSTE_PRECIO" store:Type="Tables" Schema="CITYTRUCK" />
-    <EntitySet Name="SG_AJUSTES_TANQUE" EntityType="Model.Store.SG_AJUSTES_TANQUE" store:Type="Tables" Schema="CITYTRUCK" />
-    <EntitySet Name="SG_AJUSTES_TANQUE_MN" EntityType="Model.Store.SG_AJUSTES_TANQUE_MN" store:Type="Tables" Schema="CITYTRUCK" />
-    <EntitySet Name="SG_AMORTIZACIONES" EntityType="Model.Store.SG_AMORTIZACIONES" store:Type="Tables" Schema="CITYTRUCK" />
-    <EntitySet Name="SG_CAJAS" EntityType="Model.Store.SG_CAJAS" store:Type="Tables" Schema="CITYTRUCK" />
-    <EntitySet Name="SG_CLIENTE_CONSUMO_COMBUSTIBLE" EntityType="Model.Store.SG_CLIENTE_CONSUMO_COMBUSTIBLE" store:Type="Tables" Schema="CITYTRUCK" />
-    <EntitySet Name="SG_CLIENTES" EntityType="Model.Store.SG_CLIENTES" store:Type="Tables" Schema="CITYTRUCK" />
-    <EntitySet Name="SG_CLIENTES_CONSUMO" EntityType="Model.Store.SG_CLIENTES_CONSUMO" store:Type="Tables" Schema="CITYTRUCK" />
-    <EntitySet Name="SG_COMBUSTIBLES" EntityType="Model.Store.SG_COMBUSTIBLES" store:Type="Tables" Schema="CITYTRUCK" />
-    <EntitySet Name="SG_COMPRAS" EntityType="Model.Store.SG_COMPRAS" store:Type="Tables" Schema="CITYTRUCK" />
-    <EntitySet Name="SG_CONSUMOS" EntityType="Model.Store.SG_CONSUMOS" store:Type="Tables" Schema="CITYTRUCK" />
-    <EntitySet Name="SG_DETALLES_COMPRAS" EntityType="Model.Store.SG_DETALLES_COMPRAS" store:Type="Tables" Schema="CITYTRUCK" />
-    <EntitySet Name="SG_EGRESOS" EntityType="Model.Store.SG_EGRESOS" store:Type="Tables" Schema="CITYTRUCK" />
-    <EntitySet Name="SG_FACTURAS_MN" EntityType="Model.Store.SG_FACTURAS_MN" store:Type="Tables" Schema="CITYTRUCK" />
-    <EntitySet Name="SG_INGRESOS" EntityType="Model.Store.SG_INGRESOS" store:Type="Tables" Schema="CITYTRUCK" />
-    <EntitySet Name="SG_KARDEX_CLIENTE" EntityType="Model.Store.SG_KARDEX_CLIENTE" store:Type="Tables" Schema="CITYTRUCK" />
-    <EntitySet Name="SG_KARDEX_COMBUSTIBLE" EntityType="Model.Store.SG_KARDEX_COMBUSTIBLE" store:Type="Tables" Schema="CITYTRUCK" />
-    <EntitySet Name="SG_KARDEX_COMBUSTIBLE_MN" EntityType="Model.Store.SG_KARDEX_COMBUSTIBLE_MN" store:Type="Tables" Schema="CITYTRUCK" />
-    <EntitySet Name="SG_KARDEX_EFECTIVO" EntityType="Model.Store.SG_KARDEX_EFECTIVO" store:Type="Tables" Schema="CITYTRUCK" />
-    <EntitySet Name="SG_LISTAS" EntityType="Model.Store.SG_LISTAS" store:Type="Tables" Schema="CITYTRUCK" />
-    <EntitySet Name="SG_LISTAS_ITEMS" EntityType="Model.Store.SG_LISTAS_ITEMS" store:Type="Tables" Schema="CITYTRUCK" />
-    <EntitySet Name="SG_MENU_OPCIONES" EntityType="Model.Store.SG_MENU_OPCIONES" store:Type="Tables" Schema="CITYTRUCK" />
-    <EntitySet Name="SG_PERFILES" EntityType="Model.Store.SG_PERFILES" store:Type="Tables" Schema="CITYTRUCK" />
-    <EntitySet Name="SG_PERFILES_OPCIONES" EntityType="Model.Store.SG_PERFILES_OPCIONES" store:Type="Tables" Schema="CITYTRUCK" />
-    <EntitySet Name="SG_POS" EntityType="Model.Store.SG_POS" store:Type="Tables" Schema="CITYTRUCK" />
-    <EntitySet Name="SG_POS_DIA_MN" EntityType="Model.Store.SG_POS_DIA_MN" store:Type="Tables" Schema="CITYTRUCK" />
-    <EntitySet Name="SG_POS_TURNOS" EntityType="Model.Store.SG_POS_TURNOS" store:Type="Tables" Schema="CITYTRUCK" />
-    <EntitySet Name="SG_TANQUES" EntityType="Model.Store.SG_TANQUES" store:Type="Tables" Schema="CITYTRUCK" />
-    <EntitySet Name="SG_TRANSFERENCIAS" EntityType="Model.Store.SG_TRANSFERENCIAS" store:Type="Tables" Schema="CITYTRUCK" />
-    <EntitySet Name="SG_USUARIOS" EntityType="Model.Store.SG_USUARIOS" store:Type="Tables" Schema="CITYTRUCK" />
-    <EntitySet Name="SG_VENTAS_CREDITO" EntityType="Model.Store.SG_VENTAS_CREDITO" store:Type="Tables" Schema="CITYTRUCK" />
-    <EntitySet Name="SG_VENTAS_DIARIAS" EntityType="Model.Store.SG_VENTAS_DIARIAS" store:Type="Tables" Schema="CITYTRUCK" />
+    <EntitySet Name="SG_AJUSTE_POS" EntityType="Model.Store.SG_AJUSTE_POS" store:Type="Tables" Schema="GNV" />
+    <EntitySet Name="SG_AJUSTE_PRECIO" EntityType="Model.Store.SG_AJUSTE_PRECIO" store:Type="Tables" Schema="GNV" />
+    <EntitySet Name="SG_AJUSTES_TANQUE" EntityType="Model.Store.SG_AJUSTES_TANQUE" store:Type="Tables" Schema="GNV" />
+    <EntitySet Name="SG_AJUSTES_TANQUE_MN" EntityType="Model.Store.SG_AJUSTES_TANQUE_MN" store:Type="Tables" Schema="GNV" />
+    <EntitySet Name="SG_AMORTIZACIONES" EntityType="Model.Store.SG_AMORTIZACIONES" store:Type="Tables" Schema="GNV" />
+    <EntitySet Name="SG_CAJAS" EntityType="Model.Store.SG_CAJAS" store:Type="Tables" Schema="GNV" />
+    <EntitySet Name="SG_CLIENTE_CONSUMO_COMBUSTIBLE" EntityType="Model.Store.SG_CLIENTE_CONSUMO_COMBUSTIBLE" store:Type="Tables" Schema="GNV" />
+    <EntitySet Name="SG_CLIENTES" EntityType="Model.Store.SG_CLIENTES" store:Type="Tables" Schema="GNV" />
+    <EntitySet Name="SG_CLIENTES_CONSUMO" EntityType="Model.Store.SG_CLIENTES_CONSUMO" store:Type="Tables" Schema="GNV" />
+    <EntitySet Name="SG_COMBUSTIBLES" EntityType="Model.Store.SG_COMBUSTIBLES" store:Type="Tables" Schema="GNV" />
+    <EntitySet Name="SG_COMPRAS" EntityType="Model.Store.SG_COMPRAS" store:Type="Tables" Schema="GNV" />
+    <EntitySet Name="SG_CONSUMOS" EntityType="Model.Store.SG_CONSUMOS" store:Type="Tables" Schema="GNV" />
+    <EntitySet Name="SG_DETALLES_COMPRAS" EntityType="Model.Store.SG_DETALLES_COMPRAS" store:Type="Tables" Schema="GNV" />
+    <EntitySet Name="SG_EGRESOS" EntityType="Model.Store.SG_EGRESOS" store:Type="Tables" Schema="GNV" />
+    <EntitySet Name="SG_FACTURAS_MN" EntityType="Model.Store.SG_FACTURAS_MN" store:Type="Tables" Schema="GNV" />
+    <EntitySet Name="SG_INGRESOS" EntityType="Model.Store.SG_INGRESOS" store:Type="Tables" Schema="GNV" />
+    <EntitySet Name="SG_KARDEX_CLIENTE" EntityType="Model.Store.SG_KARDEX_CLIENTE" store:Type="Tables" Schema="GNV" />
+    <EntitySet Name="SG_KARDEX_COMBUSTIBLE" EntityType="Model.Store.SG_KARDEX_COMBUSTIBLE" store:Type="Tables" Schema="GNV" />
+    <EntitySet Name="SG_KARDEX_COMBUSTIBLE_MN" EntityType="Model.Store.SG_KARDEX_COMBUSTIBLE_MN" store:Type="Tables" Schema="GNV" />
+    <EntitySet Name="SG_KARDEX_EFECTIVO" EntityType="Model.Store.SG_KARDEX_EFECTIVO" store:Type="Tables" Schema="GNV" />
+    <EntitySet Name="SG_LISTAS" EntityType="Model.Store.SG_LISTAS" store:Type="Tables" Schema="GNV" />
+    <EntitySet Name="SG_LISTAS_ITEMS" EntityType="Model.Store.SG_LISTAS_ITEMS" store:Type="Tables" Schema="GNV" />
+    <EntitySet Name="SG_MENU_OPCIONES" EntityType="Model.Store.SG_MENU_OPCIONES" store:Type="Tables" Schema="GNV" />
+    <EntitySet Name="SG_PERFILES" EntityType="Model.Store.SG_PERFILES" store:Type="Tables" Schema="GNV" />
+    <EntitySet Name="SG_PERFILES_OPCIONES" EntityType="Model.Store.SG_PERFILES_OPCIONES" store:Type="Tables" Schema="GNV" />
+    <EntitySet Name="SG_POS" EntityType="Model.Store.SG_POS" store:Type="Tables" Schema="GNV" />
+    <EntitySet Name="SG_POS_DIA_MN" EntityType="Model.Store.SG_POS_DIA_MN" store:Type="Tables" Schema="GNV" />
+    <EntitySet Name="SG_POS_TURNOS" EntityType="Model.Store.SG_POS_TURNOS" store:Type="Tables" Schema="GNV" />
+    <EntitySet Name="SG_TANQUES" EntityType="Model.Store.SG_TANQUES" store:Type="Tables" Schema="GNV" />
+    <EntitySet Name="SG_TRANSFERENCIAS" EntityType="Model.Store.SG_TRANSFERENCIAS" store:Type="Tables" Schema="GNV" />
+    <EntitySet Name="SG_USUARIOS" EntityType="Model.Store.SG_USUARIOS" store:Type="Tables" Schema="GNV" />
+    <EntitySet Name="SG_VENTAS_CREDITO" EntityType="Model.Store.SG_VENTAS_CREDITO" store:Type="Tables" Schema="GNV" />
+    <EntitySet Name="SG_VENTAS_DIARIAS" EntityType="Model.Store.SG_VENTAS_DIARIAS" store:Type="Tables" Schema="GNV" />
     <AssociationSet Name="SG_AJUSTE_POS_R01" Association="Model.Store.SG_AJUSTE_POS_R01">
       <End Role="SG_POS" EntitySet="SG_POS" />
       <End Role="SG_AJUSTE_POS" EntitySet="SG_AJUSTE_POS" />
@@ -1004,20 +1004,20 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Function Name="P_SG_ACT_CONSUMO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="CITYTRUCK">
+  <Function Name="P_SG_ACT_CONSUMO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="GNV">
     <Parameter Name="P_RES" Type="varchar2" Mode="Out" />
   </Function>
-  <Function Name="P_SG_ACT_KARDEX_COMBUSTIBLE" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="CITYTRUCK">
+  <Function Name="P_SG_ACT_KARDEX_COMBUSTIBLE" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="GNV">
     <Parameter Name="P_FECHA" Type="date" Mode="In" />
     <Parameter Name="P_ID_USR" Type="number" Mode="In" />
     <Parameter Name="P_RES" Type="varchar2" Mode="Out" />
   </Function>
-  <Function Name="P_SG_ACT_KARDEX_COMBUSTIBLE_MN" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="CITYTRUCK">
+  <Function Name="P_SG_ACT_KARDEX_COMBUSTIBLE_MN" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="GNV">
     <Parameter Name="P_FECHA" Type="date" Mode="In" />
     <Parameter Name="P_ID_USR" Type="number" Mode="In" />
     <Parameter Name="P_RES" Type="varchar2" Mode="Out" />
   </Function>
-  <Function Name="P_SG_ALTA_LISTA" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="CITYTRUCK">
+  <Function Name="P_SG_ALTA_LISTA" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="GNV">
     <Parameter Name="P_LISTA" Type="varchar2" Mode="In" />
     <Parameter Name="P_DESCRIPCION" Type="varchar2" Mode="In" />
     <Parameter Name="P_TAM_LIMITE" Type="number" Mode="In" />
@@ -1026,87 +1026,87 @@
     <Parameter Name="P_ID_USR" Type="number" Mode="In" />
     <Parameter Name="P_RES" Type="varchar2" Mode="Out" />
   </Function>
-  <Function Name="P_SG_ELIMINAR_CAJA" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="CITYTRUCK">
+  <Function Name="P_SG_ELIMINAR_CAJA" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="GNV">
     <Parameter Name="P_ID" Type="number" Mode="In" />
     <Parameter Name="P_ID_USR" Type="number" Mode="In" />
     <Parameter Name="P_RES" Type="varchar2" Mode="Out" />
   </Function>
-  <Function Name="P_SG_ELIMINAR_CLIENTE" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="CITYTRUCK">
+  <Function Name="P_SG_ELIMINAR_CLIENTE" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="GNV">
     <Parameter Name="P_ID" Type="number" Mode="In" />
     <Parameter Name="P_ID_USR" Type="number" Mode="In" />
     <Parameter Name="P_RES" Type="varchar2" Mode="Out" />
   </Function>
-  <Function Name="P_SG_ELIMINAR_CLIENTE_CONSUMO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="CITYTRUCK">
+  <Function Name="P_SG_ELIMINAR_CLIENTE_CONSUMO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="GNV">
     <Parameter Name="P_ID_CLIENTE" Type="number" Mode="In" />
     <Parameter Name="P_ID_USR" Type="number" Mode="In" />
     <Parameter Name="P_RES" Type="varchar2" Mode="Out" />
   </Function>
-  <Function Name="P_SG_ELIMINAR_COMPRA" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="CITYTRUCK">
+  <Function Name="P_SG_ELIMINAR_COMPRA" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="GNV">
     <Parameter Name="P_ID" Type="number" Mode="In" />
     <Parameter Name="P_ID_USR" Type="number" Mode="In" />
     <Parameter Name="P_RES" Type="varchar2" Mode="Out" />
   </Function>
-  <Function Name="P_SG_ELIMINAR_CONSUMO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="CITYTRUCK">
+  <Function Name="P_SG_ELIMINAR_CONSUMO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="GNV">
     <Parameter Name="P_ID_CONSUMO" Type="number" Mode="In" />
     <Parameter Name="P_ID_USR" Type="number" Mode="In" />
     <Parameter Name="P_RES" Type="varchar2" Mode="Out" />
   </Function>
-  <Function Name="P_SG_ELIMINAR_DETALLE_COMPRA" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="CITYTRUCK">
+  <Function Name="P_SG_ELIMINAR_DETALLE_COMPRA" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="GNV">
     <Parameter Name="P_ID" Type="number" Mode="In" />
     <Parameter Name="P_ID_USR" Type="number" Mode="In" />
     <Parameter Name="P_RES" Type="varchar2" Mode="Out" />
   </Function>
-  <Function Name="P_SG_ELIMINAR_EGRESO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="CITYTRUCK">
+  <Function Name="P_SG_ELIMINAR_EGRESO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="GNV">
     <Parameter Name="P_ID" Type="number" Mode="In" />
     <Parameter Name="P_ID_USR" Type="number" Mode="In" />
     <Parameter Name="P_RES" Type="varchar2" Mode="Out" />
   </Function>
-  <Function Name="P_SG_ELIMINAR_INGRESO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="CITYTRUCK">
+  <Function Name="P_SG_ELIMINAR_INGRESO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="GNV">
     <Parameter Name="P_ID" Type="number" Mode="In" />
     <Parameter Name="P_ID_USR" Type="number" Mode="In" />
     <Parameter Name="P_RES" Type="varchar2" Mode="Out" />
   </Function>
-  <Function Name="P_SG_ELIMINAR_PERFIL_OPCION" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="CITYTRUCK">
+  <Function Name="P_SG_ELIMINAR_PERFIL_OPCION" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="GNV">
     <Parameter Name="P_ID_PERFIL" Type="number" Mode="In" />
     <Parameter Name="P_ID_OPC" Type="number" Mode="In" />
     <Parameter Name="P_ID_USR" Type="number" Mode="In" />
     <Parameter Name="P_RES" Type="varchar2" Mode="Out" />
   </Function>
-  <Function Name="P_SG_ELIMINAR_TRANSFERNCIA" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="CITYTRUCK">
+  <Function Name="P_SG_ELIMINAR_TRANSFERNCIA" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="GNV">
     <Parameter Name="P_ID" Type="number" Mode="In" />
     <Parameter Name="P_ID_USR" Type="number" Mode="In" />
     <Parameter Name="P_RES" Type="varchar2" Mode="Out" />
   </Function>
-  <Function Name="P_SG_ELIMINAR_VENTA_CREDITO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="CITYTRUCK">
+  <Function Name="P_SG_ELIMINAR_VENTA_CREDITO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="GNV">
     <Parameter Name="P_ID_VENTA" Type="number" Mode="In" />
     <Parameter Name="P_ID_USR" Type="number" Mode="In" />
     <Parameter Name="P_RES" Type="varchar2" Mode="Out" />
   </Function>
-  <Function Name="P_SG_GENERAR_AJUSTE_POS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="CITYTRUCK">
+  <Function Name="P_SG_GENERAR_AJUSTE_POS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="GNV">
     <Parameter Name="P_FECHA" Type="date" Mode="In" />
     <Parameter Name="P_ID_USR" Type="number" Mode="In" />
     <Parameter Name="P_RES" Type="varchar2" Mode="Out" />
   </Function>
-  <Function Name="P_SG_GENERAR_POS_DIA_MN" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="CITYTRUCK">
+  <Function Name="P_SG_GENERAR_POS_DIA_MN" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="GNV">
     <Parameter Name="P_FECHA" Type="date" Mode="In" />
     <Parameter Name="P_ID_USR" Type="number" Mode="In" />
     <Parameter Name="P_RES" Type="varchar2" Mode="Out" />
   </Function>
-  <Function Name="P_SG_GENERAR_POS_TURNOS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="CITYTRUCK">
+  <Function Name="P_SG_GENERAR_POS_TURNOS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="GNV">
     <Parameter Name="P_FECHA" Type="date" Mode="In" />
     <Parameter Name="P_TURNO" Type="varchar2" Mode="In" />
     <Parameter Name="P_ELIMINAR" Type="number" Mode="In" />
     <Parameter Name="P_ID_USR" Type="number" Mode="In" />
     <Parameter Name="P_RES" Type="varchar2" Mode="Out" />
   </Function>
-  <Function Name="P_SG_GENERAR_VENTAS_DIARIAS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="CITYTRUCK">
+  <Function Name="P_SG_GENERAR_VENTAS_DIARIAS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="GNV">
     <Parameter Name="P_FECHA" Type="date" Mode="In" />
     <Parameter Name="P_TURNO" Type="varchar2" Mode="In" />
     <Parameter Name="P_RESPONSABLE" Type="varchar2" Mode="In" />
     <Parameter Name="P_ID_USR" Type="number" Mode="In" />
     <Parameter Name="P_RES" Type="varchar2" Mode="Out" />
   </Function>
-  <Function Name="P_SG_GRABAR_LISTAS_ITEMS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="CITYTRUCK">
+  <Function Name="P_SG_GRABAR_LISTAS_ITEMS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="GNV">
     <Parameter Name="P_ID_TABLA" Type="number" Mode="In" />
     <Parameter Name="P_ID_PADRE" Type="number" Mode="In" />
     <Parameter Name="P_ID_LISTA" Type="number" Mode="In" />
@@ -1116,7 +1116,7 @@
     <Parameter Name="P_LOGIN_USR" Type="varchar2" Mode="In" />
     <Parameter Name="P_RES" Type="varchar2" Mode="Out" />
   </Function>
-  <Function Name="P_SG_GUARDAR_AJUSTE_POS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="CITYTRUCK">
+  <Function Name="P_SG_GUARDAR_AJUSTE_POS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="GNV">
     <Parameter Name="P_ID_AJUSTE" Type="number" Mode="In" />
     <Parameter Name="P_ID_POS" Type="number" Mode="In" />
     <Parameter Name="P_FECHA" Type="date" Mode="In" />
@@ -1124,7 +1124,7 @@
     <Parameter Name="P_ID_USR" Type="number" Mode="In" />
     <Parameter Name="P_RES" Type="varchar2" Mode="Out" />
   </Function>
-  <Function Name="P_SG_GUARDAR_AJUSTE_TANQUE" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="CITYTRUCK">
+  <Function Name="P_SG_GUARDAR_AJUSTE_TANQUE" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="GNV">
     <Parameter Name="P_ID_AJUSTE" Type="number" Mode="In" />
     <Parameter Name="P_ID_COMBUSTIBLE" Type="number" Mode="In" />
     <Parameter Name="P_FECHA" Type="date" Mode="In" />
@@ -1133,7 +1133,7 @@
     <Parameter Name="P_ID_USR" Type="number" Mode="In" />
     <Parameter Name="P_RES" Type="varchar2" Mode="Out" />
   </Function>
-  <Function Name="P_SG_GUARDAR_AJUSTE_TANQUE_MN" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="CITYTRUCK">
+  <Function Name="P_SG_GUARDAR_AJUSTE_TANQUE_MN" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="GNV">
     <Parameter Name="P_ID_AJUSTE" Type="number" Mode="In" />
     <Parameter Name="P_ID_COMBUSTIBLE" Type="number" Mode="In" />
     <Parameter Name="P_FECHA" Type="date" Mode="In" />
@@ -1142,7 +1142,7 @@
     <Parameter Name="P_ID_USR" Type="number" Mode="In" />
     <Parameter Name="P_RES" Type="varchar2" Mode="Out" />
   </Function>
-  <Function Name="P_SG_GUARDAR_AMORTIZACION" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="CITYTRUCK">
+  <Function Name="P_SG_GUARDAR_AMORTIZACION" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="GNV">
     <Parameter Name="P_ID_A" Type="number" Mode="In" />
     <Parameter Name="P_ID_CLIENTE" Type="number" Mode="In" />
     <Parameter Name="P_ID_CAJA" Type="number" Mode="In" />
@@ -1153,7 +1153,7 @@
     <Parameter Name="P_ID_USR" Type="number" Mode="In" />
     <Parameter Name="P_RES" Type="varchar2" Mode="Out" />
   </Function>
-  <Function Name="P_SG_GUARDAR_CAJAS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="CITYTRUCK">
+  <Function Name="P_SG_GUARDAR_CAJAS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="GNV">
     <Parameter Name="P_ID_CAJA" Type="number" Mode="In" />
     <Parameter Name="P_CODIGO" Type="varchar2" Mode="In" />
     <Parameter Name="P_NOMBRE" Type="varchar2" Mode="In" />
@@ -1164,7 +1164,7 @@
     <Parameter Name="P_ID_USR" Type="number" Mode="In" />
     <Parameter Name="P_RES" Type="varchar2" Mode="Out" />
   </Function>
-  <Function Name="P_SG_GUARDAR_CLIENTES" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="CITYTRUCK">
+  <Function Name="P_SG_GUARDAR_CLIENTES" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="GNV">
     <Parameter Name="P_ID_CLIENTE" Type="number" Mode="In" />
     <Parameter Name="P_CODIGO" Type="number" Mode="In" />
     <Parameter Name="P_EMPRESA" Type="varchar2" Mode="In" />
@@ -1176,7 +1176,7 @@
     <Parameter Name="P_ID_USR" Type="number" Mode="In" />
     <Parameter Name="P_RES" Type="varchar2" Mode="Out" />
   </Function>
-  <Function Name="P_SG_GUARDAR_CLIENTE_CONSUMO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="CITYTRUCK">
+  <Function Name="P_SG_GUARDAR_CLIENTE_CONSUMO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="GNV">
     <Parameter Name="P_ID_CLIENTE" Type="number" Mode="In" />
     <Parameter Name="P_CODIGO" Type="number" Mode="In" />
     <Parameter Name="P_NOMBRE" Type="varchar2" Mode="In" />
@@ -1184,7 +1184,7 @@
     <Parameter Name="P_ID_USR" Type="number" Mode="In" />
     <Parameter Name="P_RES" Type="varchar2" Mode="Out" />
   </Function>
-  <Function Name="P_SG_GUARDAR_COMPRAS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="CITYTRUCK">
+  <Function Name="P_SG_GUARDAR_COMPRAS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="GNV">
     <Parameter Name="P_ID_COMPRA" Type="number" Mode="In" />
     <Parameter Name="P_FECHA" Type="date" Mode="In" />
     <Parameter Name="P_ID_COMBUSTIBLE" Type="number" Mode="In" />
@@ -1198,7 +1198,7 @@
     <Parameter Name="P_ID_USR" Type="number" Mode="In" />
     <Parameter Name="P_RES" Type="varchar2" Mode="Out" />
   </Function>
-  <Function Name="P_SG_GUARDAR_CONSUMO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="CITYTRUCK">
+  <Function Name="P_SG_GUARDAR_CONSUMO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="GNV">
     <Parameter Name="P_ID_CONSUMO" Type="number" Mode="In" />
     <Parameter Name="P_ID_CLIENTE" Type="number" Mode="In" />
     <Parameter Name="P_ID_COMBUSTIBLE" Type="number" Mode="In" />
@@ -1213,7 +1213,7 @@
     <Parameter Name="P_ID_USR" Type="number" Mode="In" />
     <Parameter Name="P_RES" Type="varchar2" Mode="Out" />
   </Function>
-  <Function Name="P_SG_GUARDAR_DETALLE_COMPRA" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="CITYTRUCK">
+  <Function Name="P_SG_GUARDAR_DETALLE_COMPRA" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="GNV">
     <Parameter Name="P_ID_DETALLE" Type="number" Mode="In" />
     <Parameter Name="P_ID_COMPRA" Type="number" Mode="In" />
     <Parameter Name="P_DETALLE" Type="varchar2" Mode="In" />
@@ -1221,7 +1221,7 @@
     <Parameter Name="P_ID_USR" Type="number" Mode="In" />
     <Parameter Name="P_RES" Type="varchar2" Mode="Out" />
   </Function>
-  <Function Name="P_SG_GUARDAR_EGRESOS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="CITYTRUCK">
+  <Function Name="P_SG_GUARDAR_EGRESOS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="GNV">
     <Parameter Name="P_ID_EGRESO" Type="number" Mode="In" />
     <Parameter Name="P_FECHA" Type="date" Mode="In" />
     <Parameter Name="P_CONCEPTO" Type="varchar2" Mode="In" />
@@ -1230,7 +1230,7 @@
     <Parameter Name="P_ID_USR" Type="number" Mode="In" />
     <Parameter Name="P_RES" Type="varchar2" Mode="Out" />
   </Function>
-  <Function Name="P_SG_GUARDAR_FACTURA_MN" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="CITYTRUCK">
+  <Function Name="P_SG_GUARDAR_FACTURA_MN" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="GNV">
     <Parameter Name="P_ID_FACTURA" Type="number" Mode="In" />
     <Parameter Name="P_ID_COMBUSTIBLE" Type="number" Mode="In" />
     <Parameter Name="P_FECHA" Type="date" Mode="In" />
@@ -1240,7 +1240,7 @@
     <Parameter Name="P_ID_USR" Type="number" Mode="In" />
     <Parameter Name="P_RES" Type="varchar2" Mode="Out" />
   </Function>
-  <Function Name="P_SG_GUARDAR_INGRESOS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="CITYTRUCK">
+  <Function Name="P_SG_GUARDAR_INGRESOS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="GNV">
     <Parameter Name="P_ID_INGRESO" Type="number" Mode="In" />
     <Parameter Name="P_FECHA" Type="date" Mode="In" />
     <Parameter Name="P_CONCEPTO" Type="varchar2" Mode="In" />
@@ -1250,20 +1250,20 @@
     <Parameter Name="P_ID_AMORTIZACION" Type="number" Mode="In" />
     <Parameter Name="P_RES" Type="varchar2" Mode="Out" />
   </Function>
-  <Function Name="P_SG_GUARDAR_PERFIL" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="CITYTRUCK">
+  <Function Name="P_SG_GUARDAR_PERFIL" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="GNV">
     <Parameter Name="P_ID_PERFIL" Type="number" Mode="In" />
     <Parameter Name="P_NOMBRE" Type="varchar2" Mode="In" />
     <Parameter Name="P_DESCRIPCION" Type="varchar2" Mode="In" />
     <Parameter Name="P_ID_USR" Type="number" Mode="In" />
     <Parameter Name="P_RES" Type="varchar2" Mode="Out" />
   </Function>
-  <Function Name="P_SG_GUARDAR_PERFIL_OPCION" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="CITYTRUCK">
+  <Function Name="P_SG_GUARDAR_PERFIL_OPCION" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="GNV">
     <Parameter Name="P_ID_PERFIL" Type="number" Mode="In" />
     <Parameter Name="P_ID_OPC" Type="number" Mode="In" />
     <Parameter Name="P_ID_USR" Type="number" Mode="In" />
     <Parameter Name="P_RES" Type="varchar2" Mode="Out" />
   </Function>
-  <Function Name="P_SG_GUARDAR_POS_DIA_MN" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="CITYTRUCK">
+  <Function Name="P_SG_GUARDAR_POS_DIA_MN" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="GNV">
     <Parameter Name="P_ID_POS_TURNO" Type="number" Mode="In" />
     <Parameter Name="P_ID_POS" Type="number" Mode="In" />
     <Parameter Name="P_FECHA" Type="date" Mode="In" />
@@ -1273,7 +1273,7 @@
     <Parameter Name="P_ID_USR" Type="number" Mode="In" />
     <Parameter Name="P_RES" Type="varchar2" Mode="Out" />
   </Function>
-  <Function Name="P_SG_GUARDAR_POS_TURNO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="CITYTRUCK">
+  <Function Name="P_SG_GUARDAR_POS_TURNO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="GNV">
     <Parameter Name="P_ID_POS_TURNO" Type="number" Mode="In" />
     <Parameter Name="P_ID_POS" Type="number" Mode="In" />
     <Parameter Name="P_TURNO" Type="varchar2" Mode="In" />
@@ -1284,7 +1284,7 @@
     <Parameter Name="P_ID_USR" Type="number" Mode="In" />
     <Parameter Name="P_RES" Type="varchar2" Mode="Out" />
   </Function>
-  <Function Name="P_SG_GUARDAR_TRANFERENCIA" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="CITYTRUCK">
+  <Function Name="P_SG_GUARDAR_TRANFERENCIA" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="GNV">
     <Parameter Name="P_ID_TRANSFERENCIA" Type="number" Mode="In" />
     <Parameter Name="P_ID_CAJA_ORIGEN" Type="number" Mode="In" />
     <Parameter Name="P_ID_CAJA_DESTINO" Type="number" Mode="In" />
@@ -1295,7 +1295,7 @@
     <Parameter Name="P_ID_USR" Type="number" Mode="In" />
     <Parameter Name="P_RES" Type="varchar2" Mode="Out" />
   </Function>
-  <Function Name="P_SG_GUARDAR_USUARIO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="CITYTRUCK">
+  <Function Name="P_SG_GUARDAR_USUARIO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="GNV">
     <Parameter Name="P_ID_USUARIO" Type="number" Mode="In" />
     <Parameter Name="P_LOGIN" Type="varchar2" Mode="In" />
     <Parameter Name="P_NOMBRE" Type="varchar2" Mode="In" />
@@ -1306,7 +1306,7 @@
     <Parameter Name="P_ID_USR" Type="number" Mode="In" />
     <Parameter Name="P_RES" Type="varchar2" Mode="Out" />
   </Function>
-  <Function Name="P_SG_GUARDAR_VENTA_CREDITO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="CITYTRUCK">
+  <Function Name="P_SG_GUARDAR_VENTA_CREDITO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="GNV">
     <Parameter Name="P_ID_VENTA" Type="number" Mode="In" />
     <Parameter Name="P_ID_CLIENTE" Type="number" Mode="In" />
     <Parameter Name="P_ID_COMBUSTIBLE" Type="number" Mode="In" />
@@ -1319,24 +1319,24 @@
     <Parameter Name="P_ID_USR" Type="number" Mode="In" />
     <Parameter Name="P_RES" Type="varchar2" Mode="Out" />
   </Function>
-  <Function Name="P_SG_GUARDAR_VENTA_MN_VACIO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="CITYTRUCK">
+  <Function Name="P_SG_GUARDAR_VENTA_MN_VACIO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="GNV">
     <Parameter Name="P_FECHA" Type="date" Mode="In" />
     <Parameter Name="P_ID_USR" Type="number" Mode="In" />
     <Parameter Name="P_RES" Type="varchar2" Mode="Out" />
   </Function>
-  <Function Name="P_SG_OBTENER_ULTIMO_REG" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="CITYTRUCK">
+  <Function Name="P_SG_OBTENER_ULTIMO_REG" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="GNV">
     <Parameter Name="P_TURNO" Type="varchar2" Mode="Out" />
     <Parameter Name="P_FECHA" Type="varchar2" Mode="Out" />
     <Parameter Name="P_RES" Type="varchar2" Mode="Out" />
   </Function>
-  <Function Name="P_SG_OBTENER_ULTIMO_REG_MN" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="CITYTRUCK">
+  <Function Name="P_SG_OBTENER_ULTIMO_REG_MN" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="GNV">
     <Parameter Name="P_FECHA" Type="varchar2" Mode="Out" />
     <Parameter Name="P_RES" Type="varchar2" Mode="Out" />
   </Function>
-  <Function Name="P_SG_SALDOS_MITTERS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="CITYTRUCK">
+  <Function Name="P_SG_SALDOS_MITTERS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="GNV">
     <Parameter Name="P_RES" Type="varchar2" Mode="Out" />
   </Function>
-  <Function Name="P_SG_VERIFICAR_EDICION" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="CITYTRUCK">
+  <Function Name="P_SG_VERIFICAR_EDICION" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="GNV">
     <Parameter Name="P_FECHA" Type="date" Mode="In" />
     <Parameter Name="P_TURNO" Type="varchar2" Mode="In" />
     <Parameter Name="P_RES" Type="varchar2" Mode="Out" />

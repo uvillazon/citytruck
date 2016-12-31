@@ -2,3 +2,7 @@ E:\Proyecto\CityTruck\CityTruck.Common.Data\bin\Debug\CityTruck.Common.Data.dll
 E:\Proyecto\CityTruck\CityTruck.Common.Data\bin\Debug\CityTruck.Common.Data.pdb
 E:\Proyecto\CityTruck\CityTruck.Common.Data\obj\Debug\CityTruck.Common.Data.dll
 E:\Proyecto\CityTruck\CityTruck.Common.Data\obj\Debug\CityTruck.Common.Data.pdb
+D:\proyectos\CityTruck31122016\CityTruck\CityTruck.Common.Data\bin\Debug\CityTruck.Common.Data.dll
+D:\proyectos\CityTruck31122016\CityTruck\CityTruck.Common.Data\bin\Debug\CityTruck.Common.Data.pdb
+D:\proyectos\CityTruck31122016\CityTruck\CityTruck.Common.Data\obj\Debug\CityTruck.Common.Data.dll
+D:\proyectos\CityTruck31122016\CityTruck\CityTruck.Common.Data\obj\Debug\CityTruck.Common.Data.pdb

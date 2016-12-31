@@ -2,3 +2,8 @@ E:\Proyecto\CityTruck\CityTruck.Common\bin\Debug\CityTruck.Common.dll
 E:\Proyecto\CityTruck\CityTruck.Common\bin\Debug\CityTruck.Common.pdb
 E:\Proyecto\CityTruck\CityTruck.Common\obj\Debug\CityTruck.Common.dll
 E:\Proyecto\CityTruck\CityTruck.Common\obj\Debug\CityTruck.Common.pdb
+D:\proyectos\CityTruck31122016\CityTruck\CityTruck.Common\bin\Debug\CityTruck.Common.dll
+D:\proyectos\CityTruck31122016\CityTruck\CityTruck.Common\bin\Debug\CityTruck.Common.pdb
+D:\proyectos\CityTruck31122016\CityTruck\CityTruck.Common\obj\Debug\CityTruck.Common.csprojResolveAssemblyReference.cache
+D:\proyectos\CityTruck31122016\CityTruck\CityTruck.Common\obj\Debug\CityTruck.Common.dll
+D:\proyectos\CityTruck31122016\CityTruck\CityTruck.Common\obj\Debug\CityTruck.Common.pdb
