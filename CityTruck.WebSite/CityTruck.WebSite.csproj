@@ -3908,8 +3908,10 @@
     <EmbeddedResource Include="Reportes\ReporteCompra.rdlc" />
     <EmbeddedResource Include="Reportes\ReporteCmpVenta.rdlc" />
     <EmbeddedResource Include="Reportes\ReporteEstadoResultadoCompleto.rdlc" />
+    <EmbeddedResource Include="Reportes\ReporteEstadoResultadoCompletov1.rdlc" />
     <EmbeddedResource Include="Reportes\ReportePrueba.rdlc" />
     <EmbeddedResource Include="Reportes\ReporteTransferencia.rdlc" />
+    <EmbeddedResource Include="Reportes\ReporteTransferenciav1.rdlc" />
     <EmbeddedResource Include="Reportes\ReporteVentaConsumo.rdlc" />
     <EmbeddedResource Include="Reportes\ReporteVentaCredito.rdlc" />
     <EmbeddedResource Include="Reportes\ReporteVentaCreditoConsumo.rdlc" />

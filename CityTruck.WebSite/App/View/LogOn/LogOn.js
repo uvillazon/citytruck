@@ -2,10 +2,15 @@
 Ext.onReady(function () {
     Ext.QuickTips.init();
 
+    //console.dir(App.Config.Constantes);
+    App.Config.Constantes.cargarHost();
     // Create a variable to hold our EXT Form Panel. 
     // Assign various config options as seen.	 
     var login = new Ext.FormPanel({
         labelWidth: 80,
+        requires: [
+		"App.Config.Constantes",
+      ],
         url: 'login.asp',
         frame: true,
         title: 'Ingrese su usuario y contraseña',
@@ -78,8 +83,9 @@ Ext.onReady(function () {
             success: function () {
                 //Ext.Msg.alert('Status', 'Login Successful!', function (btn, text) {
                 //    if (btn == 'ok') {
-                //var redirect = 'http://elfpre02/SisMan/';
-                var redirect = '/';
+                //var redirect = 'http://200.58.79.105:88/CityTruck/';
+                var redirect = Constantes.HOST;
+                //var redirect = 'http://localhost/CityTruck/';
                 window.location = redirect;
                 win.hide();
                 //    }

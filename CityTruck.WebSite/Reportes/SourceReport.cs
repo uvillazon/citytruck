@@ -98,7 +98,7 @@ namespace CityTruck.WebSite.Reportes
                 venDia.PRODUCTO = com.SG_COMBUSTIBLES.DESCRIPCION;
                 venDia.MES = ObtenerMesEspanol(com.FECHA.Month);
                 venDia.SALDO_ANTERIOR = com.SALDO_INICIAL;
-                venDia.COMPRA = (decimal)com.COMPRAS;
+                venDia.COMPRA = (decimal)com.COMPRAS + (decimal)com.AJUSTES;
                 venDia.VENTA = (decimal)com.VENTAS;
                 decimal saldoventa = venDia.VENTA;
                 venDia.SALDO_ACTUAL = (decimal)com.ACUMULADOS;

@@ -15,6 +15,7 @@
     code: 'es',
     initComponent: function () {
         var me = this;
+        Constantes.cargarHost();
         //javascript: alert(document.body.offsetWidth);
         //alert(document.documentElement.clientHeight);
         //creamos un componente

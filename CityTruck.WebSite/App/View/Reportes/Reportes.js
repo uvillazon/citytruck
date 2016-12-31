@@ -172,7 +172,7 @@
         }
         else if(me.opcion == "ReporteEstadoResultado"){
             if(me.formReporte.isValid()){
-                window.open(Constantes.HOST + 'ReportesPDF/ReporteEstadoResultado?ANIO='+me.cbx_anio.getValue() + '&MES='+me.cbx_mes.getValue());
+                window.open(Constantes.HOST + 'ReportesPDF/ReporteEstadoResultadov1?ANIO='+me.cbx_anio.getValue() + '&MES='+me.cbx_mes.getValue());
                 me.hide();
             }
             else{

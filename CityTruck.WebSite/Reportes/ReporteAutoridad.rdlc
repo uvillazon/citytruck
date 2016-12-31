@@ -2069,7 +2069,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>23000</Value>
+                              <Value>24000</Value>
                               <Style>
                                 <FontFamily>Calibri</FontFamily>
                                 <FontSize>8pt</FontSize>
@@ -2104,7 +2104,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>11500</Value>
+                              <Value>12000</Value>
                               <Style>
                                 <FontFamily>Calibri</FontFamily>
                                 <FontSize>8pt</FontSize>
@@ -2174,7 +2174,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>4000</Value>
+                              <Value>4500</Value>
                               <Style>
                                 <FontFamily>Calibri</FontFamily>
                                 <FontSize>8pt</FontSize>

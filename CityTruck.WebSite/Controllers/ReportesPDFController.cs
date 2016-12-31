@@ -35,6 +35,24 @@ namespace CityTruck.WebSite.Controllers
             renderedBytes = localReport.Render(reportType, deviceInfo, out mimeType, out encoding, out fileNameExtension, out streams, out warnings);
             return File(renderedBytes, mimeType);
         }
+        public ActionResult ReporteTransferenciav1(int ID)
+        {
+            LocalReport localReport = new LocalReport();
+            localReport.ReportPath = Server.MapPath("~/Reportes/ReporteTransferenciav1.rdlc");
+            ReportDataSource reportDataSource = new ReportDataSource("DataSet1", repo.ReporteTransferencia(ID));
+            localReport.DataSources.Add(reportDataSource);
+            string reportType = "PDF";
+            string mimeType = "application/pdf";
+            string encoding = "utf-8";
+            string fileNameExtension = "pdf";
+            string deviceInfo = string.Empty;
+            Warning[] warnings = new Warning[1];
+            string[] streams = new string[1];
+            Byte[] renderedBytes;
+            //Render the report
+            renderedBytes = localReport.Render(reportType, deviceInfo, out mimeType, out encoding, out fileNameExtension, out streams, out warnings);
+            return File(renderedBytes, mimeType);
+        }
         public ActionResult ReporteAmortizacion(int ID ,string FECHA_INICIO ,string FECHA_FINAL)
         {
             DateTime fechaIni = DateTime.ParseExact(FECHA_INICIO, "dd/MM/yyyy", null);
@@ -190,6 +208,24 @@ namespace CityTruck.WebSite.Controllers
         {
             LocalReport localReport = new LocalReport();
             localReport.ReportPath = Server.MapPath("~/Reportes/ReporteEstadoResultadoCompleto.rdlc");
+            ReportDataSource reportDataSource = new ReportDataSource("DataSet1", repo.ReporteEstadoResultadoCompleto(ANIO, MES));
+            localReport.DataSources.Add(reportDataSource);
+            string reportType = "PDF";
+            string mimeType = "application/pdf";
+            string encoding = "utf-8";
+            string fileNameExtension = "pdf";
+            string deviceInfo = string.Empty;
+            Warning[] warnings = new Warning[1];
+            string[] streams = new string[1];
+            Byte[] renderedBytes;
+            //Render the report
+            renderedBytes = localReport.Render(reportType, deviceInfo, out mimeType, out encoding, out fileNameExtension, out streams, out warnings);
+            return File(renderedBytes, mimeType);
+        }
+        public ActionResult ReporteEstadoResultadov1(string ANIO = null, string MES = null)
+        {
+            LocalReport localReport = new LocalReport();
+            localReport.ReportPath = Server.MapPath("~/Reportes/ReporteEstadoResultadoCompletov1.rdlc");
             ReportDataSource reportDataSource = new ReportDataSource("DataSet1", repo.ReporteEstadoResultadoCompleto(ANIO, MES));
             localReport.DataSources.Add(reportDataSource);
             string reportType = "PDF";

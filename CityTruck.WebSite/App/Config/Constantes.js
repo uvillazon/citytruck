@@ -1,17 +1,18 @@
 ﻿/**
- * @class App.Config.Constantes
- * @extends 
- * @autor Ubaldo Villazon
- * @date 23/07/2013
- *
- * Variables Globales Comunes 
- *
- **/
+* @class App.Config.Constantes
+* @extends 
+* @autor Ubaldo Villazon
+* @date 23/07/2013
+*
+* Variables Globales Comunes 
+*
+**/
 Ext.define("App.Config.Constantes", {
     alternateClassName: ["Constantes", "Lista"],
     singleton: true,
     /* Aqui Defino todas mis contanstantes */
     HOST: '../',
+    PATH: 'CityTruckPrueba',
     //HOST                : 'http://elfpre02/SisMan/',
     REQUERIDO: '<span style="color:red;font-weight:bold" data-qtip="Requerido">*</span>',
     PIEPAGINA: '<font color="black"><h2  style="font-size:12px;height:14px">Copyright &copy;   2016  -  Version 1.2</h2></font>',
@@ -112,10 +113,27 @@ Ext.define("App.Config.Constantes", {
         this.BTNANCHO = (document.documentElement.clientWidth - 100) / 5;
         this.BTNALTO = (document.documentElement.clientHeight - 100) / 5;
     },
-    CargarPrecios: function (GAS, DIE) { 
+    CargarPrecios: function (GAS, DIE) {
         this.CONFIG_PRECIO_VENTA_GAS = GAS.PRECIO_VENTA;
         this.CONFIG_PRECIO_VENTA_DIS = DIE.PRECIO_VENTA;
         this.CONFIG_PRECIO_COSTO_GAS = GAS.PRECIO_COMPRA;
         this.CONFIG_PRECIO_COSTO_DIS = DIE.PRECIO_COMPRA;
+    },
+    cargarHost: function () {
+        console.log(document.location);
+        if (document.location.hostname === "localhost") {
+            this.HOST = '../';
+        }
+        else {
+            this.HOST = document.location.origin + '/' + this.PATH + '/';
+        }
+
+        //this.HOST = document.URL;
+        //        console.log("document.URL : " + document.URL);
+        //        console.log("document.location.href : " + document.location.href);
+        //        console.log("document.location.origin : " + document.location.origin);
+        //        console.log("document.location.hostname : " + document.location.hostname);
+        //        console.log("document.location.host : " + document.location.host);
+        //        console.log("document.location.pathname : " + document.location.pathname);
     }
 });

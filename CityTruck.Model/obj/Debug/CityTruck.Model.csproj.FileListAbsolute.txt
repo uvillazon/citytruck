@@ -3,4 +3,3 @@ E:\Proyecto\CityTruck\CityTruck.Model\bin\Debug\CityTruck.Model.dll
 E:\Proyecto\CityTruck\CityTruck.Model\bin\Debug\CityTruck.Model.pdb
 E:\Proyecto\CityTruck\CityTruck.Model\obj\Debug\CityTruck.Model.dll
 E:\Proyecto\CityTruck\CityTruck.Model\obj\Debug\CityTruck.Model.pdb
-E:\Proyecto\CityTruck\CityTruck.Model\obj\Debug\CityTruck.Model.csprojResolveAssemblyReference.cache

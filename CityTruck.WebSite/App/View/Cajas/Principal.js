@@ -290,6 +290,6 @@
     ImprimirComprobanteTransferencia: function () {
         var me = this;
         var id = me.formTransferencia.txt_id.getValue();
-        window.open(Constantes.HOST + 'ReportesPDF/ReporteTransferencia?ID=' + id);
+        window.open(Constantes.HOST + 'ReportesPDF/ReporteTransferenciav1?ID=' + id);
     }
 });
