@@ -15,126 +15,134 @@
             me.title = "Resumen";
             me.CargarFormResumen();
         }
-        else if(me.opcion == "formVentaCredito"){
-//            me.columns = 1;
-             me.title = "Registro Ventas a Credito";
+        else if (me.opcion == "formVentaCredito") {
+            //            me.columns = 1;
+            me.title = "Registro Ventas a Credito";
             me.CargarFormVentaCredito();
             me.EventosFormVentaCredito();
         }
-        else if (me.opcion == "formEditarVentaCredito"){
-//            me.columns = 1;
-             me.title = "Registro Ventas a Credito";
+        else if (me.opcion == "formEditarVentaCredito") {
+            //            me.columns = 1;
+            me.title = "Registro Ventas a Credito";
             me.CargarFormEditarVentaCredito();
-//            me.EventosFormVentaCredito();
+            //            me.EventosFormVentaCredito();
         }
-        else if (me.opcion == "formConsumo"){
-             me.title = "Registro Consumo";
+        else if (me.opcion == "formConsumo") {
+            me.title = "Registro Consumo";
             me.CargarFormConsumo();
             me.EventosFormVentaCredito();
         }
-        else if (me.opcion == "formEditarVentaConsumo"){
-             me.title = "Registro Consumo";
+        else if (me.opcion == "formEditarVentaConsumo") {
+            me.title = "Registro Consumo";
             me.CargarFormEditarVentaConsumo();
         }
         else {
-            Ext.Msg.alert("Error","No existe la funcion");
+            Ext.Msg.alert("Error", "No existe la funcion");
         }
         this.callParent(arguments);
     },
     CargarFormSubTotales: function () {
         var me = this;
-        me.fieldDefaults ={
+        me.fieldDefaults = {
             margin: '2',
             align: 'left',
             labelWidth: 80
         };
         var label01 = Ext.create("Ext.form.Label", {
             text: 'TOTAL (Bs)',
-            cls : 'resaltarAzulRight',
+            cls: 'resaltarAzulRight',
             width: 180,
-            
+
         });
         var label02 = Ext.create("Ext.form.Label", {
             text: 'EFECTIVO',
-            cls : 'resaltarAzul',
+            cls: 'resaltarAzul',
         });
         var label03 = Ext.create("Ext.form.Label", {
             text: 'CREDITO',
-            cls : 'resaltarAzul',
+            cls: 'resaltarAzul',
         });
-         var label04 = Ext.create("Ext.form.Label", {
+        var label04 = Ext.create("Ext.form.Label", {
             text: 'CONSUMO',
-            cls : 'resaltarAzul',
+            cls: 'resaltarAzul',
         });
 
         me.txt_diesel01 = Ext.create("App.Config.Componente.NumberFieldBase", {
-            fieldLabel: "DIESEL",
+            fieldLabel: "GNV",
             name: "TOTAL_VENTAS_DIESEL",
-             width: 180,
-//            width: 200,
+            width: 180,
+            hidden: true,
+            //            width: 200,
             colspan: 1,
             emptyText: ''
         });
         me.txt_diesel_efectivo = Ext.create("App.Config.Componente.NumberFieldBase", {
             fieldLabel: "",
-//             labelWidth: 80,
+            hidden: true,
+            //             labelWidth: 80,
             width: 190,
             name: "DIESEL_EFECTIVO",
-//            width: 70,
+            //            width: 70,
             colspan: 1,
             emptyText: ''
         });
         me.txt_diesel_credito = Ext.create("App.Config.Componente.NumberFieldBase", {
             fieldLabel: "",
             width: 180,
+            hidden: true,
             name: "DIESEL_CREDITO",
-//            width: 150,
+            //            width: 150,
             colspan: 1,
             emptyText: ''
         });
         me.txt_diesel_consumo = Ext.create("App.Config.Componente.NumberFieldBase", {
             fieldLabel: "",
             width: 180,
+            hidden: true,
             name: "DIESEL_CONSUMO",
-//            width: 150,
+            //            width: 150,
             colspan: 1,
             emptyText: ''
         });
         me.txt_gasolina01 = Ext.create("App.Config.Componente.NumberFieldBase", {
             fieldLabel: "GASOLINA",
             width: 180,
+            hidden: true,
             name: "TOTAL_VENTAS_GASOLINA",
-//            width: 200,
+            //            width: 200,
             emptyText: '',
             colspan: 1
         });
         me.txt_gasolina_efectivo = Ext.create("App.Config.Componente.NumberFieldBase", {
             fieldLabel: "",
-//            width: 180,
-             width: 190,
+            //            width: 180,
+            width: 190,
+            hidden: true,
             name: "GASOLINA_EFECTIVO",
-//            width: 150,
+            //            width: 150,
             colspan: 1,
             emptyText: ''
         });
         me.txt_gasolina_credito = Ext.create("App.Config.Componente.NumberFieldBase", {
             fieldLabel: "",
             width: 180,
+            hidden: true,
             name: "GASOLINA_CREDITO",
-//            width: 150,
+            //            width: 150,
             colspan: 1,
             emptyText: ''
         });
         me.txt_gasolina_consumo = Ext.create("App.Config.Componente.NumberFieldBase", {
             fieldLabel: "",
             width: 180,
+            hidden: true,
             name: "GASOLINA_CONSUMO",
-//            width: 150,
+            //            width: 150,
             colspan: 1,
             emptyText: ''
         });
         me.txt_total01 = Ext.create("App.Config.Componente.NumberFieldBase", {
-            fieldLabel: "TOTAL - Bs",
+            fieldLabel: "TOTAL GNV - Bs",
             width: 180,
             name: "TOTAL_VENTA",
             colspan: 1,
@@ -163,24 +171,27 @@
         });
 
         var label1 = Ext.create("Ext.form.Label", {
-            text: 'TOTAL (Lts)',
-            cls : 'resaltarAzulRight',
-            
+            text: 'TOTAL (m3)',
+            cls: 'resaltarAzulRight',
+
         });
         var label2 = Ext.create("Ext.form.Label", {
             text: 'P. VENTA (Bs)',
-            cls : 'resaltarAzul',
+            cls: 'resaltarAzul',
+            colspan: 3,
         });
         var label3 = Ext.create("Ext.form.Label", {
             text: 'P. COSTO (Bs)',
-            cls : 'resaltarAzul',
+            cls: 'resaltarAzul',
+            hidden: true,
             colspan: 2,
         });
         me.txt_diesel = Ext.create("App.Config.Componente.NumberFieldBase", {
-            fieldLabel: "DIESEL",
+            fieldLabel: "GNV",
             name: "SUB_DIESEL",
             width: 180,
-//            width: 200,
+            hidden: true,
+            //            width: 200,
             colspan: 1,
             emptyText: ''
         });
@@ -188,7 +199,8 @@
             fieldLabel: "",
             name: "SUB_DIESEL_BS",
             width: 190,
-//            width: 70,
+            hidden: true,
+            //            width: 70,
             colspan: 1,
             emptyText: ''
         });
@@ -196,7 +208,8 @@
             fieldLabel: "",
             name: "SUB_DIESEL_BS_COSTO",
             width: 190,
-//            width: 150,
+            hidden: true,
+            //            width: 150,
             colspan: 2,
             emptyText: ''
         });
@@ -204,7 +217,8 @@
             fieldLabel: "GASOLINA",
             name: "SUB_GASOLINA",
             width: 180,
-//            width: 200,
+            hidden: true,
+            //            width: 200,
             emptyText: '',
             colspan: 1
         });
@@ -212,7 +226,8 @@
             fieldLabel: "",
             name: "SUB_GASOLINA_BS",
             width: 190,
-//            width: 150,
+            hidden: true,
+            //            width: 150,
             colspan: 1,
             emptyText: ''
         });
@@ -220,12 +235,13 @@
             fieldLabel: "",
             name: "SUB_GASOLINA_BS_COSTO",
             width: 190,
-//            width: 150,
+            hidden: true,
+            //            width: 150,
             colspan: 2,
             emptyText: ''
         });
         me.txt_total = Ext.create("App.Config.Componente.NumberFieldBase", {
-            fieldLabel: "TOTAL",
+            fieldLabel: "TOTAL GNV",
             name: "TOTAL",
             width: 180,
             colspan: 1,
@@ -243,6 +259,7 @@
             name: "TOTAL_BS_COSTO",
             width: 190,
             colspan: 2,
+            hidden: true,
             emptyText: ''
         });
 
@@ -251,8 +268,8 @@
             name: "TOTAL_BS_COSTO",
             colspan: 4,
             emptyText: '',
-
-            width : 355,
+            hidden: true,
+            width: 355,
             labelAlign: 'right',
             labelWidth: 270,
         });
@@ -293,16 +310,16 @@
         var me = this;
         var label1 = Ext.create("Ext.form.Label", {
             text: 'LITROS',
-            cls : 'resaltarAzulRight',
+            cls: 'resaltarAzulRight',
 
         });
         var label2 = Ext.create("Ext.form.Label", {
             text: 'P-COSTO',
-            cls : 'resaltarAzul',
+            cls: 'resaltarAzul',
         });
         var label3 = Ext.create("Ext.form.Label", {
             text: 'P-VENTA',
-            cls : 'resaltarAzul',
+            cls: 'resaltarAzul',
         });
         me.txt_diesel = Ext.create("App.Config.Componente.TextFieldBase", {
             fieldLabel: "Diesel",
@@ -359,13 +376,13 @@
         me.txt_gasolina_venta
         ];
     },
-    CargarFormVentaCredito : function(){
+    CargarFormVentaCredito: function () {
         var me = this;
         me.store_cliente = Ext.create('App.Store.Clientes.Clientes');
         me.cbx_cliente = Ext.create("App.Config.Componente.ComboAutoBase", {
             fieldLabel: "Cliente",
             name: "ID_CLIENTE",
-            valueField : 'ID_CLIENTE',
+            valueField: 'ID_CLIENTE',
             displayField: 'EMPRESA',
             maxLength: 50,
             afterLabelTextTpl: Constantes.REQUERIDO,
@@ -374,22 +391,34 @@
             store: me.store_cliente,
         });
         me.store_combustible = Ext.create('App.Store.Combustibles.Combustibles').load();
+       
         me.cbx_combustible = Ext.create("App.Config.Componente.ComboBase", {
             fieldLabel: "Combustible",
             name: "ID_COMBUSTIBLE",
             displayField: 'NOMBRE',
-            valueField : 'ID_COMBUSTIBLE',
+            valueField: 'ID_COMBUSTIBLE',
             store: me.store_combustible,
-            colspan : 2,
+            colspan: 2,
+            readOnly: true,
+            hidden : true,
+            value: 2,
             afterLabelTextTpl: Constantes.REQUERIDO,
             allowBlank: false,
-            textoTpl : function () { return "{DESCRIPCION}" }
+            textoTpl: function () { return "{DESCRIPCION}" }
         });
-         me.num_litros = Ext.create("App.Config.Componente.NumberFieldBase", {
-            fieldLabel: "Litros",
+
+        me.txt_combustible = Ext.create("App.Config.Componente.TextFieldBase", {
+            fieldLabel: "Combustible",
+            name: "COMBUSTIBLE1111",
+            value : "GNV",
+            readOnly: true,
+        });
+
+        me.num_litros = Ext.create("App.Config.Componente.NumberFieldBase", {
+            fieldLabel: "m3",
             name: "IMPORTE_LTS",
             allowDecimals: true,
-            readOnly : true,
+            readOnly: true,
             maxValue: 999999999,
             afterLabelTextTpl: Constantes.REQUERIDO,
             allowBlank: false,
@@ -397,7 +426,7 @@
         me.num_importe = Ext.create("App.Config.Componente.NumberFieldBase", {
             fieldLabel: "Importe Total",
             name: "IMPORTE_BS",
-//            readOnly : true,
+            //            readOnly : true,
             allowDecimals: true,
             maxValue: 999999999,
             maxValue: 999999999,
@@ -405,52 +434,61 @@
             allowBlank: false,
         });
         me.num_precio = Ext.create("App.Config.Componente.TextFieldBase", {
-            fieldLabel: "Precio Litro ",
+            fieldLabel: "Precio m3 ",
             name: "PRECIO",
-            readOnly : true,
+            readOnly: true,
             allowDecimals: true,
             maxValue: 999999999,
         });
         me.items = [
             me.cbx_cliente,
             me.cbx_combustible,
+            me.txt_combustible,
             me.num_precio,
             me.num_litros,
             me.num_importe
 
         ];
     },
-    CargarFormEditarVentaCredito : function(){
+    CargarFormEditarVentaCredito: function () {
         var me = this;
-         me.txt_id_venta = Ext.create("App.Config.Componente.TextFieldBase", {
+        me.txt_id_venta = Ext.create("App.Config.Componente.TextFieldBase", {
             name: "ID_VENTA",
             hidden: true,
         });
-         me.txt_id_combustible = Ext.create("App.Config.Componente.TextFieldBase", {
+        me.txt_id_combustible = Ext.create("App.Config.Componente.TextFieldBase", {
             name: "ID_COMBUSTIBLE",
             hidden: true,
         });
-         me.txt_id_cliente = Ext.create("App.Config.Componente.TextFieldBase", {
+        me.txt_id_cliente = Ext.create("App.Config.Componente.TextFieldBase", {
             name: "ID_CLIENTE",
             hidden: true,
         });
         me.txt_cliente = Ext.create("App.Config.Componente.TextFieldBase", {
             fieldLabel: "Cliente",
             name: "CLIENTE",
-            readOnly : true,
+            readOnly: true,
             maxValue: 999999999,
         });
-        me.txt_combustible = Ext.create("App.Config.Componente.TextFieldBase", {
+        me.txt_combustible1 = Ext.create("App.Config.Componente.TextFieldBase", {
             fieldLabel: "Combustible",
             name: "COMBUSTIBLE",
-            readOnly : true,
+            hidden:true,
+            readOnly: true,
             maxValue: 999999999,
+        });
+
+        me.txt_combustible = Ext.create("App.Config.Componente.TextFieldBase", {
+            fieldLabel: "Combustible",
+            name: "COMBUSTIBLE1111",
+            value: "GNV",
+            readOnly: true,
         });
         me.num_litros = Ext.create("App.Config.Componente.NumberFieldBase", {
             fieldLabel: "Litros",
             name: "IMPORTE_LTS",
             allowDecimals: true,
-            readOnly : true,
+            readOnly: true,
             maxValue: 999999999,
             afterLabelTextTpl: Constantes.REQUERIDO,
             allowBlank: false,
@@ -459,7 +497,7 @@
             fieldLabel: "Importe Total",
             name: "IMPORTE_BS",
             allowDecimals: true,
-//            readOnly : true,
+            //            readOnly : true,
             allowDecimals: true,
             maxValue: 999999999,
             afterLabelTextTpl: Constantes.REQUERIDO,
@@ -468,7 +506,7 @@
         me.num_precio = Ext.create("App.Config.Componente.TextFieldBase", {
             fieldLabel: "Precio Litro ",
             name: "PRECIO",
-            readOnly : true,
+            readOnly: true,
             allowDecimals: true,
             maxValue: 999999999,
         });
@@ -477,6 +515,7 @@
             me.txt_id_cliente,
             me.txt_id_venta,
             me.txt_cliente,
+            me.txt_combustible1,
             me.txt_combustible,
             me.num_precio,
             me.num_litros,
@@ -484,76 +523,99 @@
         ];
 
     },
-    EventosFormVentaCredito : function(){
+    EventosFormVentaCredito: function () {
         var me = this;
-        me.cbx_combustible.on('select',function(cmd,record){
+        //me.cbx_combustible.on('boxready', function (cbx) {
+        //    //console.log(cbx.getStore());
+        //    cbx.getStore().load();
+        //    cbx.getStore().each(function (record) {
+        //        console.log(record);
+        //    });
+        //});
+        me.store_combustible.on('load', function (str, record) {
+            Ext.each(record, function (data) {
+                if (data.get('ID_COMBUSTIBLE') === 2) {
+                    me.combustible = data;
+                    me.num_precio.setValue(me.combustible.get('PRECIO_VENTA'));
+                    try {
+                        me.num_id_combustible.reset();
+                        me.num_id_combustible.setValue(me.combustible.get('ID_COMBUSTIBLE'));
+                    }
+                    catch (e) {
+                        console.log("error");
+                    }
+                    return false;
+                }
+            });
+        });
+        me.cbx_combustible.on('select', function (cmd, record) {
             me.combustible = record[0];
             me.num_precio.setValue(me.combustible.get('PRECIO_VENTA'));
-            try{
+            try {
                 me.num_id_combustible.reset();
                 me.num_id_combustible.setValue(me.combustible.get('ID_COMBUSTIBLE'));
             }
-            catch (e){
+            catch (e) {
                 console.log("error");
             }
         });
 
-//        me.num_litros.on('change',function(num,newvalue,oldvalue){
-////            alert(newvalue);
-//            if(newvalue != null){
-//                if(me.cbx_combustible.getValue() == null){
-//                    Ext.Msg.alert("Error","Seleccione Primero un Tipo de Combustible");
-//                }
-//                else{
-//                    var sum = me.combustible.get('PRECIO_VENTA') * newvalue;
-//                    me.num_importe.setValue(sum);
-//                }
-//            }
-//        });
-        me.num_importe.on('change',function(num,newvalue,oldvalue){
-            if(newvalue != null){
-                if(me.cbx_combustible.getValue() == null){
-                    Ext.Msg.alert("Error","Seleccione Primero un Tipo de Combustible");
+        //        me.num_litros.on('change',function(num,newvalue,oldvalue){
+        ////            alert(newvalue);
+        //            if(newvalue != null){
+        //                if(me.cbx_combustible.getValue() == null){
+        //                    Ext.Msg.alert("Error","Seleccione Primero un Tipo de Combustible");
+        //                }
+        //                else{
+        //                    var sum = me.combustible.get('PRECIO_VENTA') * newvalue;
+        //                    me.num_importe.setValue(sum);
+        //                }
+        //            }
+        //        });
+        me.num_importe.on('change', function (num, newvalue, oldvalue) {
+            if (newvalue != null) {
+                if (me.cbx_combustible.getValue() == null) {
+                    Ext.Msg.alert("Error", "Seleccione Primero un Tipo de Combustible");
                 }
-                else{
-                    var sum = newvalue / me.combustible.get('PRECIO_VENTA') ;
+                else {
+                    var sum = newvalue / me.combustible.get('PRECIO_VENTA');
                     me.num_litros.setValue(sum);
                 }
             }
         });
     },
-    EventosFormEditarVentaCredito : function(){
+    EventosFormEditarVentaCredito: function () {
         var me = this;
-//        me.num_litros.on('change',function(num,newvalue,oldvalue){
-//            if(newvalue != null){
-//                    var sum = me.num_precio.getValue() * newvalue;
-//                    me.num_importe.setValue(sum);
-//            }
-//        });
-        me.num_importe.on('change',function(num,newvalue,oldvalue){
-            if(newvalue != null){
-                    var sum = newvalue / me.num_precio.getValue() ;
-                    me.num_litros.setValue(sum);
+        //        me.num_litros.on('change',function(num,newvalue,oldvalue){
+        //            if(newvalue != null){
+        //                    var sum = me.num_precio.getValue() * newvalue;
+        //                    me.num_importe.setValue(sum);
+        //            }
+        //        });
+        me.num_importe.on('change', function (num, newvalue, oldvalue) {
+            if (newvalue != null) {
+                var sum = newvalue / me.num_precio.getValue();
+                me.num_litros.setValue(sum);
             }
         });
     },
-    CargarFormConsumo : function(){
+    CargarFormConsumo: function () {
         var me = this;
-//        me.store_tipo = Ext.create('App.Store.Listas.StoreLista');
-//        me.store_tipo.setExtraParam('ID_LISTA', Lista.Buscar('TIPO_CONSUMO'));
-//        me.cbx_registrar= Ext.create("App.Config.Componente.ComboBase", {
-//            fieldLabel: "Tipo Consumo",
-//            name: "TIPO",
-//            displayField: 'VALOR',
-//            store: me.store_tipo,
-//            afterLabelTextTpl: Constantes.REQUERIDO,
-//            allowBlank: false
-//        });
+        //        me.store_tipo = Ext.create('App.Store.Listas.StoreLista');
+        //        me.store_tipo.setExtraParam('ID_LISTA', Lista.Buscar('TIPO_CONSUMO'));
+        //        me.cbx_registrar= Ext.create("App.Config.Componente.ComboBase", {
+        //            fieldLabel: "Tipo Consumo",
+        //            name: "TIPO",
+        //            displayField: 'VALOR',
+        //            store: me.store_tipo,
+        //            afterLabelTextTpl: Constantes.REQUERIDO,
+        //            allowBlank: false
+        //        });
         me.store_cliente = Ext.create('App.Store.ConsumoPropio.ClientesConsumo');
         me.cbx_cliente = Ext.create("App.Config.Componente.ComboAutoBase", {
             fieldLabel: "Cliente",
             name: "ID_CLIENTE",
-            valueField : 'ID_CLIENTE',
+            valueField: 'ID_CLIENTE',
             displayField: 'NOMBRE',
             maxLength: 50,
             afterLabelTextTpl: Constantes.REQUERIDO,
@@ -566,18 +628,30 @@
             fieldLabel: "Combustible",
             name: "ID_COMBUSTIBLE",
             displayField: 'NOMBRE',
-            valueField : 'ID_COMBUSTIBLE',
+            valueField: 'ID_COMBUSTIBLE',
             store: me.store_combustible,
-            colspan : 2,
+            colspan: 2,
+            hidden: true,
+            readOnly: true,
+            value : 2,
             afterLabelTextTpl: Constantes.REQUERIDO,
             allowBlank: false,
-            textoTpl : function () { return "{NOMBRE}" }
+            textoTpl: function () { return "{NOMBRE}" }
         });
-         me.num_litros = Ext.create("App.Config.Componente.NumberFieldBase", {
-            fieldLabel: "Litros",
+
+        me.txt_combustible1 = Ext.create("App.Config.Componente.TextFieldBase", {
+            fieldLabel: "Combustible",
+            name: "COMBUSTIBLE1",
+            value : "GNV",
+            readOnly: true,
+            maxValue: 999999999,
+        });
+
+        me.num_litros = Ext.create("App.Config.Componente.NumberFieldBase", {
+            fieldLabel: "m3",
             name: "IMPORTE_LTS",
             allowDecimals: true,
-            readOnly : true,
+            readOnly: true,
             maxValue: 999999999,
             afterLabelTextTpl: Constantes.REQUERIDO,
             allowBlank: false,
@@ -585,22 +659,22 @@
         me.num_id_combustible = Ext.create("App.Config.Componente.NumberFieldBase", {
             name: "ID_COMBUSTIBLE",
             allowDecimals: true,
-            hidden : true,
+            hidden: true,
             afterLabelTextTpl: Constantes.REQUERIDO,
             allowBlank: false,
-            
+
         });
         me.num_importe = Ext.create("App.Config.Componente.NumberFieldBase", {
             fieldLabel: "Importe Total",
             name: "IMPORTE_BS",
-            readOnly : false,
+            readOnly: false,
             allowDecimals: true,
             maxValue: 999999999,
         });
         me.num_precio = Ext.create("App.Config.Componente.TextFieldBase", {
-            fieldLabel: "Precio Litro ",
+            fieldLabel: "Precio M3 ",
             name: "PRECIO",
-            readOnly : true,
+            readOnly: true,
             allowDecimals: true,
             maxValue: 999999999,
         });
@@ -609,32 +683,41 @@
             me.cbx_cliente,
 //            me.cbx_registrar,
             me.cbx_combustible,
+            me.txt_combustible1,
             me.num_precio,
             me.num_litros,
             me.num_importe
 
         ];
     },
-    CargarFormEditarVentaConsumo : function(){
+    CargarFormEditarVentaConsumo: function () {
         var me = this;
-         me.txt_id_consumo = Ext.create("App.Config.Componente.TextFieldBase", {
+        me.txt_id_consumo = Ext.create("App.Config.Componente.TextFieldBase", {
             name: "ID_CONSUMO",
             hidden: true,
         });
-         me.txt_id_combustible = Ext.create("App.Config.Componente.TextFieldBase", {
+        me.txt_id_combustible = Ext.create("App.Config.Componente.TextFieldBase", {
             name: "ID_COMBUSIBLE",
             hidden: true,
         });
         me.txt_cliente = Ext.create("App.Config.Componente.TextFieldBase", {
             fieldLabel: "Cliente",
             name: "CLIENTE",
-            readOnly : true,
+            readOnly: true,
             maxValue: 999999999,
         });
         me.txt_combustible = Ext.create("App.Config.Componente.TextFieldBase", {
             fieldLabel: "Combustible",
             name: "COMBUSTIBLE",
-            readOnly : true,
+            readOnly: true,
+            hidden : true,
+            maxValue: 999999999,
+        });
+        me.txt_combustible1 = Ext.create("App.Config.Componente.TextFieldBase", {
+            fieldLabel: "Combustible",
+            name: "COMBUSTIBLE1",
+            value: "GNV",
+            readOnly: true,
             maxValue: 999999999,
         });
         me.num_litros = Ext.create("App.Config.Componente.NumberFieldBase", {
@@ -648,14 +731,14 @@
         me.num_importe = Ext.create("App.Config.Componente.NumberFieldBase", {
             fieldLabel: "Importe Total",
             name: "IMPORTE_BS",
-            readOnly : true,
+            readOnly: true,
             allowDecimals: true,
             maxValue: 999999999,
         });
         me.num_precio = Ext.create("App.Config.Componente.TextFieldBase", {
             fieldLabel: "Precio Litro ",
             name: "PRECIO",
-            readOnly : true,
+            readOnly: true,
             allowDecimals: true,
             maxValue: 999999999,
         });
@@ -663,7 +746,7 @@
             me.txt_id_combustible,
             me.txt_id_consumo,
             me.txt_cliente,
-           
+            me.txt_combustible1,
             me.txt_combustible,
             me.num_precio,
             me.num_litros,

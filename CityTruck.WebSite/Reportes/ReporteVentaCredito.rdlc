@@ -1,61 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<Report xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner" xmlns="http://schemas.microsoft.com/sqlserver/reporting/2008/01/reportdefinition">
-  <DataSources>
-    <DataSource Name="CityTruckWebSiteReportes">
-      <ConnectionProperties>
-        <DataProvider>System.Data.DataSet</DataProvider>
-        <ConnectString>/* Local Connection */</ConnectString>
-      </ConnectionProperties>
-      <rd:DataSourceID>7da8d0be-185a-49f2-81c2-34dbbde14103</rd:DataSourceID>
-    </DataSource>
-  </DataSources>
-  <DataSets>
-    <DataSet Name="DataSetVentaCredito">
-      <Fields>
-        <Field Name="CLIENTE">
-          <DataField>CLIENTE</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="GASOLINA">
-          <DataField>GASOLINA</DataField>
-          <rd:TypeName>System.Decimal</rd:TypeName>
-        </Field>
-        <Field Name="DIESEL">
-          <DataField>DIESEL</DataField>
-          <rd:TypeName>System.Decimal</rd:TypeName>
-        </Field>
-      </Fields>
-      <Query>
-        <DataSourceName>CityTruckWebSiteReportes</DataSourceName>
-        <CommandText>/* Local Query */</CommandText>
-      </Query>
-      <rd:DataSetInfo>
-        <rd:DataSetName>CityTruck.WebSite.Reportes</rd:DataSetName>
-        <rd:TableName>SourceReport</rd:TableName>
-        <rd:ObjectDataSourceSelectMethod>ReporteVentaCredito</rd:ObjectDataSourceSelectMethod>
-        <rd:ObjectDataSourceSelectMethodSignature>System.Collections.Generic.IEnumerable`1[CityTruck.WebSite.Models.VentaCreditoConsumo] ReporteVentaCredito(System.DateTime, System.String)</rd:ObjectDataSourceSelectMethodSignature>
-        <rd:ObjectDataSourceType>CityTruck.WebSite.Reportes.SourceReport, CityTruck.WebSite, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</rd:ObjectDataSourceType>
-      </rd:DataSetInfo>
-    </DataSet>
-  </DataSets>
+<Report xmlns="http://schemas.microsoft.com/sqlserver/reporting/2008/01/reportdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">
   <Body>
     <ReportItems>
       <Tablix Name="Tablix1">
         <TablixBody>
           <TablixColumns>
             <TablixColumn>
-              <Width>2.74814in</Width>
+              <Width>6.98028cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>1.13355in</Width>
+              <Width>2.87922cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>1.00855in</Width>
+              <Width>2.56172cm</Width>
             </TablixColumn>
           </TablixColumns>
           <TablixRows>
             <TablixRow>
-              <Height>0.23622in</Height>
+              <Height>0.6cm</Height>
               <TablixCells>
                 <TablixCell>
                   <CellContents>
@@ -126,7 +88,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>DIESEL (Bs)</Value>
+                              <Value>GNV (Bs)</Value>
                               <Style />
                             </TextRun>
                           </TextRuns>
@@ -150,7 +112,7 @@
               </TablixCells>
             </TablixRow>
             <TablixRow>
-              <Height>0.23622in</Height>
+              <Height>0.6cm</Height>
               <TablixCells>
                 <TablixCell>
                   <CellContents>
@@ -249,7 +211,7 @@
               </TablixCells>
             </TablixRow>
             <TablixRow>
-              <Height>0.23622in</Height>
+              <Height>0.6cm</Height>
               <TablixCells>
                 <TablixCell>
                   <CellContents>
@@ -359,7 +321,11 @@
         <TablixColumnHierarchy>
           <TablixMembers>
             <TablixMember />
-            <TablixMember />
+            <TablixMember>
+              <Visibility>
+                <Hidden>true</Hidden>
+              </Visibility>
+            </TablixMember>
             <TablixMember />
           </TablixMembers>
         </TablixColumnHierarchy>
@@ -389,16 +355,6 @@
     <Height>0.75in</Height>
     <Style />
   </Body>
-  <ReportParameters>
-    <ReportParameter Name="FECHA">
-      <DataType>DateTime</DataType>
-      <Prompt>ReportParameter1</Prompt>
-    </ReportParameter>
-    <ReportParameter Name="TURNO">
-      <DataType>String</DataType>
-      <Prompt>ReportParameter1</Prompt>
-    </ReportParameter>
-  </ReportParameters>
   <Width>4.89025in</Width>
   <Page>
     <PageHeight>29.7cm</PageHeight>
@@ -410,6 +366,55 @@
     <ColumnSpacing>0.13cm</ColumnSpacing>
     <Style />
   </Page>
-  <rd:ReportID>fbd8f4e3-41c2-4391-b70f-9f23c7f60ced</rd:ReportID>
+  <AutoRefresh>0</AutoRefresh>
+  <DataSources>
+    <DataSource Name="CityTruckWebSiteReportes">
+      <ConnectionProperties>
+        <DataProvider>System.Data.DataSet</DataProvider>
+        <ConnectString>/* Local Connection */</ConnectString>
+      </ConnectionProperties>
+      <rd:DataSourceID>7da8d0be-185a-49f2-81c2-34dbbde14103</rd:DataSourceID>
+    </DataSource>
+  </DataSources>
+  <DataSets>
+    <DataSet Name="DataSetVentaCredito">
+      <Query>
+        <DataSourceName>CityTruckWebSiteReportes</DataSourceName>
+        <CommandText>/* Local Query */</CommandText>
+      </Query>
+      <Fields>
+        <Field Name="CLIENTE">
+          <DataField>CLIENTE</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="GASOLINA">
+          <DataField>GASOLINA</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="DIESEL">
+          <DataField>DIESEL</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+      </Fields>
+      <rd:DataSetInfo>
+        <rd:DataSetName>CityTruck.WebSite.Reportes</rd:DataSetName>
+        <rd:TableName>SourceReport</rd:TableName>
+        <rd:ObjectDataSourceSelectMethod>ReporteVentaCredito</rd:ObjectDataSourceSelectMethod>
+        <rd:ObjectDataSourceSelectMethodSignature>System.Collections.Generic.IEnumerable`1[CityTruck.WebSite.Models.VentaCreditoConsumo] ReporteVentaCredito(System.DateTime, System.String)</rd:ObjectDataSourceSelectMethodSignature>
+        <rd:ObjectDataSourceType>CityTruck.WebSite.Reportes.SourceReport, CityTruck.WebSite, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</rd:ObjectDataSourceType>
+      </rd:DataSetInfo>
+    </DataSet>
+  </DataSets>
+  <ReportParameters>
+    <ReportParameter Name="FECHA">
+      <DataType>DateTime</DataType>
+      <Prompt>ReportParameter1</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="TURNO">
+      <DataType>String</DataType>
+      <Prompt>ReportParameter1</Prompt>
+    </ReportParameter>
+  </ReportParameters>
   <rd:ReportUnitType>Cm</rd:ReportUnitType>
+  <rd:ReportID>fbd8f4e3-41c2-4391-b70f-9f23c7f60ced</rd:ReportID>
 </Report>

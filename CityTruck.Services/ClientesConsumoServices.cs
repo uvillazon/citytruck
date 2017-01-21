@@ -60,7 +60,7 @@ namespace CityTruck.Services
             {
                 var context = (CityTruckContext)uow.Context;
                 ObjectParameter p_res = new ObjectParameter("p_res", typeof(String));
-                context.P_SG_GUARDAR_CLIENTE_CONSUMO(cli.ID_CLIENTE,cli.CODIGO,cli.NOMBRE,cli.RESPONSABLE,ID_USR,p_res);
+                context.P_SG_GUARDAR_CLIENTE_CONSUMO(cli.ID_CLIENTE, cli.CODIGO, cli.NOMBRE, cli.RESPONSABLE, ID_USR, p_res);
                 if (p_res.Value.ToString() == "1")
                 {
                     result.success = true;
@@ -108,7 +108,7 @@ namespace CityTruck.Services
             {
                 var context = (CityTruckContext)uow.Context;
                 ObjectParameter p_res = new ObjectParameter("p_res", typeof(String));
-                context.P_SG_ACT_CONSUMO( p_res);
+                context.P_SG_ACT_CONSUMO(p_res);
                 if (p_res.Value.ToString() == "1")
                 {
                     result.success = true;
@@ -131,7 +131,7 @@ namespace CityTruck.Services
             ExecuteManager(uow =>
             {
                 var manager = new SG_CLIENTE_CONSUMO_COMBUSTIBLEManager(uow);
-                result = manager.BuscarTodos();
+                result = manager.BuscarTodos(x => x.ID_COMBUSTIBLE == 2);
 
                 paginacion.total = result.Count();
                 result = manager.QueryPaged(result, paginacion.limit, paginacion.start, paginacion.sort, paginacion.dir);

@@ -75,12 +75,13 @@ namespace CityTruck.WebSite.Controllers
 
             }
             listas = listas.OrderBy(x => x.FECHA).ToList();
-            listas.Add(new VentasDiariasModel() { 
-                VENTA_DIA = listas.Sum(x=>x.VENTA_DIA),
-                VENTA_NOCHE = listas.Sum(x=>x.VENTA_NOCHE),
-                VENTA_TARDE = listas.Sum(x=>x.VENTA_TARDE),
-                VENTA_TOTAL = listas.Sum(x=>x.VENTA_TOTAL)
-                
+            listas.Add(new VentasDiariasModel()
+            {
+                VENTA_DIA = listas.Sum(x => x.VENTA_DIA),
+                VENTA_NOCHE = listas.Sum(x => x.VENTA_NOCHE),
+                VENTA_TARDE = listas.Sum(x => x.VENTA_TARDE),
+                VENTA_TOTAL = listas.Sum(x => x.VENTA_TOTAL)
+
             });
             JavaScriptSerializer javaScriptSerializer = new JavaScriptSerializer();
             string callback1 = paginacion.callback + "(" + javaScriptSerializer.Serialize(new { Rows = listas, Total = paginacion.total }) + ");";
@@ -99,7 +100,7 @@ namespace CityTruck.WebSite.Controllers
                 {
                     try
                     {
-                        var spPos = _serPos.SP_GenerarPosTurnos(posTurnos.FECHA, posTurnos.TURNO, Convert.ToInt32(User.Identity.Name.Split('-')[3]) , 0);
+                        var spPos = _serPos.SP_GenerarPosTurnos(posTurnos.FECHA, posTurnos.TURNO, Convert.ToInt32(User.Identity.Name.Split('-')[3]), 0);
                         if (!spPos.success)
                         {
                             JavaScriptSerializer javaScriptSerializer2 = new JavaScriptSerializer();
@@ -122,10 +123,11 @@ namespace CityTruck.WebSite.Controllers
                     }
 
                 }
-                else {
+                else
+                {
                     try
                     {
-                        var spPos = _serPos.SP_GenerarPosTurnos(posTurnos.FECHA, posTurnos.TURNO, Convert.ToInt32(User.Identity.Name.Split('-')[3]) , 1);
+                        var spPos = _serPos.SP_GenerarPosTurnos(posTurnos.FECHA, posTurnos.TURNO, Convert.ToInt32(User.Identity.Name.Split('-')[3]), 1);
                         if (!spPos.success)
                         {
                             JavaScriptSerializer javaScriptSerializer2 = new JavaScriptSerializer();
@@ -148,9 +150,9 @@ namespace CityTruck.WebSite.Controllers
                     }
                 }
             }
-            var formattData = result.Select(x => new
+            var formattData = result.Where(y => y.SG_POS.SG_COMBUSTIBLES.NOMBRE == "DIESEL").Select(x => new
             {
-                PRODUCTO = x.SG_POS.CODIGO + " - " + x.SG_POS.SG_COMBUSTIBLES.NOMBRE,
+                PRODUCTO = x.SG_POS.CODIGO,
                 CODIGO = x.SG_POS.SG_COMBUSTIBLES.NOMBRE,
                 ID_POS = x.ID_POS,
                 ID_POS_TURNO = x.ID_POS_TURNO,
@@ -179,7 +181,7 @@ namespace CityTruck.WebSite.Controllers
                 {
                     try
                     {
-                        var spPos = _serPos.SP_GenerarPosDias(posTurnos.FECHA,  Convert.ToInt32(User.Identity.Name.Split('-')[3]));
+                        var spPos = _serPos.SP_GenerarPosDias(posTurnos.FECHA, Convert.ToInt32(User.Identity.Name.Split('-')[3]));
                         if (!spPos.success)
                         {
                             JavaScriptSerializer javaScriptSerializer2 = new JavaScriptSerializer();
@@ -284,7 +286,7 @@ namespace CityTruck.WebSite.Controllers
             }
         }
         [HttpPost]
-        public JsonResult GuardarVentasMN(string ventas,  DateTime FECHA,  bool EDITAR)
+        public JsonResult GuardarVentasMN(string ventas, DateTime FECHA, bool EDITAR)
         {
             try
             {
@@ -357,12 +359,13 @@ namespace CityTruck.WebSite.Controllers
                 };
                 return Json(new { success = true, data = format });
             }
-            else {
+            else
+            {
                 var combustible = _serCom.ObtenerCombustible(x => x.ID_COMBUSTIBLE == facturas.ID_COMBUSTIBLE);
                 var format = new
                 {
                     ID_COMBUSTIBLE = combustible.ID_COMBUSTIBLE,
-                    ID_FACTURA =0,
+                    ID_FACTURA = 0,
                     IMPORTE = 0,
                     LITROS = 0,
                     PRECIO = combustible.PRECIO_VENTA
@@ -488,7 +491,7 @@ namespace CityTruck.WebSite.Controllers
                 {
                     var result = _serVen.SP_UltimoRegMN();
                     //return result;
-                    return Json(new { success = result.resp, FECHA = result.FECHA});
+                    return Json(new { success = result.resp, FECHA = result.FECHA });
                 }
             }
             catch (Exception)
@@ -532,7 +535,7 @@ namespace CityTruck.WebSite.Controllers
 
                 respuestaRSP = _serVen.SP_GrabarConsumo(p, id_usr);
 
-                
+
 
                 return Json(respuestaRSP);
             }

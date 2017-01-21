@@ -4,7 +4,7 @@
     loadMask: true,
     opcion: "",
     pieTitulo: '',
-    title : '',
+    title: '',
     btnEliminarRecord: false,
     initComponent: function () {
         var me = this;
@@ -27,13 +27,13 @@
         else {
             alert("Defina el tipo primero");
         }
-        
+
         this.callParent(arguments);
     },
-    CargarGridVentasEditar : function(){
+    CargarGridVentasEditar: function () {
         var me = this;
         me.store = Ext.create("App.Store.Ventas.DetallesVenta");
-        
+
         me.plugins = [
             Ext.create('Ext.grid.plugin.CellEditing', {
                 clicksToEdit: 1
@@ -41,37 +41,39 @@
         ];
         me.columns = [
            { header: "Producto", width: 150, sortable: true, dataIndex: "PRODUCTO" },
-           { header: "Entrada Lts.", width: 80, sortable: false, dataIndex: "ENT_LITTER" ,align: "right" },
-           { header: "Salida Lts.", width: 80, sortable: false, dataIndex: "SAL_LITTER" , align: "right" ,editor: {
-                    xtype: 'numberfield',
-                    hideTrigger: true,
-                    keyNavEnabled: false,
-                    mouseWheelEnabled: false
-                    
-                } 
+           { header: "Entrada Lts.", width: 80, sortable: false, dataIndex: "ENT_LITTER", align: "right" },
+           {
+               header: "Salida Lts.", width: 80, sortable: false, dataIndex: "SAL_LITTER", align: "right", editor: {
+                   xtype: 'numberfield',
+                   hideTrigger: true,
+                   keyNavEnabled: false,
+                   mouseWheelEnabled: false,
+                   decimalSeparator: '.',
+
+               }
            },
-           { header: "Total", width: 80, sortable: false, dataIndex: "TOTAL" ,align: "right"}
+           { header: "Total", width: 80, sortable: false, dataIndex: "TOTAL", align: "right", renderer: Ext.util.Format.numberRenderer('0,000.00') }
         ];
 
     },
-    CargarGridVentasCredito : function(){
+    CargarGridVentasCredito: function () {
         var me = this;
         me.store = Ext.create("App.Store.Ventas.VentasCredito");
         me.columns = [
            { header: "CLIENTE", width: 180, sortable: false, dataIndex: "CLIENTE" },
-           { header: "DIESEL", width: 100, sortable: false, dataIndex: "DIESEL" ,renderer: Ext.util.Format.numberRenderer('0,000.00') ,align: "right" },
-           { header: "GASOLINA", width: 100, sortable: false, dataIndex: "GASOLINA" , renderer: Ext.util.Format.numberRenderer('0,000.00') ,align: "right"}
+           { header: "GNV", width: 100, sortable: false, dataIndex: "DIESEL", renderer: Ext.util.Format.numberRenderer('0,000.00'), align: "right" },
+           { header: "GASOLINA", hidden: true, width: 100, sortable: false, dataIndex: "GASOLINA", renderer: Ext.util.Format.numberRenderer('0,000.00'), align: "right" }
         ];
 
     },
-    CargarGridVentasConsumo : function(){
+    CargarGridVentasConsumo: function () {
         var me = this;
         me.store = Ext.create("App.Store.ConsumoPropio.ConsumoPropio");
         //        me.store = Ext.create("App.Store.SolicitudesMantenimiento.CodigosSolucion");
         me.columns = [
             { header: "USUARIO", width: 180, sortable: false, dataIndex: "CLIENTE" },
-            { header: "DIESEL", width: 120, sortable: false, dataIndex: "DIESEL" ,renderer: Ext.util.Format.numberRenderer('0,000.00') ,align: "right" },
-            { header: "GASOLINA", width: 120, sortable: false, dataIndex: "GASOLINA" ,renderer: Ext.util.Format.numberRenderer('0,000.00') ,align: "right" }
+            { header: "GNV", width: 120, sortable: false, dataIndex: "DIESEL", renderer: Ext.util.Format.numberRenderer('0,000.00'), align: "right" },
+            { header: "GASOLINA", width: 120,hidden: true, sortable: false, dataIndex: "GASOLINA", renderer: Ext.util.Format.numberRenderer('0,000.00'), align: "right" }
         ];
     },
 });

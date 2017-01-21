@@ -62,7 +62,7 @@ namespace CityTruck.WebSite.Controllers
                 CONSUMO = x.CONSUMO,
                 AMORTIZACION = x.AMORTIZACION,
                 SALDO = x.SALDO,
-                DETALLE = x.DETALLE,
+                DETALLE = x.DETALLE.Replace("DIESEL","GNV"),
                 TOTAL_AMOR  = cons.amortizacion,
                 TOTAL_CONS = cons.consumo
             });

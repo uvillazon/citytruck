@@ -193,7 +193,7 @@ namespace CityTruck.WebSite.Reportes
                 fecha = item.FECHA;
             }
             result.Add(new EstadoResultadoCompletoModel() { MES = ObtenerMesEspanol(Convert.ToInt32(MES)),FECHA = fecha, NRO = 1 ,OPERACION = "INGRESOS", SUBOPERACION = "INGRESOS OPERATIVOS", DETALLE = "VENTAS", IMPORTE = totalventa });
-            result.Add(new EstadoResultadoCompletoModel() { NRO = 2, OPERACION = "INGRESOS", SUBOPERACION = "INGRESOS OPERATIVOS", DETALLE = "COSTOS DE VENTAS", IMPORTE = -totalcosto });
+            //result.Add(new EstadoResultadoCompletoModel() { NRO = 2, OPERACION = "INGRESOS", SUBOPERACION = "INGRESOS OPERATIVOS", DETALLE = "COSTOS DE VENTAS", IMPORTE = -totalcosto });
 
 
             var serIngreso = new IngresosServices();
@@ -724,7 +724,7 @@ namespace CityTruck.WebSite.Reportes
             DateTime FECHA = DateTime.ParseExact(FECHA1, "dd/MM/yyyy", null);
             var servicio = new PosTurnosServices();
             //var servicioUsuario = new UsuariosServices();
-            var query = servicio.ObtenerPosTurnosPorCriterio(x => x.FECHA == FECHA && x.TURNO == TURNO);
+            var query = servicio.ObtenerPosTurnosPorCriterio(x => x.FECHA == FECHA && x.TURNO == TURNO && x.SG_POS.ID_COMBUSTIBLE ==2);
             var result = query.Select(x => new DetalleMangueraModel
             {
                 COMBUSTIBLE = x.SG_POS.SG_COMBUSTIBLES.DESCRIPCION,
@@ -773,12 +773,14 @@ namespace CityTruck.WebSite.Reportes
             var creditos = ReporteVentaCredito(FECHA, TURNO);
             var consumo = ReporteVentaConsumo(FECHA, TURNO);
             var grupoventas = ventas.GroupBy(x => x.COMBUSTIBLE).Select(y => new { COMBUSTIBLE = y.Key, TOTAL = y.Sum(z => z.SAL_LITTER) - y.Sum(z => z.ENT_LITTER) });
-            model.TOTAL_LITROS_GAS = grupoventas.Where(x => x.COMBUSTIBLE == "GASOLINA ESPECIAL").FirstOrDefault().TOTAL;
-            model.TOTAL_LITROS_DIE = grupoventas.Where(x => x.COMBUSTIBLE == "DIESEL  OIL").FirstOrDefault().TOTAL;
-            model.PRECIO_COMPRA_GAS = (decimal)serComb.ObtenerCombustible(x => x.ID_COMBUSTIBLE == 1).PRECIO_COMPRA;
+            model.TOTAL_LITROS_GAS = grupoventas.Where(x => x.COMBUSTIBLE == "GASOLINA ESPECIAL").FirstOrDefault() == null? 0 :  grupoventas.Where(x => x.COMBUSTIBLE == "GASOLINA ESPECIAL").FirstOrDefault().TOTAL;
+            model.TOTAL_LITROS_DIE = grupoventas.Where(x => x.COMBUSTIBLE == "GNV").FirstOrDefault().TOTAL;
+            //model.PRECIO_COMPRA_GAS = (decimal)serComb.ObtenerCombustible(x => x.ID_COMBUSTIBLE == 1).PRECIO_COMPRA;
+            model.PRECIO_COMPRA_GAS = 0;
             model.PRECIO_COMPRA_DIE = (decimal)serComb.ObtenerCombustible(x => x.ID_COMBUSTIBLE == 2).PRECIO_COMPRA;
             model.PRECIO_VENTA_DIE = (decimal)serComb.ObtenerCombustible(x => x.ID_COMBUSTIBLE == 2).PRECIO_VENTA;
-            model.PRECIO_VENTA_GAS = (decimal)serComb.ObtenerCombustible(x => x.ID_COMBUSTIBLE == 1).PRECIO_VENTA;
+            //model.PRECIO_VENTA_GAS = (decimal)serComb.ObtenerCombustible(x => x.ID_COMBUSTIBLE == 1).PRECIO_VENTA;
+            model.PRECIO_VENTA_GAS = 0;
             model.TOTAL_VENTA_DIE = model.TOTAL_LITROS_DIE * model.PRECIO_VENTA_DIE;
             model.TOTAL_VENTA_GAS = model.TOTAL_LITROS_GAS * model.PRECIO_VENTA_GAS;
             model.CREDITO_DIE = creditos.Sum(x => x.DIESEL);

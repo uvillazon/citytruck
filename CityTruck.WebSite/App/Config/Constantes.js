@@ -12,7 +12,7 @@ Ext.define("App.Config.Constantes", {
     singleton: true,
     /* Aqui Defino todas mis contanstantes */
     HOST: '../',
-    PATH: 'CityTruckPrueba',
+    PATH: 'GNV',
     //HOST                : 'http://elfpre02/SisMan/',
     REQUERIDO: '<span style="color:red;font-weight:bold" data-qtip="Requerido">*</span>',
     PIEPAGINA: '<font color="black"><h2  style="font-size:12px;height:14px">Copyright &copy;   2016  -  Version 1.2</h2></font>',
@@ -28,9 +28,9 @@ Ext.define("App.Config.Constantes", {
     URLLISTAS: 'Listas/ObtenerTodasLasListas',
     URLIMAGEN: "Imagenes/VerImagen?",
     CONFIG_PRECIO_VENTA_GAS: 3.74,
-    CONFIG_PRECIO_VENTA_DIS: 3.72,
+    CONFIG_PRECIO_VENTA_DIS: 1.66,
     CONFIG_PRECIO_COSTO_GAS: 3.52,
-    CONFIG_PRECIO_COSTO_DIS: 3.54,
+    CONFIG_PRECIO_COSTO_DIS: 1.62,
     CONFIG_CUENTA_VENTA: 1,
     UnidadesRequeridas: function (unidad, requerido) {
         if (requerido) {

@@ -48,7 +48,7 @@ namespace CityTruck.WebSite.Controllers
                 ID_CLIENTE = x.ID_CLIENTE,
                 CODIGO = _serCli.ObtenerCliente(y => y.ID_CLIENTE == x.ID_CLIENTE).CODIGO,
                 NOMBRE = _serCli.ObtenerCliente(y => y.ID_CLIENTE == x.ID_CLIENTE).NOMBRE,
-                DESCRIPCION = x.CLIENTE + " - " + x.COMBUSTIBLE,
+                DESCRIPCION = x.CLIENTE,
                 RESPONSABLE = _serCli.ObtenerCliente(y => y.ID_CLIENTE == x.ID_CLIENTE).RESPONSABLE,
                 CONSUMO_BS = x.CONSUMO_BS,
                 CONSUMO = x.CONSUMO,

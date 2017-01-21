@@ -511,7 +511,7 @@
     text-align: center;
     text-shadow: 1px 0px 0px #7cacde;
     background: -webkit-gradient( linear, left top, left bottom, color-stop(0.05, #9BC7F4), color-stop(1, #C1D2E6) );
-    background: -moz-linear-gradient( center top, #C1D2E6 5%, #9BC7F4 100% );
+    background: -moz-linear-gradient( center top, #C1D2E6 5%,#D0D0D0  100% );
 }
 .x-btn-icon .x-btn-button48 .x-btn-text
 {
