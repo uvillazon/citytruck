@@ -470,6 +470,11 @@
     <Content Include="App\View\ConsumoPropio\Forms.js" />
     <Content Include="App\View\ConsumoPropio\GridConsumoPropio.js" />
     <Content Include="App\View\ConsumoPropio\Principal.js" />
+    <Content Include="App\View\CuentasPP\FormCuentaPC.js" />
+    <Content Include="App\View\CuentasPP\Forms.js" />
+    <Content Include="App\View\CuentasPP\GridCuentasPC.js" />
+    <Content Include="App\View\CuentasPP\GridKardexCliente.js" />
+    <Content Include="App\View\CuentasPP\Principal.js" />
     <Content Include="App\View\CuentasPC\Forms.js" />
     <Content Include="App\View\Usuarios\FormUsuario.js" />
     <Content Include="App\View\Usuarios\Forms.js" />
