@@ -43,6 +43,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="SG_KARDEX_CLIENTE_POR_PAGARManager.cs" />
+    <Compile Include="SG_CLIENTES_CPPManager.cs" />
+    <Compile Include="SG_CONTRATOSManager.cs" />
+    <Compile Include="SG_ANTICIPOSManager.cs" />
     <Compile Include="SG_AJUSTES_TANQUE_MNManager.cs" />
     <Compile Include="SG_FACTURAS_MNManager.cs" />
     <Compile Include="SG_TRANSFERENCIASManager.cs" />

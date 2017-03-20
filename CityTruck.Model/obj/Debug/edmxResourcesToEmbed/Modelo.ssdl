@@ -6,18 +6,22 @@
     <EntitySet Name="SG_AJUSTES_TANQUE" EntityType="Model.Store.SG_AJUSTES_TANQUE" store:Type="Tables" Schema="GNV" />
     <EntitySet Name="SG_AJUSTES_TANQUE_MN" EntityType="Model.Store.SG_AJUSTES_TANQUE_MN" store:Type="Tables" Schema="GNV" />
     <EntitySet Name="SG_AMORTIZACIONES" EntityType="Model.Store.SG_AMORTIZACIONES" store:Type="Tables" Schema="GNV" />
+    <EntitySet Name="SG_ANTICIPOS" EntityType="Model.Store.SG_ANTICIPOS" store:Type="Tables" Schema="GNV" />
     <EntitySet Name="SG_CAJAS" EntityType="Model.Store.SG_CAJAS" store:Type="Tables" Schema="GNV" />
     <EntitySet Name="SG_CLIENTE_CONSUMO_COMBUSTIBLE" EntityType="Model.Store.SG_CLIENTE_CONSUMO_COMBUSTIBLE" store:Type="Tables" Schema="GNV" />
     <EntitySet Name="SG_CLIENTES" EntityType="Model.Store.SG_CLIENTES" store:Type="Tables" Schema="GNV" />
     <EntitySet Name="SG_CLIENTES_CONSUMO" EntityType="Model.Store.SG_CLIENTES_CONSUMO" store:Type="Tables" Schema="GNV" />
+    <EntitySet Name="SG_CLIENTES_CPP" EntityType="Model.Store.SG_CLIENTES_CPP" store:Type="Tables" Schema="GNV" />
     <EntitySet Name="SG_COMBUSTIBLES" EntityType="Model.Store.SG_COMBUSTIBLES" store:Type="Tables" Schema="GNV" />
     <EntitySet Name="SG_COMPRAS" EntityType="Model.Store.SG_COMPRAS" store:Type="Tables" Schema="GNV" />
     <EntitySet Name="SG_CONSUMOS" EntityType="Model.Store.SG_CONSUMOS" store:Type="Tables" Schema="GNV" />
+    <EntitySet Name="SG_CONTRATOS" EntityType="Model.Store.SG_CONTRATOS" store:Type="Tables" Schema="GNV" />
     <EntitySet Name="SG_DETALLES_COMPRAS" EntityType="Model.Store.SG_DETALLES_COMPRAS" store:Type="Tables" Schema="GNV" />
     <EntitySet Name="SG_EGRESOS" EntityType="Model.Store.SG_EGRESOS" store:Type="Tables" Schema="GNV" />
     <EntitySet Name="SG_FACTURAS_MN" EntityType="Model.Store.SG_FACTURAS_MN" store:Type="Tables" Schema="GNV" />
     <EntitySet Name="SG_INGRESOS" EntityType="Model.Store.SG_INGRESOS" store:Type="Tables" Schema="GNV" />
     <EntitySet Name="SG_KARDEX_CLIENTE" EntityType="Model.Store.SG_KARDEX_CLIENTE" store:Type="Tables" Schema="GNV" />
+    <EntitySet Name="SG_KARDEX_CLIENTE_POR_PAGAR" EntityType="Model.Store.SG_KARDEX_CLIENTE_POR_PAGAR" store:Type="Tables" Schema="GNV" />
     <EntitySet Name="SG_KARDEX_COMBUSTIBLE" EntityType="Model.Store.SG_KARDEX_COMBUSTIBLE" store:Type="Tables" Schema="GNV" />
     <EntitySet Name="SG_KARDEX_COMBUSTIBLE_MN" EntityType="Model.Store.SG_KARDEX_COMBUSTIBLE_MN" store:Type="Tables" Schema="GNV" />
     <EntitySet Name="SG_KARDEX_EFECTIVO" EntityType="Model.Store.SG_KARDEX_EFECTIVO" store:Type="Tables" Schema="GNV" />
@@ -58,6 +62,18 @@
       <End Role="SG_CAJAS" EntitySet="SG_CAJAS" />
       <End Role="SG_AMORTIZACIONES" EntitySet="SG_AMORTIZACIONES" />
     </AssociationSet>
+    <AssociationSet Name="SG_ANTICIPOS_R01" Association="Model.Store.SG_ANTICIPOS_R01">
+      <End Role="SG_CONTRATOS" EntitySet="SG_CONTRATOS" />
+      <End Role="SG_ANTICIPOS" EntitySet="SG_ANTICIPOS" />
+    </AssociationSet>
+    <AssociationSet Name="SG_ANTICIPOS_R02" Association="Model.Store.SG_ANTICIPOS_R02">
+      <End Role="SG_EGRESOS" EntitySet="SG_EGRESOS" />
+      <End Role="SG_ANTICIPOS" EntitySet="SG_ANTICIPOS" />
+    </AssociationSet>
+    <AssociationSet Name="SG_ANTICIPOS_R03" Association="Model.Store.SG_ANTICIPOS_R03">
+      <End Role="SG_CAJAS" EntitySet="SG_CAJAS" />
+      <End Role="SG_ANTICIPOS" EntitySet="SG_ANTICIPOS" />
+    </AssociationSet>
     <AssociationSet Name="SG_COMPRAS_R01" Association="Model.Store.SG_COMPRAS_R01">
       <End Role="SG_COMBUSTIBLES" EntitySet="SG_COMBUSTIBLES" />
       <End Role="SG_COMPRAS" EntitySet="SG_COMPRAS" />
@@ -77,6 +93,10 @@
     <AssociationSet Name="SG_CONSUMOS_R03" Association="Model.Store.SG_CONSUMOS_R03">
       <End Role="SG_POS" EntitySet="SG_POS" />
       <End Role="SG_CONSUMOS" EntitySet="SG_CONSUMOS" />
+    </AssociationSet>
+    <AssociationSet Name="SG_CONTRATOS_R01" Association="Model.Store.SG_CONTRATOS_R01">
+      <End Role="SG_CLIENTES_CPP" EntitySet="SG_CLIENTES_CPP" />
+      <End Role="SG_CONTRATOS" EntitySet="SG_CONTRATOS" />
     </AssociationSet>
     <AssociationSet Name="SG_DETALLES_COMPRAS_R01" Association="Model.Store.SG_DETALLES_COMPRAS_R01">
       <End Role="SG_COMPRAS" EntitySet="SG_COMPRAS" />
@@ -229,6 +249,22 @@
     <Property Name="FECHA_REG" Type="date" />
     <Property Name="OBSERVACION" Type="varchar2" MaxLength="300" />
   </EntityType>
+  <EntityType Name="SG_ANTICIPOS">
+    <Key>
+      <PropertyRef Name="ID_ANTICIPO" />
+    </Key>
+    <Property Name="ID_ANTICIPO" Type="number" Nullable="false" Precision="7" />
+    <Property Name="ID_CONTRATO" Type="number" Nullable="false" Precision="7" />
+    <Property Name="ID_EGRESO" Type="number" Nullable="false" Precision="7" />
+    <Property Name="ID_CAJA" Type="number" Nullable="false" Precision="7" />
+    <Property Name="NRO_COMP" Type="number" Nullable="false" Precision="7" />
+    <Property Name="FECHA" Type="date" Nullable="false" />
+    <Property Name="GLOSA" Type="varchar2" Nullable="false" MaxLength="250" />
+    <Property Name="IMPORTE_BS" Type="number" Nullable="false" Precision="15" Scale="5" />
+    <Property Name="ID_USUARIO" Type="number" Nullable="false" Precision="5" />
+    <Property Name="FECHA_REG" Type="date" />
+    <Property Name="OBSERVACION" Type="varchar2" MaxLength="300" />
+  </EntityType>
   <EntityType Name="SG_CAJAS">
     <Key>
       <PropertyRef Name="ID_CAJA" />
@@ -286,6 +322,23 @@
     <Property Name="FECHA_REG" Type="date" />
     <Property Name="CONSUMO_BS" Type="number" Precision="15" Scale="5" />
   </EntityType>
+  <EntityType Name="SG_CLIENTES_CPP">
+    <Key>
+      <PropertyRef Name="ID_CLIENTE" />
+    </Key>
+    <Property Name="ID_CLIENTE" Type="number" Nullable="false" Precision="7" />
+    <Property Name="CODIGO" Type="number" Nullable="false" Precision="7" />
+    <Property Name="RAZON_SOCIAL" Type="varchar2" Nullable="false" MaxLength="255" />
+    <Property Name="NIT" Type="varchar2" Nullable="false" MaxLength="40" />
+    <Property Name="CONTACTO" Type="varchar2" MaxLength="150" />
+    <Property Name="TELEFONO" Type="varchar2" MaxLength="150" />
+    <Property Name="EMAIL" Type="varchar2" MaxLength="150" />
+    <Property Name="DIRECCION" Type="varchar2" MaxLength="150" />
+    <Property Name="OBSERVACIONES" Type="varchar2" MaxLength="1000" />
+    <Property Name="SALDO" Type="number" Precision="15" Scale="5" />
+    <Property Name="ID_USUARIO" Type="number" Nullable="false" Precision="5" />
+    <Property Name="FECHA_REG" Type="date" />
+  </EntityType>
   <EntityType Name="SG_COMBUSTIBLES">
     <Key>
       <PropertyRef Name="ID_COMBUSTIBLE" />
@@ -338,6 +391,23 @@
     <Property Name="FECHA_REG" Type="date" />
     <Property Name="ID_POS" Type="number" Precision="7" />
     <Property Name="TIPO" Type="varchar2" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="SG_CONTRATOS">
+    <Key>
+      <PropertyRef Name="ID_CONTRATO" />
+    </Key>
+    <Property Name="ID_CONTRATO" Type="number" Nullable="false" Precision="7" />
+    <Property Name="NRO_COMP" Type="number" Nullable="false" Precision="7" />
+    <Property Name="ID_CLIENTE" Type="number" Nullable="false" Precision="7" />
+    <Property Name="FECHA" Type="date" Nullable="false" />
+    <Property Name="FECHA_VENCIMIENTO" Type="date" Nullable="false" />
+    <Property Name="COMPROBANTE_RES" Type="varchar2" MaxLength="255" />
+    <Property Name="GLOSA" Type="varchar2" MaxLength="140" />
+    <Property Name="IMPORTE" Type="number" Nullable="false" Precision="15" Scale="5" />
+    <Property Name="OBSERVACIONES" Type="varchar2" MaxLength="1000" />
+    <Property Name="SALDO" Type="number" Precision="15" Scale="5" />
+    <Property Name="ID_USUARIO" Type="number" Nullable="false" Precision="5" />
+    <Property Name="FECHA_REG" Type="date" />
   </EntityType>
   <EntityType Name="SG_DETALLES_COMPRAS">
     <Key>
@@ -404,6 +474,22 @@
     <Property Name="FECHA" Type="date" Nullable="false" />
     <Property Name="DETALLE" Type="varchar2" Nullable="false" MaxLength="250" />
     <Property Name="CONSUMO" Type="number" Nullable="false" Precision="15" Scale="5" />
+    <Property Name="AMORTIZACION" Type="number" Nullable="false" Precision="15" Scale="5" />
+    <Property Name="SALDO" Type="number" Nullable="false" Precision="15" Scale="5" />
+    <Property Name="ID_USUARIO" Type="number" Nullable="false" Precision="5" />
+    <Property Name="FECHA_REG" Type="date" />
+  </EntityType>
+  <EntityType Name="SG_KARDEX_CLIENTE_POR_PAGAR">
+    <Key>
+      <PropertyRef Name="ID_KARDEX" />
+    </Key>
+    <Property Name="ID_KARDEX" Type="number" Nullable="false" Precision="7" />
+    <Property Name="ID_CLIENTE" Type="number" Nullable="false" Precision="7" />
+    <Property Name="ID_OPERACION" Type="number" Nullable="false" Precision="7" />
+    <Property Name="OPERACION" Type="varchar2" Nullable="false" MaxLength="250" />
+    <Property Name="FECHA" Type="date" Nullable="false" />
+    <Property Name="DETALLE" Type="varchar2" Nullable="false" MaxLength="250" />
+    <Property Name="CONTRATO" Type="number" Nullable="false" Precision="15" Scale="5" />
     <Property Name="AMORTIZACION" Type="number" Nullable="false" Precision="15" Scale="5" />
     <Property Name="SALDO" Type="number" Nullable="false" Precision="15" Scale="5" />
     <Property Name="ID_USUARIO" Type="number" Nullable="false" Precision="5" />
@@ -692,6 +778,42 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="SG_ANTICIPOS_R01">
+    <End Role="SG_CONTRATOS" Type="Model.Store.SG_CONTRATOS" Multiplicity="1" />
+    <End Role="SG_ANTICIPOS" Type="Model.Store.SG_ANTICIPOS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SG_CONTRATOS">
+        <PropertyRef Name="ID_CONTRATO" />
+      </Principal>
+      <Dependent Role="SG_ANTICIPOS">
+        <PropertyRef Name="ID_CONTRATO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="SG_ANTICIPOS_R02">
+    <End Role="SG_EGRESOS" Type="Model.Store.SG_EGRESOS" Multiplicity="1" />
+    <End Role="SG_ANTICIPOS" Type="Model.Store.SG_ANTICIPOS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SG_EGRESOS">
+        <PropertyRef Name="ID_EGRESO" />
+      </Principal>
+      <Dependent Role="SG_ANTICIPOS">
+        <PropertyRef Name="ID_EGRESO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="SG_ANTICIPOS_R03">
+    <End Role="SG_CAJAS" Type="Model.Store.SG_CAJAS" Multiplicity="1" />
+    <End Role="SG_ANTICIPOS" Type="Model.Store.SG_ANTICIPOS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SG_CAJAS">
+        <PropertyRef Name="ID_CAJA" />
+      </Principal>
+      <Dependent Role="SG_ANTICIPOS">
+        <PropertyRef Name="ID_CAJA" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="SG_COMPRAS_R01">
     <End Role="SG_COMBUSTIBLES" Type="Model.Store.SG_COMBUSTIBLES" Multiplicity="1" />
     <End Role="SG_COMPRAS" Type="Model.Store.SG_COMPRAS" Multiplicity="*" />
@@ -749,6 +871,18 @@
       </Principal>
       <Dependent Role="SG_CONSUMOS">
         <PropertyRef Name="ID_POS" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="SG_CONTRATOS_R01">
+    <End Role="SG_CLIENTES_CPP" Type="Model.Store.SG_CLIENTES_CPP" Multiplicity="1" />
+    <End Role="SG_CONTRATOS" Type="Model.Store.SG_CONTRATOS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SG_CLIENTES_CPP">
+        <PropertyRef Name="ID_CLIENTE" />
+      </Principal>
+      <Dependent Role="SG_CONTRATOS">
+        <PropertyRef Name="ID_CLIENTE" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -1153,6 +1287,17 @@
     <Parameter Name="P_ID_USR" Type="number" Mode="In" />
     <Parameter Name="P_RES" Type="varchar2" Mode="Out" />
   </Function>
+  <Function Name="P_SG_GUARDAR_ANTICIPOS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="GNV">
+    <Parameter Name="P_ID_ANTICIPO" Type="number" Mode="In" />
+    <Parameter Name="P_ID_CONTRATO" Type="number" Mode="In" />
+    <Parameter Name="P_ID_CAJA" Type="number" Mode="In" />
+    <Parameter Name="P_FECHA" Type="date" Mode="In" />
+    <Parameter Name="P_GLOSA" Type="varchar2" Mode="In" />
+    <Parameter Name="P_IMPORTE_BS" Type="number" Mode="In" />
+    <Parameter Name="P_OBSERVACION" Type="varchar2" Mode="In" />
+    <Parameter Name="P_ID_USR" Type="number" Mode="In" />
+    <Parameter Name="P_RES" Type="varchar2" Mode="Out" />
+  </Function>
   <Function Name="P_SG_GUARDAR_CAJAS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="GNV">
     <Parameter Name="P_ID_CAJA" Type="number" Mode="In" />
     <Parameter Name="P_CODIGO" Type="varchar2" Mode="In" />
@@ -1173,6 +1318,18 @@
     <Parameter Name="P_TELEFONO" Type="varchar2" Mode="In" />
     <Parameter Name="P_DIR" Type="varchar2" Mode="In" />
     <Parameter Name="P_LIMITE" Type="number" Mode="In" />
+    <Parameter Name="P_ID_USR" Type="number" Mode="In" />
+    <Parameter Name="P_RES" Type="varchar2" Mode="Out" />
+  </Function>
+  <Function Name="P_SG_GUARDAR_CLIENTES_CPP" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="GNV">
+    <Parameter Name="P_ID_CLIENTE" Type="number" Mode="In" />
+    <Parameter Name="P_RAZON_SOCIAL" Type="varchar2" Mode="In" />
+    <Parameter Name="P_NIT" Type="varchar2" Mode="In" />
+    <Parameter Name="P_CONTACTO" Type="varchar2" Mode="In" />
+    <Parameter Name="P_TELEFONO" Type="varchar2" Mode="In" />
+    <Parameter Name="P_DIRECCION" Type="varchar2" Mode="In" />
+    <Parameter Name="P_EMAIL" Type="varchar2" Mode="In" />
+    <Parameter Name="P_OBSERVACIONES" Type="varchar2" Mode="In" />
     <Parameter Name="P_ID_USR" Type="number" Mode="In" />
     <Parameter Name="P_RES" Type="varchar2" Mode="Out" />
   </Function>
@@ -1210,6 +1367,18 @@
     <Parameter Name="P_PRECIO" Type="number" Mode="In" />
     <Parameter Name="P_IMPORTE_BS" Type="number" Mode="In" />
     <Parameter Name="P_IMPORTE_LTS" Type="number" Mode="In" />
+    <Parameter Name="P_ID_USR" Type="number" Mode="In" />
+    <Parameter Name="P_RES" Type="varchar2" Mode="Out" />
+  </Function>
+  <Function Name="P_SG_GUARDAR_CONTRATO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="GNV">
+    <Parameter Name="P_ID_CONTRATO" Type="number" Mode="In" />
+    <Parameter Name="P_ID_CLIENTE" Type="number" Mode="In" />
+    <Parameter Name="P_FECHA" Type="date" Mode="In" />
+    <Parameter Name="P_FECHA_VENCIMIENTO" Type="date" Mode="In" />
+    <Parameter Name="P_COMPROBANTE_RES" Type="varchar2" Mode="In" />
+    <Parameter Name="P_GLOSA" Type="varchar2" Mode="In" />
+    <Parameter Name="P_IMPORTE" Type="number" Mode="In" />
+    <Parameter Name="P_OBSERVACIONES" Type="varchar2" Mode="In" />
     <Parameter Name="P_ID_USR" Type="number" Mode="In" />
     <Parameter Name="P_RES" Type="varchar2" Mode="Out" />
   </Function>

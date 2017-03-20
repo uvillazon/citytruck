@@ -92,6 +92,7 @@
     <Compile Include="Controllers\ComprasController.cs" />
     <Compile Include="Controllers\CombustiblesController.cs" />
     <Compile Include="Controllers\ClientesController.cs" />
+    <Compile Include="Controllers\ClientesPorPagarController.cs" />
     <Compile Include="Controllers\ReportesPDFController.cs" />
     <Compile Include="Controllers\TransferenciasController.cs" />
     <Compile Include="Controllers\UsuariosController.cs" />
@@ -314,6 +315,7 @@
     <Content Include="App\extensible\locale\extensible-lang-zh_TW.js" />
     <Content Include="App\Model\Cajas\Kardex.js" />
     <Content Include="App\Model\Cajas\Cajas.js" />
+    <Content Include="App\Model\Clientes\ClientesPorPagar.js" />
     <Content Include="App\Model\Combustibles\Ajustes.js" />
     <Content Include="App\Model\Compras\DetallesCompra.js" />
     <Content Include="App\Model\Compras\Compras.js" />
@@ -324,6 +326,10 @@
     <Content Include="App\Model\ConsumoPropio\Clientes.js" />
     <Content Include="App\Model\ConsumoPropio\ConsumoPropio.js" />
     <Content Include="App\Model\ConsumoPropio\Consumos.js" />
+    <Content Include="App\Model\CuentasPP\Clientes.js" />
+    <Content Include="App\Model\CuentasPP\ConsumoPropio.js" />
+    <Content Include="App\Model\CuentasPP\Consumos.js" />
+    <Content Include="App\Model\CuentasPP\Kardex.js" />
     <Content Include="App\Model\Transferencias\Transferencias.js" />
     <Content Include="App\Model\Usuarios\Usuarios.js" />
     <Content Include="App\Model\Usuarios\Perfiles.js" />
@@ -385,6 +391,8 @@
     <Content Include="App\Store\ConsumoPropio\ClientesConsumo.js" />
     <Content Include="App\Store\ConsumoPropio\ConsumoPropio.js" />
     <Content Include="App\Store\ConsumoPropio\Consumos.js" />
+    <Content Include="App\Store\CuentasPP\Clientes.js" />
+    <Content Include="App\Store\CuentasPP\Kardex.js" />
     <Content Include="App\Store\Transferencias\Transferencias.js" />
     <Content Include="App\Store\Usuarios\Usuarios.js" />
     <Content Include="App\Store\Usuarios\Perfiles.js" />
@@ -470,9 +478,11 @@
     <Content Include="App\View\ConsumoPropio\Forms.js" />
     <Content Include="App\View\ConsumoPropio\GridConsumoPropio.js" />
     <Content Include="App\View\ConsumoPropio\Principal.js" />
-    <Content Include="App\View\CuentasPP\FormCuentaPC.js" />
+    <Content Include="App\View\CuentasPP\FormContrato.js" />
+    <Content Include="App\View\CuentasPP\FormCliente.js" />
+    <Content Include="App\View\CuentasPP\FormAnticipo.js" />
     <Content Include="App\View\CuentasPP\Forms.js" />
-    <Content Include="App\View\CuentasPP\GridCuentasPC.js" />
+    <Content Include="App\View\CuentasPP\GridCuentasPP.js" />
     <Content Include="App\View\CuentasPP\GridKardexCliente.js" />
     <Content Include="App\View\CuentasPP\Principal.js" />
     <Content Include="App\View\CuentasPC\Forms.js" />
@@ -1732,6 +1742,7 @@
     <Content Include="Content\themes\base\jquery.ui.slider.css" />
     <Content Include="Content\themes\base\jquery.ui.tabs.css" />
     <Content Include="Content\themes\base\jquery.ui.theme.css" />
+    <Content Include="DDL\DDLSinDatos03022017.txt" />
     <Content Include="DDL\DDLSinDatosOriginalServer.txt" />
     <Content Include="DDL\DLLConDatos.txt" />
     <Content Include="Global.asax" />

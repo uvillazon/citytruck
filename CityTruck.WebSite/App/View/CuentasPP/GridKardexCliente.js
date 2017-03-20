@@ -1,6 +1,6 @@
-﻿Ext.define("App.View.CuentasPC.GridKardexCliente", {
+﻿Ext.define("App.View.CuentasPP.GridKardexCliente", {
     extend: "Ext.grid.Panel",
-    title: 'Kardex Cuentas por Cobrar',
+    title: 'Kardex Cuentas por Pagar',
     criterios: true,
     textBusqueda: 'Buscar Cuenta por Cobrar',
     imprimir: false,
@@ -11,9 +11,10 @@
     formulario: null,
     imagenes: true,
     id_cliente: '',
+    record : null,
     initComponent: function () {
         var me = this;
-        if (me.opcion == "GridKardexCuentasPC") {
+        if (me.opcion == "GridKardexCuentasPP") {
             me.CargarGridKardexCuentasPC();
             me.EventoKardex();
         }
@@ -25,7 +26,7 @@
     CargarGridKardexCuentasPC: function () {
         var me = this;
         var fecha_actual = new Date();
-        me.store = Ext.create("App.Store.Clientes.Kardex");
+        me.store = Ext.create("App.Store.CuentasPP.Kardex");
         me.store.setExtraParams({ ID_CLIENTE: me.id_cliente });
         me.store.load();
 
@@ -35,7 +36,7 @@
             fieldLabel: 'Fecha Ini',
             margin: '5',
             name: 'FECHA_INICIAL',
-            value : new Date('01/01/2014'),
+            value: new Date('01/01/2014'),
             width: 170,
             labelWidth: 50
         });
@@ -53,11 +54,11 @@
             width: 160,
             labelWidth: 60,
             readOnly: true,
-//            hidden : true
+            //            hidden : true
         });
-        me.mun_consumo = Ext.create("App.Config.Componente.TextFieldBase", {
-            fieldLabel: "Consumo",
-            name: "CONSUMO",
+        me.mun_contrato = Ext.create("App.Config.Componente.TextFieldBase", {
+            fieldLabel: "Contratos",
+            name: "CONTRATO",
             width: 160,
             labelWidth: 50,
             readOnly: true
@@ -66,15 +67,15 @@
             items: [
                 me.date_fechaInicial,
                 me.date_fechaFinal,
-                
-                me.mun_consumo,
-                me.mun_amortizacion
+
+                me.mun_amortizacion,
+                me.mun_contrato
             ]
         });
-//        me.toolbar = Funciones.CrearMenuBar();
-//        Funciones.CrearMenu('btn_reporte', 'Reporte', 'report', me.ImprimirReporte, me.toolbar, this);
-//        this.dockedItems = me.toolBar;
-//        me.dock = this.dockedItems;
+        //        me.toolbar = Funciones.CrearMenuBar();
+        //        Funciones.CrearMenu('btn_reporte', 'Reporte', 'report', me.ImprimirReporte, me.toolbar, this);
+        //        this.dockedItems = me.toolBar;
+        //        me.dock = this.dockedItems;
         this.bbar = Ext.create('Ext.PagingToolbar', {
             store: me.store,
             displayInfo: true,
@@ -87,11 +88,12 @@
         me.columns = [
             { xtype: "rownumberer", width: 30, sortable: false },
         //            { header: "Nro <br>Comprobante", width: 80, sortable: false, dataIndex: "NRO_COMP" },
-            {header: "Fecha", width: 100, sortable: false, dataIndex: "FECHA", renderer: Ext.util.Format.dateRenderer('d/m/Y') },
+            { header: "Fecha", width: 100, sortable: false, dataIndex: "FECHA", renderer: Ext.util.Format.dateRenderer('d/m/Y') },
             { header: "Detalle", width: 245, sortable: false, dataIndex: "DETALLE" },
-            { header: "Consumo", width: 100, sortable: false, dataIndex: "CONSUMO", align: 'right' , renderer: Ext.util.Format.numberRenderer('0,000.00')},
-            { header: "Amortizaci\u00F3n", width: 100, sortable: false, dataIndex: "AMORTIZACION", align: 'right' ,renderer: Ext.util.Format.numberRenderer('0,000.00') },
-            { header: "Saldo", width: 100, sortable: false, dataIndex: "SALDO", align: 'right' ,renderer: Ext.util.Format.numberRenderer('0,000.00') }
+
+            { header: "Amortizaci\u00F3n", width: 100, sortable: false, dataIndex: "AMORTIZACION", align: 'right', renderer: Ext.util.Format.numberRenderer('0,000.00') },
+            { header: "Contratos", width: 100, sortable: false, dataIndex: "CONTRATO", align: 'right', renderer: Ext.util.Format.numberRenderer('0,000.00') },
+            { header: "Saldo", width: 100, sortable: false, dataIndex: "SALDO", align: 'right', renderer: Ext.util.Format.numberRenderer('0,000.00') }
 
         ];
 
@@ -116,20 +118,16 @@
 
         });
         me.store.on('load', function (str, records, successful, eOpts) {
-            //            alert(successful);
-//            alert(records[0].data.TOTAL_AMOR);
-//            me.mun_amortizacion.setValue(records[0].get('TOTAL_AMOR'));
-            me.mun_amortizacion.setRawValue(Ext.util.Format.number(records[0].get('TOTAL_AMOR'), '0.000,00/i'));
-            me.mun_consumo.setRawValue(Ext.util.Format.number(records[0].get('TOTAL_CONS'), '0.000,00/i'));
-//            me.mun_consumo.setValue(records[0].get('TOTAL_CONS'));
+            if (successful) {
+                me.mun_amortizacion.setRawValue(Ext.util.Format.number(records[0].get('TOTAL_AMOR'), '0.000,00/i'));
+                me.mun_contrato.setRawValue(Ext.util.Format.number(records[0].get('TOTAL_CONT'), '0.000,00/i'));
+            }
 
         });
-        //        me.getSelectionModel().on('selectionchange', function(selModel, selections){
-        //            var me = this;
-        //            var disabled = selections.length === 0;
-        //            me.record = disabled ? null : selections[0];
-        //            Funciones.DisabledButton('btn_reporte', me.toolbar, disabled);
-        //        });
+        me.getSelectionModel().on('selectionchange', function (selModel, selections) {
+            var disabled = selections.length === 0;
+            me.record = disabled ? null : selections[0];
+        });
     },
     LimpiarGrid: function () {
         var me = this;

@@ -54,9 +54,12 @@
     <Compile Include="ComprasServices.cs" />
     <Compile Include="CombustiblesServices.cs" />
     <Compile Include="ClientesServices.cs" />
+    <Compile Include="CuentasPorPagarServices.cs" />
     <Compile Include="FacturasMNServices.cs" />
+    <Compile Include="Interfaces\ICuentasPorPagarServices.cs" />
     <Compile Include="Interfaces\IFacturasMNServices.cs" />
     <Compile Include="Interfaces\ITransferenciasServices.cs" />
+    <Compile Include="Model\CuentasPorPagarModel.cs" />
     <Compile Include="Model\FacturasModel.cs" />
     <Compile Include="Model\TransferenciasModel.cs" />
     <Compile Include="TransferenciasServices.cs" />

@@ -1,13 +1,15 @@
-﻿Ext.define("App.View.CuentasPC.FormCuentaPC", {
+﻿Ext.define("App.View.CuentasPP.FormCliente", {
     extend: "App.Config.Abstract.Form",
     columns: 1,
+    defaults: {
+        width: 350
+    },
     initComponent: function () {
         var me = this;
         me.CargarComponentes();
-        me.cargarEventos();
         this.callParent(arguments);
     },
-    
+
     CargarComponentes: function () {
         var me = this;
         me.txt_id = Ext.create("App.Config.Componente.TextFieldBase", {
@@ -19,18 +21,20 @@
         });
         me.txt_codigo = Ext.create("App.Config.Componente.TextFieldBase", {
             fieldLabel: "C\u00F3digo",
-//            readOnly : true,
+            //            readOnly : true,
             name: "CODIGO",
             afterLabelTextTpl: Constantes.REQUERIDO,
-            allowBlank: false
+            allowBlank: false,
+            width: 350
 
         });
 
-        me.txt_empresa = Ext.create("App.Config.Componente.TextFieldBase", {
-            fieldLabel: "Empresa",
-            name: "EMPRESA",
+        me.txt_razon = Ext.create("App.Config.Componente.TextFieldBase", {
+            fieldLabel: "Razon Social",
+            name: "RAZON_SOCIAL",
             afterLabelTextTpl: Constantes.REQUERIDO,
-            allowBlank: false
+            allowBlank: false,
+            width: 350
         });
 
         me.num_nit = Ext.create("App.Config.Componente.NumberFieldBase", {
@@ -39,52 +43,60 @@
             maxValue: 999999999999999,
             maxLength: 15,
             afterLabelTextTpl: Constantes.REQUERIDO,
-            allowBlank: false
+            allowBlank: false,
+            width: 350
         });
 
         me.txt_contacto = Ext.create("App.Config.Componente.TextFieldBase", {
             fieldLabel: "Contacto",
             name: "CONTACTO",
             afterLabelTextTpl: Constantes.REQUERIDO,
-            allowBlank: false
+            allowBlank: false,
+            width: 350
+        });
+
+        me.txt_email = Ext.create("App.Config.Componente.TextFieldBase", {
+            fieldLabel: "Email",
+            name: "EMAIL",
+            width: 350
+            //afterLabelTextTpl: Constantes.REQUERIDO,
+            //allowBlank: false
         });
 
         me.txt_telf = Ext.create("App.Config.Componente.TextFieldBase", {
             fieldLabel: "Tel\u00E9fono",
             name: "TELEFONO",
             afterLabelTextTpl: Constantes.REQUERIDO,
-            allowBlank: false
+            allowBlank: false,
+            width: 350
         });
 
         me.txt_dir = Ext.create("App.Config.Componente.TextFieldBase", {
             fieldLabel: "Direcci\u00F3n",
             name: "DIRECCION",
-            allowBlank: false
+            allowBlank: false,
+            width: 350
         });
 
-        me.num_lim_credito = Ext.create("App.Config.Componente.NumberFieldBase", {
-            fieldLabel: "L\u00CDmite de Cr\u00E9dito (BOB)",
-            name: "LIMITE",
-            allowDecimals: true,
-            maxValue: 999999999
+        me.txt_observaciones = Ext.create("App.Config.Componente.TextAreaBase", {
+            fieldLabel: "Observaciones",
+            name: "OBSERVACIONES",
+            width: 350
         });
 
         me.items = [
             me.txt_id,
             me.txt_codigo,
-            me.txt_empresa,
+            me.txt_razon,
             me.num_nit,
             me.txt_contacto,
             me.txt_telf,
+            me.txt_email,
             me.txt_dir,
-            me.num_lim_credito
+            me.txt_observaciones
         ];
-       
-      
 
-    },
-    cargarEventos : function(){
-        var me = this;
+
 
     }
 });

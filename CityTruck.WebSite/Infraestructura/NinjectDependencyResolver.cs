@@ -77,6 +77,7 @@ namespace CityTruck.WebSite.Infraestructura
             Bind<IAjustePosServices>().To<AjustePosServices>();
             Bind<ITransferenciasServices>().To<TransferenciasServices>();
             Bind<IFacturasMNServices>().To<FacturasMNServices>();
+            Bind<ICuentasPorPagarServices>().To<CuentasPorPagarServices>();
             
             //Bind<IMaterialesManagementService>().To<MaterialesManagementService>();
         }

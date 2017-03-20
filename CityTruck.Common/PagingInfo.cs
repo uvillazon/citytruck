@@ -19,6 +19,8 @@ namespace CityTruck.Common
         public string Contiene { get; set; } // Parametro de Busqueda Opcional
         public int filter { get; set; }
         public int total { get; set; }
+        public DateTime? startDate { get; set; }
+        public DateTime? endDate { get; set; }
         
     }
 }
