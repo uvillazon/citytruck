@@ -16,12 +16,13 @@ Ext.define("App.Config.Abstract.Window", {
     constrain: true,
     botones: false,
     mostrarBotonCerrar: false,
-    btn3 : null,
-    btn4 : null,
+    btn3: null,
+    btn4: null,
     buttons: '',
     textGuardar: 'Guardar',
-    textCerrar : 'Cerrar',
-    itemId : '',
+    textCerrar: 'Cerrar',
+    gridLoads: null,
+    destruirWin: false,
     initComponent: function () {
         var me = this;
         if (!me.botones) {
@@ -32,14 +33,16 @@ Ext.define("App.Config.Abstract.Window", {
                     iconCls: 'cross',
                     minHeight: 27,
                     minWidth: 80,
-                    hidden : me.mostrarBotonCerrar,
-                    handler: function () {
-                        //this.up('form').getForm().reset();
-                        this.up('window').hide();
-                        //this.up('window').maximize();
-                        //this.maximize();
-                        //this.toFront();
-                    }
+                    scope: this,
+                    hidden: me.mostrarBotonCerrar,
+                    handler: me.CerrarVentana
+                    //handler: function () {
+                    //    //this.up('form').getForm().reset();
+                    //    this.up('window').hide();
+                    //    //this.up('window').maximize();
+                    //    //this.maximize();
+                    //    //this.toFront();
+                    //}
 
                 }
                 ];
@@ -57,19 +60,21 @@ Ext.define("App.Config.Abstract.Window", {
                 textAlign: 'center',
                 //margin: 10,
                 iconCls: 'cross',
+                scope: this,
                 hidden: me.mostrarBotonCerrar,
-                handler: function () {
-                    this.up('window').hide();
+                handler: me.CerrarVentana
+                //handler: function () {
+                //    this.up('window').hide();
 
 
-                }
+                //}
 
             });
             this.btn_guardar = Ext.create('Ext.Button', {
                 text: me.textGuardar,
                 minHeight: 27,
                 minWidth: 80,
-                itemId: me.itemId == ''?'btn_guardar' : me.itemId,
+                itemId: me.itemId == '' ? 'btn_guardar' : me.itemId,
                 textAlign: 'center',
                 iconCls: 'disk',
                 //margin: 10,
@@ -81,10 +86,21 @@ Ext.define("App.Config.Abstract.Window", {
             if (this.btn4 != null) {
                 this.btn4.removeCls("botones");
             }
-            this.buttons = [this.btn4, this.btn3,this.btn_guardar, this.btn_cerrar];
+            this.buttons = [this.btn4, this.btn3, this.btn_guardar, this.btn_cerrar];
         }
         //       var me = this;
         //        me.on('minimize', me.minimizar,this);
         this.callParent(arguments);
+    },
+    CerrarVentana: function () {
+        var me = this;
+        !me.destruirWin ? me.hide() : me.close();
+        //me.hide();
+        if (me.gridLoads != null) {
+            for (i = 0 ; i < me.gridLoads.length ; i++) {
+                me.gridLoads[i].getStore().load();
+            }
+        }
+        //this.up('window').hide();
     }
 });

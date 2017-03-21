@@ -328,7 +328,7 @@
     <Content Include="App\Model\ConsumoPropio\Consumos.js" />
     <Content Include="App\Model\CuentasPP\Clientes.js" />
     <Content Include="App\Model\CuentasPP\ConsumoPropio.js" />
-    <Content Include="App\Model\CuentasPP\Consumos.js" />
+    <Content Include="App\Model\CuentasPP\Anticipos.js" />
     <Content Include="App\Model\CuentasPP\Kardex.js" />
     <Content Include="App\Model\Transferencias\Transferencias.js" />
     <Content Include="App\Model\Usuarios\Usuarios.js" />
@@ -392,6 +392,7 @@
     <Content Include="App\Store\ConsumoPropio\ConsumoPropio.js" />
     <Content Include="App\Store\ConsumoPropio\Consumos.js" />
     <Content Include="App\Store\CuentasPP\Clientes.js" />
+    <Content Include="App\Store\CuentasPP\Anticipos.js" />
     <Content Include="App\Store\CuentasPP\Kardex.js" />
     <Content Include="App\Store\Transferencias\Transferencias.js" />
     <Content Include="App\Store\Usuarios\Usuarios.js" />
@@ -478,6 +479,7 @@
     <Content Include="App\View\ConsumoPropio\Forms.js" />
     <Content Include="App\View\ConsumoPropio\GridConsumoPropio.js" />
     <Content Include="App\View\ConsumoPropio\Principal.js" />
+    <Content Include="App\View\CuentasPP\GridAnticipos.js" />
     <Content Include="App\View\CuentasPP\FormContrato.js" />
     <Content Include="App\View\CuentasPP\FormCliente.js" />
     <Content Include="App\View\CuentasPP\FormAnticipo.js" />
@@ -3930,6 +3932,8 @@
     <Content Include="Views\AppCityTruck\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Reportes\ReporteAnticipo.rdlc" />
+    <EmbeddedResource Include="Reportes\ReporteContrato.rdlc" />
     <EmbeddedResource Include="Reportes\ReporteAjuste.rdlc" />
     <EmbeddedResource Include="Reportes\ReporteAmortizacion.rdlc" />
     <EmbeddedResource Include="Reportes\ReporteCompra.rdlc" />

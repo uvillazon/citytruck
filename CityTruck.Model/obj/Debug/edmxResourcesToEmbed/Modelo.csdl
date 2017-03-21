@@ -563,6 +563,16 @@
       <Parameter Name="P_RES" Mode="Out" Type="String" />
     </FunctionImport>
     <EntitySet Name="SG_KARDEX_CLIENTE_POR_PAGAR" EntityType="Model.SG_KARDEX_CLIENTE_POR_PAGAR" />
+    <FunctionImport Name="P_SG_ELIMINAR_CONTRATO">
+      <Parameter Name="P_ID" Mode="In" Type="Decimal" />
+      <Parameter Name="P_ID_USR" Mode="In" Type="Decimal" />
+      <Parameter Name="P_RES" Mode="Out" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="P_SG_ELIMINAR_ANTICIPO">
+      <Parameter Name="P_ID" Mode="In" Type="Decimal" />
+      <Parameter Name="P_ID_USR" Mode="In" Type="Decimal" />
+      <Parameter Name="P_RES" Mode="Out" Type="String" />
+    </FunctionImport>
   </EntityContainer>
   <EntityType Name="SG_LISTAS">
     <Key>

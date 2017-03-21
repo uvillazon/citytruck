@@ -44,6 +44,7 @@
     onSelectChange: function (selModel, selections) {
         var me = this;
         var disabled = selections.length === 0;
+        me.record = disabled ? null : selections[0];
         Funciones.DisabledButton('btn_Editar', me.toolbar, disabled);
         //Funciones.DisabledButton('btn_Detalle', me.toolbar, disabled);
         Funciones.DisabledButton('btn_Eliminar', me.toolbar, disabled);
@@ -93,14 +94,28 @@
         me.winCrearCliente.show();
 
     },
-    CrearFormContrato: function (id_contrato) {
+    CrearFormContrato: function (btn) {
         var me = this;
-        var win = Ext.create("App.Config.Abstract.Window", { botones: true });
+        var win = Ext.create("App.Config.Abstract.Window", { botones: true, destruirWin: true });
         var form = Ext.create("App.View.CuentasPP.FormContrato", {
-            columns: 1,
+            columns: 2,
             title: 'Nuevo Contrato',
             botones: false
         });
+        if (btn.getItemId() === "btn_editar_contrato") {
+            form.loadFormulario("ClientesPorPagar", "ObtenerContratoPorId", { ID_CONTRATO: me.gridKardexCaja.record.get('ID_CONTRATO') });
+            //form.cbx_cliente.setVisible(false);
+            //form.txt_cliente.setVisible(true);
+        }
+        else {
+            form.txt_cliente.setValue(me.record.get('RAZON_SOCIAL'));
+            form.txt_id_cliente.setValue(me.record.get('ID_CLIENTE'));
+        }
+        //if (me.gridKardexCaja.record != null) {
+        //    form.loadFormulario("ClientesPorPagar", "ObtenerContratoPorId", { ID_CONTRATO: me.gridKardexCaja.record.get('ID_CONTRATO') });
+        //    form.cbx_cliente.setVisible(false);
+        //    form.txt_cliente.setVisible(true);
+        //}
         win.add(form);
         win.show();
         win.btn_guardar.on("click", function () {
@@ -124,7 +139,7 @@
             else {
                 var win = Ext.create("App.Config.Abstract.Window", { botones: true });
                 var form = Ext.create("App.View.CuentasPP.FormAnticipo", {
-                    columns: 1,
+                    columns: 2,
                     title: 'Amortizacion',
                     botones: false
                 });
@@ -183,69 +198,186 @@
         Funciones.AjaxRequestGrid("Clientes", "EliminarCliente", me, "Esta Seguro de Eliminar este Registro", { ID_CLIENTE: me.id_cliente }, me.grid, null);
 
     },
+
+    
     MostrarKardex: function () {
         var me = this;
         var buttonGroup = [
+
             {
                 xtype: 'button',
                 text: 'Contratos',
+                itemId: 'btn_crear_contrato',
                 iconCls: 'add',
                 minHeight: 27,
+               
                 minWidth: 80,
-                handler: function () {
-                    me.CrearFormContrato(me.id_cliente);
+                listeners: {
+                    scope: me,
+                    click: me.CrearFormContrato
                 }
+                //handler: function () {
+                //    me.CrearFormContrato(me.id_cliente);
+                //}
 
             },
             {
                 xtype: 'button',
+                text: 'Editar Contr.',
+                itemId: 'btn_editar_contrato',
+                iconCls: Constantes.ICONO_EDITAR,
+                minHeight: 27,
+                disabled: true,
+                scope: me,
+                minWidth: 80,
+                listeners: {
+                    scope: me,
+                    click: me.CrearFormContrato
+                }
+
+
+            },
+             {
+                 xtype: 'button',
+                 text: 'Imprimir Contr.',
+                 itemId: 'btn_imprimir_contrato',
+                 iconCls: 'printer',
+                 minHeight: 27,
+                 disabled: true,
+                 minWidth: 80,
+                 handler: function () {
+                     me.gridKardexCaja.ImprimirReporteContrato();
+                 }
+
+             },
+             {
+                 xtype: 'button',
+                 text: 'Kardex Contr.',
+                 itemId: 'btn_kardex_contrato',
+                 iconCls: 'folder_database',
+                 minHeight: 27,
+                 disabled: true,
+                 minWidth: 80,
+                 handler: function () {
+                     me.VentanaKardexContratos();
+                 }
+
+             },
+             //
+             {
+                 xtype: 'button',
+                 text: 'Eliminar Contr',
+                 itemId: 'btn_eliminar_contrato',
+                 iconCls: Constantes.ICONO_BAJA,
+                 minHeight: 27,
+                 disabled: true,
+                 minWidth: 80,
+                 handler: function () {
+                     me.EliminarContrato();
+                 }
+
+             },
+            {
+                xtype: 'button',
                 text: 'Amortizaci\u00F3n',
+                itemId: 'btn_crear_amortizacion',
                 iconCls: 'add',
+                disabled: true,
                 minHeight: 27,
                 minWidth: 80,
                 handler: function () {
                     me.CrearFormAnticipo(me.gridKardexCaja.record);
                 }
 
-            }, {
+            },
+            {
                 xtype: 'button',
-                text: 'Imprimir',
-                iconCls: 'printer',
+                text: 'Editar Amort.',
+                itemId: 'btn_editar_amortizacion',
+                iconCls: Constantes.ICONO_EDITAR,
                 minHeight: 27,
+                hidden : true,
                 minWidth: 80,
+                disabled: true,
                 handler: function () {
-                    me.gridKardexCaja.ImprimirReporte();
+                    me.CrearFormContrato(me.id_cliente);
                 }
 
-            }, {
-                xtype: 'button',
-                text: 'Cerrar',
-                iconCls: 'cross',
-                minHeight: 27,
-                minWidth: 80,
-                handler: function () {
-                    this.up('window').hide();
-                }
+            },
+             {
+                 xtype: 'button',
+                 text: 'Imprimir Amort.',
+                 itemId: 'btn_imprimir_amortizacion',
+                 iconCls: 'printer',
+                 minHeight: 27,
+                 minWidth: 80,
+                 disabled: true,
+                 handler: function () {
+                     me.gridKardexCaja.ImprimirReporteAnticipo();
+                 }
 
-            }];
-        if (me.gridKardexCaja == null) {
-            me.winKardexCaja = Ext.create("App.Config.Abstract.Window", { botones: false, buttons: buttonGroup });
-            me.gridKardexCaja = Ext.create("App.View.CuentasPP.GridKardexCliente", {
-                region: 'center',
-                width: 700,
-                height: 350,
-                imagenes: false,
-                id_cliente: me.id_cliente,
-                opcion: 'GridKardexCuentasPP'
-            });
-            me.winKardexCaja.add([me.gridKardexCaja]);
-            //            me.winKardexCaja.add(me.formTotales);
-            me.winKardexCaja.show();
-        } else {
-            me.gridKardexCaja.LimpiarGrid();
-            me.gridKardexCaja.store.setExtraParams({ ID_CLIENTE: me.id_cliente });
-            me.gridKardexCaja.store.load();
-            me.winKardexCaja.show();
-        }
+             },
+             {
+                 xtype: 'button',
+                 text: 'Eliminar Amort.',
+                 itemId: 'btn_eliminar_amortizacion',
+                 iconCls: Constantes.ICONO_BAJA,
+                 disabled: true,
+                 minHeight: 27,
+                 minWidth: 80,
+                 handler: function () {
+                     me.EliminarAmortizacion();
+                 }
+
+             },
+        {
+            xtype: 'button',
+            text: 'Cerrar',
+            iconCls: 'cross',
+            minHeight: 27,
+            minWidth: 80,
+            handler: function () {
+                this.up('window').close();
+                me.grid.getStore().load();
+            }
+
+        }];
+
+        me.winKardexCaja = Ext.create("App.Config.Abstract.Window", { botones: false, buttons: buttonGroup });
+        me.gridKardexCaja = Ext.create("App.View.CuentasPP.GridKardexCliente", {
+            region: 'center',
+            width: 1000,
+            height: 350,
+            imagenes: false,
+            id_cliente: me.id_cliente,
+            opcion: 'GridKardexCuentasPP',
+            winPadre: me.winKardexCaja
+        });
+        me.winKardexCaja.add([me.gridKardexCaja]);
+        //            me.winKardexCaja.add(me.formTotales);
+        me.winKardexCaja.show();
+
+    },
+    EliminarContrato: function () {
+        var me = this;
+        Funciones.AjaxRequestGrid("ClientesPorPagar", "EliminarContrato", me.winKardexCaja, "Esta Seguro de Eliminar este Contrato", { ID: me.gridKardexCaja.record.get('ID_OPERACION') }, me.gridKardexCaja, null);
+
+    },
+    EliminarAmortizacion: function () {
+        var me = this;
+        Funciones.AjaxRequestGrid("ClientesPorPagar", "EliminarAnticipo", me.winKardexCaja, "Esta Seguro de Eliminar el Anticipo", { ID: me.gridKardexCaja.record.get('ID_OPERACION') }, me.gridKardexCaja, null);
+
+    },
+    VentanaKardexContratos: function (btn) {
+        var me = this;
+        var win = Ext.create("App.Config.Abstract.Window", { botones: false, destruirWin: true });
+        var grid = Ext.create("App.View.CuentasPP.GridAnticipos", {
+            cargarStore : false
+        });
+        win.add(grid);
+        win.show();
+        grid.getStore().setExtraParams({ ID_CONTRATO: me.gridKardexCaja.record.get('ID_CONTRATO') });
+        grid.getStore().load();
+        
     }
 });

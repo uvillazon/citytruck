@@ -609,5 +609,7 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="P_SG_ELIMINAR_CONTRATO" FunctionName="Model.Store.P_SG_ELIMINAR_CONTRATO" />
+    <FunctionImportMapping FunctionImportName="P_SG_ELIMINAR_ANTICIPO" FunctionName="Model.Store.P_SG_ELIMINAR_ANTICIPO" />
   </EntityContainerMapping>
 </Mapping>

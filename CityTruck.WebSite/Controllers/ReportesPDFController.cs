@@ -259,6 +259,44 @@ namespace CityTruck.WebSite.Controllers
             renderedBytes = localReport.Render(reportType, deviceInfo, out mimeType, out encoding, out fileNameExtension, out streams, out warnings);
             return File(renderedBytes, mimeType);
         }
+
+        public ActionResult ReporteContrato(int ID)
+        {
+            LocalReport localReport = new LocalReport();
+            localReport.ReportPath = Server.MapPath("~/Reportes/ReporteContrato.rdlc");
+            ReportDataSource reportDataSource = new ReportDataSource("DataSet1", repo.ReporteContrato(ID));
+            localReport.DataSources.Add(reportDataSource);
+            string reportType = "PDF";
+            string mimeType = "application/pdf";
+            string encoding = "utf-8";
+            string fileNameExtension = "pdf";
+            string deviceInfo = string.Empty;
+            Warning[] warnings = new Warning[1];
+            string[] streams = new string[1];
+            Byte[] renderedBytes;
+            //Render the report
+            renderedBytes = localReport.Render(reportType, deviceInfo, out mimeType, out encoding, out fileNameExtension, out streams, out warnings);
+            return File(renderedBytes, mimeType);
+        }
+
+        public ActionResult ReporteAnticipo(int ID)
+        {
+            LocalReport localReport = new LocalReport();
+            localReport.ReportPath = Server.MapPath("~/Reportes/ReporteAnticipo.rdlc");
+            ReportDataSource reportDataSource = new ReportDataSource("DataSet1", repo.ReporteAnticipo(ID));
+            localReport.DataSources.Add(reportDataSource);
+            string reportType = "PDF";
+            string mimeType = "application/pdf";
+            string encoding = "utf-8";
+            string fileNameExtension = "pdf";
+            string deviceInfo = string.Empty;
+            Warning[] warnings = new Warning[1];
+            string[] streams = new string[1];
+            Byte[] renderedBytes;
+            //Render the report
+            renderedBytes = localReport.Render(reportType, deviceInfo, out mimeType, out encoding, out fileNameExtension, out streams, out warnings);
+            return File(renderedBytes, mimeType);
+        }
         
     }
 }

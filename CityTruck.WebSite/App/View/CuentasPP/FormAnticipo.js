@@ -41,6 +41,8 @@
        
          me.txt_cliente = Ext.create("App.Config.Componente.TextFieldBase", {
              fieldLabel: "Cliente",
+             width: 480,
+             colspan : 2,
              readOnly: true,
              name: "RAZON_SOCIAL",
 
@@ -63,7 +65,8 @@
             fieldLabel: "Glosa",
             name: "GLOSA",
             maxLength: 400,
-            width: 240,
+            width: 480,
+            colspan : 2
             //            afterLabelTextTpl: Constantes.REQUERIDO,
             //            allowBlank: false,
 

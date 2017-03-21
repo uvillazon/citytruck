@@ -39,5 +39,8 @@ namespace CityTruck.Common
 
         [DataMember]
         public T data { get; set; }
+
+        [DataMember]
+        public string msg { get; set; }
     }
 }

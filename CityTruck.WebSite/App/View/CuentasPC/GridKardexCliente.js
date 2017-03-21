@@ -35,7 +35,7 @@
             fieldLabel: 'Fecha Ini',
             margin: '5',
             name: 'FECHA_INICIAL',
-            value : new Date('01/01/2014'),
+            value : new Date('01/01/2017'),
             width: 170,
             labelWidth: 50
         });

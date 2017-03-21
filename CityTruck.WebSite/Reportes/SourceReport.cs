@@ -12,7 +12,8 @@ namespace CityTruck.WebSite.Reportes
     public class SourceReport
     {
         private UsuariosServices servicioUsuario = new UsuariosServices();
-        public string ObtenerMesEspanol(int m) {
+        public string ObtenerMesEspanol(int m)
+        {
             string mes = "";
             switch (m)
             {
@@ -92,8 +93,8 @@ namespace CityTruck.WebSite.Reportes
                 var com = combustible.Where(x => x.FECHA == item.Key).FirstOrDefault();
                 var pos = posMes.Where(x => x.FECHA == item.Key && x.SG_POS.ID_COMBUSTIBLE == ID_COMBUSTIBLE).OrderBy(y => y.ID_POS);
                 var total = pos.Sum(x => x.TOTAL);
-                var postotales = pos.GroupBy(x => x.ID_POS).Select(y => new {TOTAL = y.Sum(z=>z.TOTAL) , ID_POS = y.Key });
-                
+                var postotales = pos.GroupBy(x => x.ID_POS).Select(y => new { TOTAL = y.Sum(z => z.TOTAL), ID_POS = y.Key });
+
 
                 venDia.PRODUCTO = com.SG_COMBUSTIBLES.DESCRIPCION;
                 venDia.MES = ObtenerMesEspanol(com.FECHA.Month);
@@ -109,7 +110,7 @@ namespace CityTruck.WebSite.Reportes
                 {
                     if (cont == 0)
                     {
-                        venDia.MANGUERA1 = puntos.TOTAL == 0 ? 0 :(puntos.TOTAL / total) * venDia.VENTA;
+                        venDia.MANGUERA1 = puntos.TOTAL == 0 ? 0 : (puntos.TOTAL / total) * venDia.VENTA;
                         venDia.MANGUERA1 = Math.Round(venDia.MANGUERA1, 0);
                         saldoventa = saldoventa - venDia.MANGUERA1;
                     }
@@ -171,7 +172,7 @@ namespace CityTruck.WebSite.Reportes
                     UTILIDA_BRUTA_NETA = (decimal)(totalventa - totalcosto)
                 };
                 egre.MES = ObtenerMesEspanol(item.FECHA.Month);
-                    //item.FECHA.ToString("MMMM").ToUpper();
+                //item.FECHA.ToString("MMMM").ToUpper();
                 result.Add(egre);
             }
             return result;
@@ -192,21 +193,21 @@ namespace CityTruck.WebSite.Reportes
                 totalcosto = totalcosto + item.TOTALCOSTO;
                 fecha = item.FECHA;
             }
-            result.Add(new EstadoResultadoCompletoModel() { MES = ObtenerMesEspanol(Convert.ToInt32(MES)),FECHA = fecha, NRO = 1 ,OPERACION = "INGRESOS", SUBOPERACION = "INGRESOS OPERATIVOS", DETALLE = "VENTAS", IMPORTE = totalventa });
+            result.Add(new EstadoResultadoCompletoModel() { MES = ObtenerMesEspanol(Convert.ToInt32(MES)), FECHA = fecha, NRO = 1, OPERACION = "INGRESOS", SUBOPERACION = "INGRESOS OPERATIVOS", DETALLE = "VENTAS", IMPORTE = totalventa });
             //result.Add(new EstadoResultadoCompletoModel() { NRO = 2, OPERACION = "INGRESOS", SUBOPERACION = "INGRESOS OPERATIVOS", DETALLE = "COSTOS DE VENTAS", IMPORTE = -totalcosto });
 
 
             var serIngreso = new IngresosServices();
 
             var ingresos = serIngreso.ObtenerIngresosPorFecha(ANIO, MES);
-            var totalesIngreso = ingresos.Where(x=>x.ID_AMORTIZACION == null).Sum(x => x.IMPORTE);
+            var totalesIngreso = ingresos.Where(x => x.ID_AMORTIZACION == null).Sum(x => x.IMPORTE);
 
-            result.Add(new EstadoResultadoCompletoModel() { NRO = 3,OPERACION = "INGRESOS", SUBOPERACION = "INGRESOS NO OPERATIVOS", DETALLE = "OTROS INGRESOS", IMPORTE = totalesIngreso });
+            result.Add(new EstadoResultadoCompletoModel() { NRO = 3, OPERACION = "INGRESOS", SUBOPERACION = "INGRESOS NO OPERATIVOS", DETALLE = "OTROS INGRESOS", IMPORTE = totalesIngreso });
 
             //ajustes
             var serAjus = new AjustePosServices();
             var ajustes = serAjus.ObtenerAjustePorMesAnio(ANIO, MES);
-            var totalesAjustes = ajustes.GroupBy(x => new { x.SG_TANQUES.SG_COMBUSTIBLES.NOMBRE , x.SG_TANQUES.SG_COMBUSTIBLES.PRECIO_VENTA }).Select(y => new { TOTALAJUSTE = y.Sum(x => x.CANTIDAD) * y.Key.PRECIO_VENTA, COMBUSTIBLE = y.Key.NOMBRE });
+            var totalesAjustes = ajustes.GroupBy(x => new { x.SG_TANQUES.SG_COMBUSTIBLES.NOMBRE, x.SG_TANQUES.SG_COMBUSTIBLES.PRECIO_VENTA }).Select(y => new { TOTALAJUSTE = y.Sum(x => x.CANTIDAD) * y.Key.PRECIO_VENTA, COMBUSTIBLE = y.Key.NOMBRE });
             //consumo
             var serConsumo = new ClientesConsumoServices();
             var consumos = serConsumo.ObtenerConsumoPorMesyAnio(ANIO, MES);
@@ -215,12 +216,14 @@ namespace CityTruck.WebSite.Reportes
             decimal? calibracionDiesel = 0;
             foreach (var itemcalibracion in totalesConsumos)
             {
-                if (itemcalibracion.CLIENTE == "CALIBRACION IBMETRO") {
+                if (itemcalibracion.CLIENTE == "CALIBRACION IBMETRO")
+                {
                     if (itemcalibracion.COMBUSTIBLE == "GASOLINA ESPECIAL")
                     {
                         calibraciongasolina = itemcalibracion.TOTALCONSUMO;
                     }
-                    else {
+                    else
+                    {
                         calibracionDiesel = itemcalibracion.TOTALCONSUMO;
                     }
                 }
@@ -231,10 +234,10 @@ namespace CityTruck.WebSite.Reportes
             {
                 EstadoResultadoCompletoModel aju = new EstadoResultadoCompletoModel()
                 {
-                    NRO =cnt,
+                    NRO = cnt,
                     OPERACION = "INGRESOS",
                     SUBOPERACION = "EXCEDENTE/PERDIDA",
-                    DETALLE = string.Format("EXCEDENTE/PERDIDA - {0}",item.COMBUSTIBLE),
+                    DETALLE = string.Format("EXCEDENTE/PERDIDA - {0}", item.COMBUSTIBLE),
                     IMPORTE = item.COMBUSTIBLE == "GASOLINA" ? item.TOTALAJUSTE - calibraciongasolina : item.TOTALAJUSTE - calibracionDiesel
                 };
                 cnt++;
@@ -244,13 +247,13 @@ namespace CityTruck.WebSite.Reportes
             //result.Add(new EstadoResultadoCompletoModel() { NRO = 5 ,OPERACION = "INGRESOS", SUBOPERACION = "EXCEDENTE/PERDIDA", DETALLE = "EXCEDENTE/PERDIDA - GASOLINA", IMPORTE = 523 });
 
             var egresos = serIngreso.ObtenerEgresosPaginado(null, ANIO, MES);
-            
+
             foreach (var item in egresos.OrderBy(x => x.FECHA))
             {
 
                 EstadoResultadoCompletoModel egre = new EstadoResultadoCompletoModel()
                 {
-                    NRO =cnt,
+                    NRO = cnt,
                     OPERACION = "EGRESOS",
                     SUBOPERACION = "GASTOS",
                     DETALLE = item.CONCEPTO,
@@ -260,12 +263,12 @@ namespace CityTruck.WebSite.Reportes
                 };
                 cnt++;
                 //egre.MES = ObtenerMesEspanol(item.FECHA.Month);
-                    //item.FECHA.ToString("MMMM").ToUpper();
+                //item.FECHA.ToString("MMMM").ToUpper();
                 result.Add(egre);
             }
-            
+
             //consumos
-            
+
             foreach (var itemCons in totalesConsumos)
             {
                 if (itemCons.CLIENTE == "CALIBRACION IBMETRO")
@@ -304,7 +307,7 @@ namespace CityTruck.WebSite.Reportes
                 }
                 //egre.MES = ObtenerMesEspanol(item.FECHA.Month);
                 //item.FECHA.ToString("MMMM").ToUpper();
-                
+
             }
             return result;
         }
@@ -563,7 +566,7 @@ namespace CityTruck.WebSite.Reportes
                 venDia.VENTAS_DIE = (decimal)die.VENTAS;
                 venDia.AJUSTES_DIE = (decimal)die.AJUSTES;
                 venDia.ACUMULADO_DIE = (decimal)die.ACUMULADOS;
-                
+
                 venDia.VENTAS_GAS = (decimal)gas.VENTAS;
                 venDia.COMPRAS_GAS = (decimal)gas.COMPRAS;
                 venDia.SALDO_INICIAL_GAS = gas.SALDO_INICIAL;
@@ -646,7 +649,7 @@ namespace CityTruck.WebSite.Reportes
             List<AjustesTanqueModel> result = new List<AjustesTanqueModel>();
             var servicio = new CombustiblesServices();
             NumLetra nl = new NumLetra();
-            SG_AJUSTES_TANQUE egreso = servicio.ObtenerAjusteTanque(x=>x.ID_AJUSTE == ID);
+            SG_AJUSTES_TANQUE egreso = servicio.ObtenerAjusteTanque(x => x.ID_AJUSTE == ID);
             string user = HttpContext.Current.User.Identity.Name.Split('-')[0];
             AjustesTanqueModel ingresoModel = new AjustesTanqueModel()
             {
@@ -724,7 +727,7 @@ namespace CityTruck.WebSite.Reportes
             DateTime FECHA = DateTime.ParseExact(FECHA1, "dd/MM/yyyy", null);
             var servicio = new PosTurnosServices();
             //var servicioUsuario = new UsuariosServices();
-            var query = servicio.ObtenerPosTurnosPorCriterio(x => x.FECHA == FECHA && x.TURNO == TURNO && x.SG_POS.ID_COMBUSTIBLE ==2);
+            var query = servicio.ObtenerPosTurnosPorCriterio(x => x.FECHA == FECHA && x.TURNO == TURNO && x.SG_POS.ID_COMBUSTIBLE == 2);
             var result = query.Select(x => new DetalleMangueraModel
             {
                 COMBUSTIBLE = x.SG_POS.SG_COMBUSTIBLES.DESCRIPCION,
@@ -733,7 +736,7 @@ namespace CityTruck.WebSite.Reportes
                 MANGUERA = x.SG_POS.CODIGO,
                 FECHA = FECHA,
                 TURNO = TURNO,
-                USUARIO = servicioUsuario.ObtenerUsuariosPorCriterio(y=>y.ID_USUARIO == x.ID_USUARIO).FirstOrDefault().NOMBRE,
+                USUARIO = servicioUsuario.ObtenerUsuariosPorCriterio(y => y.ID_USUARIO == x.ID_USUARIO).FirstOrDefault().NOMBRE,
                 RESPONSABLE = "RESPONSABLE"
             });
             return result;
@@ -773,7 +776,7 @@ namespace CityTruck.WebSite.Reportes
             var creditos = ReporteVentaCredito(FECHA, TURNO);
             var consumo = ReporteVentaConsumo(FECHA, TURNO);
             var grupoventas = ventas.GroupBy(x => x.COMBUSTIBLE).Select(y => new { COMBUSTIBLE = y.Key, TOTAL = y.Sum(z => z.SAL_LITTER) - y.Sum(z => z.ENT_LITTER) });
-            model.TOTAL_LITROS_GAS = grupoventas.Where(x => x.COMBUSTIBLE == "GASOLINA ESPECIAL").FirstOrDefault() == null? 0 :  grupoventas.Where(x => x.COMBUSTIBLE == "GASOLINA ESPECIAL").FirstOrDefault().TOTAL;
+            model.TOTAL_LITROS_GAS = grupoventas.Where(x => x.COMBUSTIBLE == "GASOLINA ESPECIAL").FirstOrDefault() == null ? 0 : grupoventas.Where(x => x.COMBUSTIBLE == "GASOLINA ESPECIAL").FirstOrDefault().TOTAL;
             model.TOTAL_LITROS_DIE = grupoventas.Where(x => x.COMBUSTIBLE == "GNV").FirstOrDefault().TOTAL;
             //model.PRECIO_COMPRA_GAS = (decimal)serComb.ObtenerCombustible(x => x.ID_COMBUSTIBLE == 1).PRECIO_COMPRA;
             model.PRECIO_COMPRA_GAS = 0;
@@ -870,7 +873,8 @@ namespace CityTruck.WebSite.Reportes
             {
                 resultkardex = resultkardex.Where(x => x.ID_CLIENTE == ID && x.FECHA >= FECHA_INICIO);
             }
-            var result = resultkardex.OrderBy(y=>y.FECHA).Select(x => new AmortizacionesModel() { 
+            var result = resultkardex.OrderBy(y => y.FECHA).Select(x => new AmortizacionesModel()
+            {
                 AMORTIZACION = x.AMORTIZACION,
                 CLIENTE = x.SG_CLIENTES.EMPRESA,
                 CUENTA = x.SG_CLIENTES.CODIGO.ToString(),
@@ -878,10 +882,70 @@ namespace CityTruck.WebSite.Reportes
                 FECHA = x.FECHA,
                 SALDO = x.SALDO,
                 DETALLE = x.DETALLE,
-                USUARIO  = user,
+                USUARIO = user,
                 FECHA_FINAL = FECHA_FINAL,
                 FECHA_INICIO = FECHA_INICIO
             });
+            return result;
+        }
+
+        public IEnumerable<ContratoModel> ReporteContrato(int ID)
+        {
+            List<ContratoModel> result = new List<ContratoModel>();
+            var servicio = new CuentasPorPagarServices();
+            NumLetra nl = new NumLetra();
+            SG_CONTRATOS contrato = servicio.ObtenerContratoCriterio(x => x.ID_CONTRATO == ID);
+            string user = HttpContext.Current.User.Identity.Name.Split('-')[0];
+            ContratoModel ingresoModel = new ContratoModel()
+            {
+                RESPALDO = contrato.COMPROBANTE_RES,
+                FECHA_VENCIMIENTO = contrato.FECHA_VENCIMIENTO,
+                FECHA = contrato.FECHA,
+                GLOSA = contrato.GLOSA,
+                CUENTA = contrato.SG_CLIENTES_CPP.RAZON_SOCIAL,
+                DIRECCION = contrato.SG_CLIENTES_CPP.DIRECCION,
+                EMAIL = contrato.SG_CLIENTES_CPP.EMAIL,
+                OBSERVACION = contrato.OBSERVACIONES,
+                RAZON_SOCIAL = contrato.SG_CLIENTES_CPP.RAZON_SOCIAL,
+                TELEFONOS = contrato.SG_CLIENTES_CPP.TELEFONO,
+                TOTAL = contrato.IMPORTE,
+                USUARIO = servicioUsuario.ObtenerUsuariosPorCriterio(y => y.ID_USUARIO == contrato.ID_USUARIO).FirstOrDefault().NOMBRE,
+                TOTAL_LITERAL = nl.Convertir(contrato.IMPORTE.ToString(), true),
+                NRO_COMPROBANTE = contrato.NRO_COMP
+            };
+
+            result.Add(ingresoModel);
+            return result;
+        }
+
+        public IEnumerable<ContratoModel> ReporteAnticipo(int ID)
+        {
+            List<ContratoModel> result = new List<ContratoModel>();
+            var servicio = new CuentasPorPagarServices();
+            NumLetra nl = new NumLetra();
+            SG_ANTICIPOS contrato = servicio.ObtenerAnticipoCriterio(x => x.ID_ANTICIPO == ID);
+            string user = HttpContext.Current.User.Identity.Name.Split('-')[0];
+            ContratoModel ingresoModel = new ContratoModel()
+            {
+                RESPALDO = contrato.SG_CONTRATOS.COMPROBANTE_RES,
+                FECHA_VENCIMIENTO = contrato.SG_CONTRATOS.FECHA_VENCIMIENTO,
+                FECHA = contrato.FECHA,
+                GLOSA = contrato.GLOSA,
+                CUENTA = contrato.SG_CONTRATOS.SG_CLIENTES_CPP.RAZON_SOCIAL,
+                DIRECCION = contrato.SG_CONTRATOS.SG_CLIENTES_CPP.DIRECCION,
+                EMAIL = contrato.SG_CONTRATOS.SG_CLIENTES_CPP.EMAIL,
+                OBSERVACION = contrato.SG_CONTRATOS.OBSERVACIONES,
+                RAZON_SOCIAL = contrato.SG_CONTRATOS.SG_CLIENTES_CPP.RAZON_SOCIAL,
+                TELEFONOS = contrato.SG_CONTRATOS.SG_CLIENTES_CPP.TELEFONO,
+                TOTAL = contrato.IMPORTE_BS,
+                USUARIO = servicioUsuario.ObtenerUsuariosPorCriterio(y => y.ID_USUARIO == contrato.ID_USUARIO).FirstOrDefault().NOMBRE,
+                TOTAL_LITERAL = nl.Convertir(contrato.IMPORTE_BS.ToString(), true),
+                NRO_COMPROBANTE = contrato.NRO_COMP,
+                CAJA = contrato.SG_CAJAS.NOMBRE,
+                SALDO_CONTRATO = contrato.SG_CONTRATOS.IMPORTE - contrato.SG_CONTRATOS.SG_ANTICIPOS.Sum(x=>x.IMPORTE_BS)
+            };
+
+            result.Add(ingresoModel);
             return result;
         }
 

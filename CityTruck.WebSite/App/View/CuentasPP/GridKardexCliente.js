@@ -11,7 +11,8 @@
     formulario: null,
     imagenes: true,
     id_cliente: '',
-    record : null,
+    record: null,
+    winPadre: null,
     initComponent: function () {
         var me = this;
         if (me.opcion == "GridKardexCuentasPP") {
@@ -127,6 +128,29 @@
         me.getSelectionModel().on('selectionchange', function (selModel, selections) {
             var disabled = selections.length === 0;
             me.record = disabled ? null : selections[0];
+            if (!disabled) {
+                Funciones.DisabledButton("btn_editar_contrato", me.winPadre, me.record.get('OPERACION') === "ANTICIPO");
+                Funciones.DisabledButton("btn_imprimir_contrato", me.winPadre, me.record.get('OPERACION') === "ANTICIPO");
+                Funciones.DisabledButton("btn_eliminar_contrato", me.winPadre, me.record.get('OPERACION') === "ANTICIPO");
+                Funciones.DisabledButton("btn_kardex_contrato", me.winPadre, me.record.get('OPERACION') === "ANTICIPO");
+
+                Funciones.DisabledButton("btn_crear_amortizacion", me.winPadre, me.record.get('OPERACION') === "ANTICIPO");
+                Funciones.DisabledButton("btn_eliminar_amortizacion", me.winPadre, me.record.get('OPERACION') === "CONTRATO");
+                Funciones.DisabledButton("btn_imprimir_amortizacion", me.winPadre, me.record.get('OPERACION') === "CONTRATO");
+                Funciones.DisabledButton("btn_editar_amortizacion", me.winPadre, me.record.get('OPERACION') === "CONTRATO");
+            }
+            else {
+                Funciones.DisabledButton("btn_editar_contrato", me.winPadre, disabled);
+                Funciones.DisabledButton("btn_imprimir_contrato", me.winPadre, disabled);
+                Funciones.DisabledButton("btn_eliminar_contrato", me.winPadre, disabled);
+                Funciones.DisabledButton("btn_kardex_contrato", me.winPadre, disabled);
+
+                Funciones.DisabledButton("btn_crear_amortizacion", me.winPadre, disabled);
+                Funciones.DisabledButton("btn_eliminar_amortizacion", me.winPadre, disabled);
+                Funciones.DisabledButton("btn_imprimir_amortizacion", me.winPadre, disabled);
+                Funciones.DisabledButton("btn_editar_amortizacion", me.winPadre, disabled);
+            }
+
         });
     },
     LimpiarGrid: function () {
@@ -135,9 +159,12 @@
         me.date_fechaInicial.reset();
         me.date_fechaFinal.reset();
     },
-    ImprimirReporte: function () {
+    ImprimirReporteContrato: function () {
         var me = this;
-
-        window.open(Constantes.HOST + 'ReportesPDF/ReporteAmortizacion?ID=' + me.id_cliente + '&FECHA_INICIO=' + me.date_fechaInicial.getSubmitValue() + '&FECHA_FINAL=' + me.date_fechaFinal.getSubmitValue());
+        window.open(Constantes.HOST + 'ReportesPDF/ReporteContrato?ID=' + me.record.get('ID_OPERACION'));
+    },
+    ImprimirReporteAnticipo: function () {
+        var me = this;
+        window.open(Constantes.HOST + 'ReportesPDF/ReporteAnticipo?ID=' + me.record.get('ID_OPERACION'));
     }
 });

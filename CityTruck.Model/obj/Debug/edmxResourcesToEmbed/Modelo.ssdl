@@ -1160,6 +1160,11 @@
     <Parameter Name="P_ID_USR" Type="number" Mode="In" />
     <Parameter Name="P_RES" Type="varchar2" Mode="Out" />
   </Function>
+  <Function Name="P_SG_ELIMINAR_ANTICIPO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="GNV">
+    <Parameter Name="P_ID" Type="number" Mode="In" />
+    <Parameter Name="P_ID_USR" Type="number" Mode="In" />
+    <Parameter Name="P_RES" Type="varchar2" Mode="Out" />
+  </Function>
   <Function Name="P_SG_ELIMINAR_CAJA" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="GNV">
     <Parameter Name="P_ID" Type="number" Mode="In" />
     <Parameter Name="P_ID_USR" Type="number" Mode="In" />
@@ -1182,6 +1187,11 @@
   </Function>
   <Function Name="P_SG_ELIMINAR_CONSUMO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="GNV">
     <Parameter Name="P_ID_CONSUMO" Type="number" Mode="In" />
+    <Parameter Name="P_ID_USR" Type="number" Mode="In" />
+    <Parameter Name="P_RES" Type="varchar2" Mode="Out" />
+  </Function>
+  <Function Name="P_SG_ELIMINAR_CONTRATO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="GNV">
+    <Parameter Name="P_ID" Type="number" Mode="In" />
     <Parameter Name="P_ID_USR" Type="number" Mode="In" />
     <Parameter Name="P_RES" Type="varchar2" Mode="Out" />
   </Function>

@@ -147,6 +147,45 @@ namespace CityTruck.Services
             return result;
         }
 
+        public RespuestaSP SP_EliminarContrato(int ID_CONTRATO, int ID_USR)
+        {
+            RespuestaSP result = new RespuestaSP();
+            ExecuteManager(uow =>
+            {
+                var context = (CityTruckContext)uow.Context;
+                ObjectParameter p_res = new ObjectParameter("p_res", typeof(String));
+                context.P_SG_ELIMINAR_CONTRATO(ID_CONTRATO, ID_USR, p_res);  //(c.ID_CONTRATO, c.ID_CLIENTE, c.FECHA, c.FECHA_VENCIMIENTO, c.COMPROBANTE_RES, c.GLOSA, c.IMPORTE, c.OBSERVACIONES, ID_USR, p_res);  //(cliente.ID_CLIENTE, cliente.RAZON_SOCIAL, cliente.NIT, cliente.CONTACTO, cliente.TELEFONO, cliente.DIRECCION, cliente.EMAIL, cliente.OBSERVACIONES, ID_USR, p_res);
+                //context.P_SG_GUARDAR_CAJAS(caja.ID_CAJA, caja.CODIGO, caja.NOMBRE, caja.NRO_CUENTA, caja.MONEDA, caja.DESCRIPCION, caja.SALDO, ID_USR, p_res);
+
+
+                try
+                {
+                    int result_id = Int32.Parse(p_res.Value.ToString());
+                    if (result_id > 0)
+                    {
+                        result.success = true;
+                        result.msg = "Proceso Ejecutado Correctamente";
+                        result.id = result_id;
+                    }
+                    else
+                    {
+                        result.success = false;
+                        result.msg = p_res.Value.ToString();
+                        result.id = -1;
+                    }
+                }
+                catch (FormatException e)
+                {
+                    result.success = false;
+                    result.msg = p_res.Value.ToString();
+                    result.id = -1;
+                }
+
+            });
+            return result;
+        }
+
+
         public RespuestaSP SP_GrabarAnticipo(SG_ANTICIPOS c, int ID_USR)
         {
             RespuestaSP result = new RespuestaSP();
@@ -232,9 +271,10 @@ namespace CityTruck.Services
                         if (contrato != null)
                         {
 
-                            SG_CONTRATO = new 
+                            SG_CONTRATO = new
                             {
-                                SALDO = contrato.SALDO,
+                                //SALDO = contrato.SALDO,
+                                SALDO = contrato.IMPORTE - contrato.SG_ANTICIPOS.Sum(x => x.IMPORTE_BS),
                                 ID_CLIENTE = contrato.ID_CLIENTE,
                                 ID_CONTRATO = contrato.ID_CONTRATO,
                                 IMPORTE = contrato.IMPORTE,
@@ -252,6 +292,138 @@ namespace CityTruck.Services
                     item.SG_CONTRATOS = SG_CONTRATO;
                 }
                 result = manager.QueryPaged(result, paginacion.limit, paginacion.start, paginacion.sort, paginacion.dir);
+
+            });
+            return result;
+        }
+
+
+        public SG_CONTRATOS ObtenerContratoCriterio(System.Linq.Expressions.Expression<Func<SG_CONTRATOS, bool>> criterio = null)
+        {
+            SG_CONTRATOS result = null;
+            ExecuteManager(uow =>
+            {
+                var manager = new SG_CONTRATOSManager(uow);
+                result = manager.BuscarTodos(criterio).FirstOrDefault();
+
+            });
+            return result;
+        }
+
+        public SG_ANTICIPOS ObtenerAnticipoCriterio(System.Linq.Expressions.Expression<Func<SG_ANTICIPOS, bool>> criterio = null)
+        {
+            SG_ANTICIPOS result = null;
+            ExecuteManager(uow =>
+            {
+                var manager = new SG_ANTICIPOSManager(uow);
+                result = manager.BuscarTodos(criterio).FirstOrDefault();
+
+            });
+            return result;
+        }
+
+        public DataForm<object> ObtenerContratoPorCriterio(System.Linq.Expressions.Expression<Func<SG_CONTRATOS, bool>> criterio = null)
+        {
+            DataForm<object> result = new DataForm<object>();
+            ExecuteManager(uow =>
+            {
+                var manager = new SG_CONTRATOSManager(uow);
+                var contrato = manager.BuscarTodos(criterio).FirstOrDefault();
+                if (contrato == null)
+                {
+                    result.success = false;
+                    result.msg = "No existe registro";
+                }
+                else
+                {
+                    result.success = true;
+                    result.data = new
+                    {
+                        COMPROBANTE_RES = contrato.COMPROBANTE_RES,
+                        FECHA = contrato.FECHA.ToString("dd/MM/yyyy"),
+                        FECHA_REG = contrato.FECHA_REG,
+                        FECHA_VENCIMIENTO = contrato.FECHA_VENCIMIENTO,
+                        GLOSA = contrato.GLOSA,
+                        ID_CLIENTE = contrato.ID_CLIENTE,
+                        CLIENTE = contrato.SG_CLIENTES_CPP.RAZON_SOCIAL,
+                        ID_CONTRATO = contrato.ID_CONTRATO,
+                        IMPORTE = contrato.IMPORTE,
+                        NRO_COMP = contrato.NRO_COMP,
+                        OBSERVACIONES = contrato.OBSERVACIONES,
+                        SALDO = contrato.SALDO,
+
+                    };
+                }
+            });
+            return result;
+
+        }
+
+        public DataForm<object> ObtenerAnticipoPorCriterio(System.Linq.Expressions.Expression<Func<SG_ANTICIPOS, bool>> criterio = null)
+        {
+            DataForm<object> result = new DataForm<object>();
+            ExecuteManager(uow =>
+            {
+                var manager = new SG_ANTICIPOSManager(uow);
+                var contrato = manager.BuscarTodos(criterio).FirstOrDefault();
+                if (contrato == null)
+                {
+                    result.success = false;
+                    result.msg = "No existe registro";
+                }
+                else
+                {
+                    result.success = true;
+                    result.data = new
+                    {
+                        FECHA = contrato.FECHA,
+                        GLOSA = contrato.GLOSA,
+                        ID_ANTICIPO = contrato.ID_ANTICIPO,
+                        ID_CAJA = contrato.ID_CAJA,
+                        ID_CONTRATO = contrato.ID_CONTRATO,
+                        ID_EGRESO = contrato.ID_EGRESO,
+                        IMPORTE_BS = contrato.IMPORTE_BS,
+                        NRO_COMP = contrato.NRO_COMP,
+                        OBSERVACION = contrato.OBSERVACION,
+                        CAJA = contrato.SG_CAJAS.NOMBRE
+                    };
+                }
+            });
+            return result;
+        }
+
+
+        public RespuestaSP SP_EliminarAnticipo(int ID_ANTICIPO, int ID_USR)
+        {
+            RespuestaSP result = new RespuestaSP();
+            ExecuteManager(uow =>
+            {
+                var context = (CityTruckContext)uow.Context;
+                ObjectParameter p_res = new ObjectParameter("p_res", typeof(String));
+                context.P_SG_ELIMINAR_ANTICIPO(ID_ANTICIPO, ID_USR, p_res);
+
+                try
+                {
+                    int result_id = Int32.Parse(p_res.Value.ToString());
+                    if (result_id > 0)
+                    {
+                        result.success = true;
+                        result.msg = "Proceso Ejecutado Correctamente";
+                        result.id = result_id;
+                    }
+                    else
+                    {
+                        result.success = false;
+                        result.msg = p_res.Value.ToString();
+                        result.id = -1;
+                    }
+                }
+                catch (FormatException e)
+                {
+                    result.success = false;
+                    result.msg = p_res.Value.ToString();
+                    result.id = -1;
+                }
 
             });
             return result;

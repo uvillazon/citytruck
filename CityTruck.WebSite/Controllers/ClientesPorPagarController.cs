@@ -31,7 +31,7 @@ namespace CityTruck.WebSite.Controllers
                 ID_CLIENTE = x.ID_CLIENTE,
                 CODIGO = x.CODIGO,
                 RAZON_SOCIAL = x.RAZON_SOCIAL,
-                SALDO = x.SG_CONTRATOS == null ? 0: x.SG_CONTRATOS.Sum(y=>y.SALDO),
+                SALDO = x.SALDO,
                 EMAIL = x.EMAIL,
                 NIT = x.NIT,
                 CONTACTO = x.CONTACTO,
@@ -40,6 +40,33 @@ namespace CityTruck.WebSite.Controllers
                 OBSERVACIONES = x.OBSERVACIONES,
                 FECHA_REG = x.FECHA_REG,
                 TOTAL_CONTRATOS = x.SG_CONTRATOS.Count()
+            });
+            var lista = formatData.ToList();
+            //lista = lista.Add(m);
+            JavaScriptSerializer javaScriptSerializer = new JavaScriptSerializer();
+            string callback1 = paginacion.callback + "(" + javaScriptSerializer.Serialize(new { Rows = formatData, Total = paginacion.total }) + ");";
+            return JavaScript(callback1);
+        }
+
+        [AcceptVerbs(HttpVerbs.Get)]
+        public ActionResult ObtenerAmortizacionesPaginado(PagingInfo paginacion, FiltrosModel<CuentasPorPagarModel> filtros, CuentasPorPagarModel entidad)
+        {
+            filtros.Entidad = entidad;
+            var clientes = _serCli.ObtenerAnticiposPaginado(paginacion, filtros);
+            var formatData = clientes.Select(x => new
+            {
+                FECHA = x.FECHA,
+                FECHA_REG = x.FECHA_REG,
+                GLOSA = x.GLOSA,
+                ID_ANTICIPO = x.ID_ANTICIPO,
+                ID_CAJA = x.ID_CAJA,
+                ID_CONTRATO = x.ID_CONTRATO,
+                CAJA = x.SG_CAJAS.NOMBRE,
+                ID_EGRESO = x.ID_EGRESO,
+                IMPORTE_BS = x.IMPORTE_BS,
+                NRO_COMP = x.NRO_COMP,
+                OBSERVACION = x.OBSERVACION,
+                CONCEPTO = x.SG_EGRESOS.CONCEPTO
             });
             var lista = formatData.ToList();
             //lista = lista.Add(m);
@@ -80,6 +107,15 @@ namespace CityTruck.WebSite.Controllers
         }
 
         [HttpPost]
+        public JsonResult EliminarContrato(int ID)
+        {
+            int id_usr = Convert.ToInt32(User.Identity.Name.Split('-')[3]);
+            RespuestaSP respuestaSP = new RespuestaSP();
+            respuestaSP = _serCli.SP_EliminarContrato(ID, id_usr);
+            return Json(respuestaSP);
+        }
+
+        [HttpPost]
         public JsonResult GuardarAnticipo(SG_ANTICIPOS c)
         {
             int id_usr = Convert.ToInt32(User.Identity.Name.Split('-')[3]);
@@ -87,62 +123,29 @@ namespace CityTruck.WebSite.Controllers
             respuestaSP = _serCli.SP_GrabarAnticipo(c, id_usr);
             return Json(respuestaSP);
         }
+        [HttpPost]
+        public JsonResult EliminarAnticipo(int ID)
+        {
+            int id_usr = Convert.ToInt32(User.Identity.Name.Split('-')[3]);
+            RespuestaSP respuestaSP = new RespuestaSP();
+            respuestaSP = _serCli.SP_EliminarAnticipo(ID, id_usr);
+            return Json(respuestaSP);
+        }
 
-        //[AcceptVerbs(HttpVerbs.Get)]
-        //public ActionResult ObtenerClientesPaginado(PagingInfo paginacion)
-        //{
-        //    _serCli.SP_ActualizarConsumos();
-        //    var clientes = _serCli.ObtenerClientesConsumoPaginado(paginacion);
-        //    var formatData = clientes.Select(x => new
-        //    {
-        //        ID_CLIENTE = x.ID_CLIENTE,
-        //        CODIGO = _serCli.ObtenerCliente(y => y.ID_CLIENTE == x.ID_CLIENTE).CODIGO,
-        //        NOMBRE = _serCli.ObtenerCliente(y => y.ID_CLIENTE == x.ID_CLIENTE).NOMBRE,
-        //        DESCRIPCION = x.CLIENTE,
-        //        RESPONSABLE = _serCli.ObtenerCliente(y => y.ID_CLIENTE == x.ID_CLIENTE).RESPONSABLE,
-        //        CONSUMO_BS = x.CONSUMO_BS,
-        //        CONSUMO = x.CONSUMO,
-        //    });
-        //    JavaScriptSerializer javaScriptSerializer = new JavaScriptSerializer();
-        //    string callback1 = paginacion.callback + "(" + javaScriptSerializer.Serialize(new { Rows = formatData, Total = paginacion.total }) + ");";
-        //    return JavaScript(callback1);
-        //}
-        //[AcceptVerbs(HttpVerbs.Get)]
-        //public ActionResult ObtenerConsumosPaginado(PagingInfo paginacion,FiltrosModel<ConsumoDetalleModel>filtros , ConsumoDetalleModel Entidad)
-        //{
-        //    filtros.Entidad = Entidad;
-        //    var clientes = _serCli.ObtenerConsumosPaginado(paginacion,filtros);
-        //    var formatData = clientes.Select(x => new
-        //    {
-        //        ID_CLIENTE = x.ID_CLIENTE,
-        //        CLIENTE = x.SG_CLIENTES_CONSUMO.NOMBRE,
-        //        FECHA = x.FECHA,
-        //        NRO_COMP = x.NRO_COMP,
-        //        TURNO = x.TURNO,
-        //        RESPONSABLE = x.RESPONSABLE,
-        //        CONSUMO = x.IMPORTE_LTS,
-        //        CONSUMO_BS = x.IMPORTE_BS
-        //    });
-        //    JavaScriptSerializer javaScriptSerializer = new JavaScriptSerializer();
-        //    string callback1 = paginacion.callback + "(" + javaScriptSerializer.Serialize(new { Rows = formatData, Total = paginacion.total }) + ");";
-        //    return JavaScript(callback1);
-        //}
+        [HttpPost]
+        public JsonResult ObtenerContratoPorId(int ID_CONTRATO)
+        {
+            int id_usr = Convert.ToInt32(User.Identity.Name.Split('-')[3]);
+            var result = _serCli.ObtenerContratoPorCriterio(x=>x.ID_CONTRATO == ID_CONTRATO);
+            return Json(result);
+        }
 
-        //[HttpPost]
-        //public JsonResult GuardarCliente(SG_CLIENTES_CONSUMO cli)
-        //{
-        //    int id_usr = Convert.ToInt32(User.Identity.Name.Split('-')[3]);
-        //    RespuestaSP respuestaSP = new RespuestaSP();
-        //    respuestaSP = _serCli.SP_GrabarCliente(cli, id_usr);
-        //    return Json(respuestaSP);
-        //}
-        //[HttpPost]
-        //public JsonResult EliminarCliente(int ID_CLIENTE)
-        //{
-        //    int id_usr = Convert.ToInt32(User.Identity.Name.Split('-')[3]);
-        //    RespuestaSP respuestaSP = new RespuestaSP();
-        //    respuestaSP = _serCli.SP_EliminarCliente(ID_CLIENTE, id_usr);
-        //    return Json(respuestaSP);
-        //}
+         [HttpPost]
+        public JsonResult ObtenerAnticipoPorId(int ID_ANTICIPO)
+        {
+            int id_usr = Convert.ToInt32(User.Identity.Name.Split('-')[3]);
+            var result = _serCli.ObtenerAnticipoPorCriterio(x=>x.ID_ANTICIPO == ID_ANTICIPO);
+            return Json(result);
+        }
     }
 }

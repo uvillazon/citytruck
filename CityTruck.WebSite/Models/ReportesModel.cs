@@ -115,6 +115,27 @@ namespace CityTruck.WebSite.Models
         public int NRO_COMPROBANTE { get; set; }
 
     }
+
+    public class ContratoModel
+    {
+        public string CUENTA { get; set; }
+        public string RESPALDO { get; set; }
+        public DateTime FECHA { get; set; }
+        public DateTime? FECHA_VENCIMIENTO { get; set; }
+        public string GLOSA { get; set; }
+        public string OBSERVACION { get; set; }
+        public decimal TOTAL { get; set; }
+        public string TOTAL_LITERAL { get; set; }
+        public string USUARIO { get; set; }
+        public int NRO_COMPROBANTE { get; set; }
+        public string RAZON_SOCIAL { get; set; }
+        public string TELEFONOS { get; set; }
+        public string DIRECCION { get; set; }
+        public string EMAIL { get; set; }
+        public string CAJA { get; set; }
+        public decimal? SALDO_CONTRATO { get; set; }
+
+    }
     public class TransferenciaModel
     {
         public string MES { get; set; }

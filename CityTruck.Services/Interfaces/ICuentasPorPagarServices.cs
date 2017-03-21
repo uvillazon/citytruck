@@ -17,9 +17,15 @@ namespace CityTruck.Services.Interfaces
         IEnumerable<SG_CONTRATOS> ObtenerContratosPaginado(PagingInfo paginacion, FiltrosModel<CuentasPorPagarModel> filtros);
         IEnumerable<SG_ANTICIPOS> ObtenerAnticiposPaginado(PagingInfo paginacion, FiltrosModel<CuentasPorPagarModel> filtros);
 
+        DataForm<object> ObtenerContratoPorCriterio(Expression<Func<SG_CONTRATOS, bool>> criterio = null);
+        DataForm<object> ObtenerAnticipoPorCriterio(Expression<Func<SG_ANTICIPOS, bool>> criterio = null);
+
+
         RespuestaSP SP_GrabarClienteCuentasPorPagar(SG_CLIENTES_CPP cliente, int ID_USR);
         RespuestaSP SP_GrabarContrato(SG_CONTRATOS contrato, int ID_USR);
+        RespuestaSP SP_EliminarContrato(int ID_CONTRATO, int ID_USR);
         RespuestaSP SP_GrabarAnticipo(SG_ANTICIPOS anticipo, int ID_USR);
+        RespuestaSP SP_EliminarAnticipo(int ID_ANTICIPO, int ID_USR);
         //RespuestaSP SP_EliminarCaja(int ID_CAJA, int ID_USR);
 
     }
