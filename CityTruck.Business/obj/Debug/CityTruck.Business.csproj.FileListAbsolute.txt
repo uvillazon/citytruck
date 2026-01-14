@@ -22,3 +22,15 @@ D:\proyectos\CityTruck31122016\CityTruck\CityTruck.Business\bin\Debug\CityTruck.
 D:\proyectos\CityTruck31122016\CityTruck\CityTruck.Business\obj\Debug\CityTruck.Business.csprojResolveAssemblyReference.cache
 D:\proyectos\CityTruck31122016\CityTruck\CityTruck.Business\obj\Debug\CityTruck.Business.dll
 D:\proyectos\CityTruck31122016\CityTruck\CityTruck.Business\obj\Debug\CityTruck.Business.pdb
+D:\Proyectos\citytruck\CityTruck.Business\bin\Debug\CityTruck.Business.dll
+D:\Proyectos\citytruck\CityTruck.Business\bin\Debug\CityTruck.Business.pdb
+D:\Proyectos\citytruck\CityTruck.Business\bin\Debug\CityTruck.Common.Data.dll
+D:\Proyectos\citytruck\CityTruck.Business\bin\Debug\CityTruck.Common.dll
+D:\Proyectos\citytruck\CityTruck.Business\bin\Debug\CityTruck.Model.dll
+D:\Proyectos\citytruck\CityTruck.Business\bin\Debug\System.Data.Entity.dll
+D:\Proyectos\citytruck\CityTruck.Business\bin\Debug\CityTruck.Common.Data.pdb
+D:\Proyectos\citytruck\CityTruck.Business\bin\Debug\CityTruck.Common.pdb
+D:\Proyectos\citytruck\CityTruck.Business\bin\Debug\CityTruck.Model.pdb
+D:\Proyectos\citytruck\CityTruck.Business\obj\Debug\CityTruck.Business.csprojResolveAssemblyReference.cache
+D:\Proyectos\citytruck\CityTruck.Business\obj\Debug\CityTruck.Business.dll
+D:\Proyectos\citytruck\CityTruck.Business\obj\Debug\CityTruck.Business.pdb
