@@ -120,17 +120,12 @@
       <Parameter Name="P_ID_USR" Mode="In" Type="Decimal" />
       <Parameter Name="P_RES" Mode="Out" Type="String" />
     </FunctionImport>
-    <EntitySet Name="SG_AJUSTE_PRECIO" EntityType="Model.SG_AJUSTE_PRECIO" />
     <FunctionImport Name="P_SG_VERIFICAR_EDICION">
       <Parameter Name="P_FECHA" Mode="In" Type="DateTime" />
       <Parameter Name="P_TURNO" Mode="In" Type="String" />
       <Parameter Name="P_RES" Mode="Out" Type="String" />
     </FunctionImport>
     <EntitySet Name="SG_COMBUSTIBLES" EntityType="Model.SG_COMBUSTIBLES" />
-    <AssociationSet Name="SG_AJUSTE_PRECIO_R01" Association="Model.SG_AJUSTE_PRECIO_R01">
-      <End Role="SG_COMBUSTIBLES" EntitySet="SG_COMBUSTIBLES" />
-      <End Role="SG_AJUSTE_PRECIO" EntitySet="SG_AJUSTE_PRECIO" />
-    </AssociationSet>
     <AssociationSet Name="SG_COMPRAS_R01" Association="Model.SG_COMPRAS_R01">
       <End Role="SG_COMBUSTIBLES" EntitySet="SG_COMBUSTIBLES" />
       <End Role="SG_COMPRAS" EntitySet="SG_COMPRAS" />
@@ -286,15 +281,6 @@
       <End Role="SG_TANQUES" EntitySet="SG_TANQUES" />
       <End Role="SG_AJUSTES_TANQUE" EntitySet="SG_AJUSTES_TANQUE" />
     </AssociationSet>
-    <EntitySet Name="SG_POS" EntityType="Model.SG_POS" />
-    <AssociationSet Name="SG_POS_R01" Association="Model.SG_POS_R01">
-      <End Role="SG_COMBUSTIBLES" EntitySet="SG_COMBUSTIBLES" />
-      <End Role="SG_POS" EntitySet="SG_POS" />
-    </AssociationSet>
-    <AssociationSet Name="SG_POS_TURNOS_R01" Association="Model.SG_POS_TURNOS_R01">
-      <End Role="SG_POS" EntitySet="SG_POS" />
-      <End Role="SG_POS_TURNOS" EntitySet="SG_POS_TURNOS" />
-    </AssociationSet>
     <FunctionImport Name="P_SG_SALDOS_MITTERS">
       <Parameter Name="P_RES" Mode="Out" Type="String" />
     </FunctionImport>
@@ -308,10 +294,6 @@
       <Parameter Name="P_RES" Mode="Out" Type="String" />
     </FunctionImport>
     <EntitySet Name="SG_POS_DIA_MN" EntityType="Model.SG_POS_DIA_MN" />
-    <AssociationSet Name="SG_POS_DIA_MN_R01" Association="Model.SG_POS_DIA_MN_R01">
-      <End Role="SG_POS" EntitySet="SG_POS" />
-      <End Role="SG_POS_DIA_MN" EntitySet="SG_POS_DIA_MN" />
-    </AssociationSet>
     <FunctionImport Name="P_SG_GENERAR_POS_DIA_MN">
       <Parameter Name="P_FECHA" Mode="In" Type="DateTime" />
       <Parameter Name="P_ID_USR" Mode="In" Type="Decimal" />
@@ -352,10 +334,6 @@
       <Parameter Name="P_RES" Mode="Out" Type="String" />
     </FunctionImport>
     <EntitySet Name="SG_AJUSTE_POS" EntityType="Model.SG_AJUSTE_POS" />
-    <AssociationSet Name="SG_AJUSTE_POS_R01" Association="Model.SG_AJUSTE_POS_R01">
-      <End Role="SG_POS" EntitySet="SG_POS" />
-      <End Role="SG_AJUSTE_POS" EntitySet="SG_AJUSTE_POS" />
-    </AssociationSet>
     <FunctionImport Name="P_SG_GENERAR_AJUSTE_POS">
       <Parameter Name="P_FECHA" Mode="In" Type="DateTime" />
       <Parameter Name="P_ID_USR" Mode="In" Type="Decimal" />
@@ -376,10 +354,6 @@
     </AssociationSet>
     <AssociationSet Name="SG_CONSUMOS_R01" Association="Model.SG_CONSUMOS_R01">
       <End Role="SG_COMBUSTIBLES" EntitySet="SG_COMBUSTIBLES" />
-      <End Role="SG_CONSUMOS" EntitySet="SG_CONSUMOS" />
-    </AssociationSet>
-    <AssociationSet Name="SG_CONSUMOS_R03" Association="Model.SG_CONSUMOS_R03">
-      <End Role="SG_POS" EntitySet="SG_POS" />
       <End Role="SG_CONSUMOS" EntitySet="SG_CONSUMOS" />
     </AssociationSet>
     <FunctionImport Name="P_SG_GUARDAR_CONSUMO">
@@ -573,6 +547,32 @@
       <Parameter Name="P_ID_USR" Mode="In" Type="Decimal" />
       <Parameter Name="P_RES" Mode="Out" Type="String" />
     </FunctionImport>
+    <EntitySet Name="SG_POS" EntityType="Model.SG_POS" />
+    <AssociationSet Name="SG_AJUSTE_POS_R01" Association="Model.SG_AJUSTE_POS_R01">
+      <End Role="SG_POS" EntitySet="SG_POS" />
+      <End Role="SG_AJUSTE_POS" EntitySet="SG_AJUSTE_POS" />
+    </AssociationSet>
+    <AssociationSet Name="SG_POS_R01" Association="Model.SG_POS_R01">
+      <End Role="SG_COMBUSTIBLES" EntitySet="SG_COMBUSTIBLES" />
+      <End Role="SG_POS" EntitySet="SG_POS" />
+    </AssociationSet>
+    <AssociationSet Name="SG_CONSUMOS_R03" Association="Model.SG_CONSUMOS_R03">
+      <End Role="SG_POS" EntitySet="SG_POS" />
+      <End Role="SG_CONSUMOS" EntitySet="SG_CONSUMOS" />
+    </AssociationSet>
+    <AssociationSet Name="SG_POS_DIA_MN_R01" Association="Model.SG_POS_DIA_MN_R01">
+      <End Role="SG_POS" EntitySet="SG_POS" />
+      <End Role="SG_POS_DIA_MN" EntitySet="SG_POS_DIA_MN" />
+    </AssociationSet>
+    <AssociationSet Name="SG_POS_TURNOS_R01" Association="Model.SG_POS_TURNOS_R01">
+      <End Role="SG_POS" EntitySet="SG_POS" />
+      <End Role="SG_POS_TURNOS" EntitySet="SG_POS_TURNOS" />
+    </AssociationSet>
+    <EntitySet Name="SG_AJUSTE_PRECIO" EntityType="Model.SG_AJUSTE_PRECIO" />
+    <AssociationSet Name="SG_AJUSTE_PRECIO_R01" Association="Model.SG_AJUSTE_PRECIO_R01">
+      <End Role="SG_COMBUSTIBLES" EntitySet="SG_COMBUSTIBLES" />
+      <End Role="SG_AJUSTE_PRECIO" EntitySet="SG_AJUSTE_PRECIO" />
+    </AssociationSet>
   </EntityContainer>
   <EntityType Name="SG_LISTAS">
     <Key>
@@ -975,21 +975,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <EntityType Name="SG_AJUSTE_PRECIO">
-    <Key>
-      <PropertyRef Name="ID_AJUSTE" />
-    </Key>
-    <Property Type="Int32" Name="ID_AJUSTE" Nullable="false" />
-    <Property Type="Int16" Name="ID_COMBUSTIBLE" Nullable="false" />
-    <Property Type="DateTime" Name="FECHA_ALTA" Nullable="false" Precision="0" />
-    <Property Type="DateTime" Name="FECHA_BAJA" Precision="0" />
-    <Property Type="String" Name="TIPO" Nullable="false" MaxLength="250" FixedLength="false" Unicode="false" />
-    <Property Type="Decimal" Name="PRECIO" Nullable="false" Precision="15" Scale="5" />
-    <Property Type="Int16" Name="ID_USUARIO" Nullable="false" />
-    <Property Type="String" Name="ESTADO" Nullable="false" MaxLength="1" FixedLength="false" Unicode="false" />
-    <Property Type="DateTime" Name="FECHA_REG" Precision="0" />
-    <NavigationProperty Name="SG_COMBUSTIBLES" Relationship="Model.SG_AJUSTE_PRECIO_R01" FromRole="SG_AJUSTE_PRECIO" ToRole="SG_COMBUSTIBLES" />
-  </EntityType>
   <EntityType Name="SG_COMBUSTIBLES">
     <Key>
       <PropertyRef Name="ID_COMBUSTIBLE" />
@@ -1002,30 +987,18 @@
     <Property Type="Decimal" Name="PRECIO_COMPRA" Precision="15" Scale="5" />
     <Property Type="String" Name="UNIDAD" Nullable="false" MaxLength="40" FixedLength="false" Unicode="false" />
     <Property Type="String" Name="ESTADO" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
-    <NavigationProperty Name="SG_AJUSTE_PRECIO" Relationship="Model.SG_AJUSTE_PRECIO_R01" FromRole="SG_COMBUSTIBLES" ToRole="SG_AJUSTE_PRECIO" />
     <NavigationProperty Name="SG_COMPRAS" Relationship="Model.SG_COMPRAS_R01" FromRole="SG_COMBUSTIBLES" ToRole="SG_COMPRAS" />
     <NavigationProperty Name="SG_VENTAS_CREDITO" Relationship="Model.SG_VENTAS_CREDITO_R01" FromRole="SG_COMBUSTIBLES" ToRole="SG_VENTAS_CREDITO" />
     <Property Type="Decimal" Name="SALDO_INICIAL" Precision="15" Scale="5" />
     <NavigationProperty Name="SG_TANQUES" Relationship="Model.SG_TANQUES_R01" FromRole="SG_COMBUSTIBLES" ToRole="SG_TANQUES" />
-    <NavigationProperty Name="SG_POS" Relationship="Model.SG_POS_R01" FromRole="SG_COMBUSTIBLES" ToRole="SG_POS" />
     <NavigationProperty Name="SG_KARDEX_COMBUSTIBLE_MN" Relationship="Model.SG_KARDEX_COMBUSTIBLE_MN_R01" FromRole="SG_COMBUSTIBLES" ToRole="SG_KARDEX_COMBUSTIBLE_MN" />
     <NavigationProperty Name="SG_KARDEX_COMBUSTIBLE" Relationship="Model.SG_KARDEX_COMBUSTIBLE_R01" FromRole="SG_COMBUSTIBLES" ToRole="SG_KARDEX_COMBUSTIBLE" />
     <Property Type="Decimal" Name="SALDO_INICIAL_MN" Precision="15" Scale="5" />
     <NavigationProperty Name="SG_CONSUMOS" Relationship="Model.SG_CONSUMOS_R01" FromRole="SG_COMBUSTIBLES" ToRole="SG_CONSUMOS" />
     <NavigationProperty Name="SG_FACTURAS_MN" Relationship="Model.SG_FACTURAS_MN_R01" FromRole="SG_COMBUSTIBLES" ToRole="SG_FACTURAS_MN" />
+    <NavigationProperty Name="SG_POS" Relationship="Model.SG_POS_R01" FromRole="SG_COMBUSTIBLES" ToRole="SG_POS" />
+    <NavigationProperty Name="SG_AJUSTE_PRECIO" Relationship="Model.SG_AJUSTE_PRECIO_R01" FromRole="SG_COMBUSTIBLES" ToRole="SG_AJUSTE_PRECIO" />
   </EntityType>
-  <Association Name="SG_AJUSTE_PRECIO_R01">
-    <End Type="Model.SG_COMBUSTIBLES" Role="SG_COMBUSTIBLES" Multiplicity="1" />
-    <End Type="Model.SG_AJUSTE_PRECIO" Role="SG_AJUSTE_PRECIO" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="SG_COMBUSTIBLES">
-        <PropertyRef Name="ID_COMBUSTIBLE" />
-      </Principal>
-      <Dependent Role="SG_AJUSTE_PRECIO">
-        <PropertyRef Name="ID_COMBUSTIBLE" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="SG_COMPRAS_R01">
     <End Type="Model.SG_COMBUSTIBLES" Role="SG_COMBUSTIBLES" Multiplicity="1" />
     <End Type="Model.SG_COMPRAS" Role="SG_COMPRAS" Multiplicity="*" />
@@ -1155,49 +1128,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <EntityType Name="SG_POS">
-    <Key>
-      <PropertyRef Name="ID_POS" />
-    </Key>
-    <Property Type="Int32" Name="ID_POS" Nullable="false" />
-    <Property Type="String" Name="CODIGO" Nullable="false" MaxLength="40" FixedLength="false" Unicode="false" />
-    <Property Type="Int16" Name="ID_COMBUSTIBLE" Nullable="false" />
-    <Property Type="Decimal" Name="ENT_LITTER_INI" Nullable="false" Precision="15" Scale="5" />
-    <Property Type="Decimal" Name="LITTER_ACT" Nullable="false" Precision="15" Scale="5" />
-    <Property Type="String" Name="ESTADO" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
-    <Property Type="String" Name="DESCRIPCION" MaxLength="300" FixedLength="false" Unicode="false" />
-    <Property Type="Decimal" Name="ENT_LITTER_INI_MN" Precision="15" Scale="5" />
-    <Property Type="Decimal" Name="LITTER_ACT_MN" Precision="15" Scale="5" />
-    <NavigationProperty Name="SG_COMBUSTIBLES" Relationship="Model.SG_POS_R01" FromRole="SG_POS" ToRole="SG_COMBUSTIBLES" />
-    <NavigationProperty Name="SG_POS_TURNOS" Relationship="Model.SG_POS_TURNOS_R01" FromRole="SG_POS" ToRole="SG_POS_TURNOS" />
-    <NavigationProperty Name="SG_POS_DIA_MN" Relationship="Model.SG_POS_DIA_MN_R01" FromRole="SG_POS" ToRole="SG_POS_DIA_MN" />
-    <NavigationProperty Name="SG_AJUSTE_POS" Relationship="Model.SG_AJUSTE_POS_R01" FromRole="SG_POS" ToRole="SG_AJUSTE_POS" />
-    <NavigationProperty Name="SG_CONSUMOS" Relationship="Model.SG_CONSUMOS_R03" FromRole="SG_POS" ToRole="SG_CONSUMOS" />
-  </EntityType>
-  <Association Name="SG_POS_R01">
-    <End Type="Model.SG_COMBUSTIBLES" Role="SG_COMBUSTIBLES" Multiplicity="1" />
-    <End Type="Model.SG_POS" Role="SG_POS" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="SG_COMBUSTIBLES">
-        <PropertyRef Name="ID_COMBUSTIBLE" />
-      </Principal>
-      <Dependent Role="SG_POS">
-        <PropertyRef Name="ID_COMBUSTIBLE" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="SG_POS_TURNOS_R01">
-    <End Type="Model.SG_POS" Role="SG_POS" Multiplicity="1" />
-    <End Type="Model.SG_POS_TURNOS" Role="SG_POS_TURNOS" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="SG_POS">
-        <PropertyRef Name="ID_POS" />
-      </Principal>
-      <Dependent Role="SG_POS_TURNOS">
-        <PropertyRef Name="ID_POS" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <EntityType Name="SG_KARDEX_COMBUSTIBLE_MN">
     <Key>
       <PropertyRef Name="ID_KARDEX" />
@@ -1240,18 +1170,6 @@
     <Property Type="DateTime" Name="FECHA_REG" Precision="0" />
     <NavigationProperty Name="SG_POS" Relationship="Model.SG_POS_DIA_MN_R01" FromRole="SG_POS_DIA_MN" ToRole="SG_POS" />
   </EntityType>
-  <Association Name="SG_POS_DIA_MN_R01">
-    <End Type="Model.SG_POS" Role="SG_POS" Multiplicity="1" />
-    <End Type="Model.SG_POS_DIA_MN" Role="SG_POS_DIA_MN" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="SG_POS">
-        <PropertyRef Name="ID_POS" />
-      </Principal>
-      <Dependent Role="SG_POS_DIA_MN">
-        <PropertyRef Name="ID_POS" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <EntityType Name="SG_KARDEX_COMBUSTIBLE">
     <Key>
       <PropertyRef Name="ID_KARDEX" />
@@ -1290,18 +1208,6 @@
     <Property Type="DateTime" Name="FECHA_REG" Precision="0" />
     <NavigationProperty Name="SG_POS" Relationship="Model.SG_AJUSTE_POS_R01" FromRole="SG_AJUSTE_POS" ToRole="SG_POS" />
   </EntityType>
-  <Association Name="SG_AJUSTE_POS_R01">
-    <End Type="Model.SG_POS" Role="SG_POS" Multiplicity="1" />
-    <End Type="Model.SG_AJUSTE_POS" Role="SG_AJUSTE_POS" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="SG_POS">
-        <PropertyRef Name="ID_POS" />
-      </Principal>
-      <Dependent Role="SG_AJUSTE_POS">
-        <PropertyRef Name="ID_POS" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <EntityType Name="SG_CONSUMOS">
     <Key>
       <PropertyRef Name="ID_CONSUMO" />
@@ -1345,18 +1251,6 @@
       </Principal>
       <Dependent Role="SG_CONSUMOS">
         <PropertyRef Name="ID_COMBUSTIBLE" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="SG_CONSUMOS_R03">
-    <End Type="Model.SG_POS" Role="SG_POS" Multiplicity="0..1" />
-    <End Type="Model.SG_CONSUMOS" Role="SG_CONSUMOS" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="SG_POS">
-        <PropertyRef Name="ID_POS" />
-      </Principal>
-      <Dependent Role="SG_CONSUMOS">
-        <PropertyRef Name="ID_POS" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -1601,4 +1495,120 @@
     <Property Type="Int16" Name="ID_USUARIO" Nullable="false" />
     <Property Type="DateTime" Name="FECHA_REG" Precision="0" />
   </EntityType>
+  <EntityType Name="SG_POS">
+    <Key>
+      <PropertyRef Name="ID_POS" />
+    </Key>
+    <Property Type="Int32" Name="ID_POS" Nullable="false" />
+    <Property Type="String" Name="CODIGO" Nullable="false" MaxLength="40" FixedLength="false" Unicode="false" />
+    <Property Type="Int16" Name="ID_COMBUSTIBLE" Nullable="false" />
+    <Property Type="Decimal" Name="ENT_LITTER_INI" Nullable="false" Precision="15" Scale="5" />
+    <Property Type="Decimal" Name="LITTER_ACT" Nullable="false" Precision="15" Scale="5" />
+    <Property Type="String" Name="ESTADO" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Type="String" Name="DESCRIPCION" MaxLength="300" FixedLength="false" Unicode="false" />
+    <Property Type="Decimal" Name="ENT_LITTER_INI_MN" Precision="15" Scale="5" />
+    <Property Type="Decimal" Name="LITTER_ACT_MN" Precision="15" Scale="5" />
+    <Property Type="Int16" Name="MEDIDOR_DECIMALES" Nullable="false" />
+    <Property Type="String" Name="MEDIDOR_ROLLOVER" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Type="Decimal" Name="MEDIDOR_MAX_VALOR" Precision="15" Scale="5" />
+    <Property Type="Decimal" Name="LECTURA_ANTERIOR" Precision="15" Scale="5" />
+    <Property Type="Int32" Name="ROLLOVER_CONTADOR" Nullable="false" />
+    <Property Type="Decimal" Name="ACUMULADO_TOTAL" Nullable="false" Precision="20" Scale="5" />
+    <NavigationProperty Name="SG_AJUSTE_POS" Relationship="Model.SG_AJUSTE_POS_R01" FromRole="SG_POS" ToRole="SG_AJUSTE_POS" />
+    <NavigationProperty Name="SG_COMBUSTIBLES" Relationship="Model.SG_POS_R01" FromRole="SG_POS" ToRole="SG_COMBUSTIBLES" />
+    <NavigationProperty Name="SG_CONSUMOS" Relationship="Model.SG_CONSUMOS_R03" FromRole="SG_POS" ToRole="SG_CONSUMOS" />
+    <NavigationProperty Name="SG_POS_DIA_MN" Relationship="Model.SG_POS_DIA_MN_R01" FromRole="SG_POS" ToRole="SG_POS_DIA_MN" />
+    <NavigationProperty Name="SG_POS_TURNOS" Relationship="Model.SG_POS_TURNOS_R01" FromRole="SG_POS" ToRole="SG_POS_TURNOS" />
+  </EntityType>
+  <Association Name="SG_AJUSTE_POS_R01">
+    <End Type="Model.SG_POS" Role="SG_POS" Multiplicity="1" />
+    <End Type="Model.SG_AJUSTE_POS" Role="SG_AJUSTE_POS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SG_POS">
+        <PropertyRef Name="ID_POS" />
+      </Principal>
+      <Dependent Role="SG_AJUSTE_POS">
+        <PropertyRef Name="ID_POS" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="SG_POS_R01">
+    <End Type="Model.SG_COMBUSTIBLES" Role="SG_COMBUSTIBLES" Multiplicity="1" />
+    <End Type="Model.SG_POS" Role="SG_POS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SG_COMBUSTIBLES">
+        <PropertyRef Name="ID_COMBUSTIBLE" />
+      </Principal>
+      <Dependent Role="SG_POS">
+        <PropertyRef Name="ID_COMBUSTIBLE" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="SG_CONSUMOS_R03">
+    <End Type="Model.SG_POS" Role="SG_POS" Multiplicity="0..1" />
+    <End Type="Model.SG_CONSUMOS" Role="SG_CONSUMOS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SG_POS">
+        <PropertyRef Name="ID_POS" />
+      </Principal>
+      <Dependent Role="SG_CONSUMOS">
+        <PropertyRef Name="ID_POS" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="SG_POS_DIA_MN_R01">
+    <End Type="Model.SG_POS" Role="SG_POS" Multiplicity="1" />
+    <End Type="Model.SG_POS_DIA_MN" Role="SG_POS_DIA_MN" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SG_POS">
+        <PropertyRef Name="ID_POS" />
+      </Principal>
+      <Dependent Role="SG_POS_DIA_MN">
+        <PropertyRef Name="ID_POS" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="SG_POS_TURNOS_R01">
+    <End Type="Model.SG_POS" Role="SG_POS" Multiplicity="1" />
+    <End Type="Model.SG_POS_TURNOS" Role="SG_POS_TURNOS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SG_POS">
+        <PropertyRef Name="ID_POS" />
+      </Principal>
+      <Dependent Role="SG_POS_TURNOS">
+        <PropertyRef Name="ID_POS" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="SG_AJUSTE_PRECIO">
+    <Key>
+      <PropertyRef Name="ID_AJUSTE" />
+    </Key>
+    <Property Type="Int32" Name="ID_AJUSTE" Nullable="false" />
+    <Property Type="Int16" Name="ID_COMBUSTIBLE" Nullable="false" />
+    <Property Type="DateTime" Name="FECHA_ALTA" Nullable="false" Precision="0" />
+    <Property Type="DateTime" Name="FECHA_BAJA" Precision="0" />
+    <Property Type="String" Name="TIPO" Nullable="false" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Type="Decimal" Name="PRECIO" Nullable="false" Precision="15" Scale="5" />
+    <Property Type="Int16" Name="ID_USUARIO" Nullable="false" />
+    <Property Type="String" Name="ESTADO" Nullable="false" MaxLength="1" FixedLength="false" Unicode="false" />
+    <Property Type="DateTime" Name="FECHA_REG" Precision="0" />
+    <Property Type="DateTime" Name="FECHA_VIG_DESDE" Nullable="false" Precision="0" />
+    <Property Type="DateTime" Name="FECHA_VIG_HASTA" Precision="0" />
+    <Property Type="Decimal" Name="PRECIO_ANTERIOR" Precision="15" Scale="5" />
+    <Property Type="String" Name="OBSERVACION" MaxLength="500" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="SG_COMBUSTIBLES" Relationship="Model.SG_AJUSTE_PRECIO_R01" FromRole="SG_AJUSTE_PRECIO" ToRole="SG_COMBUSTIBLES" />
+  </EntityType>
+  <Association Name="SG_AJUSTE_PRECIO_R01">
+    <End Type="Model.SG_COMBUSTIBLES" Role="SG_COMBUSTIBLES" Multiplicity="1" />
+    <End Type="Model.SG_AJUSTE_PRECIO" Role="SG_AJUSTE_PRECIO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SG_COMBUSTIBLES">
+        <PropertyRef Name="ID_COMBUSTIBLE" />
+      </Principal>
+      <Dependent Role="SG_AJUSTE_PRECIO">
+        <PropertyRef Name="ID_COMBUSTIBLE" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
 </Schema>

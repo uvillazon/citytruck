@@ -56,26 +56,57 @@ namespace CityTruck.WebSite.Controllers
         }
 
         [AcceptVerbs(HttpVerbs.Get)]
-        public ActionResult ObtenerPosCombustiblesPaginado(PagingInfo paginacion)
+        public ActionResult ObtenerPosCombustiblesPaginado(PagingInfo paginacion, FiltrosModel<CombustiblesModel> filtros, CombustiblesModel model)
         {
-            var cajas = _serCom.ObtenerPosCombustiblesPaginado(paginacion);
+            filtros.Entidad = model;
+            var cajas = _serCom.ObtenerPosCombustiblesPaginado(paginacion,filtros);
             var formattData = cajas.Select(x => new
             {
                 ID_POS = x.ID_POS,
                 ID_COMBUSTIBLE = x.ID_COMBUSTIBLE,
+                COMBUSTIBLE = x.SG_COMBUSTIBLES.NOMBRE,
                 CODIGO = x.CODIGO,
                 DESCRIPCION = x.DESCRIPCION,
                 LITTER_ACT_MN = x.LITTER_ACT_MN,
                 ENT_LITTER_INI = x.ENT_LITTER_INI,
                 ENT_LITTER_INI_MN = x.ENT_LITTER_INI_MN,
                 LITTER_ACT = x.LITTER_ACT,
-                ESTADO = x.ESTADO
+                ESTADO = x.ESTADO,
+                LECTURA_ANTERIOR = x.LECTURA_ANTERIOR,
+                MEDIDOR_DECIMALES = x.MEDIDOR_DECIMALES,
+                MEDIDOR_MAX_VALOR = x.MEDIDOR_MAX_VALOR,
+                MEDIDOR_ROLLOVER = x.MEDIDOR_ROLLOVER,
+                ROLLOVER_CONTADOR = x.ROLLOVER_CONTADOR,
+                ACUMULADO_TOTAL = x.ACUMULADO_TOTAL,
             });
             JavaScriptSerializer javaScriptSerializer = new JavaScriptSerializer();
             string callback1 = paginacion.callback + "(" + javaScriptSerializer.Serialize(new { Rows = formattData, Total = paginacion.total }) + ");";
             return JavaScript(callback1);
         }
-
+        [AcceptVerbs(HttpVerbs.Get)]
+        public ActionResult ObtenerAjustesPreciosPaginado(PagingInfo paginacion, FiltrosModel<CombustiblesModel> filtros, CombustiblesModel model)
+        {
+            filtros.Entidad = model;
+            var precios = _serCom.ObtenerAjustesPreciosPaginado(paginacion, filtros);
+            var formatData = precios.Select(x => new
+            {
+                PRECIO = x.PRECIO,
+                CONBUSTIBLE = x.SG_COMBUSTIBLES.NOMBRE,
+                TIPO = x.TIPO,
+                ESTADO = x.ESTADO,
+                FECHA_ALTA = x.FECHA_ALTA,
+                FECHA_REG = x.FECHA_REG,
+                FECHA_VIG_DESDE = x.FECHA_VIG_DESDE,
+                FECHA_VIG_HASTA = x.FECHA_VIG_HASTA,
+                ID_AJUSTE = x.ID_AJUSTE,
+                ID_COMBUSTIBLE = x.ID_COMBUSTIBLE,
+                OBSERVACION = x.OBSERVACION,
+                PRECIO_ANTERIOR = x.PRECIO_ANTERIOR
+            });
+            JavaScriptSerializer javaScriptSerializer = new JavaScriptSerializer();
+            string callback1 = paginacion.callback + "(" + javaScriptSerializer.Serialize(new { Rows = formatData, Total = paginacion.total }) + ");";
+            return JavaScript(callback1);
+        }
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult ObtenerAjustesPaginado(PagingInfo paginacion)
         {

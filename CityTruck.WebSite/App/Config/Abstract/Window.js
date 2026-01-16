@@ -1,106 +1,127 @@
 Ext.define("App.Config.Abstract.Window", {
-    extend: "Ext.Window",
+    extend: "Ext.window.Window",
     layout: 'fit',
-    //width: 550,
-    //height: 390,
-    maxWidth: Constantes.MAXANCHO,
-    maxHeight: Constantes.MAXALTO,
-    resizable: true,
-    draggable: false,
+
     modal: true,
     closable: false,
-    autoScroll: true,
-    //iconCls: 'application_form_add',
-    botones: true,
-    y: 20,
+    resizable: true,
+    draggable: true,
     constrain: true,
-    botones: false,
+    constrainHeader: true,
+    maximizable: true,
+
+    // ✅ Por defecto NO uses porcentaje
+    width: null,
+    height: null,
+
+    // ✅ Límites para que no quede ni muy chica ni gigante
+    minWidth: 520,
+    minHeight: 260,
+    maxWidth: Constantes.MAXANCHO,
+    maxHeight: Constantes.MAXALTO,
+
+    // ✅ Control: cuando quieras grande, lo activas
+    usarPorcentaje: false,
+    porcentajeW: 0.8,
+    porcentajeH: 0.8,
+
+    botones: true,
     mostrarBotonCerrar: false,
-    btn3: null,
-    btn4: null,
-    buttons: '',
     textGuardar: 'Guardar',
     textCerrar: 'Cerrar',
-    gridLoads: null,
     destruirWin: false,
+    gridLoads: null,
+
     initComponent: function () {
         var me = this;
+
+        me.buildButtons();
+
+        me.listeners = Ext.apply(me.listeners || {}, {
+            afterrender: function () {
+                // Si quieres que sea grande (80% pantalla), úsalo explícitamente
+                if (me.usarPorcentaje) {
+                    var vp = Ext.Element.getViewportWidth(),
+                        vh = Ext.Element.getViewportHeight();
+
+                    me.setSize(
+                        Math.min(me.maxWidth || vp, Math.floor(vp * me.porcentajeW)),
+                        Math.min(me.maxHeight || vh, Math.floor(vh * me.porcentajeH))
+                    );
+                    me.center();
+                    return;
+                }
+
+                // ✅ Auto-ajustar al contenido (form/panel)
+                me.doLayout();
+
+                // Tamaño ideal según contenido
+                var w = me.getWidth(),
+                    h = me.getHeight();
+
+                // Si quedó muy grande, respeta max
+                if (me.maxWidth && w > me.maxWidth) w = me.maxWidth;
+                if (me.maxHeight && h > me.maxHeight) h = me.maxHeight;
+
+                // Si quedó muy chico, respeta min
+                if (me.minWidth && w < me.minWidth) w = me.minWidth;
+                if (me.minHeight && h < me.minHeight) h = me.minHeight;
+
+                me.setSize(w, h);
+                me.center();
+            }
+        });
+
+        this.callParent(arguments);
+    },
+
+    buildButtons: function () {
+        var me = this;
+
         if (!me.botones) {
-            if (this.buttons == '') {
-                this.buttons = [{
+            if (!me.buttons || me.buttons === '') {
+                me.buttons = [{
                     xtype: 'button',
                     text: me.textCerrar,
                     iconCls: 'cross',
                     minHeight: 27,
                     minWidth: 80,
-                    scope: this,
                     hidden: me.mostrarBotonCerrar,
+                    scope: me,
                     handler: me.CerrarVentana
-                    //handler: function () {
-                    //    //this.up('form').getForm().reset();
-                    //    this.up('window').hide();
-                    //    //this.up('window').maximize();
-                    //    //this.maximize();
-                    //    //this.toFront();
-                    //}
-
-                }
-                ];
+                }];
             }
-            else {
-                this.buttons = this.buttons;
-            }
+            return;
         }
-        else {
-            this.btn_cerrar = Ext.create('Ext.Button', {
-                text: me.textCerrar,
-                minHeight: 27,
-                minWidth: 80,
-                itemId: 'btn_cerrar',
-                textAlign: 'center',
-                //margin: 10,
-                iconCls: 'cross',
-                scope: this,
-                hidden: me.mostrarBotonCerrar,
-                handler: me.CerrarVentana
-                //handler: function () {
-                //    this.up('window').hide();
 
+        me.btn_cerrar = Ext.create('Ext.Button', {
+            text: me.textCerrar,
+            minHeight: 27,
+            minWidth: 80,
+            iconCls: 'cross',
+            hidden: me.mostrarBotonCerrar,
+            scope: me,
+            handler: me.CerrarVentana
+        });
 
-                //}
+        me.btn_guardar = Ext.create('Ext.Button', {
+            text: me.textGuardar,
+            minHeight: 27,
+            minWidth: 80,
+            iconCls: 'disk'
+        });
 
-            });
-            this.btn_guardar = Ext.create('Ext.Button', {
-                text: me.textGuardar,
-                minHeight: 27,
-                minWidth: 80,
-                itemId: me.itemId == '' ? 'btn_guardar' : me.itemId,
-                textAlign: 'center',
-                iconCls: 'disk',
-                //margin: 10,
-
-            });
-            if (this.btn3 != null) {
-                this.btn3.removeCls("botones");
-            }
-            if (this.btn4 != null) {
-                this.btn4.removeCls("botones");
-            }
-            this.buttons = [this.btn4, this.btn3, this.btn_guardar, this.btn_cerrar];
-        }
-        //       var me = this;
-        //        me.on('minimize', me.minimizar,this);
-        this.callParent(arguments);
+        me.buttons = [me.btn4, me.btn3, me.btn_guardar, me.btn_cerrar];
     },
+
     CerrarVentana: function () {
         var me = this;
         !me.destruirWin ? me.hide() : me.close();
-        //me.hide();
-        if (me.gridLoads != null) {
-            for (i = 0 ; i < me.gridLoads.length ; i++) {
+
+        if (me.gridLoads) {
+            for (var i = 0; i < me.gridLoads.length; i++) {
                 me.gridLoads[i].getStore().load();
             }
         }
-        //this.up('window').hide();
     }
 });

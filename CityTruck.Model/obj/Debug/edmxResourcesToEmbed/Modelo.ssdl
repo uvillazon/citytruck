@@ -207,6 +207,10 @@
     <Property Name="ID_USUARIO" Type="number" Nullable="false" Precision="5" />
     <Property Name="ESTADO" Type="varchar2" Nullable="false" MaxLength="1" />
     <Property Name="FECHA_REG" Type="date" />
+    <Property Name="FECHA_VIG_DESDE" Type="date" Nullable="false" />
+    <Property Name="FECHA_VIG_HASTA" Type="date" />
+    <Property Name="PRECIO_ANTERIOR" Type="number" Precision="15" Scale="5" />
+    <Property Name="OBSERVACION" Type="varchar2" MaxLength="500" />
   </EntityType>
   <EntityType Name="SG_AJUSTES_TANQUE">
     <Key>
@@ -605,6 +609,12 @@
     <Property Name="DESCRIPCION" Type="varchar2" MaxLength="300" />
     <Property Name="ENT_LITTER_INI_MN" Type="number" Precision="15" Scale="5" />
     <Property Name="LITTER_ACT_MN" Type="number" Precision="15" Scale="5" />
+    <Property Name="MEDIDOR_DECIMALES" Type="number" Nullable="false" Precision="2" />
+    <Property Name="MEDIDOR_ROLLOVER" Type="char" Nullable="false" MaxLength="1" />
+    <Property Name="MEDIDOR_MAX_VALOR" Type="number" Precision="15" Scale="5" />
+    <Property Name="LECTURA_ANTERIOR" Type="number" Precision="15" Scale="5" />
+    <Property Name="ROLLOVER_CONTADOR" Type="number" Nullable="false" Precision="10" />
+    <Property Name="ACUMULADO_TOTAL" Type="number" Nullable="false" Precision="20" Scale="5" />
   </EntityType>
   <EntityType Name="SG_POS_DIA_MN">
     <Key>

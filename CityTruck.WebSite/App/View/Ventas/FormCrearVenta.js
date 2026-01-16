@@ -8,6 +8,7 @@
         var me = this;
         me.CargarComponentes();
         me.cargarEventos();
+        me.CargarStoreFecha();
         this.callParent(arguments);
     },
     CargarStoreFecha: function (fecha1) {
@@ -15,6 +16,7 @@
         var fecha = fecha1 == null ? new Date() : fecha1;
         me.store_precio = Ext.create("App.Store.Ventas.Precios");
         me.store_precio.setExtraParams({ FECHA: fecha });
+        me.store_precio.load();
     },
     CargarFecha: function (store) {
         var me = this;

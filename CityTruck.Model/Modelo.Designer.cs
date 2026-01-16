@@ -31,21 +31,15 @@ using System.Xml.Serialization;
 [assembly: EdmRelationshipAttribute("Model", "SG_KARDEX_CLIENTE_R01", "SG_CLIENTES", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(CityTruck.Model.SG_CLIENTES), "SG_KARDEX_CLIENTE", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(CityTruck.Model.SG_KARDEX_CLIENTE), true)]
 [assembly: EdmRelationshipAttribute("Model", "SG_VENTAS_CREDITO_R02", "SG_CLIENTES", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(CityTruck.Model.SG_CLIENTES), "SG_VENTAS_CREDITO", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(CityTruck.Model.SG_VENTAS_CREDITO), true)]
 [assembly: EdmRelationshipAttribute("Model", "SG_KARDEX_EFECTIVO_R01", "SG_CAJAS", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(CityTruck.Model.SG_CAJAS), "SG_KARDEX_EFECTIVO", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(CityTruck.Model.SG_KARDEX_EFECTIVO), true)]
-[assembly: EdmRelationshipAttribute("Model", "SG_AJUSTE_PRECIO_R01", "SG_COMBUSTIBLES", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(CityTruck.Model.SG_COMBUSTIBLES), "SG_AJUSTE_PRECIO", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(CityTruck.Model.SG_AJUSTE_PRECIO), true)]
 [assembly: EdmRelationshipAttribute("Model", "SG_COMPRAS_R01", "SG_COMBUSTIBLES", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(CityTruck.Model.SG_COMBUSTIBLES), "SG_COMPRAS", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(CityTruck.Model.SG_COMPRAS), true)]
 [assembly: EdmRelationshipAttribute("Model", "SG_VENTAS_CREDITO_R01", "SG_COMBUSTIBLES", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(CityTruck.Model.SG_COMBUSTIBLES), "SG_VENTAS_CREDITO", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(CityTruck.Model.SG_VENTAS_CREDITO), true)]
 [assembly: EdmRelationshipAttribute("Model", "SG_DETALLES_COMPRAS_R01", "SG_COMPRAS", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(CityTruck.Model.SG_COMPRAS), "SG_DETALLES_COMPRAS", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(CityTruck.Model.SG_DETALLES_COMPRAS), true)]
 [assembly: EdmRelationshipAttribute("Model", "SG_TANQUES_R01", "SG_COMBUSTIBLES", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(CityTruck.Model.SG_COMBUSTIBLES), "SG_TANQUES", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(CityTruck.Model.SG_TANQUES), true)]
 [assembly: EdmRelationshipAttribute("Model", "SG_AJUSTES_TANQUE_R01", "SG_TANQUES", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(CityTruck.Model.SG_TANQUES), "SG_AJUSTES_TANQUE", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(CityTruck.Model.SG_AJUSTES_TANQUE), true)]
-[assembly: EdmRelationshipAttribute("Model", "SG_POS_R01", "SG_COMBUSTIBLES", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(CityTruck.Model.SG_COMBUSTIBLES), "SG_POS", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(CityTruck.Model.SG_POS), true)]
-[assembly: EdmRelationshipAttribute("Model", "SG_POS_TURNOS_R01", "SG_POS", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(CityTruck.Model.SG_POS), "SG_POS_TURNOS", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(CityTruck.Model.SG_POS_TURNOS), true)]
 [assembly: EdmRelationshipAttribute("Model", "SG_KARDEX_COMBUSTIBLE_MN_R01", "SG_COMBUSTIBLES", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(CityTruck.Model.SG_COMBUSTIBLES), "SG_KARDEX_COMBUSTIBLE_MN", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(CityTruck.Model.SG_KARDEX_COMBUSTIBLE_MN), true)]
-[assembly: EdmRelationshipAttribute("Model", "SG_POS_DIA_MN_R01", "SG_POS", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(CityTruck.Model.SG_POS), "SG_POS_DIA_MN", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(CityTruck.Model.SG_POS_DIA_MN), true)]
 [assembly: EdmRelationshipAttribute("Model", "SG_KARDEX_COMBUSTIBLE_R01", "SG_COMBUSTIBLES", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(CityTruck.Model.SG_COMBUSTIBLES), "SG_KARDEX_COMBUSTIBLE", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(CityTruck.Model.SG_KARDEX_COMBUSTIBLE), true)]
-[assembly: EdmRelationshipAttribute("Model", "SG_AJUSTE_POS_R01", "SG_POS", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(CityTruck.Model.SG_POS), "SG_AJUSTE_POS", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(CityTruck.Model.SG_AJUSTE_POS), true)]
 [assembly: EdmRelationshipAttribute("Model", "SG_CONSUMOS_R02", "SG_CLIENTES_CONSUMO", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(CityTruck.Model.SG_CLIENTES_CONSUMO), "SG_CONSUMOS", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(CityTruck.Model.SG_CONSUMOS), true)]
 [assembly: EdmRelationshipAttribute("Model", "SG_CONSUMOS_R01", "SG_COMBUSTIBLES", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(CityTruck.Model.SG_COMBUSTIBLES), "SG_CONSUMOS", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(CityTruck.Model.SG_CONSUMOS), true)]
-[assembly: EdmRelationshipAttribute("Model", "SG_CONSUMOS_R03", "SG_POS", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(CityTruck.Model.SG_POS), "SG_CONSUMOS", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(CityTruck.Model.SG_CONSUMOS), true)]
 [assembly: EdmRelationshipAttribute("Model", "SG_INGRESOS_R01", "SG_CAJAS", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(CityTruck.Model.SG_CAJAS), "SG_INGRESOS", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(CityTruck.Model.SG_INGRESOS), true)]
 [assembly: EdmRelationshipAttribute("Model", "SG_TRANSFERENCIAS_R01", "SG_CAJAS", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(CityTruck.Model.SG_CAJAS), "SG_TRANSFERENCIAS", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(CityTruck.Model.SG_TRANSFERENCIAS), true)]
 [assembly: EdmRelationshipAttribute("Model", "SG_TRANSFERENCIAS_R02", "SG_CAJAS", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(CityTruck.Model.SG_CAJAS), "SG_TRANSFERENCIAS", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(CityTruck.Model.SG_TRANSFERENCIAS), true)]
@@ -55,6 +49,12 @@ using System.Xml.Serialization;
 [assembly: EdmRelationshipAttribute("Model", "SG_ANTICIPOS_R02", "SG_EGRESOS", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(CityTruck.Model.SG_EGRESOS), "SG_ANTICIPOS", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(CityTruck.Model.SG_ANTICIPOS), true)]
 [assembly: EdmRelationshipAttribute("Model", "SG_ANTICIPOS_R03", "SG_CAJAS", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(CityTruck.Model.SG_CAJAS), "SG_ANTICIPOS", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(CityTruck.Model.SG_ANTICIPOS), true)]
 [assembly: EdmRelationshipAttribute("Model", "SG_CONTRATOS_R01", "SG_CLIENTES_CPP", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(CityTruck.Model.SG_CLIENTES_CPP), "SG_CONTRATOS", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(CityTruck.Model.SG_CONTRATOS), true)]
+[assembly: EdmRelationshipAttribute("Model", "SG_AJUSTE_POS_R01", "SG_POS", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(CityTruck.Model.SG_POS), "SG_AJUSTE_POS", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(CityTruck.Model.SG_AJUSTE_POS), true)]
+[assembly: EdmRelationshipAttribute("Model", "SG_POS_R01", "SG_COMBUSTIBLES", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(CityTruck.Model.SG_COMBUSTIBLES), "SG_POS", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(CityTruck.Model.SG_POS), true)]
+[assembly: EdmRelationshipAttribute("Model", "SG_CONSUMOS_R03", "SG_POS", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(CityTruck.Model.SG_POS), "SG_CONSUMOS", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(CityTruck.Model.SG_CONSUMOS), true)]
+[assembly: EdmRelationshipAttribute("Model", "SG_POS_DIA_MN_R01", "SG_POS", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(CityTruck.Model.SG_POS), "SG_POS_DIA_MN", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(CityTruck.Model.SG_POS_DIA_MN), true)]
+[assembly: EdmRelationshipAttribute("Model", "SG_POS_TURNOS_R01", "SG_POS", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(CityTruck.Model.SG_POS), "SG_POS_TURNOS", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(CityTruck.Model.SG_POS_TURNOS), true)]
+[assembly: EdmRelationshipAttribute("Model", "SG_AJUSTE_PRECIO_R01", "SG_COMBUSTIBLES", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(CityTruck.Model.SG_COMBUSTIBLES), "SG_AJUSTE_PRECIO", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(CityTruck.Model.SG_AJUSTE_PRECIO), true)]
 
 #endregion
 
@@ -365,22 +365,6 @@ namespace CityTruck.Model
         /// <summary>
         /// No hay documentación de metadatos disponible.
         /// </summary>
-        public ObjectSet<SG_AJUSTE_PRECIO> SG_AJUSTE_PRECIO
-        {
-            get
-            {
-                if ((_SG_AJUSTE_PRECIO == null))
-                {
-                    _SG_AJUSTE_PRECIO = base.CreateObjectSet<SG_AJUSTE_PRECIO>("SG_AJUSTE_PRECIO");
-                }
-                return _SG_AJUSTE_PRECIO;
-            }
-        }
-        private ObjectSet<SG_AJUSTE_PRECIO> _SG_AJUSTE_PRECIO;
-    
-        /// <summary>
-        /// No hay documentación de metadatos disponible.
-        /// </summary>
         public ObjectSet<SG_COMBUSTIBLES> SG_COMBUSTIBLES
         {
             get
@@ -473,22 +457,6 @@ namespace CityTruck.Model
             }
         }
         private ObjectSet<SG_AJUSTES_TANQUE> _SG_AJUSTES_TANQUE;
-    
-        /// <summary>
-        /// No hay documentación de metadatos disponible.
-        /// </summary>
-        public ObjectSet<SG_POS> SG_POS
-        {
-            get
-            {
-                if ((_SG_POS == null))
-                {
-                    _SG_POS = base.CreateObjectSet<SG_POS>("SG_POS");
-                }
-                return _SG_POS;
-            }
-        }
-        private ObjectSet<SG_POS> _SG_POS;
     
         /// <summary>
         /// No hay documentación de metadatos disponible.
@@ -697,6 +665,38 @@ namespace CityTruck.Model
             }
         }
         private ObjectSet<SG_KARDEX_CLIENTE_POR_PAGAR> _SG_KARDEX_CLIENTE_POR_PAGAR;
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        public ObjectSet<SG_POS> SG_POS
+        {
+            get
+            {
+                if ((_SG_POS == null))
+                {
+                    _SG_POS = base.CreateObjectSet<SG_POS>("SG_POS");
+                }
+                return _SG_POS;
+            }
+        }
+        private ObjectSet<SG_POS> _SG_POS;
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        public ObjectSet<SG_AJUSTE_PRECIO> SG_AJUSTE_PRECIO
+        {
+            get
+            {
+                if ((_SG_AJUSTE_PRECIO == null))
+                {
+                    _SG_AJUSTE_PRECIO = base.CreateObjectSet<SG_AJUSTE_PRECIO>("SG_AJUSTE_PRECIO");
+                }
+                return _SG_AJUSTE_PRECIO;
+            }
+        }
+        private ObjectSet<SG_AJUSTE_PRECIO> _SG_AJUSTE_PRECIO;
 
         #endregion
 
@@ -831,14 +831,6 @@ namespace CityTruck.Model
         }
     
         /// <summary>
-        /// Método desusado para agregar un nuevo objeto al EntitySet SG_AJUSTE_PRECIO. Considere la posibilidad de usar el método .Add de la propiedad ObjectSet&lt;T&gt; asociada.
-        /// </summary>
-        public void AddToSG_AJUSTE_PRECIO(SG_AJUSTE_PRECIO sG_AJUSTE_PRECIO)
-        {
-            base.AddObject("SG_AJUSTE_PRECIO", sG_AJUSTE_PRECIO);
-        }
-    
-        /// <summary>
         /// Método desusado para agregar un nuevo objeto al EntitySet SG_COMBUSTIBLES. Considere la posibilidad de usar el método .Add de la propiedad ObjectSet&lt;T&gt; asociada.
         /// </summary>
         public void AddToSG_COMBUSTIBLES(SG_COMBUSTIBLES sG_COMBUSTIBLES)
@@ -884,14 +876,6 @@ namespace CityTruck.Model
         public void AddToSG_AJUSTES_TANQUE(SG_AJUSTES_TANQUE sG_AJUSTES_TANQUE)
         {
             base.AddObject("SG_AJUSTES_TANQUE", sG_AJUSTES_TANQUE);
-        }
-    
-        /// <summary>
-        /// Método desusado para agregar un nuevo objeto al EntitySet SG_POS. Considere la posibilidad de usar el método .Add de la propiedad ObjectSet&lt;T&gt; asociada.
-        /// </summary>
-        public void AddToSG_POS(SG_POS sG_POS)
-        {
-            base.AddObject("SG_POS", sG_POS);
         }
     
         /// <summary>
@@ -996,6 +980,22 @@ namespace CityTruck.Model
         public void AddToSG_KARDEX_CLIENTE_POR_PAGAR(SG_KARDEX_CLIENTE_POR_PAGAR sG_KARDEX_CLIENTE_POR_PAGAR)
         {
             base.AddObject("SG_KARDEX_CLIENTE_POR_PAGAR", sG_KARDEX_CLIENTE_POR_PAGAR);
+        }
+    
+        /// <summary>
+        /// Método desusado para agregar un nuevo objeto al EntitySet SG_POS. Considere la posibilidad de usar el método .Add de la propiedad ObjectSet&lt;T&gt; asociada.
+        /// </summary>
+        public void AddToSG_POS(SG_POS sG_POS)
+        {
+            base.AddObject("SG_POS", sG_POS);
+        }
+    
+        /// <summary>
+        /// Método desusado para agregar un nuevo objeto al EntitySet SG_AJUSTE_PRECIO. Considere la posibilidad de usar el método .Add de la propiedad ObjectSet&lt;T&gt; asociada.
+        /// </summary>
+        public void AddToSG_AJUSTE_PRECIO(SG_AJUSTE_PRECIO sG_AJUSTE_PRECIO)
+        {
+            base.AddObject("SG_AJUSTE_PRECIO", sG_AJUSTE_PRECIO);
         }
 
         #endregion
@@ -4302,7 +4302,8 @@ namespace CityTruck.Model
         /// <param name="pRECIO">Valor inicial de la propiedad PRECIO.</param>
         /// <param name="iD_USUARIO">Valor inicial de la propiedad ID_USUARIO.</param>
         /// <param name="eSTADO">Valor inicial de la propiedad ESTADO.</param>
-        public static SG_AJUSTE_PRECIO CreateSG_AJUSTE_PRECIO(global::System.Int32 iD_AJUSTE, global::System.Int16 iD_COMBUSTIBLE, global::System.DateTime fECHA_ALTA, global::System.String tIPO, global::System.Decimal pRECIO, global::System.Int16 iD_USUARIO, global::System.String eSTADO)
+        /// <param name="fECHA_VIG_DESDE">Valor inicial de la propiedad FECHA_VIG_DESDE.</param>
+        public static SG_AJUSTE_PRECIO CreateSG_AJUSTE_PRECIO(global::System.Int32 iD_AJUSTE, global::System.Int16 iD_COMBUSTIBLE, global::System.DateTime fECHA_ALTA, global::System.String tIPO, global::System.Decimal pRECIO, global::System.Int16 iD_USUARIO, global::System.String eSTADO, global::System.DateTime fECHA_VIG_DESDE)
         {
             SG_AJUSTE_PRECIO sG_AJUSTE_PRECIO = new SG_AJUSTE_PRECIO();
             sG_AJUSTE_PRECIO.ID_AJUSTE = iD_AJUSTE;
@@ -4312,6 +4313,7 @@ namespace CityTruck.Model
             sG_AJUSTE_PRECIO.PRECIO = pRECIO;
             sG_AJUSTE_PRECIO.ID_USUARIO = iD_USUARIO;
             sG_AJUSTE_PRECIO.ESTADO = eSTADO;
+            sG_AJUSTE_PRECIO.FECHA_VIG_DESDE = fECHA_VIG_DESDE;
             return sG_AJUSTE_PRECIO;
         }
 
@@ -4537,6 +4539,102 @@ namespace CityTruck.Model
         private Nullable<global::System.DateTime> _FECHA_REG;
         partial void OnFECHA_REGChanging(Nullable<global::System.DateTime> value);
         partial void OnFECHA_REGChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.DateTime FECHA_VIG_DESDE
+        {
+            get
+            {
+                return _FECHA_VIG_DESDE;
+            }
+            set
+            {
+                OnFECHA_VIG_DESDEChanging(value);
+                ReportPropertyChanging("FECHA_VIG_DESDE");
+                _FECHA_VIG_DESDE = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("FECHA_VIG_DESDE");
+                OnFECHA_VIG_DESDEChanged();
+            }
+        }
+        private global::System.DateTime _FECHA_VIG_DESDE;
+        partial void OnFECHA_VIG_DESDEChanging(global::System.DateTime value);
+        partial void OnFECHA_VIG_DESDEChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.DateTime> FECHA_VIG_HASTA
+        {
+            get
+            {
+                return _FECHA_VIG_HASTA;
+            }
+            set
+            {
+                OnFECHA_VIG_HASTAChanging(value);
+                ReportPropertyChanging("FECHA_VIG_HASTA");
+                _FECHA_VIG_HASTA = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("FECHA_VIG_HASTA");
+                OnFECHA_VIG_HASTAChanged();
+            }
+        }
+        private Nullable<global::System.DateTime> _FECHA_VIG_HASTA;
+        partial void OnFECHA_VIG_HASTAChanging(Nullable<global::System.DateTime> value);
+        partial void OnFECHA_VIG_HASTAChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Decimal> PRECIO_ANTERIOR
+        {
+            get
+            {
+                return _PRECIO_ANTERIOR;
+            }
+            set
+            {
+                OnPRECIO_ANTERIORChanging(value);
+                ReportPropertyChanging("PRECIO_ANTERIOR");
+                _PRECIO_ANTERIOR = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("PRECIO_ANTERIOR");
+                OnPRECIO_ANTERIORChanged();
+            }
+        }
+        private Nullable<global::System.Decimal> _PRECIO_ANTERIOR;
+        partial void OnPRECIO_ANTERIORChanging(Nullable<global::System.Decimal> value);
+        partial void OnPRECIO_ANTERIORChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String OBSERVACION
+        {
+            get
+            {
+                return _OBSERVACION;
+            }
+            set
+            {
+                OnOBSERVACIONChanging(value);
+                ReportPropertyChanging("OBSERVACION");
+                _OBSERVACION = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("OBSERVACION");
+                OnOBSERVACIONChanged();
+            }
+        }
+        private global::System.String _OBSERVACION;
+        partial void OnOBSERVACIONChanging(global::System.String value);
+        partial void OnOBSERVACIONChanged();
 
         #endregion
 
@@ -7911,28 +8009,6 @@ namespace CityTruck.Model
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("Model", "SG_AJUSTE_PRECIO_R01", "SG_AJUSTE_PRECIO")]
-        public EntityCollection<SG_AJUSTE_PRECIO> SG_AJUSTE_PRECIO
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<SG_AJUSTE_PRECIO>("Model.SG_AJUSTE_PRECIO_R01", "SG_AJUSTE_PRECIO");
-            }
-            set
-            {
-                if ((value != null))
-                {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<SG_AJUSTE_PRECIO>("Model.SG_AJUSTE_PRECIO_R01", "SG_AJUSTE_PRECIO", value);
-                }
-            }
-        }
-    
-        /// <summary>
-        /// No hay documentación de metadatos disponible.
-        /// </summary>
-        [XmlIgnoreAttribute()]
-        [SoapIgnoreAttribute()]
-        [DataMemberAttribute()]
         [EdmRelationshipNavigationPropertyAttribute("Model", "SG_COMPRAS_R01", "SG_COMPRAS")]
         public EntityCollection<SG_COMPRAS> SG_COMPRAS
         {
@@ -7989,28 +8065,6 @@ namespace CityTruck.Model
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<SG_TANQUES>("Model.SG_TANQUES_R01", "SG_TANQUES", value);
-                }
-            }
-        }
-    
-        /// <summary>
-        /// No hay documentación de metadatos disponible.
-        /// </summary>
-        [XmlIgnoreAttribute()]
-        [SoapIgnoreAttribute()]
-        [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("Model", "SG_POS_R01", "SG_POS")]
-        public EntityCollection<SG_POS> SG_POS
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<SG_POS>("Model.SG_POS_R01", "SG_POS");
-            }
-            set
-            {
-                if ((value != null))
-                {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<SG_POS>("Model.SG_POS_R01", "SG_POS", value);
                 }
             }
         }
@@ -8099,6 +8153,50 @@ namespace CityTruck.Model
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<SG_FACTURAS_MN>("Model.SG_FACTURAS_MN_R01", "SG_FACTURAS_MN", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("Model", "SG_POS_R01", "SG_POS")]
+        public EntityCollection<SG_POS> SG_POS
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<SG_POS>("Model.SG_POS_R01", "SG_POS");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<SG_POS>("Model.SG_POS_R01", "SG_POS", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("Model", "SG_AJUSTE_PRECIO_R01", "SG_AJUSTE_PRECIO")]
+        public EntityCollection<SG_AJUSTE_PRECIO> SG_AJUSTE_PRECIO
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<SG_AJUSTE_PRECIO>("Model.SG_AJUSTE_PRECIO_R01", "SG_AJUSTE_PRECIO");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<SG_AJUSTE_PRECIO>("Model.SG_AJUSTE_PRECIO_R01", "SG_AJUSTE_PRECIO", value);
                 }
             }
         }
@@ -13483,7 +13581,11 @@ namespace CityTruck.Model
         /// <param name="eNT_LITTER_INI">Valor inicial de la propiedad ENT_LITTER_INI.</param>
         /// <param name="lITTER_ACT">Valor inicial de la propiedad LITTER_ACT.</param>
         /// <param name="eSTADO">Valor inicial de la propiedad ESTADO.</param>
-        public static SG_POS CreateSG_POS(global::System.Int32 iD_POS, global::System.String cODIGO, global::System.Int16 iD_COMBUSTIBLE, global::System.Decimal eNT_LITTER_INI, global::System.Decimal lITTER_ACT, global::System.String eSTADO)
+        /// <param name="mEDIDOR_DECIMALES">Valor inicial de la propiedad MEDIDOR_DECIMALES.</param>
+        /// <param name="mEDIDOR_ROLLOVER">Valor inicial de la propiedad MEDIDOR_ROLLOVER.</param>
+        /// <param name="rOLLOVER_CONTADOR">Valor inicial de la propiedad ROLLOVER_CONTADOR.</param>
+        /// <param name="aCUMULADO_TOTAL">Valor inicial de la propiedad ACUMULADO_TOTAL.</param>
+        public static SG_POS CreateSG_POS(global::System.Int32 iD_POS, global::System.String cODIGO, global::System.Int16 iD_COMBUSTIBLE, global::System.Decimal eNT_LITTER_INI, global::System.Decimal lITTER_ACT, global::System.String eSTADO, global::System.Int16 mEDIDOR_DECIMALES, global::System.String mEDIDOR_ROLLOVER, global::System.Int32 rOLLOVER_CONTADOR, global::System.Decimal aCUMULADO_TOTAL)
         {
             SG_POS sG_POS = new SG_POS();
             sG_POS.ID_POS = iD_POS;
@@ -13492,6 +13594,10 @@ namespace CityTruck.Model
             sG_POS.ENT_LITTER_INI = eNT_LITTER_INI;
             sG_POS.LITTER_ACT = lITTER_ACT;
             sG_POS.ESTADO = eSTADO;
+            sG_POS.MEDIDOR_DECIMALES = mEDIDOR_DECIMALES;
+            sG_POS.MEDIDOR_ROLLOVER = mEDIDOR_ROLLOVER;
+            sG_POS.ROLLOVER_CONTADOR = rOLLOVER_CONTADOR;
+            sG_POS.ACUMULADO_TOTAL = aCUMULADO_TOTAL;
             return sG_POS;
         }
 
@@ -13717,11 +13823,177 @@ namespace CityTruck.Model
         private Nullable<global::System.Decimal> _LITTER_ACT_MN;
         partial void OnLITTER_ACT_MNChanging(Nullable<global::System.Decimal> value);
         partial void OnLITTER_ACT_MNChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int16 MEDIDOR_DECIMALES
+        {
+            get
+            {
+                return _MEDIDOR_DECIMALES;
+            }
+            set
+            {
+                OnMEDIDOR_DECIMALESChanging(value);
+                ReportPropertyChanging("MEDIDOR_DECIMALES");
+                _MEDIDOR_DECIMALES = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("MEDIDOR_DECIMALES");
+                OnMEDIDOR_DECIMALESChanged();
+            }
+        }
+        private global::System.Int16 _MEDIDOR_DECIMALES;
+        partial void OnMEDIDOR_DECIMALESChanging(global::System.Int16 value);
+        partial void OnMEDIDOR_DECIMALESChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String MEDIDOR_ROLLOVER
+        {
+            get
+            {
+                return _MEDIDOR_ROLLOVER;
+            }
+            set
+            {
+                OnMEDIDOR_ROLLOVERChanging(value);
+                ReportPropertyChanging("MEDIDOR_ROLLOVER");
+                _MEDIDOR_ROLLOVER = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("MEDIDOR_ROLLOVER");
+                OnMEDIDOR_ROLLOVERChanged();
+            }
+        }
+        private global::System.String _MEDIDOR_ROLLOVER;
+        partial void OnMEDIDOR_ROLLOVERChanging(global::System.String value);
+        partial void OnMEDIDOR_ROLLOVERChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Decimal> MEDIDOR_MAX_VALOR
+        {
+            get
+            {
+                return _MEDIDOR_MAX_VALOR;
+            }
+            set
+            {
+                OnMEDIDOR_MAX_VALORChanging(value);
+                ReportPropertyChanging("MEDIDOR_MAX_VALOR");
+                _MEDIDOR_MAX_VALOR = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("MEDIDOR_MAX_VALOR");
+                OnMEDIDOR_MAX_VALORChanged();
+            }
+        }
+        private Nullable<global::System.Decimal> _MEDIDOR_MAX_VALOR;
+        partial void OnMEDIDOR_MAX_VALORChanging(Nullable<global::System.Decimal> value);
+        partial void OnMEDIDOR_MAX_VALORChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Decimal> LECTURA_ANTERIOR
+        {
+            get
+            {
+                return _LECTURA_ANTERIOR;
+            }
+            set
+            {
+                OnLECTURA_ANTERIORChanging(value);
+                ReportPropertyChanging("LECTURA_ANTERIOR");
+                _LECTURA_ANTERIOR = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("LECTURA_ANTERIOR");
+                OnLECTURA_ANTERIORChanged();
+            }
+        }
+        private Nullable<global::System.Decimal> _LECTURA_ANTERIOR;
+        partial void OnLECTURA_ANTERIORChanging(Nullable<global::System.Decimal> value);
+        partial void OnLECTURA_ANTERIORChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 ROLLOVER_CONTADOR
+        {
+            get
+            {
+                return _ROLLOVER_CONTADOR;
+            }
+            set
+            {
+                OnROLLOVER_CONTADORChanging(value);
+                ReportPropertyChanging("ROLLOVER_CONTADOR");
+                _ROLLOVER_CONTADOR = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("ROLLOVER_CONTADOR");
+                OnROLLOVER_CONTADORChanged();
+            }
+        }
+        private global::System.Int32 _ROLLOVER_CONTADOR;
+        partial void OnROLLOVER_CONTADORChanging(global::System.Int32 value);
+        partial void OnROLLOVER_CONTADORChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Decimal ACUMULADO_TOTAL
+        {
+            get
+            {
+                return _ACUMULADO_TOTAL;
+            }
+            set
+            {
+                OnACUMULADO_TOTALChanging(value);
+                ReportPropertyChanging("ACUMULADO_TOTAL");
+                _ACUMULADO_TOTAL = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("ACUMULADO_TOTAL");
+                OnACUMULADO_TOTALChanged();
+            }
+        }
+        private global::System.Decimal _ACUMULADO_TOTAL;
+        partial void OnACUMULADO_TOTALChanging(global::System.Decimal value);
+        partial void OnACUMULADO_TOTALChanged();
 
         #endregion
 
     
         #region Propiedades de navegación
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("Model", "SG_AJUSTE_POS_R01", "SG_AJUSTE_POS")]
+        public EntityCollection<SG_AJUSTE_POS> SG_AJUSTE_POS
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<SG_AJUSTE_POS>("Model.SG_AJUSTE_POS_R01", "SG_AJUSTE_POS");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<SG_AJUSTE_POS>("Model.SG_AJUSTE_POS_R01", "SG_AJUSTE_POS", value);
+                }
+            }
+        }
     
         /// <summary>
         /// No hay documentación de metadatos disponible.
@@ -13767,18 +14039,18 @@ namespace CityTruck.Model
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("Model", "SG_POS_TURNOS_R01", "SG_POS_TURNOS")]
-        public EntityCollection<SG_POS_TURNOS> SG_POS_TURNOS
+        [EdmRelationshipNavigationPropertyAttribute("Model", "SG_CONSUMOS_R03", "SG_CONSUMOS")]
+        public EntityCollection<SG_CONSUMOS> SG_CONSUMOS
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<SG_POS_TURNOS>("Model.SG_POS_TURNOS_R01", "SG_POS_TURNOS");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<SG_CONSUMOS>("Model.SG_CONSUMOS_R03", "SG_CONSUMOS");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<SG_POS_TURNOS>("Model.SG_POS_TURNOS_R01", "SG_POS_TURNOS", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<SG_CONSUMOS>("Model.SG_CONSUMOS_R03", "SG_CONSUMOS", value);
                 }
             }
         }
@@ -13811,40 +14083,18 @@ namespace CityTruck.Model
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("Model", "SG_AJUSTE_POS_R01", "SG_AJUSTE_POS")]
-        public EntityCollection<SG_AJUSTE_POS> SG_AJUSTE_POS
+        [EdmRelationshipNavigationPropertyAttribute("Model", "SG_POS_TURNOS_R01", "SG_POS_TURNOS")]
+        public EntityCollection<SG_POS_TURNOS> SG_POS_TURNOS
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<SG_AJUSTE_POS>("Model.SG_AJUSTE_POS_R01", "SG_AJUSTE_POS");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<SG_POS_TURNOS>("Model.SG_POS_TURNOS_R01", "SG_POS_TURNOS");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<SG_AJUSTE_POS>("Model.SG_AJUSTE_POS_R01", "SG_AJUSTE_POS", value);
-                }
-            }
-        }
-    
-        /// <summary>
-        /// No hay documentación de metadatos disponible.
-        /// </summary>
-        [XmlIgnoreAttribute()]
-        [SoapIgnoreAttribute()]
-        [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("Model", "SG_CONSUMOS_R03", "SG_CONSUMOS")]
-        public EntityCollection<SG_CONSUMOS> SG_CONSUMOS
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<SG_CONSUMOS>("Model.SG_CONSUMOS_R03", "SG_CONSUMOS");
-            }
-            set
-            {
-                if ((value != null))
-                {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<SG_CONSUMOS>("Model.SG_CONSUMOS_R03", "SG_CONSUMOS", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<SG_POS_TURNOS>("Model.SG_POS_TURNOS_R01", "SG_POS_TURNOS", value);
                 }
             }
         }

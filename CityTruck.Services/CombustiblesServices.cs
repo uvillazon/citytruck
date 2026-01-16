@@ -37,13 +37,16 @@ namespace CityTruck.Services
             return result;
         }
 
-        public IEnumerable<SG_POS> ObtenerPosCombustiblesPaginado(PagingInfo paginacion)
+        public IEnumerable<SG_POS> ObtenerPosCombustiblesPaginado(PagingInfo paginacion, FiltrosModel<CombustiblesModel> filtros)
         {
             IQueryable<SG_POS> result = null;
             ExecuteManager(uow =>
             {
                 var manager = new SG_POSManager(uow);
                 result = manager.BuscarTodos();
+                filtros.FiltrarDatos();
+               
+                result = filtros.Diccionario.Count() > 0 ? result.Where(filtros.Predicado, filtros.Diccionario.Values.ToArray()) : result;
 
                 paginacion.total = result.Count();
                 result = manager.QueryPaged(result, paginacion.limit, paginacion.start, paginacion.sort, paginacion.dir);
@@ -52,7 +55,24 @@ namespace CityTruck.Services
             return result;
         }
 
+        public IEnumerable<SG_AJUSTE_PRECIO> ObtenerAjustesPreciosPaginado(PagingInfo paginacion, FiltrosModel<CombustiblesModel> filtros)
+        {
+            IQueryable<SG_AJUSTE_PRECIO> result = null;
+            ExecuteManager(uow =>
+            {
+                var manager = new SG_AJUSTE_PRECIOManager(uow);
+                result = manager.BuscarTodos();
 
+                filtros.FiltrarDatos();
+                //
+                result = filtros.Diccionario.Count() > 0 ? result.Where(filtros.Predicado, filtros.Diccionario.Values.ToArray()) : result;
+
+                paginacion.total = result.Count();
+                result = manager.QueryPaged(result, paginacion.limit, paginacion.start, paginacion.sort, paginacion.dir);
+
+            });
+            return result;
+        }
         public CombustiblesModel ObtenerCombustible(System.Linq.Expressions.Expression<Func<SG_COMBUSTIBLES, bool>> criterio = null)
         {
             CombustiblesModel result = new CombustiblesModel();

@@ -1,4 +1,4 @@
-﻿Ext.define("App.View.Compras.Grids", {
+﻿Ext.define("App.View.Combustibles.Grids", {
     extend: "Ext.grid.Panel",
     margins: '0 2 0 0',
     loadMask: true,

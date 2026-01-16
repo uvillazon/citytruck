@@ -8,6 +8,7 @@
         var me = this;
         me.CargarComponentes();
         me.cargarEventos();
+        me.CargarStoreFecha();
         this.callParent(arguments);
     },
     CargarStoreFecha : function(fecha1){

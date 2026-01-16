@@ -246,21 +246,6 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <FunctionImportMapping FunctionImportName="P_SG_GENERAR_VENTAS_DIARIAS" FunctionName="Model.Store.P_SG_GENERAR_VENTAS_DIARIAS" />
-    <EntitySetMapping Name="SG_AJUSTE_PRECIO">
-      <EntityTypeMapping TypeName="Model.SG_AJUSTE_PRECIO">
-        <MappingFragment StoreEntitySet="SG_AJUSTE_PRECIO">
-          <ScalarProperty Name="FECHA_REG" ColumnName="FECHA_REG" />
-          <ScalarProperty Name="ESTADO" ColumnName="ESTADO" />
-          <ScalarProperty Name="ID_USUARIO" ColumnName="ID_USUARIO" />
-          <ScalarProperty Name="PRECIO" ColumnName="PRECIO" />
-          <ScalarProperty Name="TIPO" ColumnName="TIPO" />
-          <ScalarProperty Name="FECHA_BAJA" ColumnName="FECHA_BAJA" />
-          <ScalarProperty Name="FECHA_ALTA" ColumnName="FECHA_ALTA" />
-          <ScalarProperty Name="ID_COMBUSTIBLE" ColumnName="ID_COMBUSTIBLE" />
-          <ScalarProperty Name="ID_AJUSTE" ColumnName="ID_AJUSTE" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <FunctionImportMapping FunctionImportName="P_SG_VERIFICAR_EDICION" FunctionName="Model.Store.P_SG_VERIFICAR_EDICION" />
     <EntitySetMapping Name="SG_COMBUSTIBLES">
       <EntityTypeMapping TypeName="Model.SG_COMBUSTIBLES">
@@ -361,21 +346,6 @@
           <ScalarProperty Name="NRO_COMP" ColumnName="NRO_COMP" />
           <ScalarProperty Name="ID_TANQUE" ColumnName="ID_TANQUE" />
           <ScalarProperty Name="ID_AJUSTE" ColumnName="ID_AJUSTE" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="SG_POS">
-      <EntityTypeMapping TypeName="Model.SG_POS">
-        <MappingFragment StoreEntitySet="SG_POS">
-          <ScalarProperty Name="LITTER_ACT_MN" ColumnName="LITTER_ACT_MN" />
-          <ScalarProperty Name="ENT_LITTER_INI_MN" ColumnName="ENT_LITTER_INI_MN" />
-          <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
-          <ScalarProperty Name="ESTADO" ColumnName="ESTADO" />
-          <ScalarProperty Name="LITTER_ACT" ColumnName="LITTER_ACT" />
-          <ScalarProperty Name="ENT_LITTER_INI" ColumnName="ENT_LITTER_INI" />
-          <ScalarProperty Name="ID_COMBUSTIBLE" ColumnName="ID_COMBUSTIBLE" />
-          <ScalarProperty Name="CODIGO" ColumnName="CODIGO" />
-          <ScalarProperty Name="ID_POS" ColumnName="ID_POS" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -611,5 +581,45 @@
     </EntitySetMapping>
     <FunctionImportMapping FunctionImportName="P_SG_ELIMINAR_CONTRATO" FunctionName="Model.Store.P_SG_ELIMINAR_CONTRATO" />
     <FunctionImportMapping FunctionImportName="P_SG_ELIMINAR_ANTICIPO" FunctionName="Model.Store.P_SG_ELIMINAR_ANTICIPO" />
+    <EntitySetMapping Name="SG_POS">
+      <EntityTypeMapping TypeName="Model.SG_POS">
+        <MappingFragment StoreEntitySet="SG_POS">
+          <ScalarProperty Name="ACUMULADO_TOTAL" ColumnName="ACUMULADO_TOTAL" />
+          <ScalarProperty Name="ROLLOVER_CONTADOR" ColumnName="ROLLOVER_CONTADOR" />
+          <ScalarProperty Name="LECTURA_ANTERIOR" ColumnName="LECTURA_ANTERIOR" />
+          <ScalarProperty Name="MEDIDOR_MAX_VALOR" ColumnName="MEDIDOR_MAX_VALOR" />
+          <ScalarProperty Name="MEDIDOR_ROLLOVER" ColumnName="MEDIDOR_ROLLOVER" />
+          <ScalarProperty Name="MEDIDOR_DECIMALES" ColumnName="MEDIDOR_DECIMALES" />
+          <ScalarProperty Name="LITTER_ACT_MN" ColumnName="LITTER_ACT_MN" />
+          <ScalarProperty Name="ENT_LITTER_INI_MN" ColumnName="ENT_LITTER_INI_MN" />
+          <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
+          <ScalarProperty Name="ESTADO" ColumnName="ESTADO" />
+          <ScalarProperty Name="LITTER_ACT" ColumnName="LITTER_ACT" />
+          <ScalarProperty Name="ENT_LITTER_INI" ColumnName="ENT_LITTER_INI" />
+          <ScalarProperty Name="ID_COMBUSTIBLE" ColumnName="ID_COMBUSTIBLE" />
+          <ScalarProperty Name="CODIGO" ColumnName="CODIGO" />
+          <ScalarProperty Name="ID_POS" ColumnName="ID_POS" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SG_AJUSTE_PRECIO">
+      <EntityTypeMapping TypeName="Model.SG_AJUSTE_PRECIO">
+        <MappingFragment StoreEntitySet="SG_AJUSTE_PRECIO">
+          <ScalarProperty Name="OBSERVACION" ColumnName="OBSERVACION" />
+          <ScalarProperty Name="PRECIO_ANTERIOR" ColumnName="PRECIO_ANTERIOR" />
+          <ScalarProperty Name="FECHA_VIG_HASTA" ColumnName="FECHA_VIG_HASTA" />
+          <ScalarProperty Name="FECHA_VIG_DESDE" ColumnName="FECHA_VIG_DESDE" />
+          <ScalarProperty Name="FECHA_REG" ColumnName="FECHA_REG" />
+          <ScalarProperty Name="ESTADO" ColumnName="ESTADO" />
+          <ScalarProperty Name="ID_USUARIO" ColumnName="ID_USUARIO" />
+          <ScalarProperty Name="PRECIO" ColumnName="PRECIO" />
+          <ScalarProperty Name="TIPO" ColumnName="TIPO" />
+          <ScalarProperty Name="FECHA_BAJA" ColumnName="FECHA_BAJA" />
+          <ScalarProperty Name="FECHA_ALTA" ColumnName="FECHA_ALTA" />
+          <ScalarProperty Name="ID_COMBUSTIBLE" ColumnName="ID_COMBUSTIBLE" />
+          <ScalarProperty Name="ID_AJUSTE" ColumnName="ID_AJUSTE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>
