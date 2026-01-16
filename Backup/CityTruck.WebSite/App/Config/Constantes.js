@@ -32,6 +32,12 @@ Ext.define("App.Config.Constantes", {
     CONFIG_PRECIO_COSTO_GAS: 3.52,
     CONFIG_PRECIO_COSTO_DIS: 3.54,
     CONFIG_CUENTA_VENTA: 1,
+    getPiePagina: function () {
+        var year = new Date().getFullYear();
+        return '<font color="black"><h2 style="font-size:12px;height:14px">' +
+               'Copyright &copy; 2016  -  ' + year + ' - Version 2.0' +
+               '</h2></font>';
+    },
     UnidadesRequeridas: function (unidad, requerido) {
         if (requerido) {
             return '<span style="color:red;font-weight:bold" data-qtip="Requerido">*</span><span style="color:blue" data-qtip="Requerido">[' + unidad + ']</span>';

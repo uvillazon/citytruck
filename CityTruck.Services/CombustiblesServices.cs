@@ -37,6 +37,21 @@ namespace CityTruck.Services
             return result;
         }
 
+        public IEnumerable<SG_POS> ObtenerPosCombustiblesPaginado(PagingInfo paginacion)
+        {
+            IQueryable<SG_POS> result = null;
+            ExecuteManager(uow =>
+            {
+                var manager = new SG_POSManager(uow);
+                result = manager.BuscarTodos();
+
+                paginacion.total = result.Count();
+                result = manager.QueryPaged(result, paginacion.limit, paginacion.start, paginacion.sort, paginacion.dir);
+
+            });
+            return result;
+        }
+
 
         public CombustiblesModel ObtenerCombustible(System.Linq.Expressions.Expression<Func<SG_COMBUSTIBLES, bool>> criterio = null)
         {

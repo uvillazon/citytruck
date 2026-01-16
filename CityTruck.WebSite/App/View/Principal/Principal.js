@@ -40,7 +40,7 @@
                             width: 800,
 
                             autoHeight: true,
-                            html: Constantes.PIEPAGINA,
+                            html: Constantes.getPiePagina(),
                             border: false
 
                         }

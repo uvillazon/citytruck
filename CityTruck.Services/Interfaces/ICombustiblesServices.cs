@@ -13,6 +13,8 @@ namespace CityTruck.Services.Interfaces
     {
         IEnumerable<SG_COMBUSTIBLES> ObtenerCombustiblesPaginado(PagingInfo paginacion);
 
+        IEnumerable<SG_POS> ObtenerPosCombustiblesPaginado(PagingInfo paginacion);
+
         IEnumerable<SG_AJUSTES_TANQUE> ObtenerAjustesPorAnioYMes(string ANIO, string MES);
 
         IEnumerable<SG_AJUSTES_TANQUE> ObtenerAjustesPaginados(PagingInfo paginacion, Expression<Func<SG_AJUSTES_TANQUE, bool>> criterio = null);

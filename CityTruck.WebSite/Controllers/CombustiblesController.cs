@@ -46,12 +46,36 @@ namespace CityTruck.WebSite.Controllers
                 DESCRIPCION = x.DESCRIPCION,
                 CANT_DISPONIBLE = x.CANT_DISPONIBLE,
                 PRECIO_VENTA = x.PRECIO_VENTA,
-                PRECIO_COMPRA = x.PRECIO_COMPRA
+                PRECIO_COMPRA = x.PRECIO_COMPRA,
+                UNIDAD = x.UNIDAD,
+                ESTADO = x.ESTADO
             });
             JavaScriptSerializer javaScriptSerializer = new JavaScriptSerializer();
             string callback1 = paginacion.callback + "(" + javaScriptSerializer.Serialize(new { Rows = formattData, Total = paginacion.total }) + ");";
             return JavaScript(callback1);
         }
+
+        [AcceptVerbs(HttpVerbs.Get)]
+        public ActionResult ObtenerPosCombustiblesPaginado(PagingInfo paginacion)
+        {
+            var cajas = _serCom.ObtenerPosCombustiblesPaginado(paginacion);
+            var formattData = cajas.Select(x => new
+            {
+                ID_POS = x.ID_POS,
+                ID_COMBUSTIBLE = x.ID_COMBUSTIBLE,
+                CODIGO = x.CODIGO,
+                DESCRIPCION = x.DESCRIPCION,
+                LITTER_ACT_MN = x.LITTER_ACT_MN,
+                ENT_LITTER_INI = x.ENT_LITTER_INI,
+                ENT_LITTER_INI_MN = x.ENT_LITTER_INI_MN,
+                LITTER_ACT = x.LITTER_ACT,
+                ESTADO = x.ESTADO
+            });
+            JavaScriptSerializer javaScriptSerializer = new JavaScriptSerializer();
+            string callback1 = paginacion.callback + "(" + javaScriptSerializer.Serialize(new { Rows = formattData, Total = paginacion.total }) + ");";
+            return JavaScript(callback1);
+        }
+
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult ObtenerAjustesPaginado(PagingInfo paginacion)
         {
